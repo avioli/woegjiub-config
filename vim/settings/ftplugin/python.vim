@@ -15,19 +15,20 @@
 " Better syntax highlighting
 	let python_highlight_all=1
 
-" Enable RopeVim GoTo Definition and Code Refactoring
-	map <leader>j :RopeGotoDefinition<CR>
-	map <leader>r :RopeRename<CR>
+" Addon-dependant Python Mappings
+	" Enable RopeVim GoTo Definition and Code Refactoring
+		map <leader>j :RopeGotoDefinition<CR>
+		map <leader>r :RopeRename<CR>
 
-" Enable Testing with PyTest
-	" Execute the Tests
-	nmap <silent><leader>tf <Esc>:Pytest file<CR>
-	nmap <silent><leader>tc <Esc>:Pytest class<CR>
-	nmap <silent><leader>tm <Esc>:Pytest method<CR>
-	" Cycle Through Errors
-	nmap <silent><leader>tn <Esc>:Pytest next<CR>
-	nmap <silent><leader>tp <Esc>:Pytest previous<CR>
-	nmap <silent><leader>te <Esc>:Pytest error<CR>
+	" Enable Testing with PyTest
+		" Execute the Tests
+		nmap <silent><leader>tf <Esc>:Pytest file<CR>
+		nmap <silent><leader>tc <Esc>:Pytest class<CR>
+		nmap <silent><leader>tm <Esc>:Pytest method<CR>
+		" Cycle Through Errors
+		nmap <silent><leader>tn <Esc>:Pytest next<CR>
+		nmap <silent><leader>tp <Esc>:Pytest previous<CR>
+		nmap <silent><leader>te <Esc>:Pytest error<CR>
 
 " Add the virtualenv's site-packages to vim path
     py << EOF

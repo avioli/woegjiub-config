@@ -2,46 +2,30 @@ let SessionLoad = 1
 if &cp | set nocp | endif
 let s:cpo_save=&cpo
 set cpo&vim
-inoremap <silent> <S-Tab> =BackwardsSnippet()
+imap <S-Tab> <Plug>SuperTabBackward
 inoremap <C-Tab> 	
 map! <S-Insert> <MiddleMouse>
 map  h
-snoremap <silent> 	 i<Right>=TriggerSnippet()
 map <NL> j
 map  k
 map  l
-snoremap  b<BS>
 nnoremap # #zz
-snoremap % b<BS>%
-snoremap ' b<BS>'
 nnoremap * *zz
-map ,tl <Plug>TaskList
-map ,mq <Plug>MBEMarkCurrent
-map ,mbt <Plug>TMiniBufExplorer
-map ,mbu <Plug>UMiniBufExplorer
-map ,mbc <Plug>CMiniBufExplorer
-map ,mbe <Plug>MiniBufExplorer
-map <silent> ,T :call MakeGreen()
-nnoremap <silent> ,b :CommandTBuffer
-nnoremap <silent> ,t :CommandT
+map <silent> ,t :call MakeGreen()
+nmap ,a :Ack!
+map ,g :GundoToggle
+map ,n :NERDTreeToggle
 nmap ,so :so ~/sessions/
 nmap ,ss :wa:mksession! ~/.vim/sessions/
 nmap ,sw :mksession! ~/.vim/sessions/default.vim:wa
 nmap ,sq :mksession! ~/.vim/sessions/default.vim:wqa
 map ,sd :setlocal spell! spelllang=de
 map ,se :setlocal spell! spelllang=en
-map ,l :set list!
 map ,cs :noh
-map ,g :GundoToggle
-map ,n :NERDTreeToggle
-map ,r :browse oldfiles
+map ,R :browse oldfiles
 map 0 ^
 nnoremap N Nzz
 xmap S <Plug>VSurround
-snoremap U b<BS>U
-snoremap \ b<BS>\
-snoremap ^ b<BS>^
-snoremap ` b<BS>`
 nmap cs <Plug>Csurround
 nmap ds <Plug>Dsurround
 nmap gx <Plug>NetrwBrowseX
@@ -54,10 +38,6 @@ nmap ySs <Plug>YSsurround
 nmap yss <Plug>Yssurround
 nmap yS <Plug>YSurround
 nmap ys <Plug>Ysurround
-snoremap <Left> bi
-snoremap <Right> a
-snoremap <BS> b<BS>
-snoremap <silent> <S-Tab> i<Right>=BackwardsSnippet()
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)
 nnoremap <silent> <Plug>SurroundRepeat .
 vmap <silent> <C-Up> :m'<-2`>my`<mzgv`yo`z
@@ -67,10 +47,9 @@ nmap <silent> <C-Down> mz:m+`z
 map <S-Insert> <MiddleMouse>
 imap S <Plug>ISurround
 imap s <Plug>Isurround
-inoremap <silent> 	 =TriggerSnippet()
+imap 	 <Plug>SuperTabForward
 imap  <Plug>SuperTabForward
 imap  <Plug>SuperTabBackward
-inoremap <silent> 	 =ShowAvailableSnips()
 imap  <Plug>Isurround
 let &cpo=s:cpo_save
 unlet s:cpo_save
@@ -92,24 +71,23 @@ set ignorecase
 set incsearch
 set laststatus=2
 set lazyredraw
-set listchars=tab:>-,trail:-,eol:¶
+set listchars=tab:│\ ,trail:-
 set matchtime=2
 set mouse=a
 set preserveindent
 set printoptions=paper:a4
 set ruler
-set runtimepath=~/.vim,~/.vim/bundle/ack,~/.vim/bundle/command-t,~/.vim/bundle/fugitive,~/.vim/bundle/git,~/.vim/bundle/gundo,~/.vim/bundle/makegreen,~/.vim/bundle/minibufexpl,~/.vim/bundle/nerdtree,~/.vim/bundle/pep8,~/.vim/bundle/py.test,~/.vim/bundle/pydoc,~/.vim/bundle/pyflakes,~/.vim/bundle/ropevim,~/.vim/bundle/settings,~/.vim/bundle/snipmate,~/.vim/bundle/supertab,~/.vim/bundle/surround,~/.vim/bundle/tasklist,~/.vim/bundle/vim-pathogen,~/.vim/bundle/vimoutliner,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim73,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,~/.vim/bundle/snipmate/after,~/.vim/after
+set runtimepath=~/.vim/bundle/vundle,~/.vim/bundle/vim-fugitive,~/.vim/bundle/snipmate,~/.vim/bundle/vim-surround,~/.vim/bundle/vim-git,~/.vim/bundle/supertab,~/.vim/bundle/minibufexpl,~/.vim/bundle/ctrlp,~/.vim/bundle/syntastic,~/.vim/bundle/ack.vim,~/.vim/bundle/gundo.vim,~/.vim/bundle/pydoc.vim,~/.vim/bundle/pep8,~/.vim/bundle/pytest.vim,~/.vim/bundle/vim-makegreen,~/.vim/bundle/The-NERD-tree,~/.vim/bundle/rope-vim,~/.vim/bundle/vimoutliner,~/.vim,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim73,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,~/.vim/after,~/.vim/bundle/settings,~/.vim/bundle/vundle/after,~/.vim/bundle/vim-fugitive/after,~/.vim/bundle/snipmate/after,~/.vim/bundle/vim-surround/after,~/.vim/bundle/vim-git/after,~/.vim/bundle/supertab/after,~/.vim/bundle/minibufexpl/after,~/.vim/bundle/ctrlp/after,~/.vim/bundle/syntastic/after,~/.vim/bundle/ack.vim/after,~/.vim/bundle/gundo.vim/after,~/.vim/bundle/pydoc.vim/after,~/.vim/bundle/pep8/after,~/.vim/bundle/pytest.vim/after,~/.vim/bundle/vim-makegreen/after,~/.vim/bundle/The-NERD-tree/after,~/.vim/bundle/rope-vim/after,~/.vim/bundle/vimoutliner/after
 set shiftround
 set shiftwidth=4
 set showcmd
 set showmatch
 set smartcase
 set smartindent
-set statusline=%<%f\ %h%m%r%=%-14.(%l,%c,%V%)\ %P
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c,%V%)\ %P
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
 set tabstop=4
 set textwidth=80
-set updatetime=300
 set viminfo=%,'100,<50,s10,h
 set wildignore=*.o,*~,~.pyc
 set wildmenu
@@ -117,14 +95,14 @@ set wildmode=list:longest,full
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
-cd ~/
+cd ~/.dotfiles
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +0 ~/.vimrc
-args .vimrc
-edit ~/.vimrc
+badd +0 ~/.dotfiles/vimrc
+args vimrc
+edit ~/.dotfiles/vimrc
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -203,7 +181,8 @@ setlocal iskeyword=@,48-57,_,192-255,#
 setlocal keywordprg=
 setlocal nolinebreak
 setlocal nolisp
-setlocal nolist
+set list
+setlocal list
 setlocal makeprg=
 setlocal matchpairs=(:),{:},[:]
 setlocal modeline

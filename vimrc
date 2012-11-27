@@ -1,8 +1,5 @@
-" Pathogen Settings
-	runtime bundle/vim-pathogen/autoload/pathogen.vim
-	filetype off
-	call pathogen#runtime_append_all_bundles()
-	call pathogen#helptags()
+" Add My Settings Folder
+	set rtp+=~/.vim/settings
 
 " General settings
 	set ffs=unix						" Unix as standard filetype
@@ -37,33 +34,6 @@
 	" file, helpfile, modified, readonly, split,  cursor location, V%
 	set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c,%V%)\ %P
 	colo darko							" Load my colourscheme
-
-" Indentation Settings
-	set shiftround						" Indents rounded to shiftwidths
-	set copyindent						" Maintain current indent on next line
-	set preserveindent					" Try not to mess with indentation
-	set autoindent						" Enables autoindent
-	set smartindent						" Enables smartindent
-	set shiftwidth=4					" Tabs at 4 width
-	set tabstop=4						" Tabs at 4 width
-	set textwidth=80					" Line wrap at 80 characters
-	set colorcolumn=+1					" Colours the column following that
-	set fo+=t							" Enables autowrap
-	set wrap							" Enables line wrapping for long lines
-	filetype plugin indent on			" Enable filetype-specific indentation
-	filetype on							" Enable filetype-specific settings
-	set list							" Show whitespace
-	set listchars=tab:│\ ,trail:-		" Show these whitespaces by default
-
-" Folding settings
-	set foldmethod=indent				" Enable Folding
-	set foldlevelstart=9				" Start at fold level 9
-
-" Search settings
-	set ignorecase						" Ignores cases in searching
-	set smartcase						" Smart case matching
-	set hlsearch						" Highlight search results
-	set incsearch						" Search incrementally
 
 " Input/Hotkey settings
 	set mouse=a							" Enable Mouse
@@ -128,23 +98,89 @@
 " Saving Improvements
 " Auto MkDir for saves in non-existant dirs
 function! s:CheckDirectoryExists()
-if expand("<afile>")!~#'^\w\+:/' && !isdirectory(expand("%:h"))
-call system(printf("mkdir -p %s", shellescape(expand('%:h'), 1)))
-redraw!
-endif
+	if expand("<afile>")!~#'^\w\+:/' && !isdirectory(expand("%:h"))
+		call system(printf("mkdir -p %s", shellescape(expand('%:h'), 1)))
+		redraw!
+	endif
 endfunction
-
 augroup BWCCreateDir
-au!
-autocmd BufWritePre * call s:CheckDirectoryExists()
+	au!
+	autocmd BufWritePre * call s:CheckDirectoryExists()
 augroup END
 
-" Plugin Settings
-	" Enable Project Tree with NERD Tree
-	map <Leader>n :NERDTreeToggle<CR>
-	" Add revision history checking with gundo
-	map <leader>g :GundoToggle<CR>
-	" Configure SuperTab
-	let g:SuperTabDefaultCompletionType = "context"
-	" Enable Ack Searching
-	nmap <leader>a <Esc>:Ack!
+" Addon Settings
+	" Set up Vundle to do its magic
+		filetype off
+		set rtp+=~/.vim/bundle/vundle
+		call vundle#rc()
+		Bundle 'gmarik/vundle'
+	" Bundle and Configure Addons ($lang conf in 'settings/ftplugin/$lang.vim')
+		" Documentation
+			" Python
+				Bundle 'fs111/pydoc.vim'
+		" Git
+			Bundle 'tpope/vim-fugitive'
+			Bundle 'tpope/vim-git'
+		" IDE Functions (Eg: refactoring, definition jumping)
+			" Python
+				Bundle 'sontek/rope-vim'
+		" Interface/Navigation addons
+			" Buffer Visualisation
+			Bundle 'sontek/minibufexpl.vim'
+			" Note Taking
+			Bundle 'vimoutliner/vimoutliner'
+			" Project Tree
+			Bundle 'vim-scripts/The-NERD-tree'
+			map <Leader>n :NERDTreeToggle<CR>
+			" Revision History
+			Bundle 'sjl/gundo.vim'
+			map <leader>g :GundoToggle<CR>
+			" Tasklist
+			Bundle 'vim-scripts/TaskList.vim'
+			map <leader>tl <Plug>Tasklist
+		" Search Addons
+			" Enable Ack Searching
+			Bundle 'mileszs/ack.vim'
+			nmap <leader>a <Esc>:Ack!
+			" Search Buffers/Filenames+Paths for navigation
+			Bundle 'kien/ctrlp.vim'
+		" Syntax Testing
+			Bundle 'scrooloose/syntastic'
+			" Python
+			Bundle 'vim-scripts/pep8'
+			Bundle 'alfredodeza/pytest.vim'
+		" Typing Efficiency Improvers
+			" Add Snippet Support
+			Bundle 'msanders/snipmate.vim'
+			" Tab-Based OmniComplete with SuperTab
+			Bundle 'ervandew/supertab'
+			let g:SuperTabDefaultCompletionType = "context"
+			" Change the Surroundings of Text
+			Bundle 'tpope/vim-surround'
+
+" Indentation Settings
+	set shiftround						" Indents rounded to shiftwidths
+	set copyindent						" Maintain current indent on next line
+	set preserveindent					" Try not to mess with indentation
+	set autoindent						" Enables autoindent
+	set smartindent						" Enables smartindent
+	set shiftwidth=4					" Tabs at 4 width
+	set tabstop=4						" Tabs at 4 width
+	set textwidth=80					" Line wrap at 80 characters
+	set colorcolumn=+1					" Colours the column following that
+	set fo+=t							" Enables autowrap
+	set wrap							" Enables line wrapping for long lines
+	filetype on							" Enable filetype-specific settings
+	filetype plugin indent on			" Enable filetype-specific indentation
+	set list							" Show whitespace
+	set listchars=tab:│\ ,trail:-		" Show these whitespaces by default
+
+" Folding settings
+	set foldmethod=indent				" Enable Folding
+	set foldlevelstart=99				" Start at fold level 99
+
+" Search settings
+	set ignorecase						" Ignores cases in searching
+	set smartcase						" Smart case matching
+	set hlsearch						" Highlight search results
+	set incsearch						" Search incrementally

@@ -7,7 +7,7 @@ for file in [a-zA-Z]* ; do
 			echo "  Removing symbolic link ~/.$file"
 			rm ~/."$file"
 		elif [[ -a ~/."$file" ]] ; then
-			echo "  ~/.$file exists. Moving it to ~/.$file.back"
+			echo "  ~/.$file exists. Moving it to ~/.$file.bak"
 			mv ~/."$file" ~/."$file".bak || echo "Couldn't move ~/.$file to ~/.$file.bak!"
 		fi
 
