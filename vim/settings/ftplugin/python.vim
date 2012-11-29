@@ -1,11 +1,3 @@
-" Deletes trailing whitespace on .py save
-	func! DeleteTrailingWS()
-		exe "normal mz"
-		%s/\s\+$//ge
-		exe "normal `z"
-	endfunc
-	au BufWrite *.py :call DeleteTrailingWS()
-
 " Spaces instead of tabs for python
 	setlocal et softtabstop=4
 
