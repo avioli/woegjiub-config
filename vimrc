@@ -121,12 +121,7 @@ augroup END
 		" Git
 			Bundle 'tpope/vim-fugitive'
 			Bundle 'tpope/vim-git'
-		" IDE Functions (Eg: refactoring, definition jumping)
-			" Python
-				Bundle 'sontek/rope-vim'
 		" Interface/Navigation addons
-			" Buffer Visualisation
-			Bundle 'sontek/minibufexpl.vim'
 			" Note Taking
 			Bundle 'vimoutliner/vimoutliner'
 			" Project Tree
