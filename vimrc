@@ -161,7 +161,7 @@ augroup END
 	set smartindent						" Enables smartindent
 	set shiftwidth=4					" Tabs at 4 width
 	set tabstop=4						" Tabs at 4 width
-	set textwidth=80					" Line wrap at 80 characters
+	set textwidth=79					" Line wrap at 80 characters
 	set colorcolumn=+1					" Colours the column following that
 	set fo+=t							" Enables autowrap
 	set wrap							" Enables line wrapping for long lines
