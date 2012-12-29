@@ -124,8 +124,6 @@ augroup END
 		" Interface/Navigation addons
 			" Note Taking
 			Bundle 'vimoutliner/vimoutliner'
-			" Spreadsheeting
-			Bundle 'vim-scripts/spreadsheet.vim'
 			" Project Tree
 			Bundle 'vim-scripts/The-NERD-tree'
 			map <Leader>n :NERDTreeToggle<CR>
