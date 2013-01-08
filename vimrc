@@ -173,6 +173,9 @@ augroup END
 " Folding settings
 	set foldmethod=indent				" Enable Folding
 	set foldlevelstart=99				" Start at fold level 99
+	" Save fold settings
+	au BufWinLeave *.* mkview!
+	au BufWinEnter *.* silent loadview
 
 " Search settings
 	set ignorecase						" Ignores cases in searching
