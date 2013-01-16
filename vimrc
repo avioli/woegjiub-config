@@ -12,6 +12,9 @@
 	set dictionary+=/usr/share/dict/words
 	" Set autocompletion options
 	set completeopt=menuone,longest,preview
+	set exrc							" Per-directory vimrcs
+	set secure							" Disable insecure local vimrc commands
+	set modeline						" Vim settings in files
 
 " UI Settings
 	set showcmd							" Shows Current Command
