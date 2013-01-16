@@ -4,7 +4,6 @@
 " General settings
 	set ffs=unix						" Unix as standard filetype
 	set encoding=utf-8					" UTF-8 as standard encoding
-	set autochdir						" Auto cd into file's dir
 	set nocompatible					" Enable vimness
 	set autoread						" Automatically detect outside changes
 	set history=1000					" Massive history
