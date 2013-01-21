@@ -17,26 +17,28 @@ hi OL9 guifg=white	ctermfg=white
 hi outlTags guifg=darkred	ctermfg=darkred
 
 " color for body text
-hi BT1 guifg=green	ctermfg=green
-hi BT2 guifg=green	ctermfg=green
-hi BT3 guifg=green	ctermfg=green
-hi BT4 guifg=green	ctermfg=green
-hi BT5 guifg=green	ctermfg=green
-hi BT6 guifg=green	ctermfg=green
-hi BT7 guifg=green	ctermfg=green
-hi BT8 guifg=green	ctermfg=green
-hi BT9 guifg=green	ctermfg=green
+"hi BT1 guifg=green	ctermfg=green
+hi BT1 guifg=grey	ctermfg=grey
+hi BT2 guifg=grey	ctermfg=grey
+hi BT3 guifg=grey	ctermfg=grey
+hi BT4 guifg=grey	ctermfg=grey
+hi BT5 guifg=grey	ctermfg=grey
+hi BT6 guifg=grey	ctermfg=grey
+hi BT7 guifg=grey	ctermfg=grey
+hi BT8 guifg=grey	ctermfg=grey
+hi BT9 guifg=grey	ctermfg=grey
 
 " color for pre-formatted text
-hi PT1 guifg=blue	ctermfg=cyan
-hi PT2 guifg=blue	ctermfg=cyan
-hi PT3 guifg=blue	ctermfg=cyan
-hi PT4 guifg=blue	ctermfg=cyan
-hi PT5 guifg=blue	ctermfg=cyan
-hi PT6 guifg=blue	ctermfg=cyan
-hi PT7 guifg=blue	ctermfg=cyan
-hi PT8 guifg=blue	ctermfg=cyan
-hi PT9 guifg=blue	ctermfg=cyan
+"hi PT1 guifg=blue	ctermfg=cyan
+hi PT1 guifg=green	ctermfg=green
+hi PT2 guifg=green	ctermfg=green
+hi PT3 guifg=green	ctermfg=green
+hi PT4 guifg=green	ctermfg=green
+hi PT5 guifg=green	ctermfg=green
+hi PT6 guifg=green	ctermfg=green
+hi PT7 guifg=green	ctermfg=green
+hi PT8 guifg=green	ctermfg=green
+hi PT9 guifg=green	ctermfg=green
 
 " color for tables 
 hi TA1 guifg=darkviolet	ctermfg=cyan
