@@ -62,15 +62,15 @@ hi UT8 guifg=darkred	ctermfg=cyan
 hi UT9 guifg=darkred	ctermfg=cyan
 
 " colour for user text (non-wrapping)
-hi UB1 guifg=darkgray	ctermfg=cyan
-hi UB2 guifg=darkgray	ctermfg=cyan
-hi UB3 guifg=darkgray	ctermfg=cyan
-hi UB4 guifg=darkgray	ctermfg=cyan
-hi UB5 guifg=darkgray	ctermfg=cyan
-hi UB6 guifg=darkgray	ctermfg=cyan
-hi UB7 guifg=darkgray	ctermfg=cyan
-hi UB8 guifg=darkgray	ctermfg=cyan
-hi UB9 guifg=darkgray	ctermfg=cyan
+hi UB1 guifg=darkgray	ctermfg=green
+hi UB2 guifg=darkgray	ctermfg=green
+hi UB3 guifg=darkgray	ctermfg=green
+hi UB4 guifg=darkgray	ctermfg=green
+hi UB5 guifg=darkgray	ctermfg=green
+hi UB6 guifg=darkgray	ctermfg=green
+hi UB7 guifg=darkgray	ctermfg=green
+hi UB8 guifg=darkgray	ctermfg=green
+hi UB9 guifg=darkgray	ctermfg=green
 
 " colours for folded sections
 hi Folded guifg=darkcyan guibg=bg	ctermfg=cyan ctermbg=black
