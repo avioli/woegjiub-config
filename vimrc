@@ -1,6 +1,58 @@
 " Add My Settings Folder
 	set rtp+=~/.vim/settings
 
+" Addon Settings
+	" Set up Vundle to do its magic
+		filetype off
+		let mapleader = ","
+		set rtp+=~/.vim/bundle/vundle
+		call vundle#rc()
+		Bundle 'gmarik/vundle'
+	" Bundle and Configure Addons ($lang conf in 'settings/ftplugin/$lang.vim')
+		" Documentation
+			" Python
+				Bundle 'fs111/pydoc.vim'
+		" Git
+			Bundle 'gregsexton/gitv'
+			Bundle 'tpope/vim-fugitive'
+			Bundle 'tpope/vim-git'
+		" Interface/Navigation addons
+			" Note Taking
+			Bundle 'vimoutliner/vimoutliner'
+			" Project Tree
+			Bundle 'The-NERD-tree'
+				map <Leader>n :NERDTreeToggle<CR>
+				let g:NERDTreeQuitOnOpen=1
+			Bundle 'majutsushi/tagbar'
+				map <leader>m :TagbarToggle<CR>
+				let g:tagbar_autoclose=1
+				let g:tagbar_left=1
+				let g:tagbar_compact=1
+			" Revision History
+			Bundle 'sjl/gundo.vim'
+				map <leader>g :GundoToggle<CR>
+			" Tasklist
+			Bundle 'TaskList.vim'
+		" Search Addons
+			" Enable Ack Searching
+			Bundle 'mileszs/ack.vim'
+				nmap <leader>a <Esc>:Ack! 
+			" Search Buffers/Filenames+Paths for navigation
+			Bundle 'kien/ctrlp.vim'
+		" Syntax Testing
+			Bundle 'scrooloose/syntastic'
+				let g:syntastic_auto_loc_list=1
+				let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+				map <F5> :SyntasticCheck<cr>
+			" Python
+				Bundle 'alfredodeza/pytest.vim'
+				Bundle 'fs111/pydoc.vim'
+		" Typing Efficiency Improvers
+			" Add Snippet Support
+			Bundle 'msanders/snipmate.vim'
+			" Change the Surroundings of Text
+			Bundle 'tpope/vim-surround'
+
 " General settings
 	set ffs=unix						" Unix as standard filetype
 	set encoding=utf-8					" UTF-8 as standard encoding
@@ -34,14 +86,15 @@
 	\ endif
 	set laststatus=2					" Always show statusline
 	" file, helpfile, modified, readonly, split,  cursor location, V%
-	set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c,%V%)\ %P
+	set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%{SyntasticStatuslineFlag()}%=%-14.(%l,%c,%V%)\ %P
 	colo darko							" Load my colourscheme
 
 " Input/Hotkey settings
 	set mouse=a							" Enable Mouse
 	set backspace=eol,start,indent		" Proper backspace behaviour
-	let mapleader = ","					" Leader enables some cool combos
 	let g:clipbrdDefaultReg="+"			" Use Linux clipboard as def copy reg
+	" easy buffer navigation
+	map <leader>b :buffers<CR>:buffer 
 	" Make shift-insert work as linux paste
 	map <S-Insert> <MiddleMouse>
 	map! <S-Insert> <MiddleMouse>
@@ -109,51 +162,6 @@ augroup BWCCreateDir
 	au!
 	autocmd BufWritePre * call s:CheckDirectoryExists()
 augroup END
-
-" Addon Settings
-	" Set up Vundle to do its magic
-		filetype off
-		set rtp+=~/.vim/bundle/vundle
-		call vundle#rc()
-		Bundle 'gmarik/vundle'
-	" Bundle and Configure Addons ($lang conf in 'settings/ftplugin/$lang.vim')
-		" Documentation
-			" Python
-				Bundle 'fs111/pydoc.vim'
-		" Git
-			Bundle 'tpope/vim-fugitive'
-			Bundle 'tpope/vim-git'
-		" Interface/Navigation addons
-			" Note Taking
-			Bundle 'vimoutliner/vimoutliner'
-			" Project Tree
-			Bundle 'vim-scripts/The-NERD-tree'
-			map <Leader>n :NERDTreeToggle<CR>
-			" Revision History
-			Bundle 'sjl/gundo.vim'
-			map <leader>g :GundoToggle<CR>
-			" Tasklist
-			Bundle 'vim-scripts/TaskList.vim'
-			map <leader>tl <Plug>Tasklist
-		" Search Addons
-			" Enable Ack Searching
-			Bundle 'mileszs/ack.vim'
-			nmap <leader>a <Esc>:Ack!
-			" Search Buffers/Filenames+Paths for navigation
-			Bundle 'kien/ctrlp.vim'
-		" Syntax Testing
-			Bundle 'scrooloose/syntastic'
-			" Python
-			Bundle 'vim-scripts/pep8'
-			Bundle 'alfredodeza/pytest.vim'
-		" Typing Efficiency Improvers
-			" Add Snippet Support
-			Bundle 'msanders/snipmate.vim'
-			" Tab-Based OmniComplete with SuperTab
-			Bundle 'ervandew/supertab'
-			let g:SuperTabDefaultCompletionType = "context"
-			" Change the Surroundings of Text
-			Bundle 'tpope/vim-surround'
 
 " Indentation Settings
 	set shiftround						" Indents rounded to shiftwidths

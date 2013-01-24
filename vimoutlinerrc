@@ -1,3 +1,4 @@
 " Make my colourscheme the one used
 colo vo_darko
+set textwidth=99
 set colorcolumn=100
