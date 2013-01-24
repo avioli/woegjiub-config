@@ -95,7 +95,7 @@
 	" Save As
 	nmap <leader>ss :wa<cr>:mksession! ~/.vim/sessions/
 	" Restore As (Open)
-	nmap <leader>so :so ~/sessions/
+	nmap <leader>so :so ~/.vim/sessions/
 
 " Saving Improvements
 " Auto MkDir for saves in non-existant dirs
