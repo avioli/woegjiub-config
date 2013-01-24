@@ -19,6 +19,9 @@
 		" Interface/Navigation addons
 			" Note Taking
 			Bundle 'vimoutliner/vimoutliner'
+				" Mappings to change code to and from outlines
+				map <leader>u :s/^	*<\ \=//<cr>:noh<cr>
+				map <leader>o :s/^/<\ /<cr>:noh<cr>
 			" Project Tree
 			Bundle 'The-NERD-tree'
 				map <Leader>n :NERDTreeToggle<CR>

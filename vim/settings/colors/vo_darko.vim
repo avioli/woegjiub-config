@@ -51,15 +51,15 @@ hi TA8 guifg=darkviolet	ctermfg=cyan
 hi TA9 guifg=darkviolet	ctermfg=cyan
 
 " colour for user text (wrapping)
-hi UT1 guifg=darkred	ctermfg=cyan
-hi UT2 guifg=darkred	ctermfg=cyan
-hi UT3 guifg=darkred	ctermfg=cyan
-hi UT4 guifg=darkred	ctermfg=cyan
-hi UT5 guifg=darkred	ctermfg=cyan
-hi UT6 guifg=darkred	ctermfg=cyan
-hi UT7 guifg=darkred	ctermfg=cyan
-hi UT8 guifg=darkred	ctermfg=cyan
-hi UT9 guifg=darkred	ctermfg=cyan
+hi UT1 guifg=darkred	ctermfg=grey
+hi UT2 guifg=darkred	ctermfg=grey
+hi UT3 guifg=darkred	ctermfg=grey
+hi UT4 guifg=darkred	ctermfg=grey
+hi UT5 guifg=darkred	ctermfg=grey
+hi UT6 guifg=darkred	ctermfg=grey
+hi UT7 guifg=darkred	ctermfg=grey
+hi UT8 guifg=darkred	ctermfg=grey
+hi UT9 guifg=darkred	ctermfg=grey
 
 " colour for user text (non-wrapping)
 hi UB1 guifg=darkgray	ctermfg=green
