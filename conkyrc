@@ -1,0 +1,33 @@
+alignment top_right
+background no
+border_inner_margin 0
+border_outer_margin 0
+border_width 0
+cpu_avg_samples 2
+default_color slate grey
+draw_borders no
+draw_graph_borders yes
+draw_outline no
+draw_shades no
+use_xft yes
+xftfont Liberation Sans:size=9
+gap_x 0
+gap_y 0
+minimum_size 0 0
+net_avg_samples 2
+no_buffers yes
+out_to_console no
+out_to_stderr no
+extra_newline no
+own_window yes
+own_window_class Conky
+own_window_hints undecorated,above,sticky,skip_taskbar,skip_pager
+stippled_borders 0
+update_interval 1.0
+uppercase no
+use_spacer none
+show_graph_scale no
+show_graph_range no
+
+TEXT
+${time %H:%M}

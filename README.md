@@ -13,6 +13,6 @@ Installation:
 	:Bundle Install
 
 4. Some of the addons will require other programs to be installed.
-	flake8
 	ack-grep
 	exuberant-ctags
+	flake8
