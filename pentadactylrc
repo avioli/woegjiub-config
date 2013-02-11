@@ -1,0 +1,10 @@
+"hg6879
+
+loadplugins '\.(js|penta)$'
+group user
+set defsearch=g
+set guioptions=s
+set showtabline=never
+map A O
+
+" vim: set ft=pentadactyl:
