@@ -16,6 +16,7 @@
 			Bundle 'gregsexton/gitv'
 			Bundle 'tpope/vim-fugitive'
 			Bundle 'tpope/vim-git'
+			:command Gpush Git push origin master
 		" Interface/Navigation addons
 			" Note Taking
 				Bundle 'vimoutliner/vimoutliner'
