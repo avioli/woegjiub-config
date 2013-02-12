@@ -83,6 +83,7 @@
 
 " UI Settings
 	set showcmd								" Shows Current Command
+	set showfulltag							" Increase info for tag completion
 	set number								" Line Numbers
 	set ruler								" Show position at bottom
 	set lazyredraw							" Do not redraw whilst executing macros
@@ -215,3 +216,6 @@
 	set smartcase							" Smart case matching
 	set hlsearch							" Highlight search results
 	set incsearch							" Search incrementally
+	" Default to very magic seraching
+	nnoremap / /\v
+	vnoremap / /\v
