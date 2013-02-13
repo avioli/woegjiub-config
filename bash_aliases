@@ -1,5 +1,10 @@
-alias :q='exit'
 alias fmusic="find -type f ! -iname '*.flac' -a ! -iname '*.mp3' -a ! -iname '*.ogg'"
+
+# South Migration Helper
+function mig(){
+	python manage.py schemamigration "$@" --auto;
+	python manage.py migrate "$@";
+}
 
 # radeon gpu power management
 alias profilepm='sudo bash -c "echo profile > /sys/class/drm/card0/device/power_method"'
