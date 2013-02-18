@@ -1,0 +1,13 @@
+port 				"6600"
+music_directory		"/mnt/media/Music/"
+playlist_directory	"/mnt/media/.mpd/playlists"
+db_file				"/mnt/media/.mpd/mpd.db"
+log_file			"/mnt/media/.mpd/mpd.log"
+pid_file			"/mnt/media/.mpd/pid"
+state_file			"/mnt/media/.mpd/state"
+auto_update			"yes"
+
+audio_output {
+	type			"pulse"
+	name			"Speakers"
+}

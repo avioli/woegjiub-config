@@ -1,0 +1,6 @@
+main_window+color = 			"grey"
+playlist_display_mode = 		"columns"
+browser_display_mode = 			"columns"
+search_engine_display_mode = 	"columns"
+
+mpd_music_dir = 				"/mnt/media/Music/"
