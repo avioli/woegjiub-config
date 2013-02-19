@@ -1,6 +1,23 @@
-main_window+color = 			"grey"
-playlist_display_mode = 		"columns"
-browser_display_mode = 			"columns"
-search_engine_display_mode = 	"columns"
+# General Settings
+mpd_music_dir =                         "/mnt/media/Music/"
 
-mpd_music_dir = 				"/mnt/media/Music/"
+# Main Play View Settings
+autocenter_mode =                       "yes"
+centered_cursor =                       "yes"
+empty_tag_color =                       "red"
+jump_to_now_playing_song_at_start =     "yes"
+mouse_list_scroll_whole_page =          "no"
+playlist_display_mode =                 "columns"
+playlist_separate_albums                "yes"
+song_columns_list_format =              "(25)[]{A|a}} (30)[]{b} (3)[]{dE} (3)[]{n} (35)[]{t} (4)[]{l}"
+titles_visibility =                     "no"
+
+# Other View Settings
+browser_display_mode =                  "columns"
+discard_colors_if_item_is_selected =    "no"
+display_bitrate =                       "yes"
+header_visibility =                     "no"
+main_window_color =                     "white"
+main_window_highlight_color =           "white"
+progressbar_look =                      "━━ "
+search_engine_display_mode =            "columns"

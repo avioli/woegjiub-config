@@ -11,3 +11,9 @@ audio_output {
 	type			"pulse"
 	name			"Speakers"
 }
+
+audio_output {
+	type			"pulse"
+	name			"Speakers2"
+	server			"192.168.1.100"
+}
