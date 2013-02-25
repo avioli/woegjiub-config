@@ -19,11 +19,16 @@
     fi
 
 # Alias definitions.
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+    if [ -f ~/.bash_aliases ]; then
+        . ~/.bash_aliases
+    fi
 
 # enable programmable completion features
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
-fi
+    if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+        . /etc/bash_completion
+    fi
+
+# vim
+    export VISUAL='/usr/bin/vim'
+    export EDITOR='/usr/bin/vim'
+    alias vi='vim -p'

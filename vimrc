@@ -46,8 +46,11 @@
 		" Syntax Highlighting
 			" CSS3
 				Bundle 'hail2u/vim-css3-syntax'
+				Bundle 'ap/vim-css-color'
 			" HTML5
 				Bundle 'othree/html5.vim'
+			" LESS
+				Bundle 'groenewege/vim-less'
 		" Syntax Testing
 			Bundle 'scrooloose/syntastic'
 				let g:syntastic_auto_loc_list=1
