@@ -106,6 +106,7 @@
 	set laststatus=2						" Always show statusline
 	" file, helpfile, modified, readonly, split,  cursor location, V%
 	set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%{SyntasticStatuslineFlag()}%=%-14.(%l,%c,%V%)\ %P
+	set t_Co=256							" 256 Colours in Terminal
 	colo darko								" Load my colourscheme
 
 " Input/Hotkey settings

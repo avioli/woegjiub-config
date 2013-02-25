@@ -11,9 +11,8 @@ endif
 let g:colors_name = "darko"
 
 " I have very few colour preferences for now :p
-hi 	LineNr		guifg=#3D3D3D					ctermfg=darkgray
-hi	Normal		guifg=#8D8D8D	guibg=#000000	ctermfg=gray 		ctermbg=black
-hi  StatusLine	ctermbg=black	ctermfg=gray
+hi LineNr		ctermfg=8
+hi StatusLine	ctermfg=0	ctermbg=7 cterm=none
 
 if has('gui_running')
 	" GUI colours
