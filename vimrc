@@ -201,7 +201,9 @@
 	set shiftwidth=4						" Tabs at 4 width
 	set tabstop=4							" Tabs at 4 width
 	set textwidth=79						" Line wrap at 80 characters
-	set colorcolumn=+1						" Colours the column following that
+	if version >= 730
+		set colorcolumn=+1					" Colours the column following that
+	endif
 	set fo+=t								" Enables autowrap
 	set wrap								" Enables line wrapping for long lines
 	filetype on								" Enable filetype-specific settings
