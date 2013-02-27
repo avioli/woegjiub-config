@@ -111,6 +111,7 @@
 
 " Input/Hotkey settings
 	set mouse=a								" Enable Mouse
+	set digraph								" Enable special character input
 	set backspace=eol,start,indent			" Proper backspace behaviour
 	let g:clipbrdDefaultReg=	"+"			" Use Linux clipboard as def copy reg
 	" easy buffer navigation
