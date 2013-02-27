@@ -66,8 +66,8 @@
 					let g:UltiSnipsEditSplit='vertical'
 					map <leader>es :UltiSnipsEdit<cr>
 					let g:UltiSnipsSnippetsDirectories=['UltiSnips', 'snippets']
-					"let g:UltiSnipsJumpForwardTrigger = "<tab>"
-					"let g:UltiSnipsJumpBackwardTrigger = "<c-tab>"
+					let g:UltiSnipsJumpForwardTrigger = "<tab>"
+					let g:UltiSnipsJumpBackwardTrigger = "<c-tab>"
 			" Zen-coding
 				Bundle 'tristen/vim-sparkup'
 			" Change the Surroundings of Text
