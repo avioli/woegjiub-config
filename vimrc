@@ -115,6 +115,8 @@
 	set mouse=a								" Enable Mouse
 	set backspace=eol,start,indent			" Proper backspace behaviour
 	let g:clipbrdDefaultReg=	"+"			" Use Linux clipboard as def copy reg
+	" Added XOR to digraphs
+	digraph XO 8853
 	" easy buffer navigation
 		map <leader>b :buffers<CR>:buffer 
 	" Make shift-insert work as linux paste
