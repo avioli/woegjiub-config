@@ -1,6 +1,14 @@
 # If not running interactively, don't do anything
     [ -z "$PS1" ] && return
 
+#Source global bashrc if required
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# Preferred Prompt Setting
+PS1="\u@\h:\w\\$ "
+
 # History
     HISTCONTROL=ignoreboth # ignore duplicate/blank lines in history
     shopt -s histappend # append to history, don't overwrite
