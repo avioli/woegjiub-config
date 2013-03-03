@@ -1,3 +1,4 @@
+bind_to_address		"0.0.0.0"
 port 				"6600"
 music_directory		"/mnt/media/Music/"
 playlist_directory	"/mnt/media/.mpd/playlists"
@@ -14,7 +15,10 @@ audio_output {
 }
 
 audio_output {
-	type			"pulse"
-	name			"Speakers2"
-	server			"192.168.1.100"
+	type			"httpd"
+	name			"Stream"
+	encoder			"vorbis"
+	port			"8000"
+	quality			"7.0"
+	format			"44100:16:1"
 }
