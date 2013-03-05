@@ -4,7 +4,7 @@ These are my settings for various programs
 
 Installation:
 
-	1. Clone them
+	1. Clone them (include submodules else vundle won't come in)
 
 	2. Symlink settings to ~
 		./mklinks.sh
