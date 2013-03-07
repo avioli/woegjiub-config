@@ -51,6 +51,8 @@
 				Bundle 'othree/html5.vim'
 			" LESS
 				Bundle 'groenewege/vim-less'
+			" Prolog
+				Bundle 'adimit/prolog.vim'
 		" Syntax Testing
 			Bundle 'scrooloose/syntastic'
 				let g:syntastic_auto_loc_list=1
