@@ -2,9 +2,9 @@
 
 loadplugins '\.(js|penta)$'
 group user
-set defsearch=g
+map -count -modes=n,v A <count>O
+set defsearch=ddg
 set guioptions=s
 set showtabline=never
-map A O
 
 " vim: set ft=pentadactyl:

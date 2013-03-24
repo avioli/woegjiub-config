@@ -138,6 +138,9 @@
 		map <c-j> <c-w>j
 	" Map hard BOL to soft BOL
 		map 0 ^
+	" Take braces off of their own lines
+		map <leader>{ :%s/\n\s*{/{/g<CR>
+		map <leader>} :%s/\n\s*}/}/g<CR>
 	" Clear search results
 		map <leader>cs :noh<cr>
 	" Centers Search results
