@@ -138,9 +138,22 @@
 		map <c-j> <c-w>j
 	" Map hard BOL to soft BOL
 		map 0 ^
-	" Take braces off of their own lines
-		map <leader>{ :%s/\n\s*{/{/g<CR>
-		map <leader>} :%s/\n\s*}/}/g<CR>
+	" Swap braces to/from being on their own line (c-like languages)
+		function! MoveBraces(brace)
+			let searchString = '\n\s*'.a:brace
+			if search(searchString)
+				exec '%s/'.searchString.'/'.a:brace.'/g'
+			else
+				if a:brace ==# "}"
+					exec 'g!/[^;]}\+;/s/}/\r}/g'
+				elseif a:brace ==# "{"
+					exec '%s/{$/\r{/g'
+				endif
+				normal gg=G
+			endif
+		endfunction
+		map <leader>{ :call MoveBraces("{")<CR>
+		map <leader>} :call MoveBraces("}")<CR>
 	" Clear search results
 		map <leader>cs :noh<cr>
 	" Centers Search results
