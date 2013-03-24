@@ -221,8 +221,9 @@
 	set preserveindent						" Try not to mess with indentation
 	set autoindent							" Enables autoindent
 	set smartindent							" Enables smartindent
-	set shiftwidth=4						" Tabs at 4 width
+	set shiftwidth=4						" Indentation at 4 width
 	set tabstop=4							" Tabs at 4 width
+	set softtabstop=4						" Soft tabs at 4 width
 	set textwidth=79						" Line wrap at 80 characters
 	if v:version >= 703
 		set colorcolumn=+1					" Colours the column following that
