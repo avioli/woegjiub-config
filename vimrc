@@ -88,6 +88,7 @@
 	set exrc								" Per-directory vimrcs
 	set secure								" Disable insecure local vimrc commands
 	set modeline							" Vim settings in files
+	set noswapfile							" Stop littering these things
 
 " UI Settings
 	set showcmd								" Shows Current Command
