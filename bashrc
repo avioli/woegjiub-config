@@ -36,6 +36,9 @@ PS1="\u@\h:\w\\$ "
         . /etc/bash_completion
     fi
 
+# enable autocd
+    shopt -s autocd
+
 # vim
     export VISUAL='/usr/bin/vim'
     export EDITOR='/usr/bin/vim'
