@@ -27,8 +27,15 @@ PS1="\u@\h:\w\\$ "
     fi
 
 # Alias definitions.
-    if [ -f ~/.bash_aliases ]; then
-        . ~/.bash_aliases
+    if [ -f ~/.bash/aliases ]; then
+        . ~/.bash/aliases
+    fi
+
+# Scripts folder
+    if [ -d ~/.bash/scripts/ ]; then
+        for f in ~/.bash/scripts/*; do
+            . $f
+        done
     fi
 
 # enable programmable completion features
@@ -43,3 +50,16 @@ PS1="\u@\h:\w\\$ "
     export VISUAL='/usr/bin/vim'
     export EDITOR='/usr/bin/vim'
     alias vi='vim -p'
+
+# tmux in bash by default
+    if which tmux 2>&1 >/dev/null; then
+        # if no session is started, start a new session
+        test -z ${TMUX} && tmx new 1
+
+        # when quitting tmux, try to attach
+        while test -z ${TMUX}; do
+            (tmux attach || break);
+            # exit the shell after exiting tmux
+            exit
+        done
+    fi
