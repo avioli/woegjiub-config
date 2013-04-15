@@ -193,6 +193,7 @@ globalkeys = awful.util.table.join(
     -- Standard program
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
+    awful.key({ "Control", "Mod1" }, "Delete", function () awful.util.spawn( terminal .. " -e sudo poweroff") end),
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
     awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),
@@ -219,6 +220,7 @@ globalkeys = awful.util.table.join(
     awful.key({                   }, "XF86AudioPlay", function() awful.util.spawn( "ncmpcpp toggle" ) end),
     awful.key({ modkey,           }, "XF86AudioPlay", function() awful.util.spawn( terminal .. " -e ncmpcpp" ) end),
     awful.key({ "Control",        }, "XF86AudioPlay", function() awful.util.spawn( "mpd-random-pl-album.py" ) end),
+    awful.key({ modkey            }, "c", function() awful.util.spawn( "localc" ) end),
     awful.key({                   }, "XF86Calculator", function() awful.util.spawn( terminal .. " -e bc -i" ) end)
 )
 
@@ -226,7 +228,7 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey,           }, "F11",    function (c) c.fullscreen = not c.fullscreen  end),
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end),
     awful.key({ "Mod1",           }, "F4",     function (c) c:kill()                         end),
-    awful.key({ "Control",        }, "q",     function (c) c:kill()                         end),
+    awful.key({ "Control",        }, "q",      function (c) c:kill()                         end),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
     awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
