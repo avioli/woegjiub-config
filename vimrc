@@ -21,8 +21,14 @@
 			" Note Taking
 				Bundle 'vimoutliner/vimoutliner'
 					" Mappings to change code to and from outlines
-					map <leader>u :s/^	*<\ \=//<cr>:noh<cr>
-					map <leader>o :s/^/<\ /<cr>:noh<cr>
+					map <leader>oc :s/^/<\ /<cr>:noh<cr>
+					map <leader>oC :s/^	*<\ \=//<cr>:noh<cr>
+					" Mapping to create paragraphs from lines
+					map <leader>op :s/^\(\t*\:\)/\1____/<cr>gqq:%s/____/\ \ \ \ /g<cr>:noh<cr>
+					" Mapping to wrap citations
+					map <leader>oq :s/^\(\t*\:\)\(\d\+\)/\1\ \ \ \ \2/<cr>gqq:%s/^\(\t*:\)\ \ \ \ \(\d\+\)/\1\2/<cr>:noh<cr>
+					" Mapping to swap from wrapping to static text in V-block
+					map <leader>os :s/^\(\t*\):/\1</<cr>:noh<cr>
 			" Project Tree
 				Bundle 'The-NERD-tree'
 					map <Leader>n :NERDTreeToggle<CR>
@@ -117,6 +123,8 @@
 " Input/Hotkey settings
 	set mouse=a								" Enable Mouse
 	set backspace=eol,start,indent			" Proper backspace behaviour
+	" tabbing
+		map <leader>tn :tabnew 
 	let g:clipbrdDefaultReg=	"+"			" Use Linux clipboard as def copy reg
 	" Added XOR to digraphs
 	digraph XO 8853
@@ -127,11 +135,18 @@
 		map! <S-Insert> <MiddleMouse>
 	" Recall recent file list
 		map <leader>r :browse oldfiles<CR>
-	" Move lines around with C_↑ or C_↓
-		nmap <silent> <C-down> mz:m+<CR>`z
-		nmap <silent> <C-up> mz:m-2<CR>`z
-		vmap <silent> <C-down> :m'>+<CR>`<my`>mzgv`yo`z
-		vmap <silent> <C-up> :m'<-2<CR>`>my`<mzgv`yo`z
+	" Fix control-arrows in tmux
+	if &term =~ '^screen'
+		execute "set <xUp>=\e[1;*A"
+		execute "set <xDown>=\e[1;*B"
+		execute "set <xRight>=\e[1;*C"
+		execute "set <xLeft>=\e[1;*D"
+	endif
+	" Move lines around with C_↓ or C_↑
+		nmap <silent> <c-down> mz:m+<CR>`z
+		nmap <silent> <c-up> mz:m-2<CR>`z
+		vmap <silent> <c-down> :m'>+<CR>`<my`>mzgv`yo`z
+		vmap <silent> <c-up> :m'<-2<CR>`>my`<mzgv`yo`z
 	" Move splits around with C_h/j/k/l
 		map <c-l> <c-w>l
 		map <c-h> <c-w>h

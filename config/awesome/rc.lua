@@ -307,6 +307,8 @@ awful.rules.rules = {
                      buttons = clientbuttons } },
     { rule = { class = "pinentry" },
       properties = { floating = true } },
+    { rule = { class = "bc" },
+        properties = { floating = true } },
 }
 -- }}}
 
