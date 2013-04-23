@@ -23,10 +23,11 @@
 					" Mappings to change code to and from outlines
 					map <leader>oc :s/^/<\ /<cr>:noh<cr>
 					map <leader>oC :s/^	*<\ \=//<cr>:noh<cr>
-					" Mapping to create paragraphs from lines
-					map <leader>op :s/^\(\t*\:\)/\1____/<cr>gqq:%s/____/\ \ \ \ /g<cr>:noh<cr>
+					" Mapping to create paragraphs from visual blocks of
+					" HTML paragraphs pasted over
+					map <leader>op :s/^\(\t*:\)\(.\+\)/\1____\2/<cr>gvgqgv:s/____/\ \ \ \ /g<cr>gv:s/^\t*:\s*\n//<cr>:noh<cr>
 					" Mapping to wrap citations
-					map <leader>oq :s/^\(\t*\:\)\(\d\+\)/\1\ \ \ \ \2/<cr>gqq:%s/^\(\t*:\)\ \ \ \ \(\d\+\)/\1\2/<cr>:noh<cr>
+					map <leader>oq :s/^\(\t*\:\)\(\d\+\)/\1\ \ \ \ \2/<cr>gvgqgv:s/^\(\t*:\)\ \ \ \ \(\d\+\.*\ \)/\1\2/<cr>gv:s/^\(\t*\):/\1</<cr>gv:s/^\t*<\s*\n//<cr>:noh<cr>
 					" Mapping to swap from wrapping to static text in V-block
 					map <leader>os :s/^\(\t*\):/\1</<cr>:noh<cr>
 			" Project Tree

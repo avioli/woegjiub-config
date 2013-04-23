@@ -61,7 +61,7 @@ layouts = {
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {
-    names  = {"1", "2", "3", "4", "5", "6"},
+    names  = {"1", "2", "3", "4"},
 }
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
@@ -140,11 +140,9 @@ for s = 1, screen.count() do
         },
         mytextclock,
         s == 1 and mysystray or nil,
-        mytasklist[s],
+        --mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }
-    -- Hide at startup
-    mywibox[s].visible = not mywibox[s].visible
 end
 -- }}}
 
@@ -170,7 +168,17 @@ globalkeys = awful.util.table.join(
             awful.client.focus.byidx( 1)
             if client.focus then client.focus:raise() end
         end),
+    awful.key({ "Mod1"            }, "Tab",
+        function ()
+            awful.client.focus.byidx( 1)
+            if client.focus then client.focus:raise() end
+        end),
     awful.key({ modkey,           }, "k",
+        function ()
+            awful.client.focus.byidx(-1)
+            if client.focus then client.focus:raise() end
+        end),
+    awful.key({ "Mod1", "Shift"   }, "Tab",
         function ()
             awful.client.focus.byidx(-1)
             if client.focus then client.focus:raise() end
@@ -182,7 +190,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
-    awful.key({ "Mod1",           }, "Tab",
+    awful.key({ modkey,           }, "Tab",
         function ()
             awful.client.focus.history.previous()
             if client.focus then
@@ -221,7 +229,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "XF86AudioPlay", function() awful.util.spawn( terminal .. " -e ncmpcpp" ) end),
     awful.key({ "Control",        }, "XF86AudioPlay", function() awful.util.spawn( "mpd-random-pl-album.py" ) end),
     awful.key({ modkey            }, "c", function() awful.util.spawn( "localc" ) end),
-    awful.key({                   }, "XF86Calculator", function() awful.util.spawn( terminal .. " -e bc -i" ) end)
+    awful.key({                   }, "XF86Calculator", function() awful.util.spawn( terminal .. " -e bc -iq" ) end)
 )
 
 clientkeys = awful.util.table.join(
@@ -307,8 +315,14 @@ awful.rules.rules = {
                      buttons = clientbuttons } },
     { rule = { class = "pinentry" },
       properties = { floating = true } },
-    { rule = { class = "bc" },
-        properties = { floating = true } },
+    { rule = { name = "bc$" },
+        properties = {  floating = true,
+                        width = 580,
+                        height = 320,
+                        x = 700,
+                        y = 350 } },
+    { rule = { class  = "libreoffice-calc" },
+        properties = { floating = false } },
 }
 -- }}}
 
