@@ -30,6 +30,10 @@ PS1="\u@\h:\w\\$ "
     if [ -f ~/.bash/aliases ]; then
         . ~/.bash/aliases
     fi
+# Sensitive alias definitions.
+    if [ -f ~/.bash/saliases ]; then
+        . ~/.bash/saliases
+    fi
 
 # Scripts folder
     if [ -d ~/.bash/scripts/ ]; then
