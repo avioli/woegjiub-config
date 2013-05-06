@@ -2,6 +2,7 @@ alias fmusic="find -type f ! -iname '*.flac' -a ! -iname '*.mp3' -a ! -iname '*.
 alias gccu="gcc -Wall -ansi -pedantic -O"
 alias ownreader="cd /home/darko/Development/www/woereader/ && source activate && ./manage.py runserver 0.0.0.0:8000"
 alias vimc="vim -S ~/.vim/sessions/kxt201.vim"
+alias vimj="vim -S ~/.vim/sessions/hmj310.vim"
 
 # South Migration Helper
 function mig(){

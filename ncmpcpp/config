@@ -1,5 +1,5 @@
 # General Settings
-mpd_host =                              "192.168.1.110"
+mpd_host =                              "192.168.1.102"
 mpd_port =                              "6600"
 mpd_music_dir =                         "/mnt/media/Music/"
 

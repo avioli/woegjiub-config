@@ -3,7 +3,7 @@
 
 #Source global bashrc if required
 if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+    . /etc/bashrc
 fi
 
 # Preferred Prompt Setting
@@ -14,16 +14,27 @@ PS1="\u@\h:\w\\$ "
     shopt -s histappend # append to history, don't overwrite
     HISTSIZE=1000
     HISTFILESIZE=2000
+    HISTFILE=~/.bash/history
 
 # UI
     shopt -s checkwinsize # adjust lines/cols to window size after commands if need
-    # enable color support of ls/grep
+    # enable more colours
     if [ -x /usr/bin/dircolors ]; then
         test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
         alias ls='ls -hF --color=auto'
         alias grep='grep --color=auto'
         alias fgrep='fgrep --color=auto'
         alias egrep='egrep --color=auto'
+        man() {
+            env LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+                LESS_TERMCAP_md=$(printf "\e[1;31m") \
+                LESS_TERMCAP_me=$(printf "\e[0m") \
+                LESS_TERMCAP_se=$(printf "\e[0m") \
+                LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+                LESS_TERMCAP_ue=$(printf "\e[0m") \
+                LESS_TERMCAP_us=$(printf "\e[1;32m") \
+                man "$@"
+        }
     fi
 
 # Alias definitions.
@@ -37,9 +48,8 @@ PS1="\u@\h:\w\\$ "
 
 # Scripts folder
     if [ -d ~/.bash/scripts/ ]; then
-        for f in ~/.bash/scripts/*; do
-            . $f
-        done
+        PATH="~/.bash/scripts/:${PATH}"
+        export PATH
     fi
 
 # enable programmable completion features
@@ -57,8 +67,6 @@ PS1="\u@\h:\w\\$ "
 
 # tmux in bash by default
     if which tmux 2>&1 >/dev/null; then
-        if declare -f tmx > /dev/null; then
-            # if no session is started, start a new session
-            test -z ${TMUX} && tmx main;
-        fi
+        # if no session is started, start a new session
+        test -z ${TMUX} && tmx main;
     fi

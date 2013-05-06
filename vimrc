@@ -96,6 +96,7 @@
 	set secure								" Disable insecure local vimrc commands
 	set modeline							" Vim settings in files
 	set noswapfile							" Stop littering these things
+	set viminfo+=n~/.vim/history			" Less things in home
 
 " UI Settings
 	set showcmd								" Shows Current Command
@@ -110,7 +111,6 @@
 	set wildmenu							" Good menu tab completion
 	set wildmode=list:longest,full			" Set menu completion style
 	set wildignore=*.o,*~,~.pyc				" Ignore compiled files
-	set viminfo^=%							" Remember buffer info on close
 	au BufReadPost * 						" Go to last position on file open
 	\ if line("'\"") > 0 && line("'\"") <= line("$") |
 	\ 	exe "normal! g`\"" |

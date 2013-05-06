@@ -1,0 +1,12 @@
+max_uploads = 5
+directory = /home/darko/Downloads/torrents/
+port_range = 6890-6999
+port_random = yes
+use_udp_trackers = yes
+encryption = try_outgoing,allow_incoming,enable_retry
+download_rate = 0
+upload_rate = 50
+dht = on
+peer_exchange = yes
+session = /home/darko/Downloads/.session
+schedule = watch_directoy,5,5,load_start=/home/darko/Downloads/*.torrent
