@@ -1,0 +1,57 @@
+##################
+# video settings #
+##################
+# default configuration that applies to every file
+[default]
+
+# Specify default video driver (see -vo help for a list).
+vo=xv
+
+# Use OpenGL video by default
+vo=gl
+
+#multithreaded decoding h264/mpeg
+lavdopts=threads=4
+
+# Use this for a widescreen monitor, non-square pixels.
+monitoraspect=16:9
+
+# video padding if required
+vf-add=expand=::::1:16/9:16
+
+##################
+# audio settings #
+##################
+# Specify default audio driver (see -ao help for a list).
+ao=alsa
+
+# Languages
+alang=ja,en
+
+#####################
+# subtitle settings #
+#####################
+# Resample the font alphamap.
+ffactor = 1
+
+#default subtitle font
+font= /usr/share/fonts/TTF/LiberationSans-Regular.ttf
+
+# embedded font files
+ass=yes
+embeddedfonts=yes
+
+# language
+slang=en
+
+##################
+# other settings #
+##################
+# Drop frames to preserve audio/video sync.
+framedrop = yes
+
+# Show Times by default
+osdlevel=3
+
+# External DVD player location
+dvd-device=/dev/cdrom

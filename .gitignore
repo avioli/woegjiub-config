@@ -1,6 +1,9 @@
+bash/history
+bash/saliases
 mpdscribble/
 ncmpcpp/
 vim/bundle/
+vim/history
 vim/sessions/
 vim/view/
 config/
