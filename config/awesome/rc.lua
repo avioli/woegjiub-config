@@ -250,17 +250,21 @@ awful.rules.rules = {
                      border_color = beautiful.border_normal,
                      focus = awful.client.focus.filter,
                      keys = clientkeys,
-                     maximised_vertical=false,
-                     maximised_horizontal=false,
+                     -- fixed LibreOffice opening floated
+                     --maximised_vertical=false,
+                     --maximised_horizontal=false,
                      buttons = clientbuttons } },
-    --{ rule = { type = "normal" },
-      --properties = { floating = false } },
+    -- Floating Desktop Calculator
     { rule = { name = "bc$" },
         properties = {  floating = true,
                         width = 580,
                         height = 320,
                         x = 700,
                         y = 350 } },
+    -- Fix Fullscreen Firefox Video
+    { rule = { instance = "plugin-container" },
+        properties = { floating = true } },
+    -- Fix dialogs
     { rule_any = { class = {"pinentry"}, type = {"dialog"} },
       properties = { floating = true } },
 }
