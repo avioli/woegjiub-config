@@ -178,7 +178,6 @@ globalkeys = awful.util.table.join(
 )
 
 clientkeys = awful.util.table.join(
-    awful.key({ modkey,           }, "F11",    function (c) c.fullscreen = not c.fullscreen  end),
     awful.key({ modkey, "Control" }, "c",      function (c) c:kill()                         end),
     awful.key({ "Mod1",           }, "F4",     function (c) c:kill()                         end),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
@@ -193,8 +192,7 @@ clientkeys = awful.util.table.join(
         end),
     awful.key({ modkey,           }, "m",
         function (c)
-            c.maximized_horizontal = not c.maximized_horizontal
-            c.maximized_vertical   = not c.maximized_vertical
+            c.fullscreen = not c.fullscreen
         end)
 )
 
@@ -252,9 +250,11 @@ awful.rules.rules = {
                      border_color = beautiful.border_normal,
                      focus = awful.client.focus.filter,
                      keys = clientkeys,
+                     maximised_vertical=false,
+                     maximised_horizontal=false,
                      buttons = clientbuttons } },
-    { rule = { type = "normal" },
-      properties = { floating = false } },
+    --{ rule = { type = "normal" },
+      --properties = { floating = false } },
     { rule = { name = "bc$" },
         properties = {  floating = true,
                         width = 580,
