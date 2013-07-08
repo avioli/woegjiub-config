@@ -48,8 +48,7 @@ PS1="\u@\h:\w\\$ "
 
 # Scripts folder
     if [ -d ~/.bash/scripts/ ]; then
-        PATH="~/.bash/scripts/:${PATH}"
-        export PATH
+        export PATH="~/.bash/scripts/:${PATH}"
     fi
 
 # enable programmable completion features
@@ -57,10 +56,29 @@ PS1="\u@\h:\w\\$ "
         . /etc/bash_completion
     fi
 
+# Locally installed executables
+    if [-d ~/bin/ ]; then
+        export PATH="$HOME/bin:$PATH"
+    fi
+
+# Local install of NPM
+    if [-d ~/lib/node_modules ]; then
+        export NODE_PATH="$HOME/lib/node_modules:$NODE_PATH"
+    fi
+
+# Virtualenv path
+    if [ -d ~/.virtualenvs ]; then
+        export WORKON_HOME=$HOME/.virtualenvs
+    fi
+    if [ -f /home/woegjiub/bin/virtualenvwrapper.sh ]; then
+        export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
+        source /home/woegjiub/bin/virtualenvwrapper.sh
+    fi
+
 # enable autocd
     shopt -s autocd
 
-# vim
+# vim by defaulr
     export VISUAL='/usr/bin/vim'
     export EDITOR='/usr/bin/vim'
     alias vi='vim -p'
