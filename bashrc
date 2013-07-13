@@ -55,14 +55,18 @@ PS1="\u@\h:\w\\$ "
     if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
         . /etc/bash_completion
     fi
+# otherwise, look for a locally-installed copy
+    if [ -f ~/share/bash-completion/bash_completion ]; then
+        . ~/share/bash-completion/bash_completion
+    fi
 
 # Locally installed executables
-    if [-d ~/bin/ ]; then
+    if [ -d ~/bin ]; then
         export PATH="$HOME/bin:$PATH"
     fi
 
 # Local install of NPM
-    if [-d ~/lib/node_modules ]; then
+    if [ -d ~/lib/node_modules ]; then
         export NODE_PATH="$HOME/lib/node_modules:$NODE_PATH"
     fi
 
@@ -78,10 +82,17 @@ PS1="\u@\h:\w\\$ "
 # enable autocd
     shopt -s autocd
 
-# vim by defaulr
+# vim by default
     export VISUAL='/usr/bin/vim'
     export EDITOR='/usr/bin/vim'
     alias vi='vim -p'
+
+# Stop complaints avout rxvt-unicode on not-completely supported environments
+    case "$TERM" in
+        rxvt-unicode-256color)
+            TERM=rxvt-unicode
+            ;;
+    esac
 
 # tmux in bash by default
     if which tmux 2>&1 >/dev/null; then
