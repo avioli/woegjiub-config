@@ -48,22 +48,51 @@ PS1="\u@\h:\w\\$ "
 
 # Scripts folder
     if [ -d ~/.bash/scripts/ ]; then
-        PATH="~/.bash/scripts/:${PATH}"
-        export PATH
+        export PATH="~/.bash/scripts/:${PATH}"
     fi
 
 # enable programmable completion features
     if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
         . /etc/bash_completion
     fi
+# otherwise, look for a locally-installed copy
+    if [ -f ~/share/bash-completion/bash_completion ]; then
+        . ~/share/bash-completion/bash_completion
+    fi
+
+# Locally installed executables
+    if [ -d ~/bin ]; then
+        export PATH="$HOME/bin:$PATH"
+    fi
+
+# Local install of NPM
+    if [ -d ~/lib/node_modules ]; then
+        export NODE_PATH="$HOME/lib/node_modules:$NODE_PATH"
+    fi
+
+# Virtualenv path
+    if [ -d ~/.virtualenvs ]; then
+        export WORKON_HOME=$HOME/.virtualenvs
+    fi
+    if [ -f /home/woegjiub/bin/virtualenvwrapper.sh ]; then
+        export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
+        source /home/woegjiub/bin/virtualenvwrapper.sh
+    fi
 
 # enable autocd
     shopt -s autocd
 
-# vim
+# vim by default
     export VISUAL='/usr/bin/vim'
     export EDITOR='/usr/bin/vim'
     alias vi='vim -p'
+
+# Stop complaints avout rxvt-unicode on not-completely supported environments
+    case "$TERM" in
+        rxvt-unicode-256color)
+            TERM=rxvt-unicode
+            ;;
+    esac
 
 # tmux in bash by default
     if which tmux 2>&1 >/dev/null; then
