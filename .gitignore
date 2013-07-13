@@ -1,9 +1,10 @@
 bash/history
 bash/saliases
+config/
 mpdscribble/
 ncmpcpp/
+sensitive/
 vim/bundle/
 vim/history
 vim/sessions/
 vim/view/
-config/

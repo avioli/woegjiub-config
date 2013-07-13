@@ -19,6 +19,9 @@ monitoraspect=16:9
 # video padding if required
 vf-add=expand=::::1:16/9:16
 
+# Fullscreen by default (I use a TWM)
+fs=yes
+
 ##################
 # audio settings #
 ##################

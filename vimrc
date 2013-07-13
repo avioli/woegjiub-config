@@ -84,6 +84,43 @@
 			" Adds some nice shortcuts
 				Bundle 'tpope/vim-unimpaired'
 
+
+" Indentation Settings
+	set shiftround							" Indents rounded to shiftwidths
+	set copyindent							" Maintain current indent on next line
+	set preserveindent						" Try not to mess with indentation
+	set autoindent							" Enables autoindent
+	set smartindent							" Enables smartindent
+	set shiftwidth=4						" Indentation at 4 width
+	set tabstop=4							" Tabs at 4 width
+	set softtabstop=4						" Soft tabs at 4 width
+	set textwidth=79						" Line wrap at 80 characters
+	if v:version >= 703
+		set colorcolumn=+1					" Colours the column following that
+	endif
+	set fo+=t								" Enables autowrap
+	set wrap								" Enables line wrapping for long lines
+	filetype on								" Enable filetype-specific settings
+	filetype plugin indent on				" Enable filetype-specific indentation
+	set list								" Show whitespace
+	set listchars=tab:│\ ,trail:-			" Show these whitespaces by default
+
+" Folding settings
+	set foldmethod=indent					" Enable Folding
+	set foldlevelstart=99					" Start at fold level 99
+	" Save fold settings
+		au BufWinLeave *.* mkview!
+		au BufWinEnter *.* silent loadview
+
+" Search settings
+	set ignorecase							" Ignores cases in searching
+	set smartcase							" Smart case matching
+	set hlsearch							" Highlight search results
+	set incsearch							" Search incrementally
+	" Default to very magic seraching
+	nnoremap / /\v
+	vnoremap / /\v
+
 " General settings
 	set ffs=unix							" Unix as standard filetype
 	set encoding=utf-8						" UTF-8 as standard encoding
@@ -92,6 +129,7 @@
 	set history=1000						" Massive history
 	set dictionary+=/usr/share/dict/words	" Adds the dictionary for C_x,C_k
 	set completeopt=menuone,longest,preview	" Set autocompletion options
+	set omnifunc=syntaxcomplete#Complete	" Enable Omnicompletion
 	set exrc								" Per-directory vimrcs
 	set secure								" Disable insecure local vimrc commands
 	set modeline							" Vim settings in files
@@ -230,39 +268,3 @@
 			au!
 			autocmd BufWritePre * call s:CheckDirectoryExists()
 		augroup END
-
-" Indentation Settings
-	set shiftround							" Indents rounded to shiftwidths
-	set copyindent							" Maintain current indent on next line
-	set preserveindent						" Try not to mess with indentation
-	set autoindent							" Enables autoindent
-	set smartindent							" Enables smartindent
-	set shiftwidth=4						" Indentation at 4 width
-	set tabstop=4							" Tabs at 4 width
-	set softtabstop=4						" Soft tabs at 4 width
-	set textwidth=79						" Line wrap at 80 characters
-	if v:version >= 703
-		set colorcolumn=+1					" Colours the column following that
-	endif
-	set fo+=t								" Enables autowrap
-	set wrap								" Enables line wrapping for long lines
-	filetype on								" Enable filetype-specific settings
-	filetype plugin indent on				" Enable filetype-specific indentation
-	set list								" Show whitespace
-	set listchars=tab:│\ ,trail:-			" Show these whitespaces by default
-
-" Folding settings
-	set foldmethod=indent					" Enable Folding
-	set foldlevelstart=99					" Start at fold level 99
-	" Save fold settings
-		au BufWinLeave *.* mkview!
-		au BufWinEnter *.* silent loadview
-
-" Search settings
-	set ignorecase							" Ignores cases in searching
-	set smartcase							" Smart case matching
-	set hlsearch							" Highlight search results
-	set incsearch							" Search incrementally
-	" Default to very magic seraching
-	nnoremap / /\v
-	vnoremap / /\v

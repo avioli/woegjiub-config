@@ -9,4 +9,9 @@ upload_rate = 50
 dht = on
 peer_exchange = yes
 session = /home/darko/Downloads/.session
+ratio.enable=
+ratio.min.set=150
+ratio.max.set=150
+ratio.upload.set=200M
+system.method.set=group.seeding.ratio.command, d.close=
 schedule = watch_directoy,5,5,load_start=/home/darko/Downloads/*.torrent

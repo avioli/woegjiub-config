@@ -1,12 +1,12 @@
 alias fmusic="find -type f ! -iname '*.flac' -a ! -iname '*.mp3' -a ! -iname '*.ogg'"
 alias ftypes="find . ! -path '*/.git/*' -type f -iname '*.*' | rev | cut -d . -f1 | rev | sort | uniq -ic | sort -rn"
-alias Ls="ls -lA | grep -v '>'"
+alias Ls="ls -lAp  --color=always | grep -v '>'"
 alias gccu="gcc -Wall -ansi -pedantic -O"
 alias ownreader="cd /home/darko/Development/www/woereader/ && source activate && ./manage.py runserver 0.0.0.0:8000"
 alias gpro="gprolog --consult-file"
-alias vimc="vim -S ~/.vim/sessions/kxt201.vim"
-alias vimj="vim -S ~/.vim/sessions/hmj310.vim"
-alias vima="vim -S ~/.vim/sessions/kxt306.vim"
+alias listen="mplayer -nocache http://192.168.1.106:8000/mpd.ogg -demuxer ogg"
+alias ssize="du -sh --exclude="/home" / 2>/dev/null"
+alias feh="feh -Z. "
 
 # South Migration Helper
 function mig(){

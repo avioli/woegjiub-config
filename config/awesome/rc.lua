@@ -174,7 +174,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "XF86AudioPlay", function() awful.util.spawn( terminal .. " -e ncmpcpp" ) end),
     awful.key({ "Control",        }, "XF86AudioPlay", function() awful.util.spawn( "mpd-random-pl-album.py" ) end),
     awful.key({ modkey            }, "c", function() awful.util.spawn( "localc" ) end),
-    awful.key({                   }, "XF86Calculator", function() awful.util.spawn( terminal .. " -e bc -iq" ) end)
+    awful.key({                   }, "XF86Calculator", function() awful.util.spawn( terminal .. " -e bc -iql" ) end)
 )
 
 clientkeys = awful.util.table.join(
@@ -261,6 +261,9 @@ awful.rules.rules = {
                         height = 320,
                         x = 700,
                         y = 350 } },
+    -- Mplayer should never float
+    { rule = { name = "mplayer" },
+        properties = { floating = false } },
     -- Fix Fullscreen Firefox Video
     { rule = { instance = "plugin-container" },
         properties = { floating = true } },

@@ -1,7 +1,9 @@
 #!/bin/bash
 
 for file in [a-zA-Z]* ; do
-	if [[ "$file" != "mklinks.sh" && "$file" != "README.md" ]] ; then
+	if [[ "$file" != "mklinks.sh" &&
+		  "$file" != "README.md" &&
+		  "$file" != "sensitive" ]] ; then
 
 		if [[ -h ~/."$file" ]] ; then
 			echo "  Removing symbolic link ~/.$file"
