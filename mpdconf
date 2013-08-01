@@ -1,11 +1,10 @@
-bind_to_address		"0.0.0.0"
-port 				"6600"
+port "6600"
 music_directory		"/mnt/media/Music/"
-playlist_directory	"/mnt/media/.mpd/playlists"
-db_file				"/mnt/media/.mpd/mpd.db"
-log_file			"/mnt/media/.mpd/mpd.log"
-pid_file			"/mnt/media/.mpd/pid"
-state_file			"/mnt/media/.mpd/state"
+playlist_directory	"~/.local/share/mpd/playlists"
+db_file				"~/.local/share/mpd/mpd.db"
+log_file			"~/.local/share/mpd/mpd.log"
+pid_file			"~/.local/share/mpd/pid"
+state_file			"~/.local/share/mpd/state"
 auto_update			"yes"
 
 audio_output {
@@ -15,4 +14,14 @@ audio_output {
 	port			"8000"
 	quality			"7.0"
 	format			"44100:16:1"
+}
+audio_output {
+	type			"alsa"
+	name			"Speakers"
+}
+audio_output {
+	type                    "fifo"
+	name                    "my_fifo"
+	path                    "/tmp/mpd.fifo"
+	format                  "44100:16:2"
 }

@@ -95,7 +95,7 @@ PS1="\u@\h:\w\\$ "
     esac
 
 # tmux in bash by default
-    if which tmux 2>&1 >/dev/null; then
+    if which tmux 2>/dev/null >/dev/null; then
         # if no session is started, start a new session
         test -z ${TMUX} && tmx main;
     fi
