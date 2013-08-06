@@ -1,0 +1,4 @@
+XDG_DESKTOP_DIR="/home/darko/"
+XDG_DOWNLOADS_DIR="$HOME/Downloads"
+XDG_DOCUMENTS_DIR="$HOME/Documents"
+XDG_PICTURES_DIR="$HOME/Documents/Pictures"

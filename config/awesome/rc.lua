@@ -170,9 +170,9 @@ globalkeys = awful.util.table.join(
     -- Launchers
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey,           }, "f", function () awful.util.spawn("firefox") end),
-    awful.key({                   }, "XF86AudioPlay", function() awful.util.spawn( "ncmpcpp toggle" ) end),
-    awful.key({ modkey,           }, "XF86AudioPlay", function() awful.util.spawn( terminal .. " -e ncmpcpp" ) end),
-    awful.key({ "Control",        }, "XF86AudioPlay", function() awful.util.spawn( "/home/darko/.bash/scripts/mpd-random-pl-album.py" ) end),
+    awful.key({                   }, "XF86AudioPlay", function() awful.util.spawn( "ncmpcpp -c /home/darko/.config/ncmpcpp/config toggle" ) end),
+    awful.key({ modkey,           }, "XF86AudioPlay", function() awful.util.spawn( terminal .. " -e ncmpcpp -c '/home/darko/.config/ncmpcpp/config'" ) end),
+    awful.key({ "Control",        }, "XF86AudioPlay", function() awful.util.spawn( "/home/darko/.local/share/bash/scripts/mpd-random-pl-album.py" ) end),
     awful.key({ modkey            }, "c", function() awful.util.spawn( "localc" ) end),
     awful.key({ modkey            }, "a", function() awful.util.spawn("anki -b /home/darko/.local/share/anki") end),
     awful.key({                   }, "XF86Calculator", function() awful.util.spawn( terminal .. " -e bc -iql" ) end)
@@ -263,7 +263,7 @@ awful.rules.rules = {
                         x = 700,
                         y = 350 } },
     -- Mplayer should never float
-    { rule = { name = "mplayer" },
+    { rule = { name = "mpv" },
         properties = { floating = false } },
     -- Fix Fullscreen Firefox Video
     { rule = { instance = "plugin-container" },

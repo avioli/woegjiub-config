@@ -1,12 +1,15 @@
-" Add My Settings Folder
-	set rtp+=~/.vim/settings
+" Add My Settings Folder and make vim respect XDG Base Directories
+	set rtp=$XDG_CONFIG_HOME/vim,$VIM,$VIMRUNTIME
+	set viewdir=$XDG_CACHE_HOME/vim/view
+	let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
 
 " Addon Settings
 	" Set up Vundle to do its magic
 		filetype off
 		let mapleader = ","
-		set rtp+=~/.vim/bundle/vundle
+		set rtp+=$XDG_CONFIG_HOME/vim/bundle/vundle
 		call vundle#rc()
+		let g:bundle_dir = expand('$XDG_CONFIG_HOME/vim/bundle')
 		Bundle 'gmarik/vundle'
 	" Bundle and Configure Addons ($lang conf in 'settings/ftplugin/$lang.vim')
 		" Documentation
@@ -71,7 +74,7 @@
 		" Typing Efficiency Improvers
 			" Add Snippet Support
 				Bundle 'SirVer/ultisnips'
-					let g:UltiSnipsSnippetsDir='~/.vim/settings/snippets'
+					let g:UltiSnipsSnippetsDir='$XDG_CONFIG_HOME/vim/settings/snippets'
 					let g:UltiSnipsEditSplit='vertical'
 					map <leader>es :UltiSnipsEdit<cr>
 					let g:UltiSnipsSnippetsDirectories=['UltiSnips', 'snippets']
@@ -134,7 +137,7 @@
 	set secure								" Disable insecure local vimrc commands
 	set modeline							" Vim settings in files
 	set noswapfile							" Stop littering these things
-	set viminfo+=n~/.vim/history			" Less things in home
+	set viminfo+=n$XDG_CACHE_HOME/vim/history	" Less things in home
 
 " UI Settings
 	set showcmd								" Shows Current Command
@@ -234,7 +237,7 @@
 	" Save
 		func! <SID>Savesession()
 			if v:this_session == ""
-				let cmd = "mksession! ~/.vim/sessions/default.vim"
+				let cmd = "mksession! $XDG_CACHE_HOME/vim/sessions/default.vim"
 			else
 				let cmd = "mksession! ".v:this_session
 			endif
@@ -247,14 +250,14 @@
 	" Restore
 		function! RestoreSession()
 			if argc() == 0 	" vim called sans arguments
-				execute 'source ~/.vim/sessions/default.vim'
+				execute 'source $XDG_CACHE_HOME/vim/sessions/default.vim'
 			endif
 		endfunction
 		autocmd VimEnter * call RestoreSession()
 	" Save As
-		nmap <leader>sa :wa<cr>:mksession! ~/.vim/sessions/
+		nmap <leader>sa :wa<cr>:mksession! $XDG_CACHE_HOME/vim/sessions/
 	" Restore As (Open)
-		nmap <leader>so :so ~/.vim/sessions/
+		nmap <leader>so :so $XDG_CACHE_HOME/vim/sessions/
 
 " Saving Improvements
 	" Auto MkDir for saves in non-existant dirs
