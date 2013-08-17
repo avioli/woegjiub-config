@@ -6,7 +6,7 @@
 set background=dark
 hi clear
 if exists("syntax_on")
-  syntax reset
+	syntax reset
 endif
 let g:colors_name = "darko"
 
@@ -15,10 +15,9 @@ hi LineNr		ctermfg=8
 hi StatusLine	ctermfg=0	ctermbg=7 cterm=none
 
 if has('gui_running')
-	" GUI colours
-else
-  	" Terminal colours
-
+	hi Normal guifg=gray guibg=black
+	hi Cursor guibg=white
+	set guifont=Liberation\ Mono\ 9
+	set guiheadroom=0
+	set go=ac
 endif
-
-" vim: sw=2

@@ -9,6 +9,7 @@ alias listen="mplayer -nocache http://192.168.1.106:8000/mpd.ogg -demuxer ogg"
 alias ssize="sudo du -sh --exclude="/home" --exclude="/mnt" --exclude="/srv" / 2>/dev/null"
 alias feh="feh -Z. "
 alias scan="scanimage --format=tiff >"
+alias rtorrent="rtorrent -o -n /home/darko/.config/rtorrent.rc"
 
 # South Migration Helper
 function mig(){

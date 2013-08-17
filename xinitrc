@@ -20,9 +20,6 @@ if [ -f /usr/bin/fcitx ]; then
 	fcitx
 fi
 
-# Make CapsLock another Escape Key
-xmodmap $XDG_CONFIG_HOME/xmodmap
-
 # Activate Numlock in X
 if [ -f /usr/bin/numlockx ]; then
 	numlockx&
@@ -47,11 +44,22 @@ if [ -f /usr/bin/urxvt ]; then
 	xrdb -merge $XDG_CONFIG_HOME/xresources
 fi
 
+# GTK Settings
+export GTK2_RC_FILES=$XDG_CONFIG_HOME/gtk-2.0/gtkrc
+
+# Firefox Settings
+if [ -f /usr/bin/firefox ]; then
+	export PENTADACTYL_INIT=":source $XDG_CONFIG_HOME/pentadactyl/pentadactylrc"
+fi
+
 # Load up the usenet daemons if present
 if [ -d $XDG_DATA_HOME/sabnzbd ]; then
 	$XDG_DATA_HOME/sabnzbd/SABnzbd.py -d
 	$XDG_DATA_HOME/sickbeard/SickBeard.py -d
 fi
+
+# Make CapsLock another Escape Key
+xmodmap $XDG_CONFIG_HOME/xmodmap
 
 # Open the WM
 if [ -f /usr/bin/awesome ]; then

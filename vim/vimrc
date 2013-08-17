@@ -7,9 +7,9 @@
 	" Set up Vundle to do its magic
 		filetype off
 		let mapleader = ","
-		set rtp+=$XDG_CONFIG_HOME/vim/bundle/vundle
+		set rtp+=$XDG_DATA_HOME/vim/bundle/vundle
 		call vundle#rc()
-		let g:bundle_dir = expand('$XDG_CONFIG_HOME/vim/bundle')
+		let g:bundle_dir = expand('$XDG_DATA_HOME/vim/bundle')
 		Bundle 'gmarik/vundle'
 	" Bundle and Configure Addons ($lang conf in 'settings/ftplugin/$lang.vim')
 		" Documentation
@@ -19,7 +19,7 @@
 			Bundle 'gregsexton/gitv'
 			Bundle 'tpope/vim-fugitive'
 			Bundle 'tpope/vim-git'
-			:command Gpush Git push origin master
+			:command! Gpush Git push origin master
 		" Interface/Navigation addons
 			" Note Taking
 				Bundle 'vimoutliner/vimoutliner'

@@ -1,4 +1,4 @@
-"hg6927
+"hg6931
 
 loadplugins '\.(js|penta)$'
 group user
@@ -46,7 +46,6 @@ highlight Tag color: inherit !important; background: inherit !important;
 highlight Title color: inherit !important; font-weight: bold; background: inherit !important;
 highlight URL text-decoration: none; color: inherit; background: inherit;
 highlight WarningMsg color: red !important; background: inherit !important;
-map -count -modes=n,v A <count>O
 set defsearch=ddg
 set guioptions=s
 set showtabline=never

@@ -4,11 +4,8 @@
 # default configuration that applies to every file
 [default]
 
-# Specify default video driver (see -vo help for a list).
-vo=xv
-
 # Use OpenGL video by default
-vo=opengl
+vo=opengl-hq
 
 # Fullscreen by default (I use a TWM)
 fs=yes
@@ -36,7 +33,15 @@ slang=en
 # other settings #
 ##################
 # Drop frames to preserve audio/video sync.
-framedrop = yes
+framedrop=yes
 
 # External DVD player location
 dvd-device=/dev/cdrom
+
+# Disable borders
+no-border=yes
+
+# Show time and remaining
+osd-level=3
+osd-color='#66FFFFFF'
+osd-shadow-color='#FFFFFF'
