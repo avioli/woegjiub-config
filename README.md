@@ -5,7 +5,8 @@ Note that this respects XDG base directory layout; all non-compliant programs' s
 
 Installation:
 
-	1. Clone them (include submodules else vundle won't come in)
+	1. Clone it
+	 	git clone http://github.com/woegjiub/.config
 
 	2. Symlink settings to ~
 		./mklinks.sh
