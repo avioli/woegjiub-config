@@ -1,6 +1,8 @@
-dotfiles
+.config
 ========
 These are my settings for various programs
+Note that this respects XDG base directory layout
+All non-compliant programs' settings are to go in home/
 
 Installation:
 
