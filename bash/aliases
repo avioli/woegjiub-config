@@ -5,11 +5,11 @@ alias gccu="gcc -Wall -ansi -pedantic -O"
 alias ownreader="cd ~/Development/www/woereader/ && source activate && ./manage.py runserver 0.0.0.0:8000"
 alias ramused="ps -u $LOGNAME -o rss,command | grep -v peruser | awk '{sum+=$1} END {print sum/1024}'"
 alias gpro="gprolog --consult-file"
-alias listen="mplayer -nocache http://192.168.1.106:8000/mpd.ogg -demuxer ogg"
 alias ssize="sudo du -sh --exclude="/home" --exclude="/mnt" --exclude="/srv" / 2>/dev/null"
 alias feh="feh -Z. "
 alias scan="scanimage --format=tiff >"
-alias rtorrent="rtorrent -o -n /home/darko/.config/rtorrent.rc"
+alias rtorrent="rtorrent -n -o import=$XDG_CONFIG_HOME/rtorrent/rtorrent.rc"
+alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
 
 # South Migration Helper
 function mig(){

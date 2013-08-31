@@ -78,14 +78,19 @@
 					let g:UltiSnipsEditSplit='vertical'
 					map <leader>es :UltiSnipsEdit<cr>
 					let g:UltiSnipsSnippetsDirectories=['UltiSnips', 'snippets']
-					let g:UltiSnipsJumpForwardTrigger = "<tab>"
-					let g:UltiSnipsJumpBackwardTrigger = "<c-tab>"
+					let g:UltiSnipsExpandTrigger='ss'
 			" Zen-coding
 				Bundle 'tristen/vim-sparkup'
 			" Change the Surroundings of Text
 				Bundle 'tpope/vim-surround'
 			" Adds some nice shortcuts
 				Bundle 'tpope/vim-unimpaired'
+			" Intellisense-like semantic completion
+				Bundle 'Valloric/YouCompleteMe'
+					let g:ycm_key_invoke_completion = '<c-c>'
+			" Move more easily through files
+				Bundle 'Lokaltog/vim-easymotion'
+					let g:EasyMotion_leader_key='\'
 
 
 " Indentation Settings
@@ -271,3 +276,5 @@
 			au!
 			autocmd BufWritePre * call s:CheckDirectoryExists()
 		augroup END
+	" Use ,W to save the current file with sudo
+		nmap <leader>W :w !sudo tee %<cr><cr>

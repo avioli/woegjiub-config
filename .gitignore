@@ -5,9 +5,12 @@ gconf/
 gtk-2.0/gtkfilechooser.ini
 libreoffice/
 mpdscribble/
+MonoDevelop*/
 MusicBrainz/
 ncmpcpp/error.log
 pulse/
 sensitive/
+stetic/
 Synergy/
 Trolltech.conf
+xbuild/

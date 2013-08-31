@@ -14,6 +14,10 @@ Installation:
 
 	4. Some of the addons will require other programs to be installed.
 		ack-grep
+		libclang
 		exuberant-ctags
 		flake8
 		node-less
+	
+	5. Some vim addons require setup
+		YouCompleteMe
