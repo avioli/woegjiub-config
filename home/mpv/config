@@ -7,9 +7,6 @@
 # Use OpenGL video by default
 vo=opengl-hq
 
-# Fullscreen by default (I use a TWM)
-fs=yes
-
 ##################
 # audio settings #
 ##################
@@ -37,9 +34,6 @@ framedrop=yes
 
 # External DVD player location
 dvd-device=/dev/cdrom
-
-# Disable borders
-no-border=yes
 
 # Show time and remaining
 osd-level=3

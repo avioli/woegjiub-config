@@ -87,7 +87,6 @@
     export VISUAL='/usr/bin/vim'
     export EDITOR='/usr/bin/vim'
     alias vi='vim -p'
-    export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 
 # Stop complaints avout rxvt-unicode on not-completely supported environments
     case "$TERM" in

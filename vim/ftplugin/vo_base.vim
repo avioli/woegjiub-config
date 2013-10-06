@@ -1,3 +1,3 @@
 " Make my colourscheme the one used
-colo vo_darko
+colorscheme vo_darko
 setlocal tw=99

@@ -11,6 +11,9 @@ alias scan="scanimage --format=tiff >"
 alias rtorrent="rtorrent -n -o import=$XDG_CONFIG_HOME/rtorrent/rtorrent.rc"
 alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
 
+function vims(){
+	vim -S $XDG_CACHE_HOME/vim/sessions/$1
+}
 # South Migration Helper
 function mig(){
 	python manage.py schemamigration "$@" --auto;
