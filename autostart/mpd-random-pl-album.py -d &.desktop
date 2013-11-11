@@ -1,7 +1,7 @@
 [Desktop Entry]
 Comment[en_US]=
 Comment=
-Exec=(/home/darko/.local/share/bash/scripts/mpd-random-pl-album.py -d > /tmp/mpd-random-pl-album.log 2>&1) &
+Exec=/home/darko/.local/share/bash/scripts/mpd-random-pl-album.py -d &
 GenericName[en_US]=
 GenericName=
 Icon=system-run
