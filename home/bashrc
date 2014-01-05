@@ -75,7 +75,9 @@
     if [ -d $XDG_DATA_HOME/virtualenvs ]; then
         export WORKON_HOME=$XDG_DATA_HOME/virtualenvs
     fi
-    if [ -f $HOME/bin/virtualenvwrapper.sh ]; then
+    if [ -f /usr/bin/virtualenvwrapper.sh ]; then
+        source /usr/bin/virtualenvwrapper.sh
+    elif [ -f $HOME/bin/virtualenvwrapper.sh ]; then
         export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
         source $HOME/bin/virtualenvwrapper.sh
     fi

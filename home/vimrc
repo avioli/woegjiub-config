@@ -15,10 +15,9 @@
 			" Python
 				Bundle 'fs111/pydoc.vim'
 		" Git
-			Bundle 'gregsexton/gitv'
-			Bundle 'tpope/vim-fugitive'
-			Bundle 'tpope/vim-git'
-			:command! Gpush Git push origin master
+				Bundle 'tpope/vim-fugitive'
+				Bundle 'tpope/vim-git'
+				:command! Gpush Git push origin master
 		" Interface/Navigation addons
 			" Note Taking
 				Bundle 'vimoutliner/vimoutliner'
@@ -32,20 +31,9 @@
 					map <leader>oq :s/^\(\t*\:\)\(\d\+\)/\1\ \ \ \ \2/<cr>gvgqgv:s/^\(\t*:\)\ \ \ \ \(\d\+\.*\ \)/\1\2/<cr>gv:s/^\(\t*\):/\1</<cr>gv:s/^\t*<\s*\n//<cr>:noh<cr>
 					" Mapping to swap from wrapping to static text in V-block
 					map <leader>os :s/^\(\t*\):/\1</<cr>:noh<cr>
-			" Project Tree
-				Bundle 'The-NERD-tree'
-					map <Leader>n :NERDTreeToggle<CR>
-					let g:NERDTreeQuitOnOpen=1
-				Bundle 'majutsushi/tagbar'
-					map <leader>m :TagbarToggle<CR>
-					let g:tagbar_autoclose=1
-					let g:tagbar_left=1
-					let g:tagbar_compact=1
 			" Revision History
 				Bundle 'sjl/gundo.vim'
 					map <leader>g :GundoToggle<CR>
-			" Tasklist
-				Bundle 'TaskList.vim'
 		" Search Addons
 			" Enable Ack Searching
 				Bundle 'mileszs/ack.vim'
@@ -69,29 +57,11 @@
 				map <F5> :SyntasticCheck<cr>
 			" Python
 				Bundle 'alfredodeza/pytest.vim'
-				Bundle 'fs111/pydoc.vim'
 		" Typing Efficiency Improvers
-			" Add Snippet Support
-				Bundle 'SirVer/ultisnips'
-					let g:UltiSnipsSnippetsDir='$HOME/.config/vim/settings/snippets'
-					let g:UltiSnipsEditSplit='vertical'
-					map <leader>es :UltiSnipsEdit<cr>
-					let g:UltiSnipsSnippetsDirectories=['UltiSnips', 'snippets']
-					let g:UltiSnipsExpandTrigger='zz'
-			" Zen-coding
-				Bundle 'tristen/vim-sparkup'
 			" Change the Surroundings of Text
 				Bundle 'tpope/vim-surround'
-			" Adds some nice shortcuts
-				Bundle 'tpope/vim-unimpaired'
 			" Intellisense-like semantic completion
 				Bundle 'Valloric/YouCompleteMe'
-					let g:ycm_key_invoke_completion = '<c-c>'
-					let g:ycm_autoclose_preview_window_after_completion = 1
-			" Move more easily through files
-				Bundle 'Lokaltog/vim-easymotion'
-					let g:EasyMotion_leader_key='\'
-
 
 " Indentation Settings
 	set shiftround							" Indents rounded to shiftwidths
@@ -125,9 +95,6 @@
 	set smartcase							" Smart case matching
 	set hlsearch							" Highlight search results
 	set incsearch							" Search incrementally
-	" Default to very magic seraching
-	nnoremap / /\v
-	vnoremap / /\v
 
 " General settings
 	set ffs=unix							" Unix as standard filetype
@@ -135,7 +102,6 @@
 	set nocompatible						" Enable vimness
 	set autoread							" Automatically detect outside changes
 	set history=1000						" Massive history
-	set dictionary+=/usr/share/dict/words	" Adds the dictionary for C_x,C_k
 	set completeopt=menuone,longest,preview	" Set autocompletion options
 	set omnifunc=syntaxcomplete#Complete	" Enable Omnicompletion
 	set exrc								" Per-directory vimrcs
@@ -163,18 +129,22 @@
 	\ endif
 	set laststatus=2						" Always show statusline
 	" file, helpfile, modified, readonly, split,  cursor location, V%
-	set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%{SyntasticStatuslineFlag()}%=%-14.(%l,%c,%V%)\ %P
+	set statusline=%<%f\ %h%m%r%{SyntasticStatuslineFlag()}%=%-14.(%l,%c,%V%)\ %P
 	set t_Co=256							" 256 Colours in Terminal
 	colo darko								" Load my colourscheme
 
 " Input/Hotkey settings
 	set mouse=a								" Enable Mouse
+	" Stop mousewheel and clicking from inserting letters
+	if has("mouse_sgr")
+		set ttymouse=sgr
+	else
+		set ttymouse=xterm2
+	end
 	set backspace=eol,start,indent			" Proper backspace behaviour
 	" tabbing
-		map <leader>tn :tabnew 
+		map <C-t> :tabnew 
 	let g:clipbrdDefaultReg=	"+"			" Use Linux clipboard as def copy reg
-	" Added XOR to digraphs
-	digraph XO 8853
 	" easy buffer navigation
 		map <leader>b :buffers<CR>:buffer 
 	" Make shift-insert work as linux paste
@@ -234,9 +204,6 @@
 			endif
 			echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 		endfunc
-	" Change dictionary language (Ger/Eng)
-		map <leader>se :setlocal spell! spelllang=en<cr>
-		map <leader>sd :setlocal spell! spelllang=de<cr>
 
 " Session Management
 	" Save
@@ -265,16 +232,5 @@
 		nmap <leader>so :so $HOME/.cache/vim/sessions/
 
 " Saving Improvements
-	" Auto MkDir for saves in non-existant dirs
-		function! s:CheckDirectoryExists()
-			if expand("<afile>")!~#'^\w\+:/' && !isdirectory(expand("%:h"))
-				call system(printf("mkdir -p %s", shellescape(expand('%:h'), 1)))
-				redraw!
-			endif
-		endfunction
-		augroup BWCCreateDir
-			au!
-			autocmd BufWritePre * call s:CheckDirectoryExists()
-		augroup END
 	" Use ,W to save the current file with sudo
 		nmap <leader>W :w !sudo tee %<cr><cr>
