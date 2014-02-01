@@ -1,7 +1,0 @@
-skip_menu=False
-lock_db=False
-clip_delay=120
-lock_delay=6000
-del_clip=True
-rem_key=False
-rem_db=True

@@ -1,4 +1,0 @@
-set font "liberation sans 9"
-set scroll-page-aware
-map <Space> navigate next
-map <S-Space> navigate previous

@@ -71,6 +71,11 @@
         export NODE_PATH="$HOME/lib/node_modules:$NODE_PATH"
     fi
 
+# Local install of NPM
+    if [ -d $HOME/.local/share/npm/bin ]; then
+        export PATH="$HOME/.local/share/npm/bin:$PATH"
+    fi
+
 # Virtualenv path
     if [ -d $XDG_DATA_HOME/virtualenvs ]; then
         export WORKON_HOME=$XDG_DATA_HOME/virtualenvs

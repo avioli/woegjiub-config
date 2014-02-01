@@ -10,11 +10,14 @@ alias scan="scanimage --format=tiff >"
 alias ssize="sudo du -sh --exclude="/home" --exclude="/mnt" --exclude="/srv" / 2>/dev/null"
 alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
 
-function vims(){
-	vim -S $XDG_CACHE_HOME/vim/sessions/$1
-}
 # South Migration Helper
 function mig(){
 	python manage.py schemamigration "$@" --auto;
 	python manage.py migrate "$@";
+}
+function spcgm(){
+	sox --multi-threaded $1 -n spectrogram -t $1 -o $1.png
+}
+function vims(){
+	vim -S $XDG_CACHE_HOME/vim/sessions/$1
 }
