@@ -15,8 +15,11 @@ function mig(){
 	python manage.py schemamigration "$@" --auto;
 	python manage.py migrate "$@";
 }
+function sizefromtype(){
+	find -iname "*.$@" -print0 | du --files0-from - -c -sh | tail -1 | sed 's/\([^ tab]\+\).*/\1 /'
+}
 function spcgm(){
-	sox --multi-threaded $1 -n spectrogram -t $1 -o $1.png
+	sox --multi-threaded "$@" -n spectrogram -t "$@" -o "$@".png
 }
 function vims(){
 	vim -S $XDG_CACHE_HOME/vim/sessions/$1
