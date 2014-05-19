@@ -34,12 +34,22 @@
 			" Revision History
 				Bundle 'sjl/gundo.vim'
 					map <leader>g :GundoToggle<CR>
+			" File Management
+				Bundle 'scrooloose/nerdtree'
+					map <leader>n :NERDTree<CR>
+			" Tag outliner
+				Bundle 'majutsushi/tagbar'
+					map <leader>m :TagbarToggle<CR>
 		" Search Addons
 			" Enable Ack Searching
 				Bundle 'mileszs/ack.vim'
 					nmap <leader>a <Esc>:Ack! 
 			" Search Buffers/Filenames+Paths for navigation
 				Bundle 'kien/ctrlp.vim'
+				let g:ctrlp_custom_ignore = {
+					\ 'dir': '\.git$\|\.svn$\|\.hg$\|build$\|venv\|^output$',
+					\ 'file': '\.pyc$\|\.so$\|\.class$\|.swp$\|\.pid\|\.beam$',
+					\ }
 		" Syntax Highlighting
 			" CSS3
 				Bundle 'hail2u/vim-css3-syntax'
@@ -58,6 +68,8 @@
 			" Python
 				Bundle 'alfredodeza/pytest.vim'
 		" Typing Efficiency Improvers
+			" Snippets
+				Bundle 'SirVer/ultisnips'
 			" Change the Surroundings of Text
 				Bundle 'tpope/vim-surround'
 			" Intellisense-like semantic completion
@@ -109,6 +121,7 @@
 	set modeline							" Vim settings in files
 	set noswapfile							" Stop littering these things
 	set viminfo+=n$HOME/.cache/vim/history	" Less things in home
+	set tabpagemax=100
 
 " UI Settings
 	set showcmd								" Shows Current Command

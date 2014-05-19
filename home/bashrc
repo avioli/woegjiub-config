@@ -51,15 +51,21 @@
         . $XDG_CONFIG_HOME/bash/saliases
     fi
 
-# Scripts folder
-    if [ -d $XDG_DATA_HOME/bash/scripts/ ]; then
-        export PATH="$XDG_DATA_HOME/bash/scripts/:${PATH}"
+# Scripts folders
+    if [ -d $XDG_CONFIG_HOME/bash/scripts/ ]; then
+        export PATH="$XDG_CONFIG_HOME/bash/scripts/:${PATH}"
+    fi
+    if [ -d $XDG_CONFIG_HOME/bash/functions/ ]; then
+        for f in $XDG_CONFIG_HOME/bash/functions/*; do source $f; done
     fi
 
 # enable programmable completion features
     if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
         . /etc/bash_completion
     fi
+
+# django settings default
+    export DJANGO_SETTINGS_MODULE=webapp.settings.development
 
 # Locally installed executables
     if [ -d $HOME/bin ]; then
@@ -75,6 +81,11 @@
     if [ -d $HOME/.local/share/npm/bin ]; then
         export PATH="$HOME/.local/share/npm/bin:$PATH"
     fi
+
+# Cache PIP Downloads
+	if [ -d $XDG_CACHE_HOME/pip/downloads ]; then
+		export PIP_DOWNLOAD_CACHE="$XDG_CACHE_HOME/pip/downloads"
+	fi
 
 # Virtualenv path
     if [ -d $XDG_DATA_HOME/virtualenvs ]; then
@@ -95,19 +106,7 @@
     export EDITOR='/usr/bin/vim'
     alias vi='vim -p'
 
-# Stop complaints avout rxvt-unicode on not-completely supported environments
-    case "$TERM" in
-        rxvt-unicode-256color)
-            TERM=rxvt-unicode
-            ;;
-    esac
-
-# Start X if we can and it's not already running
-    if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-        export XAUTHORITY=$XDG_CACHE_HOME/x11/xauth
-        exec startx $XDG_CONFIG_HOME/xinitrc
-# Otherwise, we want a multiplexer in our shell
-    elif which tmux 2>/dev/null >/dev/null; then
-        # if no session is started, start a new session
-        test -z ${TMUX} && tmx main;
-    fi
+if echo "$-" | grep -q 'i' ; then
+	bind '"\e[A": history-search-backward'
+	bind '"\e[B": history-search-forward'
+fi

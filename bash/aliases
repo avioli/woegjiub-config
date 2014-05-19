@@ -3,12 +3,15 @@ alias fmusic="find -type f ! -iname '*.flac' -a ! -iname '*.mp3' -a ! -iname '*.
 alias ftypes="find . ! -path '*/.git/*' -type f -iname '*.*' | rev | cut -d . -f1 | rev | sort | uniq -ic | sort -rn"
 alias gccu="gcc -Wall -ansi -pedantic -O"
 alias gpro="gprolog --consult-file"
-alias Ls="ls -lAp  --color=always | grep -v '>'"
+alias djrep="grep -riI --exclude-dir=fixtures --exclude-dir=venv --exclude-dir=migrations 2>/dev/null"
+alias djpyrep="djrep --exclude-dir=static --exclude=*.json"
+alias lsa="ls -lAp  --color=always | grep -v '>'"
 alias pipudate="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U"
 alias ramused="ps -u $LOGNAME -o rss,command | grep -v peruser | awk '{sum+=$1} END {print sum/1024}'"
 alias scan="scanimage --format=tiff >"
 alias ssize="sudo du -sh --exclude="/home" --exclude="/mnt" --exclude="/srv" / 2>/dev/null"
 alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
+alias rsql="sudo mysql --defaults-file=/etc/mysql/debian.cnf "
 
 # South Migration Helper
 function mig(){
@@ -23,4 +26,13 @@ function spcgm(){
 }
 function vims(){
 	vim -S $XDG_CACHE_HOME/vim/sessions/$1
+}
+function vsopen(){
+	vim -p $(djrep -lir "$@");
+}
+function vfopen(){
+	vim -p $(find -iname "$@");
+}
+function vdiff(){
+	vimdiff $(grep -lir "$@");
 }

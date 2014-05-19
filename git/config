@@ -3,3 +3,14 @@
 	name = woegjiub
 [push]
 	default = simple
+[color]
+	all = auto
+[color "diff"]
+	whitespace = "red reverse"
+[format]
+	pretty = %Cblue%h%Creset %ad %Cgreen%an%Creset %s%C(yellow)%d
+[alias]
+	quick-amend = !VISUAL=/bin/true git commit --amend
+	hist = log --graph --date=short --all --date-order
+	sync = !git pull --rebase && git push
+	wdiff = diff --color-words
