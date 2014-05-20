@@ -5,6 +5,7 @@ calibre/
 cantata/
 chromium/
 dconf/
+enchant/
 fcitx/
 gconf/
 gtk-2.0/
@@ -12,6 +13,7 @@ gtk-3.0/
 kde.org/
 keepassx/
 libreoffice/
+lightum/
 menus/
 mpdscribble/
 MusicBrainz/
@@ -20,8 +22,10 @@ oxygen-gtk/
 pulse/
 qtcurve/
 qupzilla/
+ranger/
 sensitive/
 Synergy/
 Trolltech.conf
 xbuild/
 vlc/
+VirtualBox/
