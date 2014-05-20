@@ -40,7 +40,7 @@ end
 beautiful.init("/home/darko/.config/awesome/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvtcd"
+terminal = "urxvt"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -72,8 +72,8 @@ mytaglist.buttons = awful.util.table.join(
                     awful.button({ modkey }, 1, awful.client.movetotag),
                     awful.button({ }, 3, awful.tag.viewtoggle),
                     awful.button({ modkey }, 3, awful.client.toggletag),
-                    awful.button({ }, 4, function(t) awful.tag.viewnext(awful.tag.getscreen(t)) end),
-                    awful.button({ }, 5, function(t) awful.tag.viewprev(awful.tag.getscreen(t)) end)
+                    awful.button({ }, 4, function(t) awful.tag.viewprev(awful.tag.getscreen(t)) end),
+                    awful.button({ }, 5, function(t) awful.tag.viewnext(awful.tag.getscreen(t)) end)
                     )
 
 for s = 1, screen.count() do
@@ -160,12 +160,12 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1)      end),
     awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1)         end),
     awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1)         end),
-    awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
+    -- awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
+    awful.key({ modkey },            "space",     function () mypromptbox[mouse.screen]:run() end),
 
     -- Launchers
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),

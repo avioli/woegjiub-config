@@ -1,0 +1,65 @@
+#!/bin/sh
+#
+# ~/.xinitrc
+#
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+  for f in /etc/X11/xinit/xinitrc.d/*; do
+    [ -x "$f" ] && . "$f"
+  done
+  unset f
+fi
+
+
+# Load the IME
+if [ -f /usr/bin/fcitx ]; then
+	export GTK_IM_MODULE=fcitx
+	export QT_IM_MODULE=fcitx
+	export XMODIFIERS="@im=fcitx"
+	fcitx
+fi
+
+# Activate Numlock in X
+if [ -f /usr/bin/numlockx ]; then
+	numlockx&
+fi
+
+# MPD Settings
+if [ -f /usr/bin/mpd ]; then
+	# Start MPD if not already running
+	[ ! -s $XDG_DATA_HOME/mpd/pid ] && mpd $XDG_CONFIG_HOME/mpd/mpd.conf
+	mpdscribble --conf $XDG_CONFIG_HOME/mpdscribble/mpdscribble.conf
+	(mpd-random-pl-album.py -d > /tmp/mpd-random-pl-album.log 2>&1 ) &
+fi
+
+# MPV Settings
+if [ -f /usr/bin/mpv ]; then
+	export MPV_HOME=$XDG_CONFIG_HOME/mpv
+fi
+
+# Terminal Emulator Settings
+if [ -f /usr/bin/urxvt ]; then
+	export RXVT_SOCKET=$XDG_CACHE_HOME/urxvt/urxvtd.sock
+	xrdb -merge $XDG_CONFIG_HOME/xresources
+fi
+
+# GTK Settings
+export GTK2_RC_FILES=$XDG_CONFIG_HOME/gtk-2.0/gtkrc
+
+# Firefox Settings
+if [ -f /usr/bin/firefox ]; then
+	export PENTADACTYL_INIT=":source $XDG_CONFIG_HOME/pentadactyl/pentadactylrc"
+fi
+
+# Load up the usenet daemons if present
+if [ -d $XDG_DATA_HOME/sabnzbd ]; then
+	$XDG_DATA_HOME/sabnzbd/SABnzbd.py -d
+	$XDG_DATA_HOME/sickbeard/SickBeard.py -d
+fi
+
+# Make CapsLock another Escape Key
+setxkbmap -option caps:escape
+
+# Open the WM
+if [ -f /usr/bin/awesome ]; then
+	exec awesome
+fi
