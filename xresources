@@ -17,7 +17,7 @@ URxvt.perl-ext-common:      default,vtwheel
 ! Fonts
 URxvt.font:                 xft:Liberation Mono-9:style=Regular,\
                             [codeset=JISX0208]xft:MMCedar-9:style=Regular
-URxvt.letterSpace:          -2
+URxvt.letterSpace:          -1
 URxvt.lineSpace:            -1
 URxvt.depth:                32
 

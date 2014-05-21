@@ -176,7 +176,8 @@ globalkeys = awful.util.table.join(
     awful.key({ "Control",        }, "XF86AudioPlay", function() awful.util.spawn( "/home/darko/.local/share/bash/scripts/mpd-random-pl-album.py" ) end),
     awful.key({ modkey            }, "c", function() awful.util.spawn( "localc" ) end),
     awful.key({ modkey            }, "a", function() awful.util.spawn("anki -b /home/darko/.local/share/anki") end),
-    awful.key({                   }, "XF86Calculator", function() awful.util.spawn( terminal .. " -e bc -iql" ) end)
+    awful.key({                   }, "XF86Calculator", function() awful.util.spawn( terminal .. " -e bc -iql" ) end),
+    awful.key({                   }, "XF86PowerOff", function() awful.util.spawn("xset dpms force standby") end)
 )
 
 clientkeys = awful.util.table.join(
