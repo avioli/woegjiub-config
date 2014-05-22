@@ -9,6 +9,7 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
+local configdir = awful.util.getdir("config")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -37,7 +38,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/home/darko/.config/awesome/theme.lua")
+beautiful.init(configdir .. "/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
