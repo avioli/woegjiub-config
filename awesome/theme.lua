@@ -6,20 +6,20 @@ theme = {}
 
 theme.font          = "Liberation Sans 12"
 
-theme.bg_normal     = "#222222"
-theme.bg_focus      = "#535d6c"
-theme.bg_urgent     = "#aa0000"
+theme.bg_normal     = "#111111"
+theme.bg_focus      = "#550099"
+theme.bg_urgent     = "#770000"
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
 
 theme.fg_normal     = "#aaaaaa"
-theme.fg_focus      = "#ffffff"
-theme.fg_urgent     = "#aa0000"
-theme.fg_minimize   = "#ffffff"
+theme.fg_focus      = "#aaaaaa"
+theme.fg_urgent     = "#770000"
+theme.fg_minimize   = theme.fg_normal
 
-theme.border_width  = 0
+theme.border_width  = 3
 theme.border_normal = "#000000"
-theme.border_focus  = "#535d6c"
+theme.border_focus  = "#550099"
 theme.border_marked = "#91231c"
 
 -- Display the taglist squares

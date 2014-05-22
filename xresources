@@ -12,11 +12,16 @@ Xft.hintstyle:  hintfull
 URxvt.scrollBar:            false
 URxvt*scrollWithBuffer:     true
 URxvt*scrollTtyKeypress:    true
-URxvt.perl-ext-common:      default,vtwheel
+URxvt.perl-ext-common:      default,vtwheel,clipboard,url-select,keyboard-select
+URxvt.url-select.launcher:  firefox
+URxvt.url-select.underline: true
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+URxvt.keysym.M-s:           perl:keyboard-select:search
 
 ! Fonts
 URxvt.font:                 xft:Liberation Mono-9:style=Regular,\
-                            [codeset=JISX0208]xft:MMCedar-9:style=Regular
+                            [codeset=JISX0208]xft:HanaMinA:style=Regular
 URxvt.letterSpace:          -1
 URxvt.lineSpace:            -1
 URxvt.depth:                32
