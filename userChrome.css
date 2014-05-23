@@ -1,0 +1,16 @@
+
+.tabbrowser-tab:not([selected="true"]) {
+	color: #CCCCCC !important;
+}
+
+menubar > menu {
+	color: #ffffff !important;
+}
+
+menubar > menu[_moz-menuactive="true"][open="false"] {
+	color: #ffffff !important;
+}
+
+menubar > menu[_moz-menuactive="true"][open="true"] {
+	color: #ffffff !important;
+}

@@ -9,6 +9,7 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
+local configdir = awful.util.getdir("config")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -37,7 +38,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/home/darko/.config/awesome/theme.lua")
+beautiful.init(configdir .. "/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -56,7 +57,11 @@ local layouts = { awful.layout.suit.tile }
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ "一", "二", "三", "四", "五", "六" }, s, layouts[1])
+    if s == 1 then
+        tags[s] = awful.tag({ "一", "二", "三", "四", "五", "六" }, s, layouts[1])
+    else
+        tags[s] = awful.tag({ "一", "二", "三", "四"}, s, layouts[1])
+    end
 end
 -- }}}
 
@@ -93,7 +98,6 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
-    if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(mytextclock)
 
     -- Now bring it all together (with the tasklist in the middle)
@@ -165,18 +169,22 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
     -- Prompt
-    awful.key({ modkey },            "space",     function () mypromptbox[mouse.screen]:run() end),
+    awful.key({ modkey            }, "space",     function () mypromptbox[mouse.screen]:run() end),
 
     -- Launchers
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey,           }, "f", function () awful.util.spawn("firefox") end),
     awful.key({ modkey,           }, "g", function () awful.util.spawn("chromium") end),
-    awful.key({                   }, "XF86AudioPlay", function() awful.util.spawn( "ncmpcpp -c /home/darko/.config/ncmpcpp/config toggle" ) end),
-    awful.key({ modkey,           }, "XF86AudioPlay", function() awful.util.spawn( terminal .. " -e ncmpcpp -c '/home/darko/.config/ncmpcpp/config'" ) end),
-    awful.key({ "Control",        }, "XF86AudioPlay", function() awful.util.spawn( "/home/darko/.local/share/bash/scripts/mpd-random-pl-album.py" ) end),
+    awful.key({                   }, "XF86AudioPlay",
+        function() awful.util.spawn( "ncmpcpp -c /home/darko/.config/ncmpcpp/config toggle" ) end),
+    awful.key({ modkey,           }, "XF86AudioPlay",
+        function() awful.util.spawn( terminal .. " -e ncmpcpp -c '/home/darko/.config/ncmpcpp/config'" ) end),
+    awful.key({ "Control",        }, "XF86AudioPlay",
+        function() awful.util.spawn( "/home/darko/.local/share/bash/scripts/mpd-random-pl-album.py" ) end),
     awful.key({ modkey            }, "c", function() awful.util.spawn( "localc" ) end),
     awful.key({ modkey            }, "a", function() awful.util.spawn("anki -b /home/darko/.local/share/anki") end),
     awful.key({                   }, "XF86Calculator", function() awful.util.spawn( terminal .. " -e bc -iql" ) end),
+    awful.key({ modkey            }, "p", function() awful.util.spawn( terminal .. " -e python" ) end),
     awful.key({                   }, "XF86PowerOff", function() awful.util.spawn("xset dpms force standby") end)
 )
 
