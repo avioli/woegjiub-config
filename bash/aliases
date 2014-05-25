@@ -12,6 +12,7 @@ alias scan="scanimage --format=tiff >"
 alias ssize="sudo du -sh --exclude="/home" --exclude="/mnt" --exclude="/srv" / 2>/dev/null"
 alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
 alias rsql="sudo mysql --defaults-file=/etc/mysql/debian.cnf "
+alias lsblkv="lsblk -o name,size,type,fstype,ro,mountpoint,label,uuid,partuuid"
 
 # South Migration Helper
 function mig(){

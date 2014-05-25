@@ -9,6 +9,7 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
+require("volume")
 local configdir = awful.util.getdir("config")
 
 -- {{{ Error handling
@@ -98,6 +99,7 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
+    right_layout:add(volume_widget)
     right_layout:add(mytextclock)
 
     -- Now bring it all together (with the tasklist in the middle)
@@ -181,6 +183,12 @@ globalkeys = awful.util.table.join(
         function() awful.util.spawn( terminal .. " -e ncmpcpp -c '/home/darko/.config/ncmpcpp/config'" ) end),
     awful.key({ "Control",        }, "XF86AudioPlay",
         function() awful.util.spawn( "/home/darko/.local/share/bash/scripts/mpd-random-pl-album.py" ) end),
+    awful.key({ }, "XF86AudioRaiseVolume", function ()
+       awful.util.spawn("amixer set Master 10%+", false) end),
+   awful.key({ }, "XF86AudioLowerVolume", function ()
+       awful.util.spawn("amixer set Master 10%-", false) end),
+   awful.key({ }, "XF86AudioMute", function ()
+       awful.util.spawn("amixer sset Master toggle", false) end),
     awful.key({ modkey            }, "c", function() awful.util.spawn( "localc" ) end),
     awful.key({ modkey            }, "a", function() awful.util.spawn("anki -b /home/darko/.local/share/anki") end),
     awful.key({                   }, "XF86Calculator", function() awful.util.spawn( terminal .. " -e bc -iql" ) end),

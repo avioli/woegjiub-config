@@ -3,6 +3,7 @@
 loadplugins '\.(js|penta)$'
 group user
 map -count -modes=n,v m <count>:bmark<Space>-tags<Space>
+map -ex <C-`> :set guioptions!=T
 
 " Colour Scheme (dark)
 highlight Bell background-color: inherit; border: 0 none;
