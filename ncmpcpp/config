@@ -14,6 +14,7 @@ playlist_display_mode =                 "columns"
 playlist_separate_albums                "yes"
 song_columns_list_format =              "(25)[]{A|a}} (30)[]{b} (3)[]{dE} (3)[]{n} (35)[]{t} (4)[]{l}"
 titles_visibility =                     "no"
+media_library_left_column =             "A|a"
 
 # Other View Settings
 browser_display_mode =                  "columns"

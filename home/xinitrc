@@ -27,8 +27,6 @@ fi
 if [ -f /usr/bin/mpd ]; then
 	# Start MPD if not already running
 	[ ! -s $XDG_DATA_HOME/mpd/pid ] && mpd $XDG_CONFIG_HOME/mpd/mpd.conf
-	mpdscribble --conf $XDG_CONFIG_HOME/mpdscribble/mpdscribble.conf
-	(mpd-random-pl-album.py -d > /tmp/mpd-random-pl-album.log 2>&1 ) &
 fi
 
 # MPV Settings

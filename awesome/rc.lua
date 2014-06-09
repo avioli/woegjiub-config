@@ -193,7 +193,9 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey            }, "a", function() awful.util.spawn("anki -b /home/darko/.local/share/anki") end),
     awful.key({                   }, "XF86Calculator", function() awful.util.spawn( terminal .. " -e bc -iql" ) end),
     awful.key({ modkey            }, "p", function() awful.util.spawn( terminal .. " -e python" ) end),
-    awful.key({                   }, "XF86PowerOff", function() awful.util.spawn("xset dpms force standby") end)
+    awful.key({                   }, "XF86KbdBrightnessDown", function() awful.util.spawn("kbdlight down") end),
+    awful.key({                   }, "XF86KbdBrightnessUp", function() awful.util.spawn("kbdlight up") end),
+    awful.key({                   }, "XF86PowerOff", function() awful.util.spawn("xset dpms force off") end)
 )
 
 clientkeys = awful.util.table.join(
