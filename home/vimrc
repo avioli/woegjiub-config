@@ -184,6 +184,10 @@
 		map <c-j> <c-w>j
 	" Map hard BOL to soft BOL
 		map 0 ^
+	" Open with file's directory filled in
+		map <leader>e :e <C-R>=expand('%:p:h') . '/'<CR>
+	" insert current file's directory in prompt
+		cabbr <expr> %% expand('%:p:h')
 	" Swap braces to/from being on their own line (c-like languages)
 		function! MoveBraces(brace)
 			let searchString = '\n\s*'.a:brace

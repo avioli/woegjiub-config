@@ -12,9 +12,12 @@ Xft.hintstyle:  hintfull
 URxvt.scrollBar:            false
 URxvt*scrollWithBuffer:     true
 URxvt*scrollTtyKeypress:    true
-URxvt.perl-ext-common:      default,vtwheel,clipboard,url-select,keyboard-select
+URxvt*saveLines:            65535
+URxvt.perl-ext-common:      default,vtwheel,clipboard,url-select,keyboard-select,matcher
 URxvt.url-select.launcher:  firefox
+URxvt.url-launcher:         firefox
 URxvt.url-select.underline: true
+Urxvt.matcher.button:       1
 URxvt.keysym.M-u:           perl:url-select:select_next
 URxvt.keysym.M-Escape:      perl:keyboard-select:activate
 URxvt.keysym.M-s:           perl:keyboard-select:search
