@@ -40,6 +40,8 @@
 			" Tag outliner
 				Bundle 'majutsushi/tagbar'
 					map <leader>m :TagbarToggle<CR>
+			" Shell
+				Bundle 'rosenfeld/conque-term'
 		" Search Addons
 			" Enable Ack Searching
 				Bundle 'mileszs/ack.vim'
@@ -50,6 +52,9 @@
 					\ 'dir': '\.git$\|\.svn$\|\.hg$\|build$\|venv\|^output$',
 					\ 'file': '\.pyc$\|\.so$\|\.class$\|.swp$\|\.pid\|\.beam$',
 					\ }
+				map <leader>b :CtrlPBuffer<cr>
+				map <leader>f :CtrlPMRU<cr>
+				let g:ctrlp_match_window = 'max:30'
 		" Syntax Highlighting
 			" CSS3
 				Bundle 'hail2u/vim-css3-syntax'
@@ -159,7 +164,7 @@
 		map <C-t> :tabnew 
 	let g:clipbrdDefaultReg=	"+"			" Use Linux clipboard as def copy reg
 	" easy buffer navigation
-		map <leader>b :buffers<CR>:buffer 
+		map <leader>B :buffers<CR>:buffer 
 	" Make shift-insert work as linux paste
 		map <S-Insert> <MiddleMouse>
 		map! <S-Insert> <MiddleMouse>
@@ -236,13 +241,6 @@
 		nmap <leader>sw <ESC>:call <SID>Savesession()<cr>:wa<cr>
 	" Save+Quit
 		nmap <leader>sq <ESC>:call <SID>Savesession()<cr>:wqa<cr>
-	" Restore
-		function! RestoreSession()
-			if argc() == 0 	" vim called sans arguments
-				execute 'source $HOME/.cache/vim/sessions/default.vim'
-			endif
-		endfunction
-		autocmd VimEnter * call RestoreSession()
 	" Save As
 		nmap <leader>sa :wa<cr>:mksession! $HOME/.cache/vim/sessions/
 	" Restore As (Open)

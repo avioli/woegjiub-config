@@ -20,6 +20,7 @@
     HISTSIZE=1000
     HISTFILESIZE=2000
     HISTFILE=$XDG_CACHE_HOME/bash/history
+    export LESSHISTFILE=$XDG_CACHE_HOME/less/history
 
 # UI
     shopt -s checkwinsize # adjust lines/cols to window size after commands if need
@@ -81,11 +82,14 @@
     if [ -d $HOME/.local/share/npm/bin ]; then
         export PATH="$HOME/.local/share/npm/bin:$PATH"
     fi
+    export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 
-# Cache PIP Downloads
-	if [ -d $XDG_CACHE_HOME/pip/downloads ]; then
-		export PIP_DOWNLOAD_CACHE="$XDG_CACHE_HOME/pip/downloads"
-	fi
+# PIP Settings
+	export PIP_CONFIG_FILE="$XDG_CONFIG_HOME/pip/config"
+	export PIP_DOWNLOAD_CACHE="$XDG_CACHE_HOME/pip/downloads"
+
+	export KDEHOME="$XDG_CONFIG_HOME/kde"
+	export GSTREGISTRY="$XDG_DATA_HOME/gstreamer/registry.bin"
 
 # Virtualenv path
     if [ -d $XDG_DATA_HOME/virtualenvs ]; then
@@ -105,6 +109,7 @@
     export VISUAL='/usr/bin/vim'
     export EDITOR='/usr/bin/vim'
     alias vi='vim -p'
+    export VIMINIT='source $XDG_CONFIG_HOME/vim/vimrc'
 
 if echo "$-" | grep -q 'i' ; then
 	bind '"\e[A": history-search-backward'
