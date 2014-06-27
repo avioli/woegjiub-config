@@ -3,7 +3,13 @@
 loadplugins '\.(js|penta)$'
 group user
 map -count -modes=n,v m <count>:bmark<Space>-tags<Space>
-map -modes=n,v <C-`> -ex :set go!=T
+map <C-/> -js <<EOF
+if(content.document.documentElement.classList.contains("night"))
+	content.document.documentElement.classList.remove("night");
+else
+	content.document.documentElement.classList.add("night");
+EOF
+map <C-`> -ex :set go!=T
 
 " Colour Scheme (dark)
 highlight Bell background-color: inherit; border: 0 none;

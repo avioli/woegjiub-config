@@ -14,3 +14,28 @@ for file in [a-zA-Z]* ; do
 		ln -s `pwd`/"$file" ~/."$file" && echo "Linked ~/.$file to `pwd`/$file" || echo "Couldn't link ~/.$file to `pwd`/$file!"
 	fi
 done
+
+# Create data directories as required
+cd $XDG_DATA_HOME
+mkdir -p bash/scripts
+mkdir -p vim/bundle
+
+for var in dbus gnupg mozilla pki ssh; do
+	if [[ -d $HOME/.$var && ! -L $HOME/.$var ]]; then
+		mv $HOME/.$var $var
+		ln -s `pwd`/$var $HOME/.$var
+	fi
+done
+
+# Create cache directories as required
+cd $XDG_CACHE_HOME
+mkdir -p bash
+mkdir -p less
+mkdir -p vim/view
+
+for var in cddb dbus gstreamer-0.10 mozc; do
+	if [[ -d $HOME/.$var && ! -L $HOME/.$var ]]; then
+		mv $HOME/.$var $var
+		ln -s `pwd`/$var $HOME/.$var
+	fi
+done

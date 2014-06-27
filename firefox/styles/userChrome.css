@@ -1,0 +1,70 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+.tabbrowser-tab:not([selected="true"]) {
+	color: #CCCCCC !important;
+}
+.tabbrowser-tab {
+	-moz-appearance: tab !important;
+	height: 1em !important;
+	background-image: none !important;
+}
+.tabbrowser-tab:hover .tab-background-middle {
+	background: #333333 !important;
+}
+.tabbrowser-tab[selected="true"] {
+	-moz-appearance: tab !important;
+	font-weight: bold !important;
+}
+.tabbrowser-tab[selected="true"] .tab-background-middle {
+	background: #444444 !important;
+}
+.tab-background-middle {
+	background-image: none !important;
+	margin: 0em !important;
+}
+.tab-background-start {
+	display: none !important;
+}
+.tab-background-end {
+	display: none !important;
+}
+.tab-background {
+	background-image: none !important;
+	margin: 0em !important;
+}
+tabs .arrowscrollbox-scrollbox {
+	padding: 0em !important;
+}
+#back-button {
+	display: none !important;
+}
+#forward-button {
+	display: none !important;
+}
+#tabbrowser-tabs:before {
+	-moz-binding: initial !important;
+	background-image: none !important;
+	display: -moz-box !important;
+}
+tab {
+	background-image: none !important;
+}
+#urlbar {
+	margin-left: 0.5em !important;
+}
+#nav-bar {
+	border-top: 1px #aaa solid !important;
+	height: 2em !important;
+	background-image: none !important;
+	box-shadow: none !important;
+}
+#content-deck {
+	border-top: 1px #aaa solid !important;
+}
+#nav-bar * {
+	margin-top: 0em !important;
+	margin-bottom: 0em !important;
+	padding-top: 0em !important;
+	padding-bottom: 0em !important;
+}
+menubar > menu { color: #dcdcdc !important; } menubar > menu[_moz-menuactive="true"][open="false"] { color: #dcdcdc !important; } menubar > menu[_moz-menuactive="true"][open="true"] { color: #ffffff !important; } /* MenuColors, Added by QtCurve -- do not remove */

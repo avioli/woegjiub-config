@@ -1,0 +1,93 @@
+@namespace url(http://www.w3.org/1999/xhtml);
+/* add "night" class to html to give site night mode */
+html.night a {
+    color: #77F;
+    background-color: #000;
+}
+
+html.night :not(a) {
+    color: #aaa;
+    background-color: #000;
+    border-color: #cdcdcd;
+}
+
+/* Generalised one, fixes most sites */
+@-moz-document domain("project.cis.utas.edu.au"),
+               domain("kickass.to"),
+               domain("thepiratebay.se"),
+               domain("theguardian.com"),
+               domain("phoronix.com"),
+               domain("lwn.net"),
+               url-prefix("about:"),
+               url-prefix("dactyl:") {
+    a {
+        color: #77F !important;
+        background-color: #000 !important;
+    }
+    html, body, div, h1, h2, p, table :not(a), #newtab-scrollbox {
+        color: #aaa !important;
+        background-color: #000 !important;
+        border-color: #cdcdcd !important;
+    }
+    body {
+        border: none !important;
+    }
+}
+
+/* Guardian-specific tweaks */
+@-moz-document domain("theguardian.com") {
+    div, a, ul, span {
+        background: none !important;
+    }
+    .promo-component {
+        border: none !important;
+        background-color: #000 !important;
+    }
+    .crumb-wrapper {
+        border-top: 1px solid #cdcdcd !important;
+        border-bottom: 1px solid #cdcdcd !important;
+    }
+}
+/* OSNews-specific tweaks */
+@-moz-document domain("osnews.com") {
+    * { font-family: "Liberation Sans" !important; }
+    html {
+        background-color: #000;
+        color: #CCC;
+    }
+    body, .item, .cquote {
+        background: #000 !important;
+    }
+    #header {
+        background-repeat: repeat-x;
+    }
+    #main :not(a), #main2 :not(a) {
+        color: #CCC !important;
+    }
+    #sidebar a {
+        color: #66F;
+    }
+    #main a, #main2 a {
+        color: #050;
+    }
+}
+
+/* media-wiki specialised mode */
+@-moz-document domain("archlinux.org"),
+               domain("wikipedia.org") {
+    body, code, .mw-body-primary div, .mw-body-primary h2,
+    .mw-body-primary, .mw-headline, pre, table, span,
+    .portlet .pBody, .portlet h3, td, .box, #actionlist,
+    #mw-head, #content, #toc, h2, th, #catlinks {
+        color: #aaa !important;
+        background-color: #000 !important;
+    }
+    #globalWrapper a, #mw-panel a, #content a, #footer a,
+    #mw-head a {
+        color: #77F !important;
+        background-color: #000 !important;
+    }
+    td {
+        border: 1px #888 solid !important;
+    }
+}

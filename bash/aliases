@@ -11,8 +11,9 @@ alias ramused="ps -u $LOGNAME -o rss,command | grep -v peruser | awk '{sum+=$1} 
 alias scan="scanimage --format=tiff >"
 alias ssize="sudo du -sh --exclude="/home" --exclude="/mnt" --exclude="/srv" / 2>/dev/null"
 alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
-# We're still using python2
+alias lsblkv="lsblk -o name,size,type,fstype,ro,mountpoint,label,uuid,partuuid"
 alias mkvenv="virtualenv2 venv"
+alias mutt="mutt -F $XDG_CONFIG_HOME/mutt/muttrc"
 
 # South Migration Helper
 function mig(){
