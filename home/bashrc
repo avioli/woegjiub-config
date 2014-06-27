@@ -55,6 +55,9 @@
     if [ -d $XDG_CONFIG_HOME/bash/scripts/ ]; then
         export PATH="$XDG_CONFIG_HOME/bash/scripts/:${PATH}"
     fi
+    if [ -d $XDG_DATA_HOME/bash/scripts/ ]; then
+        export PATH="$XDG_DATA_HOME/bash/scripts/:${PATH}"
+    fi
     if [ -d $XDG_CONFIG_HOME/bash/functions/ ]; then
         for f in $XDG_CONFIG_HOME/bash/functions/*; do source $f; done
     fi

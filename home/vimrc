@@ -60,6 +60,8 @@
 				Bundle 'groenewege/vim-less'
 			" Prolog
 				Bundle 'adimit/prolog.vim'
+			" CSV
+				Bundle 'csv.vim'
 		" Syntax Testing
 			Bundle 'scrooloose/syntastic'
 				let g:syntastic_auto_loc_list=1
@@ -94,6 +96,7 @@
 	filetype plugin indent on				" Enable filetype-specific indentation
 	set list								" Show whitespace
 	set listchars=tab:│\ ,trail:-			" Show these whitespaces by default
+	set clipboard=unnamedplus				" Use system clipboard by default
 
 " Folding settings
 	set foldmethod=indent					" Enable Folding
