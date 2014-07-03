@@ -130,6 +130,7 @@
 	set noswapfile							" Stop littering these things
 	set viminfo+=n$HOME/.cache/vim/history	" Less things in home
 	set tabpagemax=100
+	set iskeyword-=_						" Stop using _ in words
 
 " UI Settings
 	set showcmd								" Shows Current Command
