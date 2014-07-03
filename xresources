@@ -12,6 +12,8 @@ Xft.hintstyle:  hintfull
 URxvt.scrollBar:            false
 URxvt*scrollWithBuffer:     true
 URxvt*scrollTtyKeypress:    true
+URxvt.keysym.Shift-Up:      command:\033]720;1\007
+URxvt.keysym.Shift-Down:    command:\033]721;1\007
 URxvt*saveLines:            65535
 URxvt.perl-ext-common:      default,vtwheel,clipboard,url-select,keyboard-select,matcher
 URxvt.url-select.launcher:  firefox
@@ -27,7 +29,7 @@ URxvt.font:                 xft:Liberation Mono-9:style=Regular,\
                             [codeset=JISX0208]xft:HanaMinA:style=Regular
 URxvt.letterSpace:          -1
 URxvt.lineSpace:            -1
-URxvt.depth:                32
+URxvt.depth:                16
 
 ! Colours
 URxvt*foreground:           #B2B2B2
