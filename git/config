@@ -1,9 +1,13 @@
 [user]
-	email = woegjiub@woegjiub.com
-	name = woegjiub
+	name = Chris Darko
+	email = chris@ionata.com.au
 [push]
 	default = simple
 [color]
+	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
 	all = auto
 [color "diff"]
 	whitespace = "red reverse"
@@ -12,5 +16,9 @@
 [alias]
 	quick-amend = !VISUAL=/bin/true git commit --amend
 	hist = log --graph --date=short --all --date-order
+	st = status -sb
 	sync = !git pull --rebase && git push
 	wdiff = diff --color-words
+	merge-to = "!f() { local DEST=$1 ; shift ; local CURRENT=`git rev-parse --abbrev-ref HEAD` && git checkout "$DEST" && git merge "$CURRENT" $@ && git checkout "$CURRENT"; unset CURRENT; }; f"
+[core]
+	excludesfile = ~/.config/git/gitignore
