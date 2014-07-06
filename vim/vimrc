@@ -17,6 +17,7 @@
 		" Git
 				Bundle 'tpope/vim-fugitive'
 				Bundle 'tpope/vim-git'
+				Bundle 'airblade/vim-gitgutter'
 				:command! Gpush Git push origin master
 		" Interface/Navigation addons
 			" Note Taking
@@ -31,6 +32,8 @@
 					map <leader>oq :s/^\(\t*\:\)\(\d\+\)/\1\ \ \ \ \2/<cr>gvgqgv:s/^\(\t*:\)\ \ \ \ \(\d\+\.*\ \)/\1\2/<cr>gv:s/^\(\t*\):/\1</<cr>gv:s/^\t*<\s*\n//<cr>:noh<cr>
 					" Mapping to swap from wrapping to static text in V-block
 					map <leader>os :s/^\(\t*\):/\1</<cr>:noh<cr>
+			" Text alignment
+				Bundle 'godlygeek/tabular'
 			" Revision History
 				Bundle 'sjl/gundo.vim'
 					map <leader>g :GundoToggle<CR>
@@ -81,6 +84,8 @@
 				Bundle 'tpope/vim-surround'
 			" Intellisense-like semantic completion
 				Bundle 'Valloric/YouCompleteMe'
+			" Quicker Commenting/Uncommenting
+				Bundle 'scrooloose/nerdcommenter'
 
 " Indentation Settings
 	set shiftround							" Indents rounded to shiftwidths

@@ -1,7 +1,7 @@
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
-.tabbrowser-tab:not([selected="true"]) {
-	color: #CCCCCC !important;
+* {
+	border: none !important;
 }
 .tabbrowser-tab {
 	-moz-appearance: none !important;
@@ -19,9 +19,7 @@
 }
 .tabbrowser-tab[selected="true"] {
 	font-weight: bold !important;
-}
-.tabbrowser-tab[selected="true"] .tab-background-middle {
-	background: #444444 !important;
+	z-index: 0 !important;
 }
 .tab-background-middle {
 	background-image: none !important;
@@ -70,4 +68,3 @@ tab {
 #content-deck {
 	border-top: none !important;
 }
-menubar > menu { color: #141312 !important; } menubar > menu[_moz-menuactive="true"][open="false"] { color: #141312 !important; } menubar > menu[_moz-menuactive="true"][open="true"] { color: #ffffff !important; } /* MenuColors, Added by QtCurve -- do not remove */
