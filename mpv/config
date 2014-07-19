@@ -1,0 +1,52 @@
+##################
+# video settings #
+##################
+# default configuration that applies to every file
+[default]
+
+# Use OpenGL video by default
+vo=opengl-hq
+
+# Centre the video horizontally
+video-align-x=0
+
+##################
+# audio settings #
+##################
+# Languages
+alang=jpn,ja,eng,en
+
+volume=20
+
+#####################
+# subtitle settings #
+#####################
+# embedded font files
+sub-ass=yes
+embeddedfonts=yes
+
+osd-font='Liberation Sans'
+sub-text-font='Liberation Sans'
+
+# language
+slang=eng,en
+
+##################
+# other settings #
+##################
+# Drop frames to preserve audio/video sync.
+framedrop=yes
+
+# External DVD player location
+dvd-device=/dev/cdrom
+
+# Disable borders
+no-border
+
+# Show time and remaining
+osd-level=3
+osd-color='#66FFFFFF'
+osd-shadow-color='#FFFFFF'
+
+# Shut up the console output
+# really-quiet

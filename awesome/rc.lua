@@ -126,7 +126,7 @@ globalkeys = awful.util.table.join(
             awful.client.focus.byidx( 1)
             if client.focus then client.focus:raise() end
         end),
-    awful.key({ "Mod1"            }, "Tab",
+    awful.key({ modkey,           }, "Tab",
         function ()
             awful.client.focus.byidx( 1)
             if client.focus then client.focus:raise() end
@@ -136,7 +136,7 @@ globalkeys = awful.util.table.join(
             awful.client.focus.byidx(-1)
             if client.focus then client.focus:raise() end
         end),
-    awful.key({ "Mod1", "Shift"   }, "Tab",
+    awful.key({ modkey, "Shift"   }, "Tab",
         function ()
             awful.client.focus.byidx(-1)
             if client.focus then client.focus:raise() end
@@ -148,13 +148,6 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
-    awful.key({ modkey,           }, "Tab",
-        function ()
-            awful.client.focus.history.previous()
-            if client.focus then
-                client.focus:raise()
-            end
-        end),
 
     -- Standard program
     awful.key({ modkey, "Control" }, "r", awesome.restart),
@@ -166,7 +159,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1)      end),
     awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1)         end),
     awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1)         end),
-    -- awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
+    awful.key({ modkey,           }, "+",     function () awful.layout.inc(layouts,  1) end),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
@@ -184,9 +177,9 @@ globalkeys = awful.util.table.join(
     awful.key({ "Control",        }, "XF86AudioPlay",
         function() awful.util.spawn( "/home/darko/.local/share/bash/scripts/mpd-random-pl-album.py" ) end),
     awful.key({ }, "XF86AudioRaiseVolume", function ()
-       awful.util.spawn("amixer set Master 10%+", false) end),
+       awful.util.spawn("amixer set Master 5%+", false) end),
    awful.key({ }, "XF86AudioLowerVolume", function ()
-       awful.util.spawn("amixer set Master 10%-", false) end),
+       awful.util.spawn("amixer set Master 5%-", false) end),
    awful.key({ }, "XF86AudioMute", function ()
        awful.util.spawn("amixer sset Master toggle", false) end),
     awful.key({ modkey            }, "c", function() awful.util.spawn( "localc" ) end),
@@ -212,7 +205,7 @@ clientkeys = awful.util.table.join(
             -- minimized, since minimized clients can't have the focus.
             c.minimized = true
         end),
-    awful.key({ modkey,           }, "m",
+    awful.key({ modkey,           }, "Up",
         function (c)
             c.fullscreen = not c.fullscreen
         end)

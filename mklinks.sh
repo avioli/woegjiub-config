@@ -33,7 +33,7 @@ mkdir -p bash
 mkdir -p less
 mkdir -p vim/view
 
-for var in cddb dbus gstreamer-0.10 mozc; do
+for var in cddb dbus gstreamer-0.10 mozc thumbnails w3m; do
 	if [[ -d $HOME/.$var && ! -L $HOME/.$var ]]; then
 		mv $HOME/.$var $var
 		ln -s `pwd`/$var $HOME/.$var

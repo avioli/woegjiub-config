@@ -1,0 +1,2 @@
+[general]
+hist_file = '$XDG_CACHE_HOME/python/bpythonhist'

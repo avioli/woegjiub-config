@@ -136,6 +136,7 @@
 	set viminfo+=n$HOME/.cache/vim/history	" Less things in home
 	set tabpagemax=100
 	set iskeyword-=_						" Stop using _ in words
+	set spelllang=en_au,de					" English-Aus, German for words
 
 " UI Settings
 	set showcmd								" Shows Current Command
@@ -219,7 +220,7 @@
 		map <leader>{ :call MoveBraces("{")<CR>
 		map <leader>} :call MoveBraces("}")<CR>
 	" Clear search results
-		map <leader>cs :noh<cr>
+		map <leader>cS :noh<cr>
 	" Centers Search results
 		nnoremap n nzz
 		nnoremap N Nzz

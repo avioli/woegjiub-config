@@ -1,0 +1,16 @@
+import os
+import atexit
+import readline
+
+atexit.unregister(readline.write_history_file)
+
+readline_history_file = os.path.join(
+        os.environ['XDG_CACHE_HOME'],
+        'python/python_history')
+
+try:
+    readline.read_history_file(readline_history_file)
+except IOError:
+    pass
+
+atexit.register(readline.write_history_file, readline_history_file)

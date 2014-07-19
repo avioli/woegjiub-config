@@ -105,6 +105,9 @@
         source $HOME/bin/virtualenvwrapper.sh
     fi
 
+# Python Settings
+	export PYTHONSTARTUP=$XDG_CONFIG_HOME/python/pythonrc
+
 # enable autocd
     shopt -s autocd
 
