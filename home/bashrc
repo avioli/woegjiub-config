@@ -105,6 +105,9 @@
         source $HOME/bin/virtualenvwrapper.sh
     fi
 
+# Change sorting to list dotfiles first
+	export LC_COLLATE="C"
+
 # Python Settings
 	export PYTHONSTARTUP=$XDG_CONFIG_HOME/python/pythonrc
 

@@ -183,7 +183,7 @@ globalkeys = awful.util.table.join(
    awful.key({ }, "XF86AudioMute", function ()
        awful.util.spawn("amixer sset Master toggle", false) end),
     awful.key({ modkey            }, "c", function() awful.util.spawn( "localc" ) end),
-    awful.key({ modkey            }, "a", function() awful.util.spawn("anki -b /home/darko/.local/share/anki") end),
+    awful.key({ modkey            }, "a", function() awful.util.spawn("anki -b .local/share/anki") end),
     awful.key({                   }, "XF86Calculator", function() awful.util.spawn( terminal .. " -e bc -iql" ) end),
     awful.key({ modkey            }, "p", function() awful.util.spawn( terminal .. " -e python" ) end),
     awful.key({ modkey            }, "m", function() awful.util.spawn( terminal .. " -e mutt -F .config/mutt/muttrc" ) end),
