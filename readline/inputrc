@@ -1,0 +1,49 @@
+set bell-style none
+set colored-stats on
+set completion-ignore-case on
+set completion-map-case on
+set completion-query-items 1000
+set editing-mode vi
+set enable-keypad on
+set mark-directories on
+set mark-symlinked-directories on
+set match-hidden-files on
+set menu-complete-display-prefix on
+set page-completions off
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+set show-mode-in-prompt on
+set visible-stats on
+
+set keymap vi-command
+TAB: menu-complete
+"\e[Z": menu-complete-backward
+
+set keymap vi-insert
+TAB: menu-complete
+"\e[Z": menu-complete-backward
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line
+"\e[5~": beginning-of-history
+"\e[6~": end-of-history
+"\e[7~": beginning-of-line
+"\e[3~": delete-char
+"\e[2~": quoted-insert
+"\e[5C": forward-word
+"\e[5D": backward-word
+"\e\e[C": forward-word
+"\e\e[D": backward-word
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word
+# for rxvt
+"\e[8~": end-of-line
+
+# Get back emacs bindings in vi mode
+"\C-L": clear-screen
+"\C-B": backward-char
+"\C-F": forward-char
+"\C-A": beginning-of-line
+"\C-E": end-of-line
+"\M-B": backward-word
+"\M-F": forward-word
+"\C-K": kill-whole-line

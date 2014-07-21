@@ -111,14 +111,23 @@
 # Python Settings
 	export PYTHONSTARTUP=$XDG_CONFIG_HOME/python/pythonrc
 
-# enable autocd
-    shopt -s autocd
+# Make readline XDG_BASEDIR compliant
+	export INPUTRC=$XDG_CONFIG_HOME/readline/inputrc
+
+# Shell Options
+	shopt -s autocd     # enable autocd
+	shopt -s cdspell    # spelling correction for cd
+	shopt -s dotglob    # enable globbing for dotfiles
+	shopt -s extglob    # extended globbing
+	shopt -s nocaseglob # ignore cases for globbing filenames
+
 
 # vim by default
     export VISUAL='/usr/bin/vim'
     export EDITOR='/usr/bin/vim'
     alias vi='vim -p'
     export VIMINIT='source $XDG_CONFIG_HOME/vim/vimrc'
+    set -o vi
 
 if echo "$-" | grep -q 'i' ; then
 	bind '"\e[A": history-search-backward'
