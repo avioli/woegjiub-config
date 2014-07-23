@@ -2,7 +2,10 @@ import os
 import atexit
 import readline
 
-atexit.unregister(readline.write_history_file)
+try:
+    atexit.unregister(readline.write_history_file)
+except AttributeError:
+    pass
 
 readline_history_file = os.path.join(
         os.environ['XDG_CACHE_HOME'],
