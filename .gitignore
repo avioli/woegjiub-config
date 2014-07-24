@@ -22,7 +22,9 @@ oxygen-gtk/
 pulse/
 qtcurve/
 qupzilla/
-ranger/
+ranger/bookmarks
+ranger/history
+ranger/tagged
 sensitive/
 Synergy/
 Trolltech.conf
