@@ -17,6 +17,12 @@ alias lsblkv="lsblk -o name,size,type,fstype,ro,mountpoint,label,uuid,partuuid"
 alias mkvenv="virtualenv2 venv"
 alias mutt="mutt -F $XDG_CONFIG_HOME/mutt/muttrc"
 
+# Transcode FLAC to MP3 V0
+function mkmp3s(){
+	for a in *.flac; do
+		< /dev/null ffmpeg -i "$a" -qscale:a 0 "${a[@]/%flac/mp3}"
+	done
+}
 # South Migration Helper
 function mig(){
 	python manage.py schemamigration "$@" --auto;

@@ -9,7 +9,6 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
-require("volume")
 local configdir = awful.util.getdir("config")
 
 -- {{{ Error handling
@@ -40,6 +39,9 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 beautiful.init(configdir .. "/theme.lua")
+
+-- Widgets are pulled in after the theme to keep theme settings
+require("volume")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
