@@ -7,9 +7,12 @@ chromium/
 dconf/
 enchant/
 fcitx/
+firefox/
 gconf/
+gnupg/
 gtk-2.0/
 gtk-3.0/
+ImageMagick/
 kde
 keepassx/
 libreoffice/
@@ -26,7 +29,9 @@ ranger/bookmarks
 ranger/history
 ranger/tagged
 sensitive/
+ssh/
 Synergy/
+tagaini.net/
 Trolltech.conf
 xbuild/
 vlc/

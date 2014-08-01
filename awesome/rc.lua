@@ -170,14 +170,14 @@ globalkeys = awful.util.table.join(
 
     -- Launchers
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
-    awful.key({ modkey,           }, "f", function () awful.util.spawn("firefox") end),
+    awful.key({ modkey,           }, "f", function () awful.util.spawn("firefox -profile .config/firefox") end),
     awful.key({ modkey,           }, "g", function () awful.util.spawn("chromium") end),
     awful.key({                   }, "XF86AudioPlay",
-        function() awful.util.spawn( "ncmpcpp -c /home/darko/.config/ncmpcpp/config toggle" ) end),
+        function() awful.util.spawn( "ncmpcpp -c .config/ncmpcpp/config toggle" ) end),
     awful.key({ modkey,           }, "XF86AudioPlay",
-        function() awful.util.spawn( terminal .. " -e ncmpcpp -c '/home/darko/.config/ncmpcpp/config'" ) end),
+        function() awful.util.spawn( terminal .. " -e ncmpcpp -c '.config/ncmpcpp/config'" ) end),
     awful.key({ "Control",        }, "XF86AudioPlay",
-        function() awful.util.spawn( "/home/darko/.local/share/bash/scripts/mpd-random-pl-album.py" ) end),
+        function() awful.util.spawn( ".local/share/bash/scripts/mpd-random-pl-album.py" ) end),
     awful.key({ }, "XF86AudioRaiseVolume", function ()
        awful.util.spawn("amixer set Master 5%+", false) end),
    awful.key({ }, "XF86AudioLowerVolume", function ()

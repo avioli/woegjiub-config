@@ -1,32 +1,22 @@
+alias drep="grep -riI --exclude-dir=fixtures --exclude-dir=venv --exclude-dir=migrations --exclude-dir=static --exclude=*.json 2>/dev/null"
 alias feh="feh -Z. "
 alias fmusic="find -type f ! -iname '*.flac' -a ! -iname '*.mp3' -a ! -iname '*.ogg'"
 alias ftypes="find . ! -path '*/.git/*' -type f -iname '*.*' | rev | cut -d . -f1 | rev | sort | uniq -ic | sort -rn"
-alias gccu="gcc -Wall -ansi -pedantic -O"
-alias gpro="gprolog --consult-file"
-alias drep="grep -riI --exclude-dir=fixtures --exclude-dir=venv --exclude-dir=migrations --exclude-dir=static --exclude=*.json 2>/dev/null"
+alias grep='grep --color=auto'
+alias ll="ls -lAp"
 alias ls="ls -hF --color=always --group-directories-first"
-alias la="ls -lAp"
-alias lsa="ls -lAp | grep -v '/.cache/\|/.local/share/\|/.config/'"
-alias ll="ls -lAp | grep -v '>'"
+alias lsblkv="lsblk -o name,size,type,fstype,ro,mountpoint,label,uuid,partuuid"
 alias pipudate="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U"
 alias ramused="ps -u $LOGNAME -o rss,command | grep -v peruser | awk '{sum+=$1} END {print sum/1024}'"
 alias scan="scanimage --format=tiff >"
 alias ssize="sudo du -sh --exclude="/home" --exclude="/mnt" --exclude="/srv" / 2>/dev/null"
-alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
-alias lsblkv="lsblk -o name,size,type,fstype,ro,mountpoint,label,uuid,partuuid"
-alias mkvenv="virtualenv2 venv"
-alias mutt="mutt -F $XDG_CONFIG_HOME/mutt/muttrc"
+alias vi='vim -p'
 
 # Transcode FLAC to MP3 V0
 function mkmp3s(){
 	for a in *.flac; do
 		< /dev/null ffmpeg -i "$a" -qscale:a 0 "${a[@]/%flac/mp3}"
 	done
-}
-# South Migration Helper
-function mig(){
-	python manage.py schemamigration "$@" --auto;
-	python manage.py migrate "$@";
 }
 function sizefromtype(){
 	find -iname "*.$@" -print0 | du --files0-from - -c -sh | tail -1 | sed 's/\([^ tab]\+\).*/\1 /'
