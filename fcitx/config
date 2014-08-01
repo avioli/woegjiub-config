@@ -119,7 +119,7 @@ CandidateWordNumber=10
 # Show Input Method Hint After Input method changed
 # Available Value:
 # True False
-ShowInputWindowAfterTriggering=False
+#ShowInputWindowAfterTriggering=True
 # Show Input Method Hint After Input method changed and Focus in
 # Available Value:
 # True False
