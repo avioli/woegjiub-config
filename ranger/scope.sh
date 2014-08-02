@@ -39,6 +39,9 @@ dump() { echo "$output"; }
 # a common post-processing function used after most commands
 trim() { head -n "$maxln"; }
 
+# remove leading blank lines
+trimtop() { sed '/./,$!d'; }
+
 # wraps highlight to treat exit code 141 (killed by SIGPIPE) as success
 highlight() { command highlight "$@"; test $? = 0 -o $? = 141; }
 
@@ -61,6 +64,7 @@ case "$extension" in
         try transmission-show "$path" && { dump | trim; exit 5; } || exit 1;;
     # HTML Pages:
     htm|html|xhtml)
+        try html2text -style compact "$path" && { dump | trimtop | trim | fmt -s -w $width; exit 4; }
         try w3m    -dump "$path" && { dump | trim | fmt -s -w $width; exit 4; }
         try lynx   -dump "$path" && { dump | trim | fmt -s -w $width; exit 4; }
         try elinks -dump "$path" && { dump | trim | fmt -s -w $width; exit 4; }
