@@ -11,8 +11,7 @@
     export PS1="\u@\h:\w\\$ "
 
 # enable programmable completion features
-    [ -f /etc/bash_completion ] && ! shopt -oq posix &&
-        . /etc/bash_completion
+    [ -f /etc/bash_completion ] && ! shopt -oq posix && . /etc/bash_completion
 
 # Set Shell options to increase functionality
     shopt -s autocd               # Enable changing directory without cd

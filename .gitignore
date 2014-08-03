@@ -1,6 +1,7 @@
 akonadi/
 autostart/
 bash/saliases
+brightness
 calibre/
 cantata/
 chromium/
@@ -20,6 +21,8 @@ lightum/
 menus/
 mpdscribble/
 MusicBrainz/
+mutt/account-*
+mutt/passwords*
 ncmpcpp/error.log
 oxygen-gtk/
 pulse/
