@@ -110,6 +110,7 @@
 	endif
 	set fo+=t								" Enables autowrap
 	set wrap								" Enables line wrapping for long lines
+	set breakindent							" For soft wraps, indent newlines
 	filetype on								" Enable filetype-specific settings
 	filetype plugin indent on				" Enable filetype-specific indentation
 	set list								" Show whitespace

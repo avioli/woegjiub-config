@@ -20,8 +20,9 @@ cd $XDG_DATA_HOME
 mkdir -p bash/scripts
 mkdir -p vim/bundle
 
-for var in dbus gnupg mozilla pki ssh; do
+for var in mozilla pki; do
 	if [[ -d $HOME/.$var && ! -L $HOME/.$var ]]; then
+		echo "  Moving ~/.$var to XDG_DATA_HOME"
 		mv $HOME/.$var $var
 		ln -s `pwd`/$var $HOME/.$var
 	fi
@@ -33,8 +34,9 @@ mkdir -p bash
 mkdir -p less
 mkdir -p vim/view
 
-for var in adobe cddb dbus macromedia mozc thumbnails w3m; do
+for var in adobe cddb dbus macromedia; do
 	if [[ -d $HOME/.$var && ! -L $HOME/.$var ]]; then
+		echo "  Moving ~/.$var to XDG_CACHE_HOME"
 		mv $HOME/.$var $var
 		ln -s `pwd`/$var $HOME/.$var
 	fi

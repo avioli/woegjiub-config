@@ -1,0 +1,19 @@
+#!/bin/sh
+[ -d /etc/X11/xinit/xinitrc.d ] &&
+    for f in /etc/X11/xinit/xinitrc.d/*; do
+        [ -x "$f" ] && . "$f"
+    done &&
+        unset f
+
+# Load the IME
+[ -f /usr/bin/fcitx ] &&
+    export GTK_IM_MODULE=fcitx &&
+    export QT_IM_MODULE=fcitx &&
+    export XMODIFIERS="@im=fcitx" &&
+    fcitx
+
+[ -f /usr/bin/numlockx ] && numlockx&                    # Activate Numlock
+[ -f /usr/bin/mpd ] && mpd $XDG_CONFIG_HOME/mpd/mpd.conf # Start MPD
+setxkbmap -option caps:escape                            # Bind ESC to CAPS
+xrdb -merge $XDG_CONFIG_HOME/X11/xresources              # Load RXVT settings
+[ -f /usr/bin/awesome ] && exec awesome                  # Open the WM

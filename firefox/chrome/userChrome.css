@@ -1,4 +1,4 @@
-#PanelUI-button,
+/*#PanelUI-button,
 #bookmarks-menu-button,
 #downloads-button,
 #home-button,
@@ -9,7 +9,7 @@
 #forward-button {
 	display: none !important;
 }
-
+*/
 #identity-box,
 #urlbar-reload-button {
 	display: none !important;

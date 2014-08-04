@@ -1,135 +1,61 @@
-# If not running interactively, don't do anything
-    [ -z "$PS1" ] && return
+[ -z "$PS1" ] && return # If not running interactively, don't do anything
+[ -f /etc/bashrc ] && /etc/bashrc #Source global bashrc if required
 
-# set the XDG Base Directory Locations
+# set the XDG Base Directory Locations, load compliance hacks
     export XDG_CONFIG_HOME=$HOME/.config
     export XDG_DATA_HOME=$HOME/.local/share
     export XDG_CACHE_HOME=$HOME/.cache
-
-#Source global bashrc if required
-    if [ -f /etc/bashrc ]; then
-        . /etc/bashrc
-    fi
+    [ -f $XDG_CONFIG_HOME/bash/xdg ] && . $XDG_CONFIG_HOME/bash/xdg
 
 # Preferred Prompt Setting
-    PS1="\u@\h:\w\\$ "
-
-# History
-    HISTCONTROL=ignoreboth # ignore duplicate/blank lines in history
-    shopt -s histappend # append to history, don't overwrite
-    HISTSIZE=1000
-    HISTFILESIZE=2000
-    HISTFILE=$XDG_CACHE_HOME/bash/history
-    export LESSHISTFILE=$XDG_CACHE_HOME/less/history
-
-# UI
-    shopt -s checkwinsize # adjust lines/cols to window size after commands if need
-    # enable more colours
-    if [ -x /usr/bin/dircolors ]; then
-        test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-        alias ls='ls -hF --color=auto'
-        alias grep='grep --color=auto'
-        alias fgrep='fgrep --color=auto'
-        alias egrep='egrep --color=auto'
-        man() {
-            env LESS_TERMCAP_mb=$(printf "\e[1;31m") \
-                LESS_TERMCAP_md=$(printf "\e[1;31m") \
-                LESS_TERMCAP_me=$(printf "\e[0m") \
-                LESS_TERMCAP_se=$(printf "\e[0m") \
-                LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
-                LESS_TERMCAP_ue=$(printf "\e[0m") \
-                LESS_TERMCAP_us=$(printf "\e[1;32m") \
-                man "$@"
-        }
-    fi
-
-# Alias definitions.
-    if [ -f $XDG_CONFIG_HOME/bash/aliases ]; then
-        . $XDG_CONFIG_HOME/bash/aliases
-    fi
-# Sensitive alias definitions.
-    if [ -f $XDG_CONFIG_HOME/bash/saliases ]; then
-        . $XDG_CONFIG_HOME/bash/saliases
-    fi
-
-# Scripts folders
-    if [ -d $XDG_CONFIG_HOME/bash/scripts/ ]; then
-        export PATH="$XDG_CONFIG_HOME/bash/scripts/:${PATH}"
-    fi
-    if [ -d $XDG_DATA_HOME/bash/scripts/ ]; then
-        export PATH="$XDG_DATA_HOME/bash/scripts/:${PATH}"
-    fi
-    if [ -d $XDG_CONFIG_HOME/bash/functions/ ]; then
-        for f in $XDG_CONFIG_HOME/bash/functions/*; do source $f; done
-    fi
+    export PS1="\u@\h:\w\\$ "
 
 # enable programmable completion features
-    if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-        . /etc/bash_completion
-    fi
+    [ -f /etc/bash_completion ] && ! shopt -oq posix && . /etc/bash_completion
 
-# django settings default
-    export DJANGO_SETTINGS_MODULE=webapp.settings.development
+# Set Shell options to increase functionality
+    shopt -s autocd               # Enable changing directory without cd
+    shopt -s cdspell              # Spelling correction for cd
+    shopt -s checkwinsize         # Adjust text to window size after commands
+    shopt -s dirspell             # Spelling correction for dirs
+    shopt -s dotglob              # Enable globbing for dotfiles
+    shopt -s extglob              # Extended globbing
+    shopt -s histappend           # Append to history, don't overwrite
+    shopt -s histreedit           # Re-edit failed history substitutions
+    shopt -s nocaseglob           # Ignore cases for globbing filenames
+    export HISTCONTROL=ignoreboth # Ignore duplicate/blank lines in history
+    export HISTSIZE=10000         # 10K command in history
+    export LC_COLLATE="C"         # Change sorting to list dotfiles first
+    export EDITOR='/usr/bin/vim'  # Use vim for light edits
+    export VISUAL='/usr/bin/vim'  # Use vim for heavy edits
 
-# Locally installed executables
-    if [ -d $HOME/bin ]; then
-        export PATH="$HOME/bin:$PATH"
-    fi
+# Colour the terminal
+    [ -x /usr/bin/dircolors ] && eval "$(dircolors -b)"
+    export LESS=-R
+    export LESS_TERMCAP_mb=$(printf "\e[1;31m")
+    export LESS_TERMCAP_md=$(printf "\e[1;31m")
+    export LESS_TERMCAP_me=$(printf "\e[0m")
+    export LESS_TERMCAP_se=$(printf "\e[0m")
+    export LESS_TERMCAP_so=$(printf "\e[1;44;33m")
+    export LESS_TERMCAP_ue=$(printf "\e[0m")
+    export LESS_TERMCAP_us=$(printf "\e[1;32m")
 
-# Local install of NPM
-    if [ -d $HOME/lib/node_modules ]; then
-        export NODE_PATH="$HOME/lib/node_modules:$NODE_PATH"
-    fi
+# Load Aliases
+    [ -f "$XDG_CONFIG_HOME"/bash/aliases ] && . $XDG_CONFIG_HOME/bash/aliases
+    [ -f "$XDG_CONFIG_HOME"/bash/saliases ] && . $XDG_CONFIG_HOME/bash/saliases
 
-# Local install of NPM
-    if [ -d $HOME/.local/share/npm/bin ]; then
-        export PATH="$HOME/.local/share/npm/bin:$PATH"
-    fi
-    export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
-
-# PIP Settings
-	export PIP_CONFIG_FILE="$XDG_CONFIG_HOME/pip/config"
-	export PIP_DOWNLOAD_CACHE="$XDG_CACHE_HOME/pip/downloads"
-
-	export KDEHOME="$XDG_CONFIG_HOME/kde"
-	export GSTREGISTRY="$XDG_DATA_HOME/gstreamer/registry.bin"
-
-# Virtualenv path
-    if [ -d $XDG_DATA_HOME/virtualenvs ]; then
-        export WORKON_HOME=$XDG_DATA_HOME/virtualenvs
-    fi
-    if [ -f /usr/bin/virtualenvwrapper.sh ]; then
-        source /usr/bin/virtualenvwrapper.sh
-    elif [ -f $HOME/bin/virtualenvwrapper.sh ]; then
-        export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
-        source $HOME/bin/virtualenvwrapper.sh
-    fi
-
-# Change sorting to list dotfiles first
-	export LC_COLLATE="C"
-
-# Python Settings
-	export PYTHONSTARTUP=$XDG_CONFIG_HOME/python/pythonrc
-
-# Make readline XDG_BASEDIR compliant
-	export INPUTRC=$XDG_CONFIG_HOME/readline/inputrc
-
-# Shell Options
-	shopt -s autocd     # enable autocd
-	shopt -s cdspell    # spelling correction for cd
-	shopt -s dotglob    # enable globbing for dotfiles
-	shopt -s extglob    # extended globbing
-	shopt -s nocaseglob # ignore cases for globbing filenames
-
-
-# vim by default
-    export VISUAL='/usr/bin/vim'
-    export EDITOR='/usr/bin/vim'
-    alias vi='vim -p'
-    export VIMINIT='source $XDG_CONFIG_HOME/vim/vimrc'
-    set -o vi
-
-if echo "$-" | grep -q 'i' ; then
-	bind '"\e[A": history-search-backward'
-	bind '"\e[B": history-search-forward'
-fi
+# Append Additional Executables to $PATH
+    # Bash
+        [ -d $XDG_CONFIG_HOME/bash/scripts/ ] &&
+            export PATH="$XDG_CONFIG_HOME/bash/scripts/:${PATH}"
+        [ -d $XDG_DATA_HOME/bash/scripts/ ] &&
+            export PATH="$XDG_DATA_HOME/bash/scripts/:${PATH}"
+        [ -d $XDG_CONFIG_HOME/bash/functions/ ] &&
+            for f in $XDG_CONFIG_HOME/bash/functions/*; do . $f; done
+        [ -d $XDG_DATA_HOME/bash/functions/ ] &&
+            for f in $XDG_DATA_HOME/bash/functions/*; do . $f; done
+    # Compiled
+        [ -d $XDG_DATA_HOME/bin ] && export PATH="$XDG_DATA_HOME/bin:${PATH}"
+    # NPM
+        [ -d $XDG_DATA_HOME/npm/node_modules ] &&
+            export NODE_PATH="$XDG_DATA_HOME/npm/node_modules:$NODE_PATH"

@@ -1,0 +1,44 @@
+# General settings
+set header_cache     = $XDG_CACHE_HOME/mutt
+set message_cachedir = "$XDG_CACHE_HOME/mutt"
+set imap_keepalive   = 300
+set mail_check       = 30
+set timeout          = 10
+unset imap_passive
+set imap_idle
+set send_charset     ="utf-8"
+
+#Sidebar settings
+set sidebar_visible      = yes
+set sidebar_width        = 30
+set sidebar_folderindent = yes
+set sidebar_sort         = yes
+set sidebar_shortpath    = yes
+macro index b '<enter-command>toggle sidebar_visible<enter><refresh>'
+macro pager b '<enter-command>toggle sidebar_visible<enter><redraw-screen>'
+# Ctrl-n, Ctrl-p to select next, previous folder.
+# Ctrl-o to open selected folder.
+bind index,pager \CP sidebar-prev
+bind index,pager \CN sidebar-next
+bind index,pager \CO sidebar-open
+bind index "^" imap-fetch-mail
+
+#Pager settings
+set pager_index_lines = 10
+set sort=threads
+
+# Attachment settings
+set mailcap_path = "$XDG_CONFIG_HOME/mutt/mailcap.mutt"
+auto_view text/html
+alternative_order text/plain text/html
+macro attach 'V' "<pipe-entry>cat >$XDG_CACHE_HOME/mutt/mail.html && firefox $XDG_CACHE_HOME/mutt/mail.html 2>/dev/null && rm ~/.cache/mutt/mail.html<enter>"
+
+# Passwords
+source "$XDG_CONFIG_HOME/mutt/passwords"
+
+# Accounts
+source `FILE="$XDG_CONFIG_HOME/mutt/account-personal-primary";    if [ ! -s "$FILE" ];  then FILE=/dev/null;  fi;  echo "$FILE"`
+source `FILE="$XDG_CONFIG_HOME/mutt/account-personal-pseudonym";  if [ ! -s "$FILE" ];  then FILE=/dev/null;  fi;  echo "$FILE"`
+source `FILE="$XDG_CONFIG_HOME/mutt/account-work-primary";        if [ ! -s "$FILE" ];  then FILE=/dev/null;  fi;  echo "$FILE"`
+source `FILE="$XDG_CONFIG_HOME/mutt/account-work-support";        if [ ! -s "$FILE" ];  then FILE=/dev/null;  fi;  echo "$FILE"`
+source `FILE="$XDG_CONFIG_HOME/mutt/account-work-maintenance";    if [ ! -s "$FILE" ];  then FILE=/dev/null;  fi;  echo "$FILE"`

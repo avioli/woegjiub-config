@@ -1,0 +1,6 @@
+text/html; firefox %s;
+text/html; html2text -style compact %s | sed '/./,$!d'; copiousoutput
+image/jpeg; feh %s;
+image/png; feh %s;
+image/gif; firefox %s;
+application/pdf; zathura %s;
