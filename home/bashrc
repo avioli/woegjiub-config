@@ -47,4 +47,4 @@
         for f in $XDG_CONFIG_HOME/bash/functions/*; do . $f; done
 
 # Append Additional Executables to $PATH
-    PATH="$XDG_DATA_HOME/bin:${PATH}"
+    [[ :$PATH: != *:"$HOME/.local/bin":* ]] && PATH="$HOME/.local/bin:${PATH}"
