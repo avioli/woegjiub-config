@@ -1,0 +1,3 @@
+root    = $HOME/.local/lib/node_modules
+binroot = $HOME/.local/bin
+manroot = $HOME/.local/share/man

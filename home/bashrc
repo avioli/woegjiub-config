@@ -40,22 +40,11 @@
     export LESS_TERMCAP_ue=$(printf "\e[0m")
     export LESS_TERMCAP_us=$(printf "\e[1;32m")
 
-# Load Aliases
+# Load Aliases and Functions
     [ -f "$XDG_CONFIG_HOME"/bash/aliases ] && . $XDG_CONFIG_HOME/bash/aliases
     [ -f "$XDG_CONFIG_HOME"/bash/saliases ] && . $XDG_CONFIG_HOME/bash/saliases
+    [ -d $XDG_CONFIG_HOME/bash/functions/ ] &&
+        for f in $XDG_CONFIG_HOME/bash/functions/*; do . $f; done
 
 # Append Additional Executables to $PATH
-    # Bash
-        [ -d $XDG_CONFIG_HOME/bash/scripts/ ] &&
-            export PATH="$XDG_CONFIG_HOME/bash/scripts/:${PATH}"
-        [ -d $XDG_DATA_HOME/bash/scripts/ ] &&
-            export PATH="$XDG_DATA_HOME/bash/scripts/:${PATH}"
-        [ -d $XDG_CONFIG_HOME/bash/functions/ ] &&
-            for f in $XDG_CONFIG_HOME/bash/functions/*; do . $f; done
-        [ -d $XDG_DATA_HOME/bash/functions/ ] &&
-            for f in $XDG_DATA_HOME/bash/functions/*; do . $f; done
-    # Compiled
-        [ -d $XDG_DATA_HOME/bin ] && export PATH="$XDG_DATA_HOME/bin:${PATH}"
-    # NPM
-        [ -d $XDG_DATA_HOME/npm/node_modules ] &&
-            export NODE_PATH="$XDG_DATA_HOME/npm/node_modules:$NODE_PATH"
+    PATH="$XDG_DATA_HOME/bin:${PATH}"
