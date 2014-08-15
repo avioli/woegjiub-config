@@ -12,11 +12,8 @@ alias scan="scanimage --format=tiff >"
 alias ssize="sudo du -sh --exclude="/home" --exclude="/mnt" --exclude="/srv" / 2>/dev/null"
 alias vi='vim -p'
 
-# Transcode FLAC to MP3 V0
-function mkmp3s(){
-	for a in *.flac; do
-		< /dev/null ffmpeg -i "$a" -qscale:a 0 "${a[@]/%flac/mp3}"
-	done
+function command_exists(){
+	command -v "$1" 2>&1 >/dev/null ;
 }
 function sizefromtype(){
 	find -iname "*.$@" -print0 | du --files0-from - -c -sh | tail -1 | sed 's/\([^ tab]\+\).*/\1 /'
