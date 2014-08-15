@@ -12,24 +12,22 @@ alias scan="scanimage --format=tiff >"
 alias ssize="sudo du -sh --exclude="/home" --exclude="/mnt" --exclude="/srv" / 2>/dev/null"
 alias vi='vim -p'
 
-function command_exists(){
-	command -v "$1" 2>&1 >/dev/null ;
-}
-function sizefromtype(){
-	find -iname "*.$@" -print0 | du --files0-from - -c -sh | tail -1 | sed 's/\([^ tab]\+\).*/\1 /'
-}
-function spcgm(){
-	sox --multi-threaded "$@" -n spectrogram -t "$@" -o "$@".png
-}
+# Opens up a vim Session of the name provided
 function vims(){
 	vim -S $XDG_CACHE_HOME/vim/sessions/$1
 }
+
+# Opens in vim all files containing the text given
 function vsopen(){
 	vim -p $(djrep -lir "$@");
 }
+
+# Opens in vim all files whose name contains the text given
 function vfopen(){
 	vim -p $(find -iname "$@");
 }
+
+# opens in vim all files containing the text given, diffed
 function vdiff(){
 	vimdiff $(grep -lir "$@");
 }

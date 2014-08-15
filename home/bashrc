@@ -5,7 +5,7 @@
     export XDG_CONFIG_HOME=$HOME/.config
     export XDG_DATA_HOME=$HOME/.local/share
     export XDG_CACHE_HOME=$HOME/.cache
-    [ -f $XDG_CONFIG_HOME/bash/xdg ] && . $XDG_CONFIG_HOME/bash/xdg
+    [ -f $XDG_CONFIG_HOME/bash/xdg.sh ] && . $XDG_CONFIG_HOME/bash/xdg.sh
 
 # Preferred Prompt Setting
     export PS1="\u@\h:\w\\$ "
@@ -41,8 +41,8 @@
     export LESS_TERMCAP_us=$(printf "\e[1;32m")
 
 # Load Aliases and Functions
-    [ -f "$XDG_CONFIG_HOME"/bash/aliases ] && . $XDG_CONFIG_HOME/bash/aliases
-    [ -f "$XDG_CONFIG_HOME"/bash/saliases ] && . $XDG_CONFIG_HOME/bash/saliases
+    [ -f "$XDG_CONFIG_HOME"/bash/aliases.sh ] && .  $XDG_CONFIG_HOME/bash/aliases.sh
+    [ -f "$XDG_CONFIG_HOME"/bash/saliases.sh ] && .  $XDG_CONFIG_HOME/bash/saliases.sh
     [ -d $XDG_CONFIG_HOME/bash/functions/ ] &&
         for f in $XDG_CONFIG_HOME/bash/functions/*; do . $f; done
 

@@ -1,6 +1,6 @@
 akonadi/
 autostart/
-bash/saliases
+bash/saliases*
 beets/library.db
 brightness
 calibre/
