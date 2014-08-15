@@ -15,10 +15,10 @@
 			" Python
 				Bundle 'fs111/pydoc.vim'
 		" Git
-				Bundle 'tpope/vim-fugitive'
-				Bundle 'tpope/vim-git'
-				Bundle 'airblade/vim-gitgutter'
-				:command! Gpush Git push origin master
+			Bundle 'tpope/vim-fugitive'
+			Bundle 'tpope/vim-git'
+			Bundle 'airblade/vim-gitgutter'
+			:command! Gpush Git push origin master
 		" Interface/Navigation addons
 			" Note Taking
 				Bundle 'vimoutliner/vimoutliner'
@@ -34,6 +34,8 @@
 					map <leader>os :s/^\(\t*\):/\1</<cr>:noh<cr>
 			" Text alignment
 				Bundle 'godlygeek/tabular'
+				Bundle 'maksimr/vim-jsbeautify'
+				map <leader>tj :call RangeJsBeautify()<cr>
 			" Revision History
 				Bundle 'sjl/gundo.vim'
 					map <leader>g :GundoToggle<CR>
@@ -64,6 +66,11 @@
 				Bundle 'ap/vim-css-color'
 			" HTML5
 				Bundle 'othree/html5.vim'
+			" Javascript
+				Bundle 'jelera/vim-javascript-syntax'
+				Bundle 'pangloss/vim-javascript'
+			" JSON
+				Bundle 'elzr/vim-json'
 			" LESS
 				Bundle 'groenewege/vim-less'
 			" Prolog
@@ -82,8 +89,9 @@
 				Bundle 'SirVer/ultisnips'
 			" Change the Surroundings of Text
 				Bundle 'tpope/vim-surround'
-			" Intellisense-like semantic completion
+			" Semantic completion
 				Bundle 'Valloric/YouCompleteMe'
+				Bundle 'marijnh/tern_for_vim'
 			" Quicker Commenting/Uncommenting
 				Bundle 'scrooloose/nerdcommenter'
 
@@ -107,7 +115,9 @@
 	filetype plugin indent on				" Enable filetype-specific indentation
 	set list								" Show whitespace
 	set listchars=tab:│\ ,trail:-			" Show these whitespaces by default
-	set clipboard=unnamedplus				" Use system clipboard by default
+	let g:pyindent_open_paren = '&sw'		" Indent 1 sw after ( in python
+	let g:pyindent_nested_paren = '&sw'		" Indent 1 sw after nested () in py
+	let g:pyindent_continue = '&sw'			" Indent 1 sw for continuation
 
 " Folding settings
 	set foldmethod=indent					" Enable Folding
@@ -138,6 +148,7 @@
 	set tabpagemax=100
 	set iskeyword-=_						" Stop using _ in words
 	set spelllang=en_au,de					" English-Aus, German for words
+	set clipboard=unnamedplus				" Use system clipboard by default
 
 " UI Settings
 	set showcmd								" Shows Current Command
@@ -173,7 +184,7 @@
 	set backspace=eol,start,indent			" Proper backspace behaviour
 	" tabbing
 		map <C-t> :tabnew 
-	let g:clipbrdDefaultReg=	"+"			" Use Linux clipboard as def copy reg
+	let g:clipbrdDefaultReg="+"				" Use Linux clipboard as def copy reg
 	" easy buffer navigation
 		map <leader>B :buffers<CR>:buffer 
 	" Make shift-insert work as linux paste
