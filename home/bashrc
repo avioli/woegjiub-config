@@ -48,3 +48,7 @@
 
 # Append Additional Executables to $PATH
     [[ :$PATH: != *:"$HOME/.local/bin":* ]] && PATH="$HOME/.local/bin:${PATH}"
+
+# Ensure GPG Agent is running if it can
+[ -z $GPG_AGENT_INFO ] && command_exists gpg-agent &&
+    eval $(gpg-agent --daemon --write-env-file="$GNUPGHOME/gpg-agent-info")
