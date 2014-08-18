@@ -12,27 +12,22 @@ alias scan="scanimage --format=tiff >"
 alias ssize="sudo du -sh --exclude="/home" --exclude="/mnt" --exclude="/srv" / 2>/dev/null"
 alias vi='vim -p'
 
-# Transcode FLAC to MP3 V0
-function mkmp3s(){
-	for a in *.flac; do
-		< /dev/null ffmpeg -i "$a" -qscale:a 0 "${a[@]/%flac/mp3}"
-	done
-}
-function sizefromtype(){
-	find -iname "*.$@" -print0 | du --files0-from - -c -sh | tail -1 | sed 's/\([^ tab]\+\).*/\1 /'
-}
-function spcgm(){
-	sox --multi-threaded "$@" -n spectrogram -t "$@" -o "$@".png
-}
+# Opens up a vim Session of the name provided
 function vims(){
 	vim -S $XDG_CACHE_HOME/vim/sessions/$1
 }
+
+# Opens in vim all files containing the text given
 function vsopen(){
 	vim -p $(djrep -lir "$@");
 }
+
+# Opens in vim all files whose name contains the text given
 function vfopen(){
 	vim -p $(find -iname "$@");
 }
+
+# opens in vim all files containing the text given, diffed
 function vdiff(){
 	vimdiff $(grep -lir "$@");
 }

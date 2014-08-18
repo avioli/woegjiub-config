@@ -1,7 +1,7 @@
 .config
 ========
 These are my settings for various programs  
-Note that this respects XDG base directory layout; all non-compliant programs' settings are to go in home/
+Note that this respects XDG base directory layout; all non-compliant programs' settings are to go in home/  
 Currently, bash is the only program which does not comply, as it hooks in the other programs
 
 Installation:
@@ -22,11 +22,18 @@ Installation:
 
 	6. Some of the addons will require other programs to be installed.
 		ack-grep
-		libclang
 		exuberant-ctags
-		flake8
-		pylint
-		node-less
+		libclang
+		node (npm install -g uses $HOME/.local)
+			js-beautify
+			jsctags
+			jshint
+			jsonlint
+			less
+		pip (pip install --user uses $HOME/local)
+			flake8
+			pylint
 	
 	6. Some vim addons require setup
-		YouCompleteMe - move to $XDG_DATA_HOME, run the installer
+		YouCompleteMe: cd $XDG_DATA_HOME/vim/bundle/YouCompleteMe; ./install.sh
+		tern_for_vim: cd $XDG_DATA_HOME/vim/bundle/tern_for_vim; npm install

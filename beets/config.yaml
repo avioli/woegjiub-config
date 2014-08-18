@@ -1,0 +1,77 @@
+plugins: [
+    chroma,
+    convert,
+    discogs,
+    embedart,
+    fetchart,
+    fuzzy,
+    info,
+    inline,
+    lyrics,
+    random,
+    web,
+]
+
+color: yes
+directory: ~/music
+list_format_item: $artist/$album/$track $title
+list_format_album: $albumartist/$album
+original_date: yes
+per_disc_numbering: yes
+threaded: yes
+
+import:
+    move: yes
+    resume: ask
+    timid: yes
+    write: yes
+
+paths:
+    default: $albumartist/$album ($year)/%if{$multidisc,$disk }$track $title
+    comp: Compilations/$album ($year)/$track $title
+item_fields:
+    multidisc: 1 if disctotal > 1 else 0
+
+replace:
+    '[\\/]': _
+    '^\.': _
+    '[\x00-\x1f]': _
+    '[<>:"\?\*\|]': _
+    '\.$': _
+    '\s+$': ''
+    '^\s+': ''
+
+convert:
+    dest: ~/converted
+    embed: true
+    format: flac
+    threads: 8
+    formats:
+        flac:
+            command: ffmpeg -i $source -c:a flac -compression_level 12 -use_lpc 8 $dest
+            extension: flac
+        mp3:
+            command: ffmpeg -i $source -c:a libmp3lame -b:a 320 $dest
+            extension: mp3
+            max_bitrate: 320
+        opus:
+            command: ffmpeg -i $source -c:a libopus -b:a 192k -vbr on  -compression_level 10 $dest
+            extension: opus
+            max_bitrate: 192
+        vorbis:
+            command: ffmpeg -i $source -c:a libvorbis -q:a 6 $dest
+            extension: ogg
+            max_bitrate: 240
+
+fuzzy:
+    threshold: 0.7
+    prefix: '@'
+
+misssing:
+    format: $albumartist - $album - $title
+    count: true
+    total: true
+
+web:
+    host: 127.0.0.1
+    port: 8801

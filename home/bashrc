@@ -5,7 +5,7 @@
     export XDG_CONFIG_HOME=$HOME/.config
     export XDG_DATA_HOME=$HOME/.local/share
     export XDG_CACHE_HOME=$HOME/.cache
-    [ -f $XDG_CONFIG_HOME/bash/xdg ] && . $XDG_CONFIG_HOME/bash/xdg
+    [ -f $XDG_CONFIG_HOME/bash/xdg.sh ] && . $XDG_CONFIG_HOME/bash/xdg.sh
 
 # Preferred Prompt Setting
     export PS1="\u@\h:\w\\$ "
@@ -40,22 +40,15 @@
     export LESS_TERMCAP_ue=$(printf "\e[0m")
     export LESS_TERMCAP_us=$(printf "\e[1;32m")
 
-# Load Aliases
-    [ -f "$XDG_CONFIG_HOME"/bash/aliases ] && . $XDG_CONFIG_HOME/bash/aliases
-    [ -f "$XDG_CONFIG_HOME"/bash/saliases ] && . $XDG_CONFIG_HOME/bash/saliases
+# Load Aliases and Functions
+    [ -f "$XDG_CONFIG_HOME"/bash/aliases.sh ] && .  $XDG_CONFIG_HOME/bash/aliases.sh
+    [ -f "$XDG_CONFIG_HOME"/bash/saliases.sh ] && .  $XDG_CONFIG_HOME/bash/saliases.sh
+    [ -d $XDG_CONFIG_HOME/bash/functions/ ] &&
+        for f in $XDG_CONFIG_HOME/bash/functions/*; do . $f; done
 
 # Append Additional Executables to $PATH
-    # Bash
-        [ -d $XDG_CONFIG_HOME/bash/scripts/ ] &&
-            export PATH="$XDG_CONFIG_HOME/bash/scripts/:${PATH}"
-        [ -d $XDG_DATA_HOME/bash/scripts/ ] &&
-            export PATH="$XDG_DATA_HOME/bash/scripts/:${PATH}"
-        [ -d $XDG_CONFIG_HOME/bash/functions/ ] &&
-            for f in $XDG_CONFIG_HOME/bash/functions/*; do . $f; done
-        [ -d $XDG_DATA_HOME/bash/functions/ ] &&
-            for f in $XDG_DATA_HOME/bash/functions/*; do . $f; done
-    # Compiled
-        [ -d $XDG_DATA_HOME/bin ] && export PATH="$XDG_DATA_HOME/bin:${PATH}"
-    # NPM
-        [ -d $XDG_DATA_HOME/npm/node_modules ] &&
-            export NODE_PATH="$XDG_DATA_HOME/npm/node_modules:$NODE_PATH"
+    [[ :$PATH: != *:"$HOME/.local/bin":* ]] && PATH="$HOME/.local/bin:${PATH}"
+
+# Ensure GPG Agent is running if it can
+[ -z $GPG_AGENT_INFO ] && command_exists gpg-agent &&
+    eval $(gpg-agent --daemon --write-env-file="$GNUPGHOME/gpg-agent-info")
