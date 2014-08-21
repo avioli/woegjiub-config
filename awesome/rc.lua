@@ -51,6 +51,11 @@ editor_cmd = terminal .. " -e " .. editor
 -- Default modkey.
 modkey = "Mod4"
 
+-- Get XDG directories
+XDG_CACHE_HOME = os.getenv("XDG_CACHE_HOME")
+XDG_CONFIG_HOME = os.getenv("XDG_CONFIG_HOME")
+XDG_DATA_HOME = os.getenv("XDG_DATA_HOME")
+
 -- Table of layouts to cover with awful.layout.inc, order matters.
 local layouts = { awful.layout.suit.tile }
 -- }}}
@@ -169,29 +174,36 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey            }, "space",     function () mypromptbox[mouse.screen]:run() end),
 
     -- Launchers
-    awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
-    awful.key({ modkey,           }, "f", function () awful.util.spawn("firefox -profile .config/firefox") end),
-    awful.key({ modkey,           }, "g", function () awful.util.spawn("chromium") end),
-    awful.key({                   }, "XF86AudioPlay",
-        function() awful.util.spawn( "ncmpcpp -c .config/ncmpcpp/config toggle" ) end),
-    awful.key({ modkey,           }, "XF86AudioPlay",
-        function() awful.util.spawn( terminal .. " -e ncmpcpp -c '.config/ncmpcpp/config'" ) end),
-    awful.key({ "Control",        }, "XF86AudioPlay",
-        function() awful.util.spawn( ".local/share/bash/scripts/mpd-random-pl-album.py" ) end),
+    awful.key({ modkey,           }, "Return", function ()
+        awful.util.spawn(terminal) end),
+    awful.key({ modkey,           }, "f", function ()
+        awful.util.spawn("firefox -profile " .. XDG_CONFIG_HOME .. "/firefox") end),
+    awful.key({                   }, "XF86AudioPlay", function()
+        awful.util.spawn( "ncmpcpp -c " .. XDG_CONFIG_HOME .. "/ncmpcpp/config toggle" ) end),
+    awful.key({ modkey,           }, "XF86AudioPlay", function()
+        awful.util.spawn( terminal .. " -e ncmpcpp -c '" .. XDG_CONFIG_HOME .. "/ncmpcpp/config'") end),
     awful.key({ }, "XF86AudioRaiseVolume", function ()
        awful.util.spawn("amixer set Master 5%+", false) end),
-   awful.key({ }, "XF86AudioLowerVolume", function ()
+    awful.key({ }, "XF86AudioLowerVolume", function ()
        awful.util.spawn("amixer set Master 5%-", false) end),
-   awful.key({ }, "XF86AudioMute", function ()
+    awful.key({ }, "XF86AudioMute", function ()
        awful.util.spawn("amixer sset Master toggle", false) end),
-    awful.key({ modkey            }, "c", function() awful.util.spawn( "localc" ) end),
-    awful.key({ modkey            }, "a", function() awful.util.spawn("anki -b .local/share/anki") end),
-    awful.key({                   }, "XF86Calculator", function() awful.util.spawn( terminal .. " -e bc -iql" ) end),
-    awful.key({ modkey            }, "p", function() awful.util.spawn( terminal .. " -e python" ) end),
-    awful.key({ modkey            }, "m", function() awful.util.spawn( terminal .. " -e mutt -F .config/mutt/muttrc" ) end),
-    awful.key({                   }, "XF86KbdBrightnessDown", function() awful.util.spawn("kbdlight down") end),
-    awful.key({                   }, "XF86KbdBrightnessUp", function() awful.util.spawn("kbdlight up") end),
-    awful.key({                   }, "XF86PowerOff", function() awful.util.spawn("xset dpms force off") end)
+    awful.key({ modkey            }, "c", function()
+        awful.util.spawn( "localc" ) end),
+    awful.key({ modkey            }, "a", function()
+        awful.util.spawn( "anki -b " .. XDG_DATA_HOME .. "/anki" ) end),
+    awful.key({                   }, "XF86Calculator", function()
+        awful.util.spawn( terminal .. " -e bc -iql" ) end),
+    awful.key({ modkey            }, "p", function()
+        awful.util.spawn( terminal .. " -e python" ) end),
+    awful.key({ modkey            }, "m", function()
+        awful.util.spawn( terminal .. " -e mutt -F " .. XDG_CONFIG_HOME .. "/mutt/muttrc" ) end),
+    awful.key({                   }, "XF86KbdBrightnessDown", function()
+        awful.util.spawn("kbdlight down") end),
+    awful.key({                   }, "XF86KbdBrightnessUp", function()
+        awful.util.spawn("kbdlight up") end),
+    awful.key({                   }, "XF86PowerOff", function()
+        awful.util.spawn("xset dpms force off") end)
 )
 
 clientkeys = awful.util.table.join(
