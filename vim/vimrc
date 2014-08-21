@@ -45,6 +45,8 @@
 			" Tag outliner
 				Bundle 'majutsushi/tagbar'
 					map <leader>m :TagbarToggle<CR>
+			" List toggle
+				Bundle 'Valloric/ListToggle'
 			" Shell
 				Bundle 'rosenfeld/conque-term'
 		" Search Addons
@@ -66,6 +68,8 @@
 				Bundle 'ap/vim-css-color'
 			" HTML5
 				Bundle 'othree/html5.vim'
+			" JINJA
+				Bundle 'lepture/vim-jinja'
 			" Javascript
 				Bundle 'jelera/vim-javascript-syntax'
 				Bundle 'pangloss/vim-javascript'
@@ -79,8 +83,11 @@
 				Bundle 'csv.vim'
 		" Syntax Testing
 			Bundle 'scrooloose/syntastic'
-				let g:syntastic_auto_loc_list=1
+				let g:syntastic_auto_loc_list=2
 				let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+				let g:syntastic_check_on_wq = 0
+				let g:syntastic_aggregate_errors = 1
+				let g:syntastic_always_populate_loc_list = 1
 				map <F5> :SyntasticCheck<cr>
 			" Python
 				Bundle 'alfredodeza/pytest.vim'
@@ -94,6 +101,7 @@
 				Bundle 'marijnh/tern_for_vim'
 			" Quicker Commenting/Uncommenting
 				Bundle 'scrooloose/nerdcommenter'
+				let g:NERDSpaceDelims = 1   " Put spaces around comment strings
 
 " Indentation Settings
 	set shiftround							" Indents rounded to shiftwidths
@@ -146,7 +154,6 @@
 	set noswapfile							" Stop littering these things
 	set viminfo+=n$XDG_CACHE_HOME/vim/history	" Less things in home
 	set tabpagemax=100
-	set iskeyword-=_						" Stop using _ in words
 	set spelllang=en_au,de					" English-Aus, German for words
 	set clipboard=unnamedplus				" Use system clipboard by default
 
