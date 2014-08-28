@@ -49,6 +49,8 @@
 				Bundle 'Valloric/ListToggle'
 			" Shell
 				Bundle 'rosenfeld/conque-term'
+			" Show extended information when pressing 'ga' on a character
+				Bundle 'tpope/vim-characterize'
 		" Search Addons
 			" Enable Ack Searching
 				Bundle 'mileszs/ack.vim'
@@ -89,6 +91,8 @@
 				let g:syntastic_aggregate_errors = 1
 				let g:syntastic_always_populate_loc_list = 1
 				map <F5> :SyntasticCheck<cr>
+			" Javascript
+				Bundle 'marijnh/tern_for_vim'
 			" Python
 				Bundle 'alfredodeza/pytest.vim'
 		" Typing Efficiency Improvers
@@ -98,10 +102,12 @@
 				Bundle 'tpope/vim-surround'
 			" Semantic completion
 				Bundle 'Valloric/YouCompleteMe'
-				Bundle 'marijnh/tern_for_vim'
 			" Quicker Commenting/Uncommenting
-				Bundle 'scrooloose/nerdcommenter'
-				let g:NERDSpaceDelims = 1   " Put spaces around comment strings
+				Bundle 'tpope/vim-commentary'
+			" Add repeat . to addons and unrepeatable vanilla commands
+				Bundle 'tpope/vim-repeat'
+			" Zencoding for HTML
+				Bundle 'mattn/emmet-vim'
 
 " Indentation Settings
 	set shiftround							" Indents rounded to shiftwidths
