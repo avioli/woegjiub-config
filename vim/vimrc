@@ -98,6 +98,8 @@
 		" Typing Efficiency Improvers
 			" Snippets
 				Bundle 'SirVer/ultisnips'
+				Bundle 'honza/vim-snippets'
+				let g:UltiSnipsExpandTrigger="zz"
 			" Change the Surroundings of Text
 				Bundle 'tpope/vim-surround'
 			" Semantic completion
