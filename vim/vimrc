@@ -149,7 +149,7 @@
 	set incsearch							" Search incrementally
 
 " General settings
-	set ffs=unix							" Unix as standard filetype
+	set ffs=unix							" Unix as standard fileformat
 	set encoding=utf-8						" UTF-8 as standard encoding
 	set nocompatible						" Enable vimness
 	set autoread							" Automatically detect outside changes
@@ -187,6 +187,9 @@
 	set statusline=%<%f\ %h%m%r%{SyntasticStatuslineFlag()}%=%-14.(%l,%c,%V%)\ %P
 	set t_Co=256							" 256 Colours in Terminal
 	colo darko								" Load my colourscheme
+
+" Overrides
+	au BufNewFile,BufRead *.html set filetype=htmldjango " Presume html.django
 
 " Input/Hotkey settings
 	set mouse=a								" Enable Mouse
