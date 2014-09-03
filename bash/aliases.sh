@@ -1,5 +1,8 @@
 alias drep="grep -riI --exclude-dir=fixtures --exclude-dir=venv --exclude-dir=migrations --exclude-dir=static --exclude=*.json 2>/dev/null"
-alias feh="feh -Z. "
+alias feh="feh -B black -e LiberationMono-Regular/24 -C /usr/share/fonts/TTF"
+alias fehs="feh -Z." # Initial is correct on all, but flicker on N/P
+alias fehm="feh -g 2880x1800" # No flicker on N/P, still scales to screen
+alias feht="fehm -A \;\"image-metadata.sh edit-tags %f\" --info \"image-metadata.sh show %f\" "
 alias fmusic="find -type f ! -iname '*.flac' -a ! -iname '*.mp3' -a ! -iname '*.ogg'"
 alias ftypes="find . ! -path '*/.git/*' -type f -iname '*.*' | rev | cut -d . -f1 | rev | sort | uniq -ic | sort -rn"
 alias grep='grep --color=auto'
