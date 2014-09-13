@@ -29,6 +29,10 @@
     export EDITOR='/usr/bin/vim'  # Use vim for light edits
     export VISUAL='/usr/bin/vim'  # Use vim for heavy edits
 
+# Get rid of the terminal suspend/resume bindings
+stty stop undef
+stty start undef
+
 # Colour the terminal
     [ -x /usr/bin/dircolors ] && eval "$(dircolors -b)"
     export LESS=-R
