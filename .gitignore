@@ -32,6 +32,7 @@ qupzilla/
 ranger/bookmarks
 ranger/history
 ranger/tagged
+smb/credentials
 sensitive/
 ssh/
 Synergy/
