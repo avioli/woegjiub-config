@@ -179,9 +179,11 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "f", function ()
         awful.util.spawn("firefox -profile " .. XDG_CONFIG_HOME .. "/firefox") end),
     awful.key({                   }, "XF86AudioPlay", function()
-        awful.util.spawn( "ncmpcpp -c " .. XDG_CONFIG_HOME .. "/ncmpcpp/config toggle" ) end),
+        awful.util.spawn("mpc toggle") end),
     awful.key({ modkey,           }, "XF86AudioPlay", function()
         awful.util.spawn( terminal .. " -e ncmpcpp -c '" .. XDG_CONFIG_HOME .. "/ncmpcpp/config'") end),
+    awful.key({ "Control",        }, "XF86AudioPlay", function()
+        awful.util.spawn('mpc-random') end),
     awful.key({ }, "XF86AudioRaiseVolume", function ()
        awful.util.spawn("amixer set Master 5%+", false) end),
     awful.key({ }, "XF86AudioLowerVolume", function ()
@@ -192,8 +194,6 @@ globalkeys = awful.util.table.join(
         awful.util.spawn( "localc" ) end),
     awful.key({ modkey            }, "a", function()
         awful.util.spawn( "anki -b " .. XDG_DATA_HOME .. "/anki" ) end),
-    awful.key({                   }, "XF86Calculator", function()
-        awful.util.spawn( terminal .. " -e bc -iql" ) end),
     awful.key({ modkey            }, "p", function()
         awful.util.spawn( terminal .. " -e python" ) end),
     awful.key({ modkey            }, "m", function()

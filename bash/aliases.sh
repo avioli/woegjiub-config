@@ -1,3 +1,4 @@
+alias cal="cal -3"
 alias drep="grep -riI --exclude-dir=fixtures --exclude-dir=venv --exclude-dir=migrations --exclude-dir=static --exclude=*.json 2>/dev/null"
 alias feh="feh -B black -e LiberationMono-Regular/24 -C /usr/share/fonts/TTF"
 alias fehs="feh -Z." # Initial is correct on all, but flicker on N/P
@@ -13,16 +14,21 @@ alias pipudate="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip
 alias ramused="ps -u $LOGNAME -o rss,command | grep -v peruser | awk '{sum+=$1} END {print sum/1024}'"
 alias scan="scanimage --format=tiff >"
 alias ssize="sudo du -sh --exclude="/home" --exclude="/mnt" --exclude="/srv" / 2>/dev/null"
+alias sqlite3="sqlite3 -column -header"
 alias vi='vim -p'
 
 # Opens up a vim Session of the name provided
 function vims(){
-	vim -S $XDG_CACHE_HOME/vim/sessions/$1
+	if [[ -z $1 ]]; then
+		vim -S $XDG_CACHE_HOME/vim/sessions/default.vim
+	else
+		vim -S $XDG_CACHE_HOME/vim/sessions/$1
+	fi
 }
 
 # Opens in vim all files containing the text given
 function vsopen(){
-	vim -p $(djrep -lir "$@");
+	vim -p $(drep -lir "$@");
 }
 
 # Opens in vim all files whose name contains the text given

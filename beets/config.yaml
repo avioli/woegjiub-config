@@ -27,7 +27,7 @@ import:
     write: yes
 
 paths:
-    default: $albumartist/$album ($year)/%if{$multidisc,$disk }$track $title
+    default: $albumartist/$album ($year)/%if{$multidisc,$disc }$track $title
     comp: Compilations/$album ($year)/$track $title
 item_fields:
     multidisc: 1 if disctotal > 1 else 0
@@ -48,7 +48,7 @@ convert:
     threads: 8
     formats:
         flac:
-            command: ffmpeg -i $source -c:a flac -compression_level 12 -use_lpc 8 $dest
+            command: ffmpeg -i $source -c:a flac -compression_level 12 $dest
             extension: flac
         mp3:
             command: ffmpeg -i $source -c:a libmp3lame -b:a 320 $dest

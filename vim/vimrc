@@ -20,6 +20,17 @@
 			Bundle 'airblade/vim-gitgutter'
 			:command! Gpush Git push origin master
 		" Interface/Navigation addons
+			" Database interface
+				Bundle 'dbext.vim'
+				let g:dbext_default_history_file = expand('$XDG_DATA_HOME/vim/dbhist')
+				let g:dbext_default_history_size = 5000
+				let dbext_default_user = ""
+				let dbext_default_passwd = ""
+				let dbext_default_window_use_horiz = 0
+				let dbext_default_type = 'SQLITE'
+				let dbext_default_dbname = 'tmp.sqlite'
+				let dbext_default_window_width = 100
+				let g:dbext_default_SQLITE_bin = 'sqlite3'
 			" Note Taking
 				Bundle 'vimoutliner/vimoutliner'
 					" Mappings to change code to and from outlines

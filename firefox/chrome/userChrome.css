@@ -1,15 +1,18 @@
-/*#PanelUI-button,
+/*
 #bookmarks-menu-button,
 #downloads-button,
 #home-button,
 #stylish-toolbar-button,
-#abp-toolbarbutton,
 #urlbar-history-dropmarker,
+*/
+#private-browsing-indicator,
+#abp-toolbarbutton,
+#PanelUI-button,
 #back-button,
 #forward-button {
 	display: none !important;
 }
-*/
+
 #identity-box,
 #urlbar-reload-button {
 	display: none !important;
@@ -28,16 +31,18 @@
 	padding: 0 5px 1px 5px !important;
 	height: 16px !important;
 	min-height: 16px !important;
-	background: #252525 !important;
+	background: #050505 !important;
 	color: #cccccc !important;
 	font-family: "tewi" !important;
 	font-size: 11px !important;
 }
 
 #nav-bar {
-	height: 2em !important;
+	height: 1.5em !important;
 	min-height: 16px !important;
 	margin: 0 !important;
+	background: #252525 !important;
+	box-shadow: unset !important;
 }
 
 #nav-bar-customization-target {

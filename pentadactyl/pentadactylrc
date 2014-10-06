@@ -10,6 +10,7 @@ else
 	content.document.documentElement.classList.add("night");
 EOF
 map <C-`> -ex :set go!=T
+map A O
 
 " Colour Scheme (dark)
 highlight Bell background-color: inherit; border: 0 none;

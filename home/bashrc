@@ -51,7 +51,8 @@ stty start undef
         for f in $XDG_CONFIG_HOME/bash/functions/*; do . $f; done
 
 # Append Additional Executables to $PATH
-    [[ :$PATH: != *:"$HOME/.local/bin":* ]] && PATH="$HOME/.local/bin:${PATH}"
+    [[ :$PATH: != *:"$HOME/.local/bin":* ]] && export PATH="$HOME/.local/bin:${PATH}"
+    export NODE_PATH="$HOME/.local/lib/node_modules"
 
 # Ensure GPG Agent is running if it can
 [ -z $GPG_AGENT_INFO ] && command_exists gpg-agent &&

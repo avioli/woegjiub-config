@@ -25,4 +25,3 @@ directory = /home/darko/.local/share/rtorrent/torrents
 
 schedule = watch_directory,10,10,"load_start=~/Downloads/*.torrent"
 schedule = low_diskspace,5,60,close_low_diskspace=1000M
-system.method.set_key = event.download.finished,move_complete,"execute=mv,-u,$d.get_base_path=,~/downloads/;d.set_directory=~/downloads/"

@@ -1,8 +1,9 @@
 # General Settings
 mpd_host =                              "127.0.0.1"
 mpd_port =                              "6600"
-mpd_music_dir =                         "HOME/Music/"
+mpd_music_dir =                         "~/music/"
 ncmpcpp_directory =                     "~/.local/tmp/ncmpcpp/"
+lyrics_directory =                      "~/.local/share/mpd/lyrics"
 
 # Main Play View Settings
 autocenter_mode =                       "yes"
@@ -13,8 +14,9 @@ ignore_leading_the =                    "yes"
 mouse_list_scroll_whole_page =          "no"
 playlist_display_mode =                 "columns"
 playlist_separate_albums                "yes"
-song_columns_list_format =              "(25)[]{A|a}} (30)[]{b} (3)[]{dE} (3)[]{n} (35)[]{t} (4)[]{l}"
+song_columns_list_format =              "(25)[]{a}} (5f)[]{y}(30)[]{b} (3f)[]{d} (3f)[]{N} (35)[]{t} (4)[]{l}"
 titles_visibility =                     "no"
+ask_before_clearing_playlists =          "no"
 
 # Other View Settings
 browser_display_mode =                  "columns"
