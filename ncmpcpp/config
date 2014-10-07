@@ -2,7 +2,7 @@
 mpd_host =                              "127.0.0.1"
 mpd_port =                              "6600"
 mpd_music_dir =                         "~/music/"
-ncmpcpp_directory =                     "~/.local/tmp/ncmpcpp/"
+ncmpcpp_directory =                     "~/.local/share/ncmpcpp/"
 lyrics_directory =                      "~/.local/share/mpd/lyrics"
 
 # Main Play View Settings
