@@ -7,15 +7,20 @@ alias feht="fehm -A \;\"image-metadata.sh edit-tags %f\" --info \"image-metadata
 alias fmusic="find -type f ! -iname '*.flac' -a ! -iname '*.mp3' -a ! -iname '*.ogg'"
 alias ftypes="find . ! -path '*/.git/*' -type f -iname '*.*' | rev | cut -d . -f1 | rev | sort | uniq -ic | sort -rn"
 alias grep='grep --color=auto'
-alias ll="ls -lAp"
-alias ls="ls -hF --color=always --group-directories-first"
+alias ls="ls -FA --color=always --group-directories-first"
+alias ll="ls -lh --time-style=long-iso"
+alias l="ll"
 alias lsblkv="lsblk -o name,size,type,fstype,ro,mountpoint,label,uuid,partuuid"
 alias pipudate="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U"
+alias python="python -q"
 alias ramused="ps -u $LOGNAME -o rss,command | grep -v peruser | awk '{sum+=$1} END {print sum/1024}'"
 alias scan="scanimage --format=tiff >"
 alias ssize="sudo du -sh --exclude="/home" --exclude="/mnt" --exclude="/srv" / 2>/dev/null"
 alias sqlite3="sqlite3 -column -header"
 alias vi='vim -p'
+
+#cd then ls
+function cs(){ builtin cd "$@" && ll; }
 
 # Opens up a vim Session of the name provided
 function vims(){
