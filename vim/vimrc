@@ -1,6 +1,7 @@
 " Add My Settings Folder and make vim respect XDG Base Directories
 	set rtp=$XDG_CONFIG_HOME/vim,$VIM,$VIMRUNTIME
 	set viewdir=$XDG_CACHE_HOME/vim/view
+	let g:netrw_home = expand('$XDG_CACHE_HOME/vim/netrw')
 
 " Addon Settings
 	" Set up Vundle to do its magic
@@ -49,8 +50,9 @@
 				Bundle 'sjl/gundo.vim'
 					map <leader>g :GundoToggle<CR>
 			" File Management
-				Bundle 'scrooloose/nerdtree'
-					map <leader>n :NERDTree<CR>
+				Bundle 'tpope/vim-vinegar'
+					map <leader>n :Explore<CR>
+					let g:netrw_liststyle = 3
 			" Tag outliner
 				Bundle 'majutsushi/tagbar'
 					map <leader>m :TagbarToggle<CR>
