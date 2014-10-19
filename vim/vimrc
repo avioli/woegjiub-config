@@ -17,8 +17,6 @@
 		" Git
 			Bundle 'tpope/vim-fugitive'
 			Bundle 'tpope/vim-git'
-			Bundle 'airblade/vim-gitgutter'
-			:command! Gpush Git push origin master
 		" Interface/Navigation addons
 			" Database interface
 				Bundle 'dbext.vim'
@@ -121,6 +119,8 @@
 				Bundle 'tpope/vim-repeat'
 			" Zencoding for HTML
 				Bundle 'mattn/emmet-vim'
+				let g:user_emmet_leader_key = ','
+				let g:user_emmet_complete_tag = 1
 
 " Indentation Settings
 	set shiftround							" Indents rounded to shiftwidths
@@ -179,7 +179,6 @@
 " UI Settings
 	set showcmd								" Shows Current Command
 	set showfulltag							" Increase info for tag completion
-	set number								" Line Numbers
 	set ruler								" Show position at bottom
 	set lazyredraw							" Do not redraw whilst executing macros
 	set noerrorbells novisualbell			" Shut the warnings up
@@ -270,7 +269,7 @@
 		nnoremap g* g*zz
 		nnoremap g# g#zz
 	" Show word's syntax group with C_S_p
-		nmap <C-S-P> :call <SID>SynStack()<CR>
+		nmap <C-S-S> :call <SID>SynStack()<CR>
 		function! <SID>SynStack()
 			if !exists("*synstack")
 				return
