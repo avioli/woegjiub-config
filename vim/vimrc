@@ -115,6 +115,8 @@
 				Bundle 'tpope/vim-surround'
 			" Semantic completion
 				Bundle 'Valloric/YouCompleteMe'
+				nmap <leader>jg :YcmCompleter GoToDefinition<cr>
+				nmap <leader>jd :YcmCompleter GoToDeclaration<cr>
 			" Quicker Commenting/Uncommenting
 				Bundle 'tpope/vim-commentary'
 			" Add repeat . to addons and unrepeatable vanilla commands

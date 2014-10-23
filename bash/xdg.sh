@@ -13,6 +13,7 @@
     export PIP_DOWNLOAD_CACHE="$XDG_CACHE_HOME/pip/download"
     export PIP_LOG_FILE="$XDG_CACHE_HOME/pip/log"
     export PYLINTRC="$XDG_CONFIG_HOME/pylint/pylintrc"
+    export PYLINTHOME="$XDG_DATA_HOME/pylint"
     export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
     export RXVT_SOCKET="$XDG_CACHE_HOME/urxvt/urxvtd.sock"
     export VIMINIT="source $XDG_CONFIG_HOME/vim/vimrc"
