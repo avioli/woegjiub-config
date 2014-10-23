@@ -182,6 +182,7 @@
 	set showcmd								" Shows Current Command
 	set showfulltag							" Increase info for tag completion
 	set ruler								" Show position at bottom
+	set number								" I need line numbers
 	set lazyredraw							" Do not redraw whilst executing macros
 	set noerrorbells novisualbell			" Shut the warnings up
 	syntax on								" Enable syntax highlighting
