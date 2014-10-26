@@ -34,7 +34,7 @@ stty stop undef
 stty start undef
 
 # Colour the terminal
-    [ -x /usr/bin/dircolors ] && eval "$(dircolors -b)"
+    [ -x /usr/bin/dircolors ] && eval "$(dircolors -b $XDG_CONFIG_HOME/bash/dircolors)"
     export LESS=-R
     export LESS_TERMCAP_mb=$(printf "\e[1;31m")
     export LESS_TERMCAP_md=$(printf "\e[1;31m")

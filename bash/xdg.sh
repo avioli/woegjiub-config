@@ -21,6 +21,7 @@
 
 # Alias respecting programs
     alias firefox="firefox -profile $XDG_CONFIG_HOME/firefox"
+    export BROWSER="firefox -profile $XDG_CONFIG_HOME/firefox"
     alias mutt="mutt -F $XDG_CONFIG_HOME/mutt/muttrc"
     alias scp="scp -F $XDG_CONFIG_HOME/ssh/config"
     alias ssh="ssh -F $XDG_CONFIG_HOME/ssh/config"
