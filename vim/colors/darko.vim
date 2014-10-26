@@ -10,9 +10,26 @@ if exists("syntax_on")
 endif
 let g:colors_name = "darko"
 
-" I have very few colour preferences for now :p
-hi LineNr		ctermfg=8
-hi StatusLine	ctermfg=0	ctermbg=7 cterm=none
+" UI
+hi ColorColumn ctermfg=NONE ctermbg=52 cterm=NONE
+hi LineNr ctermfg=8 ctermbg=NONE cterm=NONE
+hi StatusLine ctermfg=0 ctermbg=7 cterm=NONE
+
+" General
+hi Comment ctermfg=8 ctermbg=NONE cterm=NONE
+hi Conditional ctermfg=129 ctermbg=NONE cterm=bold
+hi Function ctermfg=5 ctermbg=NONE cterm=bold
+hi Operator ctermfg=90 ctermbg=NONE cterm=bold
+hi Statement ctermfg=4 ctermbg=NONE cterm=bold
+hi String ctermfg=8 ctermbg=NONE cterm=NONE
+
+" Python
+hi PythonBuiltin ctermfg=105 ctermbg=NONE cterm=bold
+
+" HTML
+hi HtmlTag ctermfg=5 ctermbg=NONE cterm=bold
+hi HtmlEndTag ctermfg=5 ctermBG=NONE cterm=bold
+hi HtmlTagName ctermfg=4 ctermbg=NONE cterm=bold
 
 if has('gui_running')
 	hi Normal guifg=gray guibg=black
