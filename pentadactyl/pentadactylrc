@@ -58,7 +58,7 @@ highlight Title color: inherit !important; font-weight: bold; background: inheri
 highlight URL text-decoration: none; color: inherit; background: inherit;
 highlight WarningMsg color: red !important; background: inherit !important;
 
-set defsearch=g
+set defsearch=ddg
 set guioptions=s
 set passkeys=woegjiub.com:jkvnp
 set showtabline=never
