@@ -32,6 +32,7 @@
 				let g:dbext_default_SQLITE_bin = 'sqlite3'
 			" Note Taking
 				Bundle 'vimoutliner/vimoutliner'
+					let maplocalleader=";;"
 					" Mappings to change code to and from outlines
 					map <leader>oc :s/^/<\ /<cr>:noh<cr>
 					map <leader>oC :s/^	*<\ \=//<cr>:noh<cr>
