@@ -1,7 +1,7 @@
 " Add My Settings Folder and make vim respect XDG Base Directories
 	set rtp=$XDG_CONFIG_HOME/vim,$VIM,$VIMRUNTIME
-	set viewdir=$XDG_CACHE_HOME/vim/view
-	let g:netrw_home = expand('$XDG_CACHE_HOME/vim/netrw')
+	set viewdir=$XDG_DATA_HOME/vim/view
+	let g:netrw_home = expand('$XDG_DATA_HOME/vim/netrw')
 
 " Addon Settings
 	" Set up Vundle to do its magic
@@ -117,6 +117,11 @@
 				Bundle 'Valloric/YouCompleteMe'
 				nmap <leader>jg :YcmCompleter GoToDefinition<cr>
 				nmap <leader>jd :YcmCompleter GoToDeclaration<cr>
+				let g:ycm_complete_in_strings = 1
+				let g:ycm_seed_identifiers_with_syntax = 1
+				let g:ycm_autoclose_preview_window_after_completion = 1
+				let g:ycm_autoclose_preview_window_after_insertion = 1
+				let g:ycm_max_diagnostics_to_display = 100
 			" Quicker Commenting/Uncommenting
 				Bundle 'tpope/vim-commentary'
 			" Add repeat . to addons and unrepeatable vanilla commands
@@ -175,7 +180,7 @@
 	set secure								" Disable insecure local vimrc commands
 	set modeline							" Vim settings in files
 	set noswapfile							" Stop littering these things
-	set viminfo+=n$XDG_CACHE_HOME/vim/history	" Less things in home
+	set viminfo+=n$XDG_DATA_HOME/vim/history	" Less things in home
 	set tabpagemax=100
 	set spelllang=en_au,de					" English-Aus, German for words
 	set clipboard=unnamedplus				" Use system clipboard by default
@@ -286,7 +291,7 @@
 	" Save
 		func! <SID>Savesession()
 			if v:this_session == ""
-				let cmd = "mksession! $XDG_CACHE_HOME/vim/sessions/default.vim"
+				let cmd = "mksession! $XDG_DATA_HOME/vim/sessions/default.vim"
 			else
 				let cmd = "mksession! ".v:this_session
 			endif
@@ -297,9 +302,9 @@
 	" Save+Quit
 		nmap <leader>sq <ESC>:call <SID>Savesession()<cr>:wqa<cr>
 	" Save As
-		nmap <leader>sa :wa<cr>:mksession! $XDG_CACHE_HOME/vim/sessions/
+		nmap <leader>sa :wa<cr>:mksession! $XDG_DATA_HOME/vim/sessions/
 	" Restore As (Open)
-		nmap <leader>so :so $XDG_CACHE_HOME/vim/sessions/
+		nmap <leader>so :so $XDG_DATA_HOME/vim/sessions/
 
 " Saving Improvements
 	" Use ,W to save the current file with sudo
