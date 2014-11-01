@@ -2,7 +2,7 @@
 ========
 These are my settings for various programs  
 Note that this respects XDG base directory layout  
-Currently, bash is the only program which does not comply, as it hooks in the other programs
+Currently, bash is the only program which does not comply, as it hooks in the other programs  
 By editing /etc/profile, a dotfile-free $HOME is achieved
 
 Installation:
