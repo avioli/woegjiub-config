@@ -1,0 +1,27 @@
+# Each letter represents a colour marker:
+#   k, r, g, y, b, m, c, w, d
+# which stands for:
+#   blacK, Red, Green, Yellow, Blue, Magenta, Cyan, White, Default
+# Capital letters represent bold
+# Copy to $XDG_CONFIG_HOME/bpython/foo.theme and set "color_scheme = foo" in
+# $XDG_CONFIG_HOME/bpython/config ($XDG_CONFIG_HOME defaults to ~/.config)
+
+[syntax]
+keyword = c
+name = w
+comment = K
+string = K
+error = r
+number = w
+operator = g
+punctuation = m
+token = m
+paren = m
+
+[interface]
+background = k
+output = w
+main = m
+prompt = m
+prompt_more = g
+right_arrow_suggestion = K

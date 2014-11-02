@@ -1,5 +1,5 @@
 function clean_home(){
-    rm -rf ~/.{adobe,dbus,macromedia,mozilla,pki}
+    rm -rf ~/.{adobe,dbus,gstreamer-0.10,macromedia,mozilla,pki}
 }
 
 function command_exists(){

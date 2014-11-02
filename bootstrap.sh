@@ -13,7 +13,7 @@ done
 mkdir -p $XDG_DATA_HOME
 cd $XDG_DATA_HOME
 
-for dir in bash/scripts less pip pylint vim/{bundle,view,undo}; do
+for dir in bash/scripts less pip python pylint vim/{bundle,sessions,view,undo}; do
 	mkdir -p $dir
 	echo "made `pwd`/$dir"
 done
