@@ -1,8 +1,9 @@
 .config
 ========
 These are my settings for various programs  
-Note that this respects XDG base directory layout; all non-compliant programs' settings are to go in home/  
-Currently, bash is the only program which does not comply, as it hooks in the other programs
+Note that this respects XDG base directory layout  
+Currently, bash is the only program which does not comply, as it hooks in the other programs  
+By editing /etc/profile, a dotfile-free $HOME is achieved
 
 Installation:
 
@@ -12,10 +13,10 @@ Installation:
 	2. Create necessary directories if they don't exist
 
 	3a. If you have root, add to /etc/profile:
-			# Source global bash config
-			if test "$PS1" && test "$BASH" && test -r /etc/bash.bashrc; then
-				. ~/.config/bash/bashrc
-			fi
+		# Source global bash config
+		if test "$PS1" && test "$BASH" && test -r /etc/bash.bashrc; then
+			. ~/.config/bash/bashrc
+		fi
 
 	3b. Otherwise, ln -s ~/.config/bash/bashrc ~/.bash_profile
 
