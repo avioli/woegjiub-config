@@ -1,7 +1,8 @@
 " Add My Settings Folder and make vim respect XDG Base Directories
 	set rtp=$XDG_CONFIG_HOME/vim,$VIM,$VIMRUNTIME
-	set viewdir=$XDG_CACHE_HOME/vim/view
-	let g:netrw_home = expand('$XDG_CACHE_HOME/vim/netrw')
+	set undodir=$XDG_DATA_HOME/vim/undo
+	set viewdir=$XDG_DATA_HOME/vim/view
+	let g:netrw_home = expand('$XDG_DATA_HOME/vim/netrw')
 
 " Addon Settings
 	" Set up Vundle to do its magic
@@ -10,17 +11,17 @@
 		set rtp+=$XDG_DATA_HOME/vim/bundle/vundle
 		call vundle#rc()
 		let g:bundle_dir = expand('$XDG_DATA_HOME/vim/bundle')
-		Bundle 'gmarik/vundle'
+		Plugin 'gmarik/vundle'
 	" Bundle and Configure Addons ($lang conf in 'settings/ftplugin/$lang.vim')
 		" Documentation
 			" Python
-				Bundle 'fs111/pydoc.vim'
+				Plugin 'fs111/pydoc.vim'
 		" Git
-			Bundle 'tpope/vim-fugitive'
-			Bundle 'tpope/vim-git'
+			Plugin 'tpope/vim-fugitive'
+			Plugin 'tpope/vim-git'
 		" Interface/Navigation addons
 			" Database interface
-				Bundle 'dbext.vim'
+				Plugin 'dbext.vim'
 				let g:dbext_default_history_file = expand('$XDG_DATA_HOME/vim/dbhist')
 				let g:dbext_default_history_size = 5000
 				let dbext_default_user = ""
@@ -31,7 +32,8 @@
 				let dbext_default_window_width = 100
 				let g:dbext_default_SQLITE_bin = 'sqlite3'
 			" Note Taking
-				Bundle 'vimoutliner/vimoutliner'
+				Plugin 'vimoutliner/vimoutliner'
+					let maplocalleader=",,"
 					" Mappings to change code to and from outlines
 					map <leader>oc :s/^/<\ /<cr>:noh<cr>
 					map <leader>oC :s/^	*<\ \=//<cr>:noh<cr>
@@ -43,31 +45,41 @@
 					" Mapping to swap from wrapping to static text in V-block
 					map <leader>os :s/^\(\t*\):/\1</<cr>:noh<cr>
 			" Text alignment
-				Bundle 'godlygeek/tabular'
-				Bundle 'maksimr/vim-jsbeautify'
+				Plugin 'godlygeek/tabular'
+				Plugin 'maksimr/vim-jsbeautify'
 				map <leader>tj :call RangeJsBeautify()<cr>
 			" Revision History
-				Bundle 'sjl/gundo.vim'
+				Plugin 'sjl/gundo.vim'
 					map <leader>g :GundoToggle<CR>
+					let g:gundo_preview_bottom = 1
+					let g:gundo_preview_height = 30
 			" File Management
-				Bundle 'tpope/vim-vinegar'
+				Plugin 'tpope/vim-vinegar'
 					map <leader>n :Explore<CR>
 					let g:netrw_liststyle = 3
 			" Tag outliner
-				Bundle 'majutsushi/tagbar'
+				Plugin 'majutsushi/tagbar'
 					map <leader>m :TagbarToggle<CR>
 			" List toggle
-				Bundle 'Valloric/ListToggle'
+				Plugin 'Valloric/ListToggle'
 			" Shell
-				Bundle 'rosenfeld/conque-term'
+				Plugin 'rosenfeld/conque-term'
 			" Show extended information when pressing 'ga' on a character
-				Bundle 'tpope/vim-characterize'
+				Plugin 'tpope/vim-characterize'
+			" Sexy statusbar
+				Plugin 'bling/vim-airline'
+				let g:airline#extensions#tabline#enabled = 1
+				let g:airline#extensions#tabline#fnamemod = ':t'
+				let g:airline_left_sep=''
+				let g:airline_left_alt_sep=''
+				let g:airline_right_sep=''
+				let g:airline_right_alt_sep=''
 		" Search Addons
 			" Enable Ack Searching
-				Bundle 'mileszs/ack.vim'
+				Plugin 'mileszs/ack.vim'
 					nmap <leader>a <Esc>:Ack! 
 			" Search Buffers/Filenames+Paths for navigation
-				Bundle 'kien/ctrlp.vim'
+				Plugin 'kien/ctrlp.vim'
 				let g:ctrlp_custom_ignore = {
 					\ 'dir': '\.git$\|\.svn$\|\.hg$\|build$\|venv\|^output$',
 					\ 'file': '\.pyc$\|\.so$\|\.class$\|.swp$\|\.pid\|\.beam$',
@@ -77,25 +89,25 @@
 				let g:ctrlp_match_window = 'max:30'
 		" Syntax Highlighting
 			" CSS3
-				Bundle 'hail2u/vim-css3-syntax'
-				Bundle 'ap/vim-css-color'
+				Plugin 'hail2u/vim-css3-syntax'
+				Plugin 'ap/vim-css-color'
 			" HTML5
-				Bundle 'othree/html5.vim'
+				Plugin 'othree/html5.vim'
 			" JINJA
-				Bundle 'lepture/vim-jinja'
+				Plugin 'lepture/vim-jinja'
 			" Javascript
-				Bundle 'jelera/vim-javascript-syntax'
-				Bundle 'pangloss/vim-javascript'
+				Plugin 'jelera/vim-javascript-syntax'
+				Plugin 'pangloss/vim-javascript'
 			" JSON
-				Bundle 'elzr/vim-json'
+				Plugin 'elzr/vim-json'
 			" LESS
-				Bundle 'groenewege/vim-less'
+				Plugin 'groenewege/vim-less'
 			" Prolog
-				Bundle 'adimit/prolog.vim'
+				Plugin 'adimit/prolog.vim'
 			" CSV
-				Bundle 'csv.vim'
+				Plugin 'csv.vim'
 		" Syntax Testing
-			Bundle 'scrooloose/syntastic'
+			Plugin 'scrooloose/syntastic'
 				let g:syntastic_auto_loc_list=2
 				let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 				let g:syntastic_check_on_wq = 0
@@ -103,27 +115,32 @@
 				let g:syntastic_always_populate_loc_list = 1
 				map <F5> :SyntasticCheck<cr>
 			" Javascript
-				Bundle 'marijnh/tern_for_vim'
+				Plugin 'marijnh/tern_for_vim'
 			" Python
-				Bundle 'alfredodeza/pytest.vim'
+				Plugin 'alfredodeza/pytest.vim'
 		" Typing Efficiency Improvers
 			" Snippets
-				Bundle 'SirVer/ultisnips'
-				Bundle 'honza/vim-snippets'
+				Plugin 'SirVer/ultisnips'
+				Plugin 'honza/vim-snippets'
 				let g:UltiSnipsExpandTrigger="zz"
 			" Change the Surroundings of Text
-				Bundle 'tpope/vim-surround'
+				Plugin 'tpope/vim-surround'
 			" Semantic completion
-				Bundle 'Valloric/YouCompleteMe'
+				Plugin 'Valloric/YouCompleteMe'
 				nmap <leader>jg :YcmCompleter GoToDefinition<cr>
 				nmap <leader>jd :YcmCompleter GoToDeclaration<cr>
+				let g:ycm_complete_in_strings = 1
+				let g:ycm_seed_identifiers_with_syntax = 1
+				let g:ycm_autoclose_preview_window_after_completion = 1
+				let g:ycm_autoclose_preview_window_after_insertion = 1
+				let g:ycm_max_diagnostics_to_display = 100
 			" Quicker Commenting/Uncommenting
-				Bundle 'tpope/vim-commentary'
+				Plugin 'tpope/vim-commentary'
 			" Add repeat . to addons and unrepeatable vanilla commands
-				Bundle 'tpope/vim-repeat'
+				Plugin 'tpope/vim-repeat'
 			" Zencoding for HTML
-				Bundle 'mattn/emmet-vim'
-				let g:user_emmet_leader_key = ','
+				Plugin 'mattn/emmet-vim'
+				let g:user_emmet_leader_key = '\'
 				let g:user_emmet_complete_tag = 1
 
 " Indentation Settings
@@ -175,10 +192,11 @@
 	set secure								" Disable insecure local vimrc commands
 	set modeline							" Vim settings in files
 	set noswapfile							" Stop littering these things
-	set viminfo+=n$XDG_CACHE_HOME/vim/history	" Less things in home
+	set viminfo+=n$XDG_DATA_HOME/vim/history	" Less things in home
 	set tabpagemax=100
 	set spelllang=en_au,de					" English-Aus, German for words
 	set clipboard=unnamedplus				" Use system clipboard by default
+	set undofile							" Enable persistent undo
 
 " UI Settings
 	set showcmd								" Shows Current Command
@@ -216,7 +234,10 @@
 	end
 	set backspace=eol,start,indent			" Proper backspace behaviour
 	" tabbing
-		map <C-t> :tabnew 
+		map <C-t> :enew<cr>
+		map gt :bnext<cr>
+		map gT :bprevious<cr>
+		map :Q :bd
 	let g:clipbrdDefaultReg="+"				" Use Linux clipboard as def copy reg
 	" easy buffer navigation
 		map <leader>B :buffers<CR>:buffer 
@@ -286,7 +307,7 @@
 	" Save
 		func! <SID>Savesession()
 			if v:this_session == ""
-				let cmd = "mksession! $XDG_CACHE_HOME/vim/sessions/default.vim"
+				let cmd = "mksession! $XDG_DATA_HOME/vim/sessions/default.vim"
 			else
 				let cmd = "mksession! ".v:this_session
 			endif
@@ -297,9 +318,9 @@
 	" Save+Quit
 		nmap <leader>sq <ESC>:call <SID>Savesession()<cr>:wqa<cr>
 	" Save As
-		nmap <leader>sa :wa<cr>:mksession! $XDG_CACHE_HOME/vim/sessions/
+		nmap <leader>sa :wa<cr>:mksession! $XDG_DATA_HOME/vim/sessions/
 	" Restore As (Open)
-		nmap <leader>so :so $XDG_CACHE_HOME/vim/sessions/
+		nmap <leader>so :so $XDG_DATA_HOME/vim/sessions/
 
 " Saving Improvements
 	" Use ,W to save the current file with sudo

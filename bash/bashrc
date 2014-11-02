@@ -30,8 +30,8 @@
     export VISUAL='/usr/bin/vim'  # Use vim for heavy edits
 
 # Get rid of the terminal suspend/resume bindings
-stty stop undef
-stty start undef
+    stty stop undef
+    stty start undef
 
 # Colour the terminal
     [ -x /usr/bin/dircolors ] && eval "$(dircolors -b $XDG_CONFIG_HOME/bash/dircolors)"
@@ -49,6 +49,7 @@ stty start undef
     [ -f "$XDG_CONFIG_HOME"/bash/saliases.sh ] && .  $XDG_CONFIG_HOME/bash/saliases.sh
     [ -d $XDG_CONFIG_HOME/bash/functions/ ] &&
         for f in $XDG_CONFIG_HOME/bash/functions/*; do . $f; done
+    clean_home
 
 # Append Additional Executables to $PATH
     [[ :$PATH: != *:"$HOME/.local/bin":* ]] && export PATH="$HOME/.local/bin:${PATH}"

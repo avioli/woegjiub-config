@@ -8,12 +8,12 @@ except AttributeError:
     pass
 
 readline_history_file = os.path.join(
-        os.environ['XDG_CACHE_HOME'],
+        os.environ['XDG_DATA_HOME'],
         'python/python_history')
 
 try:
     readline.read_history_file(readline_history_file)
 except IOError:
-    pass
+    open(readline_history_file, 'a').close()
 
 atexit.register(readline.write_history_file, readline_history_file)

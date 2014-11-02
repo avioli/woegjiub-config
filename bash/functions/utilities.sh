@@ -1,3 +1,7 @@
+function clean_home(){
+    rm -rf ~/.{adobe,dbus,gstreamer-0.10,macromedia,mozilla,pki}
+}
+
 function command_exists(){
 	command -v "$1" 2>&1 >/dev/null ;
 }

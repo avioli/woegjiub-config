@@ -1,2 +1,7 @@
 [general]
-hist_file = '$XDG_CACHE_HOME/python/bpythonhist'
+autocomplete_mode = 'fuzzy'
+color_scheme = darko
+editor = vim
+hist_file = '$XDG_DATA_HOME/python/bpythonhist'
+hist_length = 1000
+trim_prompts = True
