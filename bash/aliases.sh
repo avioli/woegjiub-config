@@ -19,8 +19,15 @@ alias ssize="sudo du -sh --exclude="/home" --exclude="/mnt" --exclude="/srv" / 2
 alias sqlite3="sqlite3 -column -header"
 alias vi='vim -p'
 
-#cd then ls
+# cd then ls
 function cs(){ builtin cd "$@" && ll; }
+
+# Check a python repo before committing
+function chp(){
+	drep "pdb.set_trace()"
+	drep "{% pdb %}"
+	drep " print("
+}
 
 # Opens up a vim Session of the name provided
 function vims(){
