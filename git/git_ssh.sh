@@ -1,2 +1,2 @@
-#!/usr/bin/env sh
-exec /usr/bin/ssh -F $XDG_CONFIG_HOME/ssh/config
+#! /usr/bin/env bash
+ssh -F $XDG_CONFIG_HOME/ssh/config "$@"
