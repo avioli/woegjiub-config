@@ -42,7 +42,7 @@ replace:
 convert:
     dest: ~/converted
     embed: true
-    format: flac
+    format: ogg
     threads: 8
     formats:
         flac:
