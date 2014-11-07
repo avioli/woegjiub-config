@@ -2,6 +2,7 @@ akonadi/
 autostart/
 bash/saliases*
 beets/library.db
+beets/state.pickle
 brightness
 calibre/
 cantata/
