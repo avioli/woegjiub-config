@@ -68,8 +68,6 @@
 				Plugin 'tpope/vim-characterize'
 			" Sexy statusbar
 				Plugin 'bling/vim-airline'
-				let g:airline#extensions#tabline#enabled = 1
-				let g:airline#extensions#tabline#fnamemod = ':t'
 				let g:airline_left_sep=''
 				let g:airline_left_alt_sep=''
 				let g:airline_right_sep=''
@@ -131,7 +129,6 @@
 				nmap <leader>jd :YcmCompleter GoToDeclaration<cr>
 				let g:ycm_complete_in_strings = 1
 				let g:ycm_seed_identifiers_with_syntax = 1
-				let g:ycm_autoclose_preview_window_after_completion = 1
 				let g:ycm_autoclose_preview_window_after_insertion = 1
 				let g:ycm_max_diagnostics_to_display = 100
 			" Quicker Commenting/Uncommenting
@@ -213,13 +210,20 @@
 	set wildignore=*.o,*~,~.pyc				" Ignore compiled files
 	au BufReadPost *						" Go to last position on file open
 	\ if line("'\"") > 0 && line("'\"") <= line("$") |
-	\	exe "normal! g`\"" |
+	\       exe "normal! g`\"" |
 	\ endif
 	set laststatus=2						" Always show statusline
 	" file, helpfile, modified, readonly, split,  cursor location, V%
 	set statusline=%<%f\ %h%m%r%{SyntasticStatuslineFlag()}%=%-14.(%l,%c,%V%)\ %P
 	set t_Co=256							" 256 Colours in Terminal
 	colo darko								" Load my colourscheme
+
+	" For when things don't load properly
+	func! ManualReload()
+		:e %
+		:colo darko
+	endfunc
+	map <leader>c :call ManualReload()<cr>
 
 " Overrides
 	au BufNewFile,BufRead *.html set filetype=htmldjango " Presume html.django
@@ -234,7 +238,7 @@
 	end
 	set backspace=eol,start,indent			" Proper backspace behaviour
 	" tabbing
-		map <C-t> :enew<cr>
+		map <C-t> :enew<cr>:e 
 		map gt :bnext<cr>
 		map gT :bprevious<cr>
 		map :Q :bd
