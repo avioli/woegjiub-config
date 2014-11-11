@@ -24,7 +24,7 @@
     shopt -s histreedit           # Re-edit failed history substitutions
     shopt -s nocaseglob           # Ignore cases for globbing filenames
     export HISTCONTROL=ignoreboth # Ignore duplicate/blank lines in history
-    export HISTSIZE=10000         # 10K command in history
+    export HISTSIZE=100000        # 100K command in history
     export LC_COLLATE="C"         # Change sorting to list dotfiles first
     export EDITOR='/usr/bin/vim'  # Use vim for light edits
     export VISUAL='/usr/bin/vim'  # Use vim for heavy edits
