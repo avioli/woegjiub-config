@@ -265,6 +265,8 @@
 		map <c-j> <c-w>j
 	" Map hard BOL to soft BOL
 		map 0 ^
+	" Better Y behaviour
+		map Y y$
 	" Open with file's directory filled in
 		map <leader>e :e <C-R>=expand('%:p:h') . '/'<CR>
 	" insert current file's directory in prompt
@@ -286,7 +288,7 @@
 		map <leader>{ :call MoveBraces("{")<CR>
 		map <leader>} :call MoveBraces("}")<CR>
 	" Clear search results
-		map <leader>cS :noh<cr>
+		map <C-c> :noh<cr>
 	" Centers Search results
 		nnoremap n nzz
 		nnoremap N Nzz
@@ -294,7 +296,7 @@
 		nnoremap # #zz
 		nnoremap g* g*zz
 		nnoremap g# g#zz
-	" Show word's syntax group with C_S_p
+	" Show word's syntax group with C_S_s
 		nmap <C-S-S> :call <SID>SynStack()<CR>
 		function! <SID>SynStack()
 			if !exists("*synstack")
