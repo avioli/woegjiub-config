@@ -159,7 +159,7 @@
 	filetype on								" Enable filetype-specific settings
 	filetype plugin indent on				" Enable filetype-specific indentation
 	set list								" Show whitespace
-	set listchars=tab:│\ ,trail:-			" Show these whitespaces by default
+	set listchars=tab:│\ ,trail:█			" Show these whitespaces by default
 	let g:pyindent_open_paren = '&sw'		" Indent 1 sw after ( in python
 	let g:pyindent_nested_paren = '&sw'		" Indent 1 sw after nested () in py
 	let g:pyindent_continue = '&sw'			" Indent 1 sw for continuation
@@ -183,6 +183,7 @@
 	set nocompatible						" Enable vimness
 	set autoread							" Automatically detect outside changes
 	set history=1000						" Massive history
+	set complete=.,w,b,u,t,i,k				" Add dictionary to completion
 	set completeopt=menuone,longest,preview	" Set autocompletion options
 	set omnifunc=syntaxcomplete#Complete	" Enable Omnicompletion
 	set exrc								" Per-directory vimrcs
@@ -194,6 +195,9 @@
 	set spelllang=en_au,de					" English-Aus, German for words
 	set clipboard=unnamedplus				" Use system clipboard by default
 	set undofile							" Enable persistent undo
+	set hidden								" Hide buffers instead of closing
+	set nrformats-=octal					" Don't inc/dec # with ^0 as octal
+	set sessionoptions-=options				" Don't store options in sessions
 
 " UI Settings
 	set showcmd								" Shows Current Command
@@ -218,13 +222,6 @@
 	set t_Co=256							" 256 Colours in Terminal
 	colo darko								" Load my colourscheme
 
-	" For when things don't load properly
-	func! ManualReload()
-		:e %
-		:colo darko
-	endfunc
-	map <leader>c :call ManualReload()<cr>
-
 " Overrides
 	au BufNewFile,BufRead *.html set filetype=htmldjango " Presume html.django
 
@@ -238,7 +235,6 @@
 	end
 	set backspace=eol,start,indent			" Proper backspace behaviour
 	" tabbing
-		map <C-t> :enew<cr>:e 
 		map gt :bnext<cr>
 		map gT :bprevious<cr>
 		map :Q :bd

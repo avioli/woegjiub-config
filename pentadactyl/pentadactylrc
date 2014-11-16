@@ -61,6 +61,6 @@ highlight WarningMsg color: red !important; background: inherit !important;
 set defsearch=ddg
 set guioptions=s
 set passkeys=woegjiub.com:jkvnp
-set showtabline=never
+set showtabline=always
 
 " vim: set ft=pentadactyl:

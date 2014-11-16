@@ -10,9 +10,8 @@ if exists("syntax_on")
 endif
 let g:colors_name = "darko"
 
-syntax match Operators display '[=]'
-syntax match Braces display '[{}()\[\]]'
-
+au BufRead,BufNewFile * syntax match Operator display '[!\*\/,\.><:\-=\+]'
+au BufRead,BufNewFile * syntax match Brace display '[{}()\[\]]'
 
 " UI
 hi ColorColumn ctermfg=NONE ctermbg=5
@@ -23,19 +22,20 @@ hi StatusLine ctermfg=0 ctermbg=7 cterm=NONE
 
 
 " General
-hi Braces ctermfg=5 cterm=bold
+hi Brace ctermfg=5 cterm=bold
 hi Comment ctermfg=240 cterm=italic
-hi Conditional ctermfg=57 cterm=bold
+hi Conditional ctermfg=93 cterm=bold
 hi Function ctermfg=5 cterm=bold
-hi Number ctermfg=183
-hi Operators ctermfg=90 cterm=bold
+hi Number ctermfg=213
+hi Operator ctermfg=129 cterm=bold
 hi PreProc ctermfg=5 cterm=italic
+hi SpecialKey ctermfg=8
 hi Statement ctermfg=135 cterm=bold
 hi String ctermfg=240 cterm=italic
 
 
 " Python
-hi PythonBuiltin ctermfg=104 ctermbg=NONE cterm=bold
+hi PythonBuiltin ctermfg=140 ctermbg=NONE cterm=bold
 
 
 " HTML
