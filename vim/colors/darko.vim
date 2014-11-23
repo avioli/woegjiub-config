@@ -14,7 +14,7 @@ au BufRead,BufNewFile * syntax match Operator display '[!\*\/,\.><:\-=\+]'
 au BufRead,BufNewFile * syntax match Brace display '[{}()\[\]]'
 
 " UI
-hi ColorColumn ctermfg=NONE ctermbg=5
+hi ColorColumn ctermfg=16 ctermbg=56
 hi Folded ctermfg=236 ctermbg=0 cterm=bold
 hi LineNr ctermfg=8
 hi NonText ctermfg=8
@@ -27,7 +27,7 @@ hi Comment ctermfg=240 cterm=italic
 hi Conditional ctermfg=93 cterm=bold
 hi Function ctermfg=5 cterm=bold
 hi Number ctermfg=213
-hi Operator ctermfg=129 cterm=bold
+hi Operator ctermfg=57 cterm=bold
 hi PreProc ctermfg=5 cterm=italic
 hi SpecialKey ctermfg=8
 hi Statement ctermfg=135 cterm=bold
