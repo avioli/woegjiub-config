@@ -1,4 +1,4 @@
-DIR="/home/darko/Music/untagged"
+DIR="/home/darko/untagged_music"
 OUTPATTERN="@artist/@album/@track @title.@ext"
 COPYMASKS=""
 COPYFILES=1
@@ -8,7 +8,7 @@ REMOVE=0
 PIC_SIZE=512x512
 NOCOLORS=0
 REPLAY_GAIN=0
-ENCARGS_flac="-12"
+ENCARGS_flac="-8"
 ENCARGS_m4a="-q 500"
 ENCARGS_mp3="--preset extreme"
 ENCARGS_ogg="-q 10"
