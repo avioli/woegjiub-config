@@ -104,6 +104,8 @@
 				Plugin 'adimit/prolog.vim'
 			" CSV
 				Plugin 'csv.vim'
+			" spaces
+				Plugin 'Yggdroot/indentLine'
 		" Syntax Testing
 			Plugin 'scrooloose/syntastic'
 				let g:syntastic_auto_loc_list=2
