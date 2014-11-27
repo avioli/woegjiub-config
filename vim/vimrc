@@ -159,7 +159,7 @@
 	filetype on								" Enable filetype-specific settings
 	filetype plugin indent on				" Enable filetype-specific indentation
 	set list								" Show whitespace
-	set listchars=tab:│\ ,trail:█			" Show these whitespaces by default
+	set listchars=tab:│\ ,trail:•			" Show these whitespaces by default
 	let g:pyindent_open_paren = '&sw'		" Indent 1 sw after ( in python
 	let g:pyindent_nested_paren = '&sw'		" Indent 1 sw after nested () in py
 	let g:pyindent_continue = '&sw'			" Indent 1 sw for continuation
