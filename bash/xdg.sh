@@ -17,6 +17,7 @@
     export PYLINTRC="$XDG_CONFIG_HOME/pylint/pylintrc"
     export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
     export RXVT_SOCKET="$XDG_RUNTIME_DIR/urxvtd.sock"
+    export TERMINFO="$XDG_CONFIG_HOME/terminfo"
     export VIMINIT="source $XDG_CONFIG_HOME/vim/vimrc"
     export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
     export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
