@@ -1,0 +1,13 @@
+set defsearch=ddg
+set gui=notabs,nonavigation
+set rtp=$XDG_CONFIG_HOME/vimperator
+set sb=false
+colo darkness
+ignorekeys add -except=d,s .*woegjiub.com.*
+
+map a a<Space>-tags<Space>
+map m a
+map A O
+map s o ddg 
+map S t ddg 
+map <C-v> <S-Esc>

@@ -19,6 +19,7 @@
     export RXVT_SOCKET="$XDG_RUNTIME_DIR/urxvtd.sock"
     export TERMINFO="$XDG_CONFIG_HOME/terminfo"
     export VIMINIT="source $XDG_CONFIG_HOME/vim/vimrc"
+    export VIMPERATOR_INIT=":source $XDG_CONFIG_HOME/vimperator/vimperatorrc"
     export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
     export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
