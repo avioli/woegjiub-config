@@ -20,6 +20,8 @@ set visible-stats on
 set keymap vi-command
 "\e[A": history-search-backward
 "\e[B": history-search-forward
+"\C-K": history-search-backward
+"\C-J": history-search-forward
 TAB: menu-complete
 "\e[Z": menu-complete-backward
 
@@ -27,6 +29,8 @@ set keymap vi-insert
 TAB: menu-complete
 "\e[A": history-search-backward
 "\e[B": history-search-forward
+"\C-K": history-search-backward
+"\C-J": history-search-forward
 "\e[Z": menu-complete-backward
 "\e[1~": beginning-of-line
 "\e[4~": end-of-line
@@ -52,4 +56,3 @@ TAB: menu-complete
 "\C-E": end-of-line
 "\M-B": backward-word
 "\M-F": forward-word
-"\C-K": kill-whole-line
