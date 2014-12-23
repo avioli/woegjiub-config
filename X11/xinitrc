@@ -6,14 +6,16 @@
         unset f
 
 # Load the IME
-[ -f /usr/bin/fcitx ] &&
+command -v fcitx &&
     export GTK_IM_MODULE=fcitx &&
     export QT_IM_MODULE=fcitx &&
     export XMODIFIERS="@im=fcitx" &&
     fcitx
 
-[ -f /usr/bin/numlockx ] && numlockx&        # Activate Numlock
-[ -f /usr/bin/mpd ] && mpd                   # Start MPD
-setxkbmap -option caps:escape                # Bind ESC to CAPS
-xrdb -merge $XDG_CONFIG_HOME/X11/xresources  # Load RXVT settings
-[ -f /usr/bin/awesome ] && exec awesome      # Open the WM
+command -v numlockx && numlockx&                    # Activate Numlock
+command -v mpd && mpd                               # Start MPD
+command -v xcape || setxkbmap -option caps:escape   # Bind ESC to CAPS
+command -v xcape && setxkbmap -option ctrl:nocaps   # Bind CTRL to CAPS
+command -v xcape && xcape -e 'Control_L=Escape'     # Bind ESC to 'tap CTRL'
+xrdb -merge $XDG_CONFIG_HOME/X11/xresources         # Load RXVT settings
+[ -f /usr/bin/awesome ] && exec awesome             # Open the WM
