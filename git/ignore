@@ -46,3 +46,7 @@ venv/
 ##################
 settings/__init__.py
 settings/development.py
+
+# Intentionally ignored stuff (notes, etc.) #
+#############################################
+ignore/
