@@ -14,6 +14,16 @@ function count_files(){
 	done|sort -n
 }
 
+# Shows what would have been in the bash prompt were I not a minimalist
+function p(){
+	echo "$USER@$HOSTNAME:$(pwd) "
+}
+
+# Show the prompt if we're not on a local device
+function prmpt(){
+	[ ! -f $XDG_DATA_HOME/localdevice ] && p
+}
+
 # Prints the total size taken by files with the extension provided
 function sizefromtype(){
 	find -iname "*.$@" -print0 | du --files0-from - -c -sh | tail -1 | sed 's/\([^ tab]\+\).*/\1 /'

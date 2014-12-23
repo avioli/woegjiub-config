@@ -1,3 +1,21 @@
+# add colour variables
+	export col_reset=$(tput sgr0)
+	export col_red=$(tput setaf 1)
+	export col_green=$(tput setaf 2)
+	export col_yellow=$(tput setaf 3)
+	export col_blue=$(tput setaf 4)
+	export col_magenta=$(tput setaf 5)
+	export col_cyan=$(tput setaf 6)
+	export col_lgrey=$(tput setaf 7)
+	export col_dgrey=$(tput setaf 8)
+	export col_bred=$(tput setaf 9)
+	export col_bgreen=$(tput setaf 10)
+	export col_byellow=$(tput setaf 11)
+	export col_bblue=$(tput setaf 12)
+	export col_bmagenta=$(tput setaf 13)
+	export col_bcyan=$(tput setaf 14)
+	export col_white=$(tput setaf 15)
+
 # spit out *all* the colours
 function colours() {
 	function colourtable() {

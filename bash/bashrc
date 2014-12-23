@@ -7,9 +7,6 @@
     export XDG_CACHE_HOME=$HOME/.cache
     [ -f $XDG_CONFIG_HOME/bash/xdg.sh ] && . $XDG_CONFIG_HOME/bash/xdg.sh
 
-# Preferred Prompt Setting
-    export PS1="\u@\h:\w\\$ "
-
 # enable programmable completion features
     [ -f /etc/bash_completion ] && ! shopt -oq posix && . /etc/bash_completion
 
@@ -50,6 +47,9 @@
     [ -d $XDG_CONFIG_HOME/bash/functions/ ] &&
         for f in $XDG_CONFIG_HOME/bash/functions/*; do . $f; done
     clean_home
+
+# preferred prompt setting (jobcount in blue if >0), user@host:path if nonlocal
+    export PS1=' $([ \j -gt 0 ] && echo \[$col_bblue\]\j\[$col_reset\]\ )$(prmpt)'
 
 # Append Additional Executables to $PATH
     [[ :$PATH: != *:"$HOME/.local/bin":* ]] && export PATH="$HOME/.local/bin:${PATH}"
