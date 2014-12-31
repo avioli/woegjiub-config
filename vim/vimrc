@@ -110,10 +110,12 @@
 					Plugin 'davidhalter/jedi-vim'
 					let g:jedi#use_tabs_not_buffers = 0
 					let g:jedi#use_splits_not_buffers = "right"
+					let g:jedi#show_call_signatures = 2
 			" Completion on tab
 				Plugin 'ervandew/supertab'
-				let g:SuperTabDefaultCompletionType = "context"
 				let g:SuperTabLongestEnhanced = 1
+				let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+				" autocmd FileType * call SuperTabChain("<c-x><c-o>", "<c-p>")
 			" Quicker Commenting/Uncommenting
 				Plugin 'tpope/vim-commentary'
 			" Add repeat . to addons and unrepeatable vanilla commands
@@ -146,6 +148,12 @@
 	let g:pyindent_open_paren = '&sw'		" Indent 1 sw after ( in python
 	let g:pyindent_nested_paren = '&sw'		" Indent 1 sw after nested () in py
 	let g:pyindent_continue = '&sw'			" Indent 1 sw for continuation
+
+" Completion settings
+	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+	autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+	autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+	autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Folding settings
 	set foldmethod=indent					" Enable Folding
@@ -184,6 +192,7 @@
 
 " UI Settings
 	set showcmd								" Shows Current Command
+	set noshowmode							" Hide mode for messages to appear
 	set showfulltag							" Increase info for tag completion
 	set ruler								" Show position at bottom
 	set number								" I need line numbers

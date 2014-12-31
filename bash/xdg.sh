@@ -37,6 +37,6 @@
 # Disgusting hacks
 	function sl3(){
 		mv {$XDG_DATA_HOME/sqlite3/,~/.}sqlite_history
-		sqlite3 "$1"
+		sqlite3 "$@"
 		mv {~/.,$XDG_DATA_HOME/sqlite3/}sqlite_history
 	}

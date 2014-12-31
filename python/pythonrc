@@ -9,7 +9,7 @@ except AttributeError:
 
 readline_history_file = os.path.join(
         os.environ['XDG_DATA_HOME'],
-        'python/python_history')
+        'python/pythonhist')
 
 try:
     readline.read_history_file(readline_history_file)

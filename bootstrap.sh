@@ -4,7 +4,7 @@
 mkdir -p $XDG_CACHE_HOME
 cd $XDG_CACHE_HOME
 
-for dir in pip; do
+for dir in pip/log; do
 	mkdir -p $dir
 	echo "made `pwd`/$dir"
 done
