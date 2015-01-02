@@ -4,7 +4,6 @@ scriptencoding utf-8
 	set rtp=$XDG_CONFIG_HOME/vim,$VIM,$VIMRUNTIME
 	set undodir=$XDG_DATA_HOME/vim/undo
 	set viewdir=$XDG_DATA_HOME/vim/view
-	let g:netrw_home = expand('$XDG_DATA_HOME/vim/netrw')
 
 " Addon Settings
 	" Set up Vundle to do its magic
@@ -24,29 +23,44 @@ scriptencoding utf-8
 			" Note Taking
 				Plugin 'vimoutliner/vimoutliner'
 					let maplocalleader=",,"
-					" Mappings to change code to and from outlines
-					map <leader>oc :s/^/<\ /<cr>:noh<cr>
-					map <leader>oC :s/^	*<\ \=//<cr>:noh<cr>
-					" Mapping to create paragraphs from visual blocks of
-					" HTML paragraphs pasted over
-					map <leader>op :s/^\(\t*:\)\(.\+\)/\1____\2/<cr>gvgqgv:s/____/\ \ \ \ /g<cr>gv:s/^\t*:\s*\n//<cr>:noh<cr>
-					" Mapping to wrap citations
-					map <leader>oq :s/^\(\t*\:\)\(\d\+\)/\1\ \ \ \ \2/<cr>gvgqgv:s/^\(\t*:\)\ \ \ \ \(\d\+\.*\ \)/\1\2/<cr>gv:s/^\(\t*\):/\1</<cr>gv:s/^\t*<\s*\n//<cr>:noh<cr>
-					" Mapping to swap from wrapping to static text in V-block
-					map <leader>os :s/^\(\t*\):/\1</<cr>:noh<cr>
 			" Text alignment
 				Plugin 'godlygeek/tabular'
 				Plugin 'maksimr/vim-jsbeautify'
-				map <leader>tj :call RangeJsBeautify()<cr>
+					map <leader>tj :call RangeJsBeautify()<cr>
 			" Revision History
-				Plugin 'sjl/gundo.vim'
-					map <leader>G :GundoToggle<CR>
+				Plugin 'mbbill/undotree'
+					map <leader>u :UndotreeToggle<CR>
+					let g:undotree_SetFocusWhenToggle=1
+			" Shell
+				Plugin 'Shougo/vimproc.vim'
+				Plugin 'Shougo/vimshell.vim'
+			" Calculator (Incremental)
+				Plugin 'supermomonga/unite-kawaii-calc'
+					map <leader>c :<C-u>Unite -start-insert kawaii-calc<CR>
+			" Searching
+				Plugin 'Shougo/unite.vim'
+					call unite#filters#matcher_default#use(['matcher_fuzzy'])
+					let g:unite_source_history_yank_enable = 1
+					if executable('ag')
+						let g:unite_source_grep_default_opts = '-i --line-numbers'
+					endif
+					call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\.local/\|\.cache/')
+					nnoremap <leader>p :<C-u>Unite -no-split -auto-preview -start-insert file_rec/async<CR>
+					nnoremap <leader>P :<C-u>Unite -no-split -auto-preview -start-insert file_rec/async<CR>
+					nnoremap <leader>y :<C-u>Unite -no-split history/yank<CR>
+					nnoremap <leader>b :<C-u>Unite -no-split -start-insert buffer<CR>
+					nnoremap <leader>a :<C-u>Unite -start-insert grep:.<CR>
+				Plugin 'Shougo/neomru.vim'
+					nnoremap <leader>f :<C-u>Unite -no-split -start-insert file_mru<CR>
 			" File Management
-				Plugin 'tpope/vim-vinegar'
-					let g:netrw_liststyle = 3
+				Plugin 'Shougo/vimfiler.vim'
+					let g:loaded_netrwPlugin = 1
+					let g:vimfiler_as_default_explorer = 1
+					let g:vimfiler_ignore_pattern = ''
+				nnoremap - :VimFiler<CR>
 			" Tag outliner
 				Plugin 'majutsushi/tagbar'
-					map <leader>m :TagbarToggle<CR>
+					map <leader>t :TagbarToggle<CR>
 			" Show extended information when pressing 'ga' on a character
 				Plugin 'tpope/vim-characterize'
 			" Sexy statusbar
@@ -57,20 +71,9 @@ scriptencoding utf-8
 				let g:airline_right_alt_sep=''
 			" Toggle location and quick lists
 				Plugin 'valloric/listtoggle'
-		" Search Addons
-			" Enable Ack Searching
-				Plugin 'mileszs/ack.vim'
-					nmap <leader>a <Esc>:Ack! 
-			" Search Buffers/Filenames+Paths for navigation
-				Plugin 'kien/ctrlp.vim'
-				let g:ctrlp_custom_ignore = {
-					\ 'dir': '\.git$\|\.svn$\|\.hg$\|build$\|venv\|^output$',
-					\ 'file': '\.pyc$\|\.so$\|\.class$\|.swp$\|\.pid\|\.beam$',
-					\ }
-				map <leader>b :CtrlPBuffer<cr>
-				map <leader>f :CtrlPMRU<cr>
-				let g:ctrlp_match_window = 'max:30'
 		" Syntax Highlighting
+			" Improved context
+				Plugin 'Shougo/context_filetype.vim'
 			" CSS3
 				Plugin 'hail2u/vim-css3-syntax'
 				Plugin 'ap/vim-css-color'
@@ -91,7 +94,7 @@ scriptencoding utf-8
 				Plugin 'csv.vim'
 			" spaces
 				Plugin 'Yggdroot/indentLine'
-		" Syntax Testing
+		" Linting
 			Plugin 'scrooloose/syntastic'
 				let g:syntastic_auto_loc_list=2
 				let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
@@ -100,24 +103,8 @@ scriptencoding utf-8
 				let g:syntastic_always_populate_loc_list = 1
 				map <F5> :SyntasticCheck<cr>
 		" Typing Efficiency Improvers
-			" Snippets
-				Plugin 'SirVer/ultisnips'
-				let g:UltiSnipsExpandTrigger="zz"
 			" Change the Surroundings of Text
 				Plugin 'tpope/vim-surround'
-			" Semantic completion
-				" Javascript
-					Plugin 'marijnh/tern_for_vim'
-				" Python
-					Plugin 'davidhalter/jedi-vim'
-					let g:jedi#use_tabs_not_buffers = 0
-					let g:jedi#use_splits_not_buffers = "right"
-					let g:jedi#show_call_signatures = 2
-			" Completion on tab
-				Plugin 'ervandew/supertab'
-				let g:SuperTabLongestEnhanced = 1
-				let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-				" autocmd FileType * call SuperTabChain("<c-x><c-o>", "<c-p>")
 			" Quicker Commenting/Uncommenting
 				Plugin 'tpope/vim-commentary'
 			" Add repeat . to addons and unrepeatable vanilla commands
@@ -126,6 +113,24 @@ scriptencoding utf-8
 				Plugin 'mattn/emmet-vim'
 				let g:user_emmet_leader_key = '<c-,>'
 				let g:user_emmet_complete_tag = 1
+			" Snippets
+				Plugin 'Shougo/neosnippet-snippets'
+				Plugin 'Shougo/neosnippet.vim'
+					imap <leader>S     <Plug>(neosnippet_expand_or_jump)
+					smap <leader>S     <Plug>(neosnippet_expand_or_jump)
+					xmap <leader>S     <Plug>(neosnippet_expand_target)
+					let g:neosnippet#enable_preview = 1
+					if has('conceal')
+						set conceallevel=2 concealcursor=i
+					endif
+					let g:neosnippet#snippets_directory = expand('$XDG_CONFIG_HOME/vim/snippets')
+			"Completion
+				" Javascript
+					Plugin 'marijnh/tern_for_vim'
+				" Python
+					Plugin 'davidhalter/jedi-vim'
+				" Everything
+					Plugin 'Shougo/neocomplete.vim'
 
 " Indentation Settings
 	set shiftround							" Indents rounded to shiftwidths
@@ -153,9 +158,33 @@ scriptencoding utf-8
 
 " Completion settings
 	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-	autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+	autocmd FileType html,htmldjango,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 	autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+	autocmd FileType python setlocal omnifunc=jedi#completions
 	autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+	" Jedi.vim
+		let g:jedi#use_tabs_not_buffers = 0
+		let g:jedi#use_splits_not_buffers = "right"
+		let g:jedi#auto_vim_configuration = 0
+		let g:jedi#completions_enabled = 0
+		let g:jedi#popup_on_dot = 0
+		let g:jedi#popup_select_first = 0
+		let g:jedi#show_call_signatures = 2
+	" Neocomplete
+		let g:neocomplete#enable_at_startup = 1
+		let g:neocomplete#enable_auto_close_preview = 0
+		let g:neocomplete#enable_camel_case = 1
+		let g:neocomplete#enable_smart_case = 1
+		let g:neocomplete#fallback_mappings = ["\<C-x>\<C-o>", "\<C-x>\<C-n>"]
+		if !exists('g:neocomplete#keyword_patterns')
+			let g:neocomplete#keyword_patterns = {}
+		endif
+		let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+		if !exists('g:neocomplete#force_omni_input_patterns')
+			let g:neocomplete#force_omni_input_patterns = {}
+		endif
+		let g:neocomplete#force_omni_input_patterns.python =
+			\ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 
 " Folding settings
 	set foldmethod=indent					" Enable Folding
@@ -177,7 +206,7 @@ scriptencoding utf-8
 	set autoread							" Automatically detect outside changes
 	set history=1000						" Massive history
 	set complete=.,w,b,u,t,i,k				" Add dictionary to completion
-	set completeopt=menuone,longest,preview	" Set autocompletion options
+	set completeopt+=preview				" Set autocompletion options
 	set omnifunc=syntaxcomplete#Complete	" Enable Omnicompletion
 	set exrc								" Per-directory vimrcs
 	set secure								" Disable insecure local vimrc commands
@@ -229,17 +258,20 @@ scriptencoding utf-8
 	end
 	set backspace=eol,start,indent			" Proper backspace behaviour
 	" tabbing
-		map gt :bnext<cr>
-		map gT :bprevious<cr>
+		map gb :bnext<cr>
+		map gB :bprevious<cr>
 		map :Q :bd
 	let g:clipbrdDefaultReg="+"				" Use Linux clipboard as def copy reg
 	" easy buffer navigation
-		map <leader>B :buffers<CR>:buffer 
+		map <leader>B :buffers<CR>:buffer<Space>
 	" Make shift-insert work as linux paste
 		map <S-Insert> <MiddleMouse>
 		map! <S-Insert> <MiddleMouse>
 	" Recall recent file list
 		map <leader>r :browse oldfiles<CR>
+	" SuperTab's a silly plugin
+		inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+		inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 	" Fix control-arrows in tmux
 	if &term =~ '^screen'
 		execute "set <xUp>=\e[1;*A"

@@ -1,11 +1,10 @@
 " Spaces instead of tabs for python
 	setlocal et ai ts=4 sts=4 sw=4
 
-" Enable autocompletion
-	set omnifunc=pythoncomplete#Complete
-
 " Better syntax highlighting
 	let python_highlight_all=1
+	set omnifunc=jedi#completions
+	setlocal omnifunc=jedi#completions
 
 if has('python3')
 py3 << EOF

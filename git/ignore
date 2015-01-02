@@ -5,13 +5,12 @@
 *.pyc
 *.class
 
-# Packages #
+# Archives #
 ############
-# it's better to unpack these files and commit the raw source
-# git has its own built in compression methods
 *.7z
 *.dmg
 *.gz
+*.xz
 *.iso
 *.jar
 *.rar
@@ -34,18 +33,25 @@
 # OS generated files #
 ######################
 .DS_Store*
-ehthumbs.db
+.cache/*
+.local/*
 Icon?
 Thumbs.db
+ehthumbs.db
 
-/components/
-venv/
+# Version Control #
+###################
+.bz
+.hg
+.git
 .svn
 
-# Local settings #
-##################
+# Project-instance #
+####################
 settings/__init__.py
 settings/development.py
+/components/
+venv/
 
 # Intentionally ignored stuff (notes, etc.) #
 #############################################
