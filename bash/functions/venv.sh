@@ -49,3 +49,36 @@ function --venv() {
 	fi
 }
 
+function mkvenv() {
+	[[ -z "$1" ]] && return 1
+	name=$1
+	path=$HOME/development/$name
+	vdir=$XDG_DATA_HOME/projects/$name
+	[[ -d $vdir ]] || pyvenv $vdir
+	[[ -d $path ]] || mkdir $path
+	workon $name
+}
+
+function rmvenv() {
+	[[ -z "$1" ]] && return 1
+	name=$1
+	vdir=$XDG_DATA_HOME/projects/$name
+	[[ -d $vdir ]] && rm -rf $vdir
+}
+
+function workon() {
+	[[ -z "$1" ]] && return 1
+	name=$1
+	path=$HOME/development/$name
+	vdir=$XDG_DATA_HOME/projects/$name
+	[[ -d $vdir ]] && . $vdir/bin/activate
+	[[ -d $path ]] && cd $path
+}
+
+_getvenvdirs() {
+	local projects=("$XDG_DATA_HOME/projects/$2"*)
+	[[ -e ${projects[0]} ]] && COMPREPLY=( "${projects[@]##*/}" )
+}
+
+complete -F _getvenvdirs workon
+complete -F _getvenvdirs rmvenv

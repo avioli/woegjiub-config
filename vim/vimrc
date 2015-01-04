@@ -116,9 +116,7 @@ scriptencoding utf-8
 			" Snippets
 				Plugin 'Shougo/neosnippet-snippets'
 				Plugin 'Shougo/neosnippet.vim'
-					imap <leader>S     <Plug>(neosnippet_expand_or_jump)
-					smap <leader>S     <Plug>(neosnippet_expand_or_jump)
-					xmap <leader>S     <Plug>(neosnippet_expand_target)
+					map <leader>z     <Plug>(neosnippet_expand_or_jump)
 					let g:neosnippet#enable_preview = 1
 					if has('conceal')
 						set conceallevel=2 concealcursor=i
