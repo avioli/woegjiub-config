@@ -1,4 +1,7 @@
 # Environment-variable respecting programs
+	export GEM_HOME="$HOME/.local/lib/gems"
+	export GEM_PATH="$HOME/.local/bin"
+	export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
 	export GIT_SSH="$XDG_CONFIG_HOME/git/git_ssh.sh"
 	export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
 	export GSTREGISTRY="$XDG_DATA_HOME/gstreamer/registry.bin"

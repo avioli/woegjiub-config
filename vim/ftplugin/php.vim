@@ -1,2 +1,2 @@
-" Enable Autocompletion
-	au FileType php set omnifunc=phpcomplete#completePHP
+set omnifunc=phpcomplete#completePHP
+set syntax=php

@@ -71,8 +71,8 @@ function workon() {
 	name=$1
 	path=$HOME/development/$name
 	vdir=$XDG_DATA_HOME/projects/$name
-	[[ -d $vdir ]] && . $vdir/bin/activate
 	[[ -d $path ]] && cd $path
+	[[ -d $vdir ]] && . $vdir/bin/activate
 }
 
 _getvenvdirs() {

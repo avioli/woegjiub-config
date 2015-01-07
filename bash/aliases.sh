@@ -19,6 +19,7 @@ alias scan="scanimage --format=tiff >"
 alias ssize="sudo du -sh --exclude="/home" --exclude="/mnt" --exclude="/srv" / 2>/dev/null"
 alias sqlite3="sqlite3 -column -header"
 alias vi='vim -p'
+command -v virtualenv2 >/dev/null 2>&1 && alias pyvenv="virtualenv2"
 
 # cd then ls
 function cs(){ builtin cd "$@" && ll; }
