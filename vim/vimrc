@@ -47,9 +47,8 @@ scriptencoding utf-8
 					endif
 					call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\.local/\|\.cache/')
 					nnoremap <leader>p :<C-u>Unite -no-split -auto-preview -start-insert file_rec/async<CR>
-					nnoremap <leader>P :<C-u>Unite -no-split -auto-preview -start-insert file_rec/async<CR>
 					nnoremap <leader>y :<C-u>Unite -no-split history/yank<CR>
-					nnoremap <leader>b :<C-u>Unite -no-split -start-insert buffer<CR>
+					nnoremap <leader>b :<C-u>Unite -no-split buffer<CR>
 					nnoremap <leader>a :<C-u>Unite -start-insert grep:.<CR>
 				Plugin 'Shougo/neomru.vim'
 					nnoremap <leader>f :<C-u>Unite -no-split -start-insert file_mru<CR>
