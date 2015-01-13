@@ -5,6 +5,7 @@
 	export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 	export HISTFILE="$XDG_DATA_HOME/bash/history"
 	export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
+	export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
 	export KDEHOME="$XDG_CONFIG_HOME/kde"
 	export LESSHISTFILE="$XDG_DATA_HOME/less/history"
 	export npm_config_userconfig="$XDG_CONFIG_HOME/npm/npmrc"
