@@ -52,8 +52,8 @@ function --venv() {
 function mkvenv() {
 	[[ -z "$1" ]] && return 1
 	name="$1"
-	path=$HOME/development/$name
-	vdir=$XDG_DATA_HOME/projects/$name
+	path="$HOME/development/$name"
+	vdir="$XDG_DATA_HOME/projects/$name"
 	[[ -d "$vdir" ]] || pyvenv "$vdir"
 	[[ -d "$path" ]] || mkdir "$path"
 	workon $name
@@ -62,17 +62,18 @@ function mkvenv() {
 function rmvenv() {
 	[[ -z "$1" ]] && return 1
 	name="$1"
-	vdir=$XDG_DATA_HOME/projects/$name
+	vdir="$XDG_DATA_HOME/projects/$name"
 	[[ -d "$vdir" ]] && rm -rf "$vdir"
 }
 
 function workon() {
 	[[ -z "$1" ]] && return 1
 	name="$1"
-	path=$HOME/development/$name
-	vdir=$XDG_DATA_HOME/projects/$name
+	path="$HOME/development/$name"
+	vdir="$XDG_DATA_HOME/projects/$name"
 	[[ -d "$path" ]] && cd "$path"
 	[[ -d "$vdir" ]] && . "$vdir/bin/activate"
+	[[ -z "$TMUX" ]] || tmux rename-window "$name"
 }
 
 _getvenvdirs() {

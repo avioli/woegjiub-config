@@ -21,6 +21,7 @@
 	export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
 	export RXVT_SOCKET="$XDG_RUNTIME_DIR/urxvtd.sock"
 	export TERMINFO="$XDG_CONFIG_HOME/terminfo"
+	export VAGRANT_HOME="$XDG_DATA_HOME/vagrant"
 	export VIMINIT="source $XDG_CONFIG_HOME/vim/vimrc"
 	export VIMPERATOR_INIT=":source $XDG_CONFIG_HOME/vimperator/vimperatorrc"
 	export VIMPERATOR_RUNTIME="$XDG_CONFIG_HOME/vimperator"
