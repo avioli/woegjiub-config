@@ -28,3 +28,9 @@ function prmpt(){
 function sizefromtype(){
 	find -iname "*.$@" -print0 | du --files0-from - -c -sh | tail -1 | sed 's/\([^ tab]\+\).*/\1 /'
 }
+
+function sss(){
+	[[ -z "$TMUX" ]] || tmux rename-window "$*"
+	ssh "$@"
+	exit
+}
