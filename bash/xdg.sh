@@ -30,6 +30,7 @@
 	export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 # Alias respecting programs
+	alias ag="ag -p $XDG_CONFIG_HOME/ag/agignore"
 	alias firefox="firefox -profile $XDG_CONFIG_HOME/firefox"
 	export BROWSER="firefox -profile $XDG_CONFIG_HOME/firefox"
 	alias mutt="mutt -F $XDG_CONFIG_HOME/mutt/muttrc"

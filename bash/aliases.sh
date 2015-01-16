@@ -1,5 +1,6 @@
 alias cal="cal -3"
-alias drep="grep -riI --exclude-dir=fixtures --exclude-dir=venv --exclude-dir=migrations --exclude-dir=static --exclude=*.json 2>/dev/null"
+alias drep="grep -riIn --exclude-dir=fixtures --exclude-dir=venv --exclude-dir=migrations --exclude-dir=static --exclude=*.json 2>/dev/null"
+alias dag="ag --ignore fixtures --ignore static --ignore migrations --ignore venv --ignore *.json 2>/dev/null"
 alias feh="feh -B black -e LiberationMono-Regular/24 -C /usr/share/fonts/TTF"
 alias fehs="feh -Z." # Initial is correct on all, but flicker on N/P
 alias fehm="feh -g 2880x1800" # No flicker on N/P, still scales to screen
@@ -26,9 +27,19 @@ function cs(){ builtin cd "$@" && ll; }
 
 # Check a python repo before committing
 function chp(){
-	drep "pdb.set_trace()"
-	drep "{% pdb %}"
-	drep " print("
+	if [[ -f /usr/bin/ag ]]; then
+		dag "db.set_trace\(\)"
+		dag "pu.db"
+		dag "{% pdb %}"
+		dag " print\("
+		dag "raise$"
+	else
+		dag "db.set_trace()"
+		dag "pu.db"
+		dag "{% pdb %}"
+		dag " print("
+		dag "raise$"
+	fi
 }
 
 # Opens up a vim Session of the name provided
