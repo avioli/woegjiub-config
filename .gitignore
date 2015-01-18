@@ -16,6 +16,8 @@ gnupg/
 gtk-2.0/
 gtk-3.0/
 ImageMagick/
+ipython/profile_default/db
+ipython/profile_default/security
 kde
 keepassx/
 libreoffice/

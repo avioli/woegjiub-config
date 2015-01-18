@@ -45,10 +45,10 @@
     export LESS_TERMCAP_us=$(printf "\e[1;32m")
 
 # Load Aliases and Functions
-    [ -f "$XDG_CONFIG_HOME"/bash/aliases.sh ] && .  $XDG_CONFIG_HOME/bash/aliases.sh
-    [ -f "$XDG_CONFIG_HOME"/bash/saliases.sh ] && .  $XDG_CONFIG_HOME/bash/saliases.sh
     [ -d $XDG_CONFIG_HOME/bash/functions/ ] &&
         for f in $XDG_CONFIG_HOME/bash/functions/*; do . $f; done
+    [ -f "$XDG_CONFIG_HOME"/bash/aliases.sh ] && .  $XDG_CONFIG_HOME/bash/aliases.sh
+    [ -f "$XDG_CONFIG_HOME"/bash/saliases.sh ] && .  $XDG_CONFIG_HOME/bash/saliases.sh
     clean_home
 
 # preferred prompt setting (jobcount in blue if >0), user@host:path if nonlocal

@@ -14,13 +14,13 @@ alias ll="ls -lh --time-style=long-iso"
 alias l="ll"
 alias lsblkv="lsblk -o name,size,type,fstype,ro,mountpoint,label,uuid,partuuid"
 alias pipudate="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U"
-alias python="python -q"
-alias ramused="ps -u $LOGNAME -o rss,command | grep -v peruser | awk '{sum+=$1} END {print sum/1024}'"
+alias piplistglobal="pip list | sort > l1 && pip list --user | sort > l2 && comm l1 l2 -2 -3 && rm l1 && rm l2"
 alias scan="scanimage --format=tiff >"
 alias ssize="sudo du -sh --exclude="/home" --exclude="/mnt" --exclude="/srv" / 2>/dev/null"
 alias sqlite3="sqlite3 -column -header"
 alias vi='vim -p'
-command -v virtualenv2 >/dev/null 2>&1 && alias pyvenv="virtualenv2"
+command_exists virtualenv2 && alias pyvenv="virtualenv2"
+alias wq="workon" && complete -F _getvenvdirs wq
 
 # cd then ls
 function cs(){ builtin cd "$@" && ll; }
@@ -34,12 +34,16 @@ function chp(){
 		dag " print\("
 		dag "raise$"
 	else
-		dag "db.set_trace()"
-		dag "pu.db"
-		dag "{% pdb %}"
-		dag " print("
-		dag "raise$"
+		drep "db.set_trace()"
+		drep "pu.db"
+		drep "{% pdb %}"
+		drep " print("
+		drep "raise$"
 	fi
+}
+
+function ramused(){
+	ps -u $LOGNAME -o rss,command | grep -v peruser | awk '{sum+=$1} END {print sum/2014}'
 }
 
 # Opens up a vim Session of the name provided
