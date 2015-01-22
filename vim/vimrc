@@ -34,6 +34,10 @@ scriptencoding utf-8
 			" Shell
 				Plugin 'Shougo/vimproc.vim'
 				Plugin 'Shougo/vimshell.vim'
+				Plugin 'Shougo/neossh.vim'
+					let g:neossh#ssh_command='ssh -F $XDG_CONFIG_HOME/ssh/config -p PORT HOSTNAME'
+					let g:neossh#copy_directory_command='scp -F $XDG_CONFIG_HOME/ssh/config -P PORT -q -r $srcs $dest'
+					let g:neossh#copy_file_command='scp -F $XDG_CONFIG_HOME/ssh/config -P PORT -q $srcs $dest'
 			" Calculator (Incremental)
 				Plugin 'supermomonga/unite-kawaii-calc'
 					map <leader>c :<C-u>Unite -start-insert kawaii-calc<CR>
