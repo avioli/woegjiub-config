@@ -176,6 +176,7 @@ scriptencoding utf-8
 		let g:neocomplete#enable_auto_close_preview = 0
 		let g:neocomplete#enable_camel_case = 1
 		let g:neocomplete#enable_smart_case = 1
+		let g:neocomplete#enable_fuzzy_completion = 0
 		let g:neocomplete#fallback_mappings = ["\<C-x>\<C-o>", "\<C-x>\<C-n>"]
 		if !exists('g:neocomplete#keyword_patterns')
 			let g:neocomplete#keyword_patterns = {}

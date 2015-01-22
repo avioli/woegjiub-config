@@ -54,7 +54,11 @@ function mkvenv() {
 	name="$1"
 	path="$HOME/development/$name"
 	vdir="$XDG_DATA_HOME/projects/$name"
-	[[ -d "$vdir" ]] || pyvenv "$vdir"
+	if command_exists virtualenv2; then
+		[[ -d "$vdir" ]] || virtualenv2 "$vdir"
+	else
+		[[ -d "$vdir" ]] || pyvenv "$vdir"
+	fi
 	[[ -d "$path" ]] || mkdir "$path"
 	workon $name
 }
