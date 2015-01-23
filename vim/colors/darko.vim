@@ -50,6 +50,11 @@ hi djangoTagBlock ctermfg=99
 hi djangoStatement ctermfg=135 cterm=bold
 hi djangoVarBlock ctermfg=57
 
+" Diffs
+hi DiffAdd ctermbg=22
+hi DiffChange ctermbg=17
+hi DiffDelete ctermbg=52
+hi DiffText ctermbg=94
 
 " Vim Outliner
 " colours for tags
