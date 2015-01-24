@@ -13,7 +13,6 @@ command -v fcitx &&
     fcitx
 
 command -v numlockx && numlockx&                    # Activate Numlock
-command -v mpd && mpd                               # Start MPD
 command -v xcape || setxkbmap -option caps:escape   # Bind ESC to CAPS
 command -v xcape && setxkbmap -option ctrl:nocaps   # Bind CTRL to CAPS
 command -v xcape && xcape -e 'Control_L=Escape'     # Bind ESC to 'tap CTRL'

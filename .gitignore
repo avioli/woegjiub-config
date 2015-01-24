@@ -18,6 +18,7 @@ gtk-3.0/
 ImageMagick/
 ipython/profile_default/db
 ipython/profile_default/security
+ipython/profile_default/startup/README
 kde
 keepassx/
 libreoffice/
@@ -35,9 +36,11 @@ qupzilla/
 ranger/bookmarks
 ranger/history
 ranger/tagged
+rockbox.org/
 smb/credentials
 sensitive/
 ssh/
+systemd/user/default.target.wants/
 Synergy/
 tagaini.net/
 Trolltech.conf
