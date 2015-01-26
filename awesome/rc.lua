@@ -185,9 +185,9 @@ globalkeys = awful.util.table.join(
     awful.key({ "Control",        }, "XF86AudioPlay", function()
         awful.util.spawn('mpc-random') end),
     awful.key({ }, "XF86AudioRaiseVolume", function ()
-       awful.util.spawn("amixer set Master 5%+", false) end),
+       awful.util.spawn("amixer set Master 3%+", false) end),
     awful.key({ }, "XF86AudioLowerVolume", function ()
-       awful.util.spawn("amixer set Master 5%-", false) end),
+       awful.util.spawn("amixer set Master 3%-", false) end),
     awful.key({ }, "XF86AudioMute", function ()
        awful.util.spawn("amixer sset Master toggle", false) end),
     awful.key({ modkey            }, "c", function()
