@@ -180,9 +180,15 @@ globalkeys = awful.util.table.join(
         awful.util.spawn("firefox -profile " .. XDG_CONFIG_HOME .. "/firefox") end),
     awful.key({                   }, "XF86AudioPlay", function()
         awful.util.spawn("mpc toggle") end),
+    awful.key({                   }, "Pause", function()
+        awful.util.spawn("mpc toggle") end),
     awful.key({ modkey,           }, "XF86AudioPlay", function()
         awful.util.spawn( terminal .. " -e ncmpcpp -c '" .. XDG_CONFIG_HOME .. "/ncmpcpp/config'") end),
+    awful.key({ modkey,           }, "Pause", function()
+        awful.util.spawn( terminal .. " -e ncmpcpp -c '" .. XDG_CONFIG_HOME .. "/ncmpcpp/config'") end),
     awful.key({ "Control",        }, "XF86AudioPlay", function()
+        awful.util.spawn('mpc-random') end),
+    awful.key({ "Control",        }, "Pause", function()
         awful.util.spawn('mpc-random') end),
     awful.key({ }, "XF86AudioRaiseVolume", function ()
        awful.util.spawn("amixer set Master 3%+", false) end),
