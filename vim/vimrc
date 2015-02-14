@@ -134,6 +134,7 @@ scriptencoding utf-8
 					Plugin 'davidhalter/jedi-vim'
 				" Everything
 					Plugin 'Shougo/neocomplete.vim'
+	let &rtp=expand($XDG_CONFIG_HOME).'/vim,'.&rtp	" Place XDG_CONFIG_HOME first
 
 " Indentation Settings
 	set shiftround							" Indents rounded to shiftwidths

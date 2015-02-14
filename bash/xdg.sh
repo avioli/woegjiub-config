@@ -4,7 +4,11 @@
 	export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
 	export GIT_SSH="$XDG_CONFIG_HOME/git/git_ssh.sh"
 	export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
-	export GSTREGISTRY="$XDG_DATA_HOME/gstreamer/registry.bin"
+	# Note: gstreamer registry is usually per-arch.
+	# Any secondary architecture applications should have this exported to a
+	# different value before launch
+	# Thankfully, this is only needed for gstreamer0.10; 1.0 has a sane default
+	export GST_REGISTRY="$XDG_CACHE_HOME/gstreamer/registry-$(lscpu | awk 'NR==1{print $2}').bin"
 	export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 	export HISTFILE="$XDG_DATA_HOME/bash/history"
 	export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
