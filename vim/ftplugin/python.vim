@@ -13,7 +13,7 @@ import sys
 import vim
 
 
-sys.path.insert(0, os.getcwd())  # add current dir
+sys.path.append(os.getcwd())  # add current dir
 
 # Add the virtualenv's site-packages to vim path
 if 'VIRTUAL_ENV' in os.environ:
@@ -32,7 +32,7 @@ import sys
 import vim
 
 
-sys.path.insert(0, os.getcwd())  # add current dir
+sys.path.append(os.getcwd())  # add current dir
 
 # Add the virtualenv's site-packages to vim path
 if 'VIRTUAL_ENV' in os.environ:
