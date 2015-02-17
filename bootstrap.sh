@@ -14,6 +14,8 @@ dirs=(
 	"$XDG_DATA_HOME/projects"
 	"$XDG_DATA_HOME/pylint"
 	"$XDG_DATA_HOME/python"
+	"$XDG_DATA_HOME/rtorrent/session"
+	"$XDG_DATA_HOME/rtorrent/torrents"
 	"$XDG_DATA_HOME/sqlite3"
 	"$XDG_DATA_HOME/vim/bundle"
 	"$XDG_DATA_HOME/vim/sessions"
@@ -37,7 +39,7 @@ for file in "${files[@]}"; do
 	echo "touched $file"
 done
 
-ln -s "$XDG_BIN_HOME" "$XDG_LIB_HOME/gems/bin"
+[[ -L "$XDG_LIB_HOME/gems/bin" ]] || ln -s "$XDG_BIN_HOME" "$XDG_LIB_HOME/gems/bin"
 
 # Git cloning and compilation of vim plugins only if they're not already present
 if [[ ! -d "$XDG_DATA_HOME/vim/bundle/vundle" ]]; then

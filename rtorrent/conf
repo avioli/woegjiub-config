@@ -20,8 +20,8 @@ check_hash = yes
 
 system.method.set=group.seeding.ratio.command, d.close=, d.erase=
 
-session = /home/darko/.local/share/rtorrent/session
-directory = /home/darko/.local/share/rtorrent/torrents
+session = ~/.local/share/rtorrent/session
+directory = ~/.local/share/rtorrent/torrents
 
-schedule = watch_directory,10,10,"load_start=~/Downloads/*.torrent"
+schedule = watch_directory,10,10,"load_start=~/downloads/*.torrent"
 schedule = low_diskspace,5,60,close_low_diskspace=1000M
