@@ -52,6 +52,7 @@ settings/__init__.py
 settings/development.py
 /components/
 venv/
+venv*
 
 # Intentionally ignored stuff (notes, etc.) #
 #############################################

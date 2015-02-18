@@ -17,8 +17,8 @@ sys.path.append(os.getcwd())  # add current dir
 
 # Add the virtualenv's site-packages to vim path
 if 'VIRTUAL_ENV' in os.environ:
-	project_base_dir = os.environ['VIRTUAL_ENV']
-	sys.path.insert(0, project_base_dir)
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    sys.path.insert(0, project_base_dir)
 
 # Enable definition-jumping by telling vim where the libs are
 for p in sys.path:
@@ -36,10 +36,11 @@ sys.path.append(os.getcwd())  # add current dir
 
 # Add the virtualenv's site-packages to vim path
 if 'VIRTUAL_ENV' in os.environ:
-	project_base_dir = os.environ['VIRTUAL_ENV']
-	sys.path.insert(0, project_base_dir)
-	activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-	execfile(activate_this, dict(__file__=activate_this))
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    sys.path.insert(0, project_base_dir)
+    if os.path.isfile(os.path.join(project_base_dir, 'bin/activate_this.py')):
+        activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+        execfile(activate_this, dict(__file__=activate_this))
 
 # Enable definition-jumping by telling vim where the libs are
 for p in sys.path:
