@@ -1,2 +1,2 @@
-\set HISTCONTROL=ignoreboth
-\set HISTSIZE=5000
+\set HISTCONTROL ignoreboth
+\set HISTSIZE 5000
