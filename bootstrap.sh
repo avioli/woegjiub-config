@@ -12,6 +12,7 @@ dirs=(
 	"$XDG_DATA_HOME/less"
 	"$XDG_DATA_HOME/pip"
 	"$XDG_DATA_HOME/projects"
+	"$XDG_DATA_HOME/psql"
 	"$XDG_DATA_HOME/pylint"
 	"$XDG_DATA_HOME/python"
 	"$XDG_DATA_HOME/rtorrent/session"
