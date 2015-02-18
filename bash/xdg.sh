@@ -15,6 +15,7 @@
 	export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
 	export KDEHOME="$XDG_CONFIG_HOME/kde"
 	export LESSHISTFILE="$XDG_DATA_HOME/less/history"
+	export MYSQL_HISTFILE="$XDG_DATA_HOME/mysql/history"
 	export npm_config_userconfig="$XDG_CONFIG_HOME/npm/npmrc"
 	export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 	export PENTADACTYL_INIT=":source $XDG_CONFIG_HOME/pentadactyl/pentadactylrc"
