@@ -42,6 +42,10 @@ function chp(){
 	fi
 }
 
+function fag(){
+	find -iname "$1" -type f -exec ag "$2" {} +
+}
+
 function ramused(){
 	ps -u $LOGNAME -o rss,command | grep -v peruser | awk '{sum+=$1} END {print sum/2014}'
 }
