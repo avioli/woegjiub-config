@@ -12,6 +12,7 @@ enchant/
 fcitx/
 firefox/
 gconf/
+gimp/
 gnupg/
 gtk-2.0/
 gtk-3.0/
@@ -19,6 +20,8 @@ ImageMagick/
 ipython/profile_default/db
 ipython/profile_default/security
 ipython/profile_default/startup/README
+ipython/README
+kactivitymanagerdrc
 kde
 keepassx/
 libreoffice/
@@ -30,6 +33,7 @@ mutt/account-*
 mutt/passwords*
 ncmpcpp/error.log
 oxygen-gtk/
+pudb/saved-breakpoints-*
 pulse/
 qtcurve/
 qupzilla/
@@ -41,6 +45,7 @@ smb/credentials
 sensitive/
 ssh/
 systemd/user/default.target.wants/
+systemd/user/*.target
 Synergy/
 tagaini.net/
 Trolltech.conf

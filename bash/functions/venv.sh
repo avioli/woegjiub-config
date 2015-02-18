@@ -50,17 +50,25 @@ function --venv() {
 }
 
 function mkvenv() {
+	version=3
 	[[ -z "$1" ]] && return 1
+	[[ -z "$2" ]] || version="$2"
 	name="$1"
 	path="$HOME/development/$name"
 	vdir="$XDG_DATA_HOME/projects/$name"
-	if command_exists virtualenv2; then
-		[[ -d "$vdir" ]] || virtualenv2 "$vdir"
-	else
-		[[ -d "$vdir" ]] || pyvenv "$vdir"
+	if ! [[ -d "$vdir" ]] ; then
+		[[ "$version" -eq 2 ]] && virtualenv2 "$vdir"
+		[[ "$version" -eq 3 ]] && pyvenv "$vdir"
 	fi
 	[[ -d "$path" ]] || mkdir "$path"
-	workon $name
+	[[ -e "$path/src/venvlib" ]] || ln -s "$vdir/lib/"*"/site-packages/" "$path/src/venvlib"
+	[[ -e "$path/src/venvsrc" ]] || ln -s "$vdir/src" "$path/src/venvsrc"
+	workon "$name"
+}
+
+function mkvenv2() {
+	[[ -z "$1" ]] && return 1
+	mkvenv "$1" 2
 }
 
 function rmvenv() {
@@ -76,6 +84,8 @@ function workon() {
 	path="$HOME/development/$name"
 	vdir="$XDG_DATA_HOME/projects/$name"
 	[[ -d "$path" ]] && cd "$path"
+	[[ -d "./webapp" ]] && cd "./webapp"
+	[[ -d "./src" ]] && cd "./src"
 	[[ -d "$vdir" ]] && . "$vdir/bin/activate"
 	[[ -z "$TMUX" ]] || tmux rename-window "$name"
 }
