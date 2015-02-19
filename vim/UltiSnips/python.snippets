@@ -17,3 +17,58 @@ snippet _f "future imports for python2"
 from __future__ import absolute_import, print_function, unicode_literals
 
 endsnippet
+
+snippet skel "Python file skeleton"
+""" $1 """
+from __future__ import absolute_import, print_function, unicode_literals
+
+$2
+endsnippet
+
+snippet dskelmodel "Django Model file skeleton"
+""" $1 """
+from __future__ import absolute_import, print_function, unicode_literals
+
+from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
+from django.utils.translation import ugettext_lazy as _
+
+
+$2
+endsnippet
+
+snippet dmodel "Django Model skeleton"
+@python_2_unicode_compatible
+class $1(models.Model):
+    """ $2 """
+    $3
+
+    def __str__(self):
+        $4
+endsnippet
+
+snippet dmodelfield "Django model field"
+$1 = models.$2(
+    verbose_name=_('$3'),
+    $4,
+)
+endsnippet
+
+snippet dskelform "Django form file skeleton"
+""" $1 """
+from __future__ import absolute_import, print_function, unicode_literals
+
+from django import forms
+from django.utils.encoding import ugettext_lazy as _
+
+$2
+endsnippet
+
+snippet dform "Django form skeleton"
+class $1Form(forms.ModelForm):
+    class Meta:
+        model = $2
+        fields = [
+            $3
+        ]
+endsnippet
