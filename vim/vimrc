@@ -81,25 +81,27 @@ scriptencoding utf-8
 			" CSS3
 				Plugin 'hail2u/vim-css3-syntax'
 				Plugin 'ap/vim-css-color'
+			" CSV
+				Plugin 'csv.vim'
 			" HTML5
 				Plugin 'othree/html5.vim'
-			" JINJA
-				Plugin 'lepture/vim-jinja'
 			" Javascript
 				Plugin 'jelera/vim-javascript-syntax'
 				Plugin 'pangloss/vim-javascript'
+			" JINJA
+				Plugin 'lepture/vim-jinja'
 			" JSON
 				Plugin 'elzr/vim-json'
 			" LESS
 				Plugin 'groenewege/vim-less'
 			" Prolog
 				Plugin 'adimit/prolog.vim'
-			" CSV
-				Plugin 'csv.vim'
-			" spaces
-				Plugin 'Yggdroot/indentLine'
 			" PHP
 				Plugin 'StanAngeloff/php.vim'
+			" Rust
+				Plugin 'wting/rust.vim'
+			" spaces
+				Plugin 'Yggdroot/indentLine'
 		" Linting
 			Plugin 'scrooloose/syntastic'
 				let g:syntastic_auto_loc_list=2
@@ -150,8 +152,7 @@ scriptencoding utf-8
 	set wrap								" Enables line wrapping for long lines
 	set breakindent							" For soft wraps, indent newlines
 	set nostartofline						" Stop gg/G etc. from moving to col0
-	filetype on								" Enable filetype-specific settings
-	filetype plugin indent on				" Enable filetype-specific indentation
+	filetype plugin indent on				" Enable filetype-specific settings
 	set list								" Show whitespace
 	set listchars=tab:│\ ,trail:•			" Show these whitespaces by default
 	let g:pyindent_open_paren = '&sw'		" Indent 1 sw after ( in python
@@ -252,6 +253,7 @@ scriptencoding utf-8
 	au BufNewFile,BufRead *.html set filetype=htmldjango " Presume html.django
 	au BufNewFile,BufRead *.ctp set filetype=php " Add cake files
 	au BufNewFile,BufRead *.php set filetype=php " PHP is a problem
+	au BufNewFile,BufRead *.rs set filetype=rust " Rust, not hercules
 
 " Input/Hotkey settings
 	set mouse=a								" Enable Mouse
