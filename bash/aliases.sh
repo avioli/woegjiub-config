@@ -43,7 +43,7 @@ function chp(){
 }
 
 function fag(){
-	find -iname "$1" -type f -exec ag "$2" {} +
+	find -iname "$1" -type f -exec ag "${@:2}" {} +
 }
 
 function ramused(){
