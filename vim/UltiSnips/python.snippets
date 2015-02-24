@@ -25,7 +25,7 @@ from __future__ import absolute_import, print_function, unicode_literals
 $2
 endsnippet
 
-snippet dskelmodel "Django Model file skeleton"
+snippet dsmodel "Django Model file skeleton"
 """ $1 """
 from __future__ import absolute_import, print_function, unicode_literals
 
@@ -54,7 +54,7 @@ $1 = models.$2(
 )
 endsnippet
 
-snippet dskelform "Django form file skeleton"
+snippet dsform "Django form file skeleton"
 """ $1 """
 from __future__ import absolute_import, print_function, unicode_literals
 
@@ -71,4 +71,19 @@ class $1Form(forms.ModelForm):
         fields = [
             $3
         ]
+endsnippet
+
+snippet dsadmin "Django admin skeleton"
+""" $1 """
+from __future__ import absolute_import, print_function, unicode_literals
+
+from django.contrib import admin
+
+from .models import $2
+
+
+$3
+
+
+admin.site.register($4)
 endsnippet
