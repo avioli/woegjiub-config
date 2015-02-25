@@ -194,6 +194,10 @@ globalkeys = awful.util.table.join(
        awful.util.spawn("amixer set Master 3%+", false) end),
     awful.key({ }, "XF86AudioLowerVolume", function ()
        awful.util.spawn("amixer set Master 3%-", false) end),
+    awful.key({ modkey, "Control" }, "Up", function ()
+       awful.util.spawn("amixer set Master 3%+", false) end),
+    awful.key({ modkey, "Control" }, "Down", function ()
+       awful.util.spawn("amixer set Master 3%-", false) end),
     awful.key({ }, "XF86AudioMute", function ()
        awful.util.spawn("amixer sset Master toggle", false) end),
     awful.key({ modkey            }, "c", function()

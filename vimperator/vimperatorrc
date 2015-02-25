@@ -1,6 +1,6 @@
 set defsearch=ddg
 set editor="urxvt -e vim"
-set gui=nonavigation
+set gui=none
 set rtp=$XDG_CONFIG_HOME/vimperator
 set sb=false
 colo darkness

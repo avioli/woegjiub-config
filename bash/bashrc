@@ -66,5 +66,9 @@
     eval $(gpg-agent --daemon --enable-ssh-support --write-env-file="$GNUPGHOME/gpg-agent-info" 2>/dev/null) &&
     export SSH_AUTH_SOCK
 
-# Finally, start X if we're at seat1 and it's not there
-[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx $XDG_CONFIG_HOME/X11/xinitrc
+# Start X if we're at seat1 and it's not there, else open tmux
+if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+	exec startx $XDG_CONFIG_HOME/X11/xinitrc
+else
+	tmx default
+fi
