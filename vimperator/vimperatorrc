@@ -13,3 +13,5 @@ map A O
 map s o ddg 
 map S t ddg 
 map <C-v> <S-Esc>
+map <A-Left> <C-S-Tab>
+map <A-Right> <C-Tab>
