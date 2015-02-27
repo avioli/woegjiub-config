@@ -56,6 +56,6 @@ venv*
 
 # Intentionally ignored stuff (notes, etc.) #
 #############################################
-ignore/
+ignore*
 .editables
 .site-packages

@@ -15,3 +15,7 @@ map S t ddg
 map <C-v> <S-Esc>
 map <A-Left> <C-S-Tab>
 map <A-Right> <C-Tab>
+map <A-Up> b
+map <A-Down> t
+map <C-S-Left> H
+map <C-S-Right> L
