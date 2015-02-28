@@ -46,7 +46,8 @@ function fag(){
 }
 
 function ramused(){
-	ps -u $LOGNAME -o rss,command | grep -v peruser | awk '{sum+=$1} END {print sum/2014}'
+	ps -u $LOGNAME -o rss,command | grep -v peruser | awk '{sum+=$1} END {print "'"$LOGNAME"': " sum/2014}'
+	ps -e -o rss,command | grep -v peruser | awk '{sum+=$1} END {print "all: " sum/2014}'
 }
 
 # Opens up a vim Session of the name provided
