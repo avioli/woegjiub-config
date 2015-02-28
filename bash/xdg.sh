@@ -2,7 +2,7 @@
 	export GEM_HOME="$HOME/.local/lib/gems"
 	export GEM_PATH="$HOME/.local/bin"
 	export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
-	export GIT_SSH="$XDG_CONFIG_HOME/git/git_ssh.sh"
+	export GIT_SSH_COMMAND="ssh -F $XDG_CONFIG_HOME/ssh/config "$@" 2>/dev/null"
 	export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
 	# Note: gstreamer registry is usually per-arch.
 	# Any secondary architecture applications should have this exported to a
