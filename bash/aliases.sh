@@ -18,8 +18,7 @@ alias piplistglobal="pip list | sort > l1 && pip list --user | sort > l2 && comm
 alias scan="scanimage --format=tiff >"
 alias ssize="sudo du -sh --exclude="/home" --exclude="/mnt" --exclude="/srv" / 2>/dev/null"
 alias sqlite3="sqlite3 -column -header"
-alias vi='vim -p'
-command_exists virtualenv2 && alias pyvenv="virtualenv2"
+alias v='vim'
 alias wq="workon" && complete -F _getvenvdirs wq
 
 # cd then ls
@@ -72,4 +71,8 @@ function vfopen(){
 # opens in vim all files containing the text given, diffed
 function vdiff(){
 	vimdiff $(grep -lir "$@");
+}
+
+function c(){
+	python -c "print($*)"
 }
