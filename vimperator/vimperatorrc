@@ -6,15 +6,15 @@ set sb=false
 colo darkness
 ignorekeys add -except=d,s,S,b,:,g,t,T,o,O .*woegjiub.com.*
 
-map d <C-w>
+map d :quit<CR>
 noremap a a -tags 
 map m a
 map A O
 map s o ddg 
 map S t ddg 
 map <C-v> <S-Esc>
-map <A-Left> <C-S-Tab>
-map <A-Right> <C-Tab>
+map <C-A-Left> <C-S-Tab>
+map <C-A-Right> <C-Tab>
 map <A-Up> b
 map <A-Down> t
 map <C-S-Left> H

@@ -10,6 +10,7 @@ dirs=(
 	"$XDG_CACHE_HOME/pip/log"
 	"$XDG_DATA_HOME/bash/scripts"
 	"$XDG_DATA_HOME/less"
+	"$XDG_DATA_HOME/mpd/lyrics"
 	"$XDG_DATA_HOME/pip"
 	"$XDG_DATA_HOME/projects"
 	"$XDG_DATA_HOME/psql"

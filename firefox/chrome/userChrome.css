@@ -13,6 +13,7 @@
 	display: none !important;
 }
 
+#titlebar-buttonbox-container,
 #window-controls,
 #identity-box,
 #urlbar-reload-button {
@@ -174,4 +175,13 @@ toolbarbutton#new-tab-button,
 	margin-left: -14px !important;
 	margin-right: -8px !important;
 	color: #151515 !important;
+}
+
+#titlebar {
+	margin-bottom: -15px !important;
+}
+
+#titlebar-content {
+	background-color: #202020 !important;
+	padding-bottom: 15px !important;
 }
