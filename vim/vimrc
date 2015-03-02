@@ -157,7 +157,6 @@ scriptencoding utf-8
 	set listchars=tab:│\ ,trail:•			" Show these whitespaces by default
 	let g:pyindent_open_paren = '&sw'		" Indent 1 sw after ( in python
 	let g:pyindent_nested_paren = '&sw'		" Indent 1 sw after nested () in py
-	let g:pyindent_continue = '&sw'			" Indent 1 sw for continuation
 
 " Completion settings
 	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -174,11 +173,12 @@ scriptencoding utf-8
 		let g:jedi#popup_select_first = 0
 		let g:jedi#show_call_signatures = 2
 	" Neocomplete
+		let g:neocomplete#enable_cursor_hold_i = 1
+		let g:neocomplete#cursor_hold_i_time = 300
 		let g:neocomplete#enable_at_startup = 1
 		let g:neocomplete#enable_auto_close_preview = 0
 		let g:neocomplete#enable_camel_case = 1
 		let g:neocomplete#enable_smart_case = 1
-		let g:neocomplete#enable_fuzzy_completion = 0
 		let g:neocomplete#fallback_mappings = ["\<C-x>\<C-o>", "\<C-x>\<C-n>"]
 		if !exists('g:neocomplete#keyword_patterns')
 			let g:neocomplete#keyword_patterns = {}
