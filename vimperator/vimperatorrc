@@ -19,3 +19,10 @@ map <A-Up> b
 map <A-Down> t
 map <C-S-Left> H
 map <C-S-Right> L
+map <C-`> :js toggle_navbar()<CR>
+:js << EOF
+function toggle_navbar() {
+	var nb = document.getElementById('nav-bar');
+	nb.style.visibility = (nb.style.visibility !== 'visible') ? 'visible' : '';
+}
+EOF
