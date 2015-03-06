@@ -65,11 +65,7 @@ local layouts = { awful.layout.suit.tile }
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    if s == 1 then
-        tags[s] = awful.tag({ "端末第一", "端末第二", "電網" }, s, layouts[1])
-    else
-        tags[s] = awful.tag({ "端末第一", "端末第二", "電網" }, s, layouts[1])
-    end
+    tags[s] = awful.tag({ "端末第一", "端末第二", "電網第一",  "電網第二", "雑多" }, s, layouts[1])
 end
 -- }}}
 
