@@ -8,6 +8,7 @@ fi
 dirs=(
 	"$XDG_BIN_HOME"
 	"$XDG_CACHE_HOME/pip/log"
+	"$XDG_CONFIG_HOME/gnupg"
 	"$XDG_DATA_HOME/bash/scripts"
 	"$XDG_DATA_HOME/less"
 	"$XDG_DATA_HOME/mpd/lyrics"
@@ -18,6 +19,7 @@ dirs=(
 	"$XDG_DATA_HOME/python"
 	"$XDG_DATA_HOME/rtorrent/session"
 	"$XDG_DATA_HOME/rtorrent/torrents"
+	"$XDG_DATA_HOME/ssh"
 	"$XDG_DATA_HOME/sqlite3"
 	"$XDG_DATA_HOME/vim/bundle"
 	"$XDG_DATA_HOME/vim/sessions"
@@ -35,6 +37,9 @@ for dir in "${dirs[@]}"; do
 	mkdir -p $dir
 	echo "made $dir"
 done
+
+chmod 700 $XDG_CONFIG_HOME/gnupg
+[[ ! -f "$XDG_CONFIG_HOME/ssh/config" ]] && cp "$XDG_CONFIG_HOME/ssh/config.example" "$XDG_CONFIG_HOME/ssh/config"
 
 for file in "${files[@]}"; do
 	touch $file
