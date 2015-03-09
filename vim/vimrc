@@ -219,7 +219,7 @@ scriptencoding utf-8
 	set viminfo+=n$XDG_DATA_HOME/vim/history	" Less things in home
 	set tabpagemax=100
 	set spelllang=en_au,de					" English-Aus, German for words
-	set clipboard=unnamedplus				" Use system clipboard by default
+	set clipboard=unnamed					" Use system clipboard by default
 	set undofile							" Enable persistent undo
 	set hidden								" Hide buffers instead of closing
 	set nrformats-=octal					" Don't inc/dec # with ^0 as octal
