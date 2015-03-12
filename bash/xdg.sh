@@ -1,4 +1,5 @@
 # Environment-variable respecting programs
+	export ANDROID_SDK_HOME="$XDG_DATA_HOME/android"
 	export GEM_HOME="$HOME/.local/lib/gems"
 	export GEM_PATH="$HOME/.local/bin"
 	export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
