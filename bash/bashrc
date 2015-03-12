@@ -26,8 +26,8 @@
     export HISTCONTROL=ignoreboth # Ignore duplicate/blank lines in history
     export HISTSIZE=100000        # 100K command in history
     export LC_COLLATE="C"         # Change sorting to list dotfiles first
-    export EDITOR='/usr/bin/vim'  # Use vim for light edits
-    export VISUAL='/usr/bin/vim'  # Use vim for heavy edits
+    export EDITOR='vim'           # Use vim for light edits
+    export VISUAL='vim'           # Use vim for heavy edits
 
 # Get rid of the terminal suspend/resume bindings
     stty stop undef
