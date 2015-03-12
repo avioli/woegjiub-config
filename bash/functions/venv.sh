@@ -61,8 +61,13 @@ function mkvenv() {
 		[[ "$version" -eq 3 ]] && pyvenv "$vdir"
 	fi
 	[[ -d "$path" ]] || mkdir "$path"
-	[[ -e "$path/src/venvlib" ]] || ln -s "$vdir/lib/"*"/site-packages/" "$path/src/venvlib"
-	[[ -e "$path/src/venvsrc" ]] || ln -s "$vdir/src" "$path/src/venvsrc"
+	if [[ -d "$path/src" ]] ; then
+		base="$path/src"
+	elif [[ -d "$path/webapp" ]]; then
+		base="$path/webapp"
+	fi
+	[[ -e "$base/venvlib" ]] || ln -s "$vdir/lib/"*"/site-packages/" "$base/venvlib"
+	[[ -e "$base/venvsrc" ]] || ln -s "$vdir/src" "$base/venvsrc"
 	workon "$name"
 }
 
