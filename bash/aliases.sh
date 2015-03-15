@@ -8,6 +8,7 @@ alias feht="fehm -A \;\"image-metadata.sh edit-tags %f\" --info \"image-metadata
 alias fmusic="find -type f ! -iname '*.flac' -a ! -iname '*.mp3' -a ! -iname '*.ogg'"
 alias ftypes="find . ! -path '*/.git/*' -type f -iname '*.*' | rev | cut -d . -f1 | rev | sort | uniq -ic | sort -rn"
 alias grep='grep -I --color=auto'
+alias htop="htop -u $USER"
 alias j='jobs -l'
 alias ls="ls -FA --color=always --group-directories-first"
 alias ll="ls -lh --time-style=long-iso"

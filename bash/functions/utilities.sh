@@ -1,5 +1,13 @@
 function clean_home(){
-    rm -rf ~/.{adobe,dbus,gstreamer-0.10,macromedia,mozilla,pki,Trash}
+	rm -rf ~/.{adobe,dbus,gstreamer-0.10,macromedia,mozilla,pki,Trash}
+	if [[ $(uname) == "Darwin" ]]; then
+		for file in "desktop" "movies"; do
+			if [[ -d "$HOME/$file" ]]; then
+				/bin/chmod -a "group:everyone deny delete" "$HOME/$file"
+				rm -rf "$HOME/$file"
+			fi
+		done
+	fi
 }
 
 function command_exists(){

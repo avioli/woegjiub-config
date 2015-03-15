@@ -8,6 +8,7 @@ fi
 dirs=(
 	"$XDG_BIN_HOME"
 	"$XDG_CACHE_HOME/pip/log"
+	"$XDG_CACHE_HOME/gem"
 	"$XDG_CONFIG_HOME/gnupg"
 	"$XDG_DATA_HOME/bash/scripts"
 	"$XDG_DATA_HOME/less"
@@ -38,14 +39,14 @@ for dir in "${dirs[@]}"; do
 	echo "made $dir"
 done
 
-chmod 700 $XDG_CONFIG_HOME/gnupg
-[[ ! -f "$XDG_CONFIG_HOME/ssh/config" ]] && cp "$XDG_CONFIG_HOME/ssh/config.example" "$XDG_CONFIG_HOME/ssh/config"
-
 for file in "${files[@]}"; do
 	touch $file
 	echo "touched $file"
 done
 
+# More specific bootstrapping
+chmod 700 $XDG_CONFIG_HOME/gnupg
+[[ ! -f "$XDG_CONFIG_HOME/ssh/config" ]] && cp "$XDG_CONFIG_HOME/ssh/config.example" "$XDG_CONFIG_HOME/ssh/config"
 [[ -L "$XDG_LIB_HOME/gems/bin" ]] || ln -s "$XDG_BIN_HOME" "$XDG_LIB_HOME/gems/bin"
 
 # Git cloning and compilation of vim plugins only if they're not already present
