@@ -1,5 +1,4 @@
-text/html; firefox %s;
-text/html; html2text -style compact %s | sed '/./,$!d'; copiousoutput
+text/html; html2text --images-to-alt %s; copiousoutput
 image/jpeg; feh %s;
 image/png; feh %s;
 image/gif; firefox %s;
