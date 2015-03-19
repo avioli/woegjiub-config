@@ -1,4 +1,4 @@
-(setq user-emacs-directory (file-truename "~/.config/emacs"))
+(setq user-emacs-directory (file-truename (concat (getenv "XDG_CONFIG_HOME") "/emacs")))
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
 			 ("marmalade" . "http://marmalade-repo.org/packages/")
