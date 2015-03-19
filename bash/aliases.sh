@@ -1,5 +1,4 @@
 alias cal="cal -3"
-alias drep="grep -riIn --exclude-dir=fixtures --exclude-dir=venv --exclude-dir=migrations --exclude-dir=static --exclude=*.json 2>/dev/null"
 alias dag="ag --ignore fixtures --ignore static --ignore migrations --ignore venv --ignore *.json 2>/dev/null"
 alias feh="feh -B black -e LiberationMono-Regular/24 -C /usr/share/fonts/TTF"
 alias fehs="feh -Z." # Initial is correct on all, but flicker on N/P
@@ -11,73 +10,45 @@ alias grep='grep -I --color=auto'
 alias htop="htop -u $USER"
 alias j='jobs -l'
 alias ls="ls -FA --color=always --group-directories-first"
-alias ll="ls -lh --time-style=long-iso"
-alias l="ll"
+alias l="ls -lh --time-style=long-iso"
 alias lsblkv="lsblk -o name,size,type,fstype,ro,mountpoint,label,uuid,partuuid"
-alias m="mpc toggle"
-alias M="mpcra"
 alias mutt="mutt -F $XDG_CONFIG_HOME/mutt/muttrc"
 alias pipudate="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U"
 alias piplistglobal="pip list | sort > l1 && pip list --user | sort > l2 && comm l1 l2 -2 -3 && rm l1 && rm l2"
 alias scan="scanimage --format=tiff >"
-alias ssize="sudo du -sh --exclude="/home" --exclude="/mnt" --exclude="/srv" / 2>/dev/null"
 alias sqlite3="sqlite3 -column -header"
 alias v='vim'
 alias wq="workon" && complete -F _getvenvdirs wq
 
+# calculator
+c(){ python -c "print($*)"; }
+
 # cd then ls
-function cs(){ builtin cd "$@" && ll; }
+cs(){ builtin cd "$@" && ll; }
 
 # Check a python repo before committing
-function chp(){
-	if [[ -f /usr/bin/ag ]]; then
-		dag "db.set_trace\(\)"
-		dag "pu.db"
-		dag "{% pdb %}"
-		dag " print\("
-		dag "raise$"
-	else
-		drep "db.set_trace()"
-		drep "pu.db"
-		drep "{% pdb %}"
-		drep " print("
-		drep "raise$"
-	fi
+chp(){
+	dag "db.set_trace\(\)"
+	dag "pu.db"
+	dag "{% pdb %}"
+	dag " print\("
+	dag "raise$"
 }
 
-function fag(){
-	find -iname "$1" -type f -exec ag "${@:2}" {} +
-}
+# find then ag
+fag(){ find -iname "$1" -type f -exec ag "${@:2}" {} +; }
 
-function ramused(){
+# open with default file handler
+command_exists xdg-open && open(){ xdg-open "$1" "${@:2}" &>/dev/null & disown; }
+
+ramused(){
 	ps -u $LOGNAME -o rss,command | grep -v peruser | awk '{sum+=$1} END {print "'"$LOGNAME"': " sum/2014}'
 	ps -e -o rss,command | grep -v peruser | awk '{sum+=$1} END {print "all: " sum/2014}'
 }
 
-# Opens up a vim Session of the name provided
-function vims(){
-	if [[ -z $1 ]]; then
-		vim -S $XDG_DATA_HOME/vim/sessions/default.vim
-	else
-		vim -S $XDG_DATA_HOME/vim/sessions/$1
-	fi
-}
-
-# Opens in vim all files containing the text given
-function vsopen(){
-	vim -p $(drep -lir "$@");
-}
-
-# Opens in vim all files whose name contains the text given
-function vfopen(){
-	vim -p $(find -iname "$@");
-}
-
-# opens in vim all files containing the text given, diffed
-function vdiff(){
-	vimdiff $(grep -lir "$@");
-}
-
-function c(){
-	python -c "print($*)"
-}
+# open by content
+vsopen(){ vim -p $(dag -li "$@"); }
+# open by name
+vfopen(){ vim -p $(find -iname "$@"); }
+# open session (if no name given, 'default.vim')
+vims(){ vim -S "$XDG_DATA_HOME/vim/sessions/${1-default.vim}"; }
