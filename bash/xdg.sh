@@ -39,6 +39,7 @@
 
 # Alias respecting programs
 	alias ag="ag -p $XDG_CONFIG_HOME/ag/agignore"
+	alias emacs="emacs -q --load $XDG_CONFIG_HOME/emacs/emacsrc"
 	alias firefox="firefox -profile $XDG_CONFIG_HOME/firefox"
 	export BROWSER="firefox -profile $XDG_CONFIG_HOME/firefox"
 	alias mutt="mutt -F $XDG_CONFIG_HOME/mutt/muttrc"
