@@ -10,16 +10,12 @@ if exists("syntax_on")
 endif
 let g:colors_name = "darko"
 
-au BufRead,BufNewFile * syntax match Operator display '[!\*\/,\.><:\-=\+]'
-au BufRead,BufNewFile * syntax match Brace display '[{}()\[\]]'
-
 " UI
 hi ColorColumn ctermfg=16 ctermbg=56
 hi Folded ctermfg=236 ctermbg=0 cterm=bold
 hi LineNr ctermfg=8
 hi NonText ctermfg=8
 hi StatusLine ctermfg=0 ctermbg=7 cterm=NONE
-
 
 " General
 hi Brace ctermfg=5 cterm=bold
@@ -33,16 +29,13 @@ hi SpecialKey ctermfg=8
 hi Statement ctermfg=135 cterm=bold
 hi String ctermfg=240 cterm=italic
 
-
 " Python
 hi PythonBuiltin ctermfg=140 ctermbg=NONE cterm=bold
-
 
 " HTML
 hi HtmlTag ctermfg=5 cterm=bold
 hi HtmlEndTag ctermfg=5 cterm=bold
 hi HtmlTagName ctermfg=4 cterm=bold
-
 
 " Django
 hi djangoArgument ctermfg=240 cterm=italic
@@ -119,7 +112,6 @@ hi UB6 guifg=darkgray	ctermfg=green
 hi UB7 guifg=darkgray	ctermfg=green
 hi UB8 guifg=darkgray	ctermfg=green
 hi UB9 guifg=darkgray	ctermfg=green
-
 
 if has('gui_running')
 	hi Normal guifg=gray guibg=black

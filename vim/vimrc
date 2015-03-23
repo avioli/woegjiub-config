@@ -134,7 +134,8 @@ scriptencoding utf-8
 					Plugin 'davidhalter/jedi-vim'
 				" Everything
 					Plugin 'Shougo/neocomplete.vim'
-	let &rtp=expand($XDG_CONFIG_HOME).'/vim,'.&rtp	" Place XDG_CONFIG_HOME first
+	let &rtp='$XDG_CONFIG_HOME/vim/after,'.&rtp	" Place XDG_CONFIG_HOME first
+	let &rtp='$XDG_CONFIG_HOME/vim,'.&rtp		" Place XDG_CONFIG_HOME first
 
 " Indentation Settings
 	set shiftround							" Indents rounded to shiftwidths
@@ -206,7 +207,7 @@ scriptencoding utf-8
 " General settings
 	set ffs=unix							" Unix as standard fileformat
 	set encoding=utf-8						" UTF-8 as standard encoding
-	set nocompatible						" Enable vimness
+	if &compatible | set nocompatible | endif " Enable vimness
 	set autoread							" Automatically detect outside changes
 	set history=1000						" Massive history
 	set complete=.,w,b,u,t,i,k				" Add dictionary to completion
@@ -252,7 +253,6 @@ scriptencoding utf-8
 " Overrides
 	au BufNewFile,BufRead *.html set filetype=htmldjango " Presume html.django
 	au BufNewFile,BufRead *.ctp set filetype=php " Add cake files
-	au BufNewFile,BufRead *.php set filetype=php " PHP is a problem
 	au BufNewFile,BufRead *.rs set filetype=rust " Rust, not hercules
 
 " Input/Hotkey settings

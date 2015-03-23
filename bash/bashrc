@@ -68,7 +68,7 @@
 
 # Start X if we're at seat1 and it's not there, else open tmux
 if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-	exec startx $XDG_CONFIG_HOME/X11/xinitrc
+	startx $XDG_CONFIG_HOME/X11/xinitrc
 else
 	tmx default
 fi
