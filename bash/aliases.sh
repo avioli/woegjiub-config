@@ -52,3 +52,6 @@ vsopen(){ vim -p $(dag -li "$@"); }
 vfopen(){ vim -p $(find -iname "$@"); }
 # open session (if no name given, 'default.vim')
 vims(){ vim -S "$XDG_DATA_HOME/vim/sessions/${1-default.vim}"; }
+
+# find aliases
+alias dj-models="fag models.py '^\s*class .*\((?!.*Enum)(.*)\):.*$'"
