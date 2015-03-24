@@ -26,6 +26,7 @@ dirs=(
 	"$XDG_DATA_HOME/vim/sessions"
 	"$XDG_DATA_HOME/vim/undo"
 	"$XDG_DATA_HOME/vim/view"
+	"$XDG_DATA_HOME/zsh"
 	"$XDG_LIB_HOME/gems"
 )
 
