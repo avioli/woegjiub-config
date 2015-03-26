@@ -27,6 +27,7 @@
     bashcompinit
 
 # Set shell options to increase funcitonality
+    autoload -U colors && colors
     setopt appendhistory autocd dotglob extendedglob nomatch
     unsetopt beep notify
 
@@ -36,15 +37,31 @@
     bindkey '^N' history-beginning-search-forward
     bindkey '^w' backward-kill-word
     bindkey '^r' history-incremental-search-backward
+    bindkey '\e[1~' beginning-of-line
+    bindkey '\e[4~' end-of-line
+    bindkey '\e[5~' beginning-of-history
+    bindkey '\e[6~' end-of-history
+    bindkey '\e[7~' beginning-of-line
+    bindkey '\e[5C' forward-word
+    bindkey '\e[5D' backward-word
+    bindkey '\e\e[C' forward-word
+    bindkey '\e\e[D' backward-word
+    bindkey '\e[1;5C' forward-word
+    bindkey '\e[1;5D' backward-word
+    bindkey '^a' beginning-of-line
+    bindkey '^e' end-of-line
+    bindkey '\M-B' backward-word
+    bindkey '\M-F' forward-word
+    bindkey '^k' kill-line
 
-# Preferred prompt setting
+# Preferred prompt setting - virtualenv if active, vim mode, # jobs if > 0
     function zle-line-init zle-keymap-select {
         if [[ -z $VIRTUAL_ENV ]] then
             venvname=''
         else
             venvname="(${VIRTUAL_ENV##*/}) "
         fi
-        PS1="$venvname${${KEYMAP/vicmd/:}/(main|viins)/+} "
+        PROMPT="$venvname${${KEYMAP/vicmd/:}/(main|viins)/+} %F{blue}%1(j.%j .)%f"
         zle reset-prompt
     }
     zle -N zle-line-init
