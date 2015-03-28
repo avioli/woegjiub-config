@@ -8,7 +8,9 @@
     stty start undef
 
 # Terminal-agnostic settings
-    export LC_COLLATE="C"         # Change sorting to list dotfiles first
+    export LANG='en_AU.UTF-8'     # Proper locale
+    export LC_COLLATE='C'         # Change sorting to list dotfiles first
+    export LC_TIME='en_DK.UTF-8'  # ISO 8601 datetimes
     export EDITOR='vim'           # Use vim for light edits
     export VISUAL='vim'           # Use vim for heavy edits
     export HISTCONTROL=ignoreboth # Ignore duplicate/blank lines in history
@@ -47,7 +49,7 @@
 
 # Start X if we're at seat1 and it's not there, else open tmux
     if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-        startx $XDG_CONFIG_HOME/X11/xinitrc
+        startx
     else
         tmx default
     fi
