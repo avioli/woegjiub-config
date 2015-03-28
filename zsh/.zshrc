@@ -22,6 +22,7 @@
     zstyle ':completion:*' substitute 1
     zstyle ':completion:*' use-compctl false
     zstyle :compinstall filename '$XDG_CONFIG_HOME/zsh/.zshrc'
+    [[ -d /usr/local/share/zsh-completions ]] && fpath=(/usr/local/share/zsh-completions $fpath)
     autoload -Uz compinit bashcompinit promptinit
     compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
     bashcompinit

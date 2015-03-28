@@ -1,5 +1,5 @@
 alias cal="cal -3"
-alias dag="ag --ignore fixtures --ignore static --ignore migrations --ignore venv --ignore *.json 2>/dev/null"
+alias dag="ag --ignore fixtures --ignore static --ignore migrations --ignore venv --ignore '*.json' 2>/dev/null"
 alias feh="feh -B black -e LiberationMono-Regular/24 -C /usr/share/fonts/TTF"
 alias fehs="feh -Z." # Initial is correct on all, but flicker on N/P
 alias fehm="feh -g 2880x1800" # No flicker on N/P, still scales to screen
