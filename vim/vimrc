@@ -11,7 +11,7 @@ scriptencoding utf-8
 		let mapleader = ","
 		set rtp+=$XDG_DATA_HOME/vim/bundle/vundle
 		call vundle#rc()
-		let g:bundle_dir = expand('$XDG_DATA_HOME/vim/bundle')
+		let g:vundle#bundle_dir = expand('$XDG_DATA_HOME/vim/bundle')
 		Plugin 'gmarik/vundle'
 	" Bundle and Configure Addons ($lang conf in 'settings/ftplugin/$lang.vim')
 		" Documentation
