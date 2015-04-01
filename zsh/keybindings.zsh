@@ -1,0 +1,22 @@
+# VI mode
+    bindkey -v
+    bindkey '^P' history-beginning-search-backward
+    bindkey '^N' history-beginning-search-forward
+    bindkey '^w' backward-kill-word
+    bindkey '^r' history-incremental-search-backward
+    bindkey '\e[1~' beginning-of-line
+    bindkey '\e[4~' end-of-line
+    bindkey '\e[5~' beginning-of-history
+    bindkey '\e[6~' end-of-history
+    bindkey '\e[7~' beginning-of-line
+    bindkey '\e[5C' forward-word
+    bindkey '\e[5D' backward-word
+    bindkey '\e\e[C' forward-word
+    bindkey '\e\e[D' backward-word
+    bindkey '\e[1;5C' forward-word
+    bindkey '\e[1;5D' backward-word
+    bindkey '^a' beginning-of-line
+    bindkey '^e' end-of-line
+    bindkey '\M-B' backward-word
+    bindkey '\M-F' forward-word
+    bindkey '^k' kill-line

@@ -348,7 +348,7 @@ c.TerminalInteractiveShell.banner1 = ''
 # c.PromptManager.in2_template = '   .\\D.: '
 
 # Output prompt. '\#' will be transformed to the prompt number
-c.PromptManager.out_template = ''
+c.PromptManager.out_template = '> '
 
 # If True (default), each prompt will be right-aligned with the preceding one.
 # c.PromptManager.justify = True
@@ -357,7 +357,7 @@ c.PromptManager.out_template = ''
 # c.PromptManager.color_scheme = 'Linux'
 
 # Input prompt.  '\#' will be transformed to the prompt number
-c.PromptManager.in_template = ' '
+c.PromptManager.in_template = '< '
 
 ###############################################################################
 # HistoryManager configuration

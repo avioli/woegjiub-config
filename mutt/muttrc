@@ -8,6 +8,8 @@ set send_charset     = "utf-8"
 set sleep_time       = 0
 unset imap_passive
 set imap_idle
+set beep_new = yes  # alert on new mail
+set beep = no  # prevent bell on error
 
 #Pager settings
 set pager_index_lines = 10
