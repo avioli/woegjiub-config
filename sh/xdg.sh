@@ -22,6 +22,7 @@
 	export HOMERC="$XDG_CONFIG_HOME/htop/htoprc"
 	export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
 	export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
+	export KDEDIR="$XDG_CONFIG_HOME/kde"
 	export KDEHOME="$XDG_CONFIG_HOME/kde"
 	export LESSHISTFILE="$XDG_DATA_HOME/less/history"
 	export MYSQL_HISTFILE="$XDG_DATA_HOME/mysql/history"

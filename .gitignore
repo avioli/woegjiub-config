@@ -57,3 +57,4 @@ xbuild/
 vimperator/info/
 VirtualBox/
 vlc/
+zsh/functions/fzf.zsh
