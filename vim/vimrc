@@ -25,22 +25,12 @@ scriptencoding utf-8
 					let maplocalleader=",,"
 			" Text alignment
 				Plugin 'godlygeek/tabular'
-				Plugin 'maksimr/vim-jsbeautify'
-					map <leader>tj :call RangeJsBeautify()<cr>
 			" Revision History
 				Plugin 'mbbill/undotree'
 					map <leader>u :UndotreeToggle<CR>
 					let g:undotree_SetFocusWhenToggle=1
 			" Shell
 				Plugin 'Shougo/vimproc.vim'
-				Plugin 'Shougo/vimshell.vim'
-				Plugin 'Shougo/neossh.vim'
-					let g:neossh#ssh_command='ssh -F $XDG_CONFIG_HOME/ssh/config -p PORT HOSTNAME'
-					let g:neossh#copy_directory_command='scp -F $XDG_CONFIG_HOME/ssh/config -P PORT -q -r $srcs $dest'
-					let g:neossh#copy_file_command='scp -F $XDG_CONFIG_HOME/ssh/config -P PORT -q $srcs $dest'
-			" Calculator (Incremental)
-				Plugin 'supermomonga/unite-kawaii-calc'
-					map <leader>c :<C-u>Unite -start-insert kawaii-calc<CR>
 			" Searching
 				Plugin 'Shougo/unite.vim'
 					call unite#filters#matcher_default#use(['matcher_fuzzy'])
@@ -56,12 +46,6 @@ scriptencoding utf-8
 					nnoremap <leader>a :<C-u>Unite -start-insert grep:.<CR>
 				Plugin 'Shougo/neomru.vim'
 					nnoremap <leader>f :<C-u>Unite -no-split -start-insert file_mru<CR>
-			" File Management
-				Plugin 'Shougo/vimfiler.vim'
-					let g:loaded_netrwPlugin = 1
-					let g:vimfiler_as_default_explorer = 1
-					let g:vimfiler_ignore_pattern = ''
-				nnoremap - :VimFiler<CR>
 			" Tag outliner
 				Plugin 'majutsushi/tagbar'
 					map <leader>t :TagbarToggle<CR>
@@ -73,11 +57,7 @@ scriptencoding utf-8
 				let g:airline_left_alt_sep=''
 				let g:airline_right_sep=''
 				let g:airline_right_alt_sep=''
-			" Toggle location and quick lists
-				Plugin 'valloric/listtoggle'
 		" Syntax Highlighting
-			" Improved context
-				Plugin 'Shougo/context_filetype.vim'
 			" CSS3
 				Plugin 'hail2u/vim-css3-syntax'
 				Plugin 'ap/vim-css-color'
@@ -86,7 +66,6 @@ scriptencoding utf-8
 			" HTML5
 				Plugin 'othree/html5.vim'
 			" Javascript
-				Plugin 'jelera/vim-javascript-syntax'
 				Plugin 'pangloss/vim-javascript'
 			" JINJA
 				Plugin 'lepture/vim-jinja'
@@ -130,6 +109,7 @@ scriptencoding utf-8
 			"Completion
 				" Javascript
 					Plugin 'marijnh/tern_for_vim'
+					Plugin 'othree/javascript-libraries-syntax.vim'
 				" Python
 					Plugin 'davidhalter/jedi-vim'
 				" Everything
@@ -162,7 +142,7 @@ scriptencoding utf-8
 " Completion settings
 	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 	autocmd FileType html,htmldjango,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-	autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+	autocmd FileType javascript setlocal omnifunc=tern#Complete
 	autocmd FileType python setlocal omnifunc=jedi#completions
 	autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 	" Jedi.vim
@@ -206,8 +186,6 @@ scriptencoding utf-8
 
 " General settings
 	set ffs=unix							" Unix as standard fileformat
-	set encoding=utf-8						" UTF-8 as standard encoding
-	if &compatible | set nocompatible | endif " Enable vimness
 	set autoread							" Automatically detect outside changes
 	set history=1000						" Massive history
 	set complete=.,w,b,u,t,i,k				" Add dictionary to completion
@@ -217,7 +195,7 @@ scriptencoding utf-8
 	set secure								" Disable insecure local vimrc commands
 	set modeline							" Vim settings in files
 	set noswapfile							" Stop littering these things
-	set viminfo+=n$XDG_DATA_HOME/vim/history	" Less things in home
+	set viminfo+=n$XDG_DATA_HOME/vim/history " Less things in home
 	set tabpagemax=100
 	set spelllang=en_au,de					" English-Aus, German for words
 	set clipboard=unnamed					" Use system clipboard by default
@@ -264,10 +242,6 @@ scriptencoding utf-8
 		set ttymouse=xterm2
 	end
 	set backspace=eol,start,indent			" Proper backspace behaviour
-	" tabbing
-		map gb :bnext<cr>
-		map gB :bprevious<cr>
-		map :Q :bd
 	let g:clipbrdDefaultReg="+"				" Use Linux clipboard as def copy reg
 	" easy buffer navigation
 		map <leader>B :buffers<CR>:buffer<Space>
@@ -279,13 +253,6 @@ scriptencoding utf-8
 	" SuperTab's a silly plugin
 		inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 		inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-	" Fix control-arrows in tmux
-	if &term =~ '^screen'
-		execute "set <xUp>=\e[1;*A"
-		execute "set <xDown>=\e[1;*B"
-		execute "set <xRight>=\e[1;*C"
-		execute "set <xLeft>=\e[1;*D"
-	endif
 	" Move lines around with C_↓ or C_↑
 		nmap <silent> <c-down> mz:m+<CR>`z
 		nmap <silent> <c-up> mz:m-2<CR>`z
@@ -321,7 +288,7 @@ scriptencoding utf-8
 		map <leader>{ :call MoveBraces("{")<CR>
 		map <leader>} :call MoveBraces("}")<CR>
 	" Clear search results
-		map <C-c> :noh<cr>
+		map Q :noh<cr>
 	" Centers Search results
 		nnoremap n nzz
 		nnoremap N Nzz
