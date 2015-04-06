@@ -15,6 +15,7 @@ alias lsblkv="lsblk -o name,size,type,fstype,ro,mountpoint,label,uuid,partuuid"
 alias mutt="mutt -F $XDG_CONFIG_HOME/mutt/muttrc"
 alias pipudate="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U"
 alias piplistglobal="pip list | sort > l1 && pip list --user | sort > l2 && comm l1 l2 -2 -3 && rm l1 && rm l2"
+alias ptree="tree -I __pycache__"
 alias scan="scanimage --format=tiff >"
 alias sqlite3="sqlite3 -column -header"
 alias v='vim'
@@ -24,7 +25,7 @@ alias wq="workon" && complete -F _getvenvdirs wq
 c(){ python -c "print($*)"; }
 
 # cd then ls
-cs(){ builtin cd "$@" && ll; }
+cs(){ builtin cd "$@" && l; }
 
 # Check a python repo before committing
 chp(){
