@@ -20,7 +20,7 @@
     SAVEHIST=100000               # 100K history in shell
 
 # Colour the terminal
-    [ -x /usr/bin/dircolors ] && eval "$(dircolors -b $XDG_CONFIG_HOME/sh/dircolors)"
+    command -v dircolors 2>&1 >/dev/null && eval "$(dircolors -b $XDG_CONFIG_HOME/sh/dircolors)"
     export LESS=-R
     export LESS_TERMCAP_mb=$(printf "\e[1;31m")
     export LESS_TERMCAP_md=$(printf "\e[1;31m")
