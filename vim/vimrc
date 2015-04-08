@@ -4,6 +4,7 @@ scriptencoding utf-8
 	set rtp=$XDG_CONFIG_HOME/vim,$VIM,$VIMRUNTIME
 	set undodir=$XDG_DATA_HOME/vim/undo
 	set viewdir=$XDG_DATA_HOME/vim/view
+	let g:netrw_home = expand('$XDG_DATA_HOME/vim/netrw')
 
 " Addon Settings
 	" Set up Vundle to do its magic
@@ -77,6 +78,8 @@ scriptencoding utf-8
 				Plugin 'adimit/prolog.vim'
 			" PHP
 				Plugin 'StanAngeloff/php.vim'
+			" Restructured Text
+				Plugin 'Rykka/riv.vim'
 			" Rust
 				Plugin 'wting/rust.vim'
 			" spaces
@@ -137,7 +140,6 @@ scriptencoding utf-8
 	set list								" Show whitespace
 	set listchars=tab:│\ ,trail:•			" Show these whitespaces by default
 	let g:pyindent_open_paren = '&sw'		" Indent 1 sw after ( in python
-	let g:pyindent_nested_paren = '&sw'		" Indent 1 sw after nested () in py
 
 " Completion settings
 	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
