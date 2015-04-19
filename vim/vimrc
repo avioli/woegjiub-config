@@ -1,126 +1,26 @@
-set encoding=utf-8
-scriptencoding utf-8
-" Add My Settings Folder and make vim respect XDG Base Directories
-	set rtp=$XDG_CONFIG_HOME/vim,$VIM,$VIMRUNTIME
+" Force XDG basedir spec compliance
+	set rtp=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM,$VIMRUNTIME
 	set undodir=$XDG_DATA_HOME/vim/undo
 	set viewdir=$XDG_DATA_HOME/vim/view
+	set viminfo+=n$XDG_DATA_HOME/vim/hist
 	let g:netrw_home = expand('$XDG_DATA_HOME/vim/netrw')
 
-" Addon Settings
-	" Set up Vundle to do its magic
-		filetype off
-		let mapleader = ","
-		set rtp+=$XDG_DATA_HOME/vim/bundle/vundle
-		call vundle#rc()
-		let g:vundle#bundle_dir = expand('$XDG_DATA_HOME/vim/bundle')
-		Plugin 'gmarik/vundle'
-	" Bundle and Configure Addons ($lang conf in 'settings/ftplugin/$lang.vim')
-		" Documentation
-			" Python
-				Plugin 'fs111/pydoc.vim'
-		" Git
-			Plugin 'tpope/vim-fugitive'
-		" Interface/Navigation addons
-			" Note Taking
-				Plugin 'vimoutliner/vimoutliner'
-					let maplocalleader=",,"
-			" Text alignment
-				Plugin 'godlygeek/tabular'
-			" Revision History
-				Plugin 'mbbill/undotree'
-					map <leader>u :UndotreeToggle<CR>
-					let g:undotree_SetFocusWhenToggle=1
-			" Shell
-				Plugin 'Shougo/vimproc.vim'
-			" Searching
-				Plugin 'Shougo/unite.vim'
-					call unite#filters#matcher_default#use(['matcher_fuzzy'])
-					let g:unite_source_history_yank_enable = 1
-					if executable('ag')
-						let g:unite_source_grep_command = 'ag'
-						let g:unite_source_grep_default_opts = '-i --vimgrep -p $XDG_CONFIG_HOME/ag/agignore'
-					endif
-					call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\.local/\|\.cache/')
-					nnoremap <leader>p :<C-u>Unite -no-split -auto-preview -start-insert file_rec/async<CR>
-					nnoremap <leader>y :<C-u>Unite -no-split history/yank<CR>
-					nnoremap <leader>b :<C-u>Unite -no-split buffer<CR>
-					nnoremap <leader>a :<C-u>Unite -start-insert grep:.<CR>
-				Plugin 'Shougo/neomru.vim'
-					nnoremap <leader>f :<C-u>Unite -no-split -start-insert file_mru<CR>
-			" Tag outliner
-				Plugin 'majutsushi/tagbar'
-					map <leader>t :TagbarToggle<CR>
-			" Show extended information when pressing 'ga' on a character
-				Plugin 'tpope/vim-characterize'
-			" Sexy statusbar
-				Plugin 'bling/vim-airline'
-				let g:airline_left_sep=''
-				let g:airline_left_alt_sep=''
-				let g:airline_right_sep=''
-				let g:airline_right_alt_sep=''
-		" Syntax Highlighting
-			" CSS3
-				Plugin 'hail2u/vim-css3-syntax'
-				Plugin 'ap/vim-css-color'
-			" CSV
-				Plugin 'csv.vim'
-			" HTML5
-				Plugin 'othree/html5.vim'
-			" Javascript
-				Plugin 'pangloss/vim-javascript'
-			" JINJA
-				Plugin 'lepture/vim-jinja'
-			" JSON
-				Plugin 'elzr/vim-json'
-			" LESS
-				Plugin 'groenewege/vim-less'
-			" Prolog
-				Plugin 'adimit/prolog.vim'
-			" PHP
-				Plugin 'StanAngeloff/php.vim'
-			" Restructured Text
-				Plugin 'Rykka/riv.vim'
-			" Rust
-				Plugin 'wting/rust.vim'
-			" spaces
-				Plugin 'Yggdroot/indentLine'
-		" Linting
-			Plugin 'scrooloose/syntastic'
-				let g:syntastic_auto_loc_list=2
-				let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
-				let g:syntastic_check_on_wq = 0
-				let g:syntastic_aggregate_errors = 1
-				let g:syntastic_always_populate_loc_list = 1
-				map <F5> :SyntasticCheck<cr>
-		" Typing Efficiency Improvers
-			" Change the Surroundings of Text
-				Plugin 'tpope/vim-surround'
-			" Quicker Commenting/Uncommenting
-				Plugin 'tpope/vim-commentary'
-			" Add repeat . to addons and unrepeatable vanilla commands
-				Plugin 'tpope/vim-repeat'
-			" Zencoding for HTML
-				Plugin 'mattn/emmet-vim'
-				let g:user_emmet_leader_key = ','
-				let g:user_emmet_complete_tag = 1
-			" Snippets
-				Plugin 'SirVer/ultisnips'
-				Plugin 'honza/vim-snippets'
-				let g:UltiSnipsExpandTrigger="<leader>z"
-				let g:UltiSnipsJumpForwardTrigger="<leader>z"
-				let g:UltiSnipsJumpBackwardTrigger="<leader>Z"
-			"Completion
-				" Javascript
-					Plugin 'marijnh/tern_for_vim'
-					Plugin 'othree/javascript-libraries-syntax.vim'
-				" Python
-					Plugin 'davidhalter/jedi-vim'
-				" Everything
-					Plugin 'Shougo/neocomplete.vim'
-	let &rtp='$XDG_CONFIG_HOME/vim/after,'.&rtp	" Place XDG_CONFIG_HOME first
-	let &rtp='$XDG_CONFIG_HOME/vim,'.&rtp		" Place XDG_CONFIG_HOME first
+" General
+	set ffs=unix							" Unix as standard fileformat
+	set autoread							" Automatically detect outside changes
+	set history=1000						" Massive history
+	set exrc								" Per-directory vimrcs
+	set secure								" Disable insecure local vimrc commands
+	set modeline							" Vim settings in files
+	set noswapfile							" Stop littering these things
+	set tabpagemax=100						" Allow up to 100 tabpages
+	set spelllang=en_au,de					" English-Aus, German for words
+	set undofile							" Enable persistent undo
+	set hidden								" Hide buffers instead of closing
+	set nrformats-=octal					" Don't inc/dec # with ^0 as octal
+	set sessionoptions-=options				" Don't store options in sessions
 
-" Indentation Settings
+" Indentation
 	set shiftround							" Indents rounded to shiftwidths
 	set copyindent							" Maintain current indent on next line
 	set preserveindent						" Try not to mess with indentation
@@ -129,9 +29,6 @@ scriptencoding utf-8
 	set shiftwidth=4						" Indentation at 4 width
 	set tabstop=4							" Tabs at 4 width
 	set softtabstop=4						" Soft tabs at 4 width
-	if v:version >= 703
-		set colorcolumn=80					" Colours column 80
-	endif
 	set fo+=t								" Enables autowrap
 	set wrap								" Enables line wrapping for long lines
 	set breakindent							" For soft wraps, indent newlines
@@ -139,14 +36,233 @@ scriptencoding utf-8
 	filetype plugin indent on				" Enable filetype-specific settings
 	set list								" Show whitespace
 	set listchars=tab:│\ ,trail:•			" Show these whitespaces by default
-	let g:pyindent_open_paren = '&sw'		" Indent 1 sw after ( in python
 
-" Completion settings
-	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-	autocmd FileType html,htmldjango,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-	autocmd FileType javascript setlocal omnifunc=tern#Complete
-	autocmd FileType python setlocal omnifunc=jedi#completions
-	autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+" Folding
+	set foldmethod=indent					" Enable Folding
+	set foldlevelstart=99					" Start at fold level 99
+	" Save fold settings
+		au BufWinLeave *.* mkview!
+		au BufWinEnter *.* silent loadview
+
+" Filetype overrides
+	au BufNewFile,BufRead *.html set filetype=htmldjango " Presume html.django
+	au BufNewFile,BufRead *.ctp set filetype=php " Add cake files
+	au BufNewFile,BufRead *.rs set filetype=rust " Rust, not hercules
+
+" Completion/abbreviations
+	set complete=.,w,b,u,t,i,k				" Add dictionary to completion
+	set completeopt+=preview				" Set autocompletion options
+	set omnifunc=syntaxcomplete#Complete	" Enable Omnicompletion
+	" Completion for specific filetypes
+		autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+		autocmd FileType html,htmldjango,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+		autocmd FileType javascript setlocal omnifunc=tern#Complete
+		autocmd FileType python setlocal omnifunc=jedi#completions
+		autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+	" Insert current file's directory in prompt
+		cabbr <expr> %% expand('%:p:h')
+
+" Search
+	set ignorecase							" Ignores cases in searching
+	set smartcase							" Smart case matching
+	set hlsearch							" Highlight search results
+	set incsearch							" Search incrementally
+
+" UI
+	syntax on								" Enable syntax highlighting
+	set colorcolumn=80						" Colours column 80
+	set showcmd								" Shows Current Command
+	set noshowmode							" Hide mode for messages to appear
+	set showfulltag							" Increase info for tag completion
+	set ruler								" Show position at bottom
+	set number								" I need line numbers
+	set lazyredraw							" Do not redraw whilst executing macros
+	set noerrorbells novisualbell			" Shut the warnings up
+	set showmatch							" Highlight matching brackets
+	set mat=2								" Blink that highlight at 0.2s
+	set wildmenu							" Good menu tab completion
+	set wildmode=list:longest,full			" Set menu completion style
+	set wildignore=*.o,*~,~.pyc				" Ignore compiled files
+	set laststatus=2						" Always show statusline
+	" file, helpfile, modified, readonly, split,  cursor location, V%
+	set statusline=%<%f\ %h%m%r%{SyntasticStatuslineFlag()}%=%-14.(%l,%c,%V%)\ %P
+	set t_Co=256							" 256 Colours in Terminal
+	colo darko								" Load my colourscheme
+
+" Input
+	set mouse=a								" Enable Mouse
+	" Stop mousewheel and clicking from inserting letters
+	if has("mouse_sgr")
+		set ttymouse=sgr
+	else
+		set ttymouse=xterm2
+	end
+	set backspace=eol,start,indent			" Proper backspace behaviour
+
+" Mapping
+	" Change the leader key
+		let mapleader=","
+	" Better Y behaviour
+		nnoremap Y y$
+	" Recall recent file list
+		nnoremap <leader>r :browse oldfiles<CR>
+	" Buffer navigation
+		nnoremap <leader>B :buffers<CR>:buffer<Space>
+	" Clear search results
+		nnoremap Q :noh<cr>
+	" Make shift-insert work as linux paste
+		nnoremap <S-Insert> <MiddleMouse>
+	" SuperTab's a silly plugin
+		inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+		inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+	" Replace Base64 encoded visual selection with decoded, and reverse
+		vnoremap <leader>e64 c<c-r>=system('base64', @")<cr><esc>
+		vnoremap <leader>d64 c<c-r>=system('base64 --decode', @")<cr><esc>
+	" Move lines around with C_↓ or C_↑
+		nnoremap <silent> <c-down> mz:m+<CR>`z
+		nnoremap <silent> <c-up> mz:m-2<CR>`z
+		vnoremap <silent> <c-down> :m'>+<CR>`<my`>mzgv`yo`z
+		vnoremap <silent> <c-up> :m'<-2<CR>`>my`<mzgv`yo`z
+	" Move around splits with C_h/j/k/l
+		nnoremap <c-l> <c-w>l
+		nnoremap <c-h> <c-w>h
+		nnoremap <c-k> <c-w>k
+		nnoremap <c-j> <c-w>j
+	" Center search results
+		nnoremap n nzz
+		nnoremap N Nzz
+		nnoremap * *zz
+		nnoremap # #zz
+		nnoremap g* g*zz
+		nnoremap g# g#zz
+	" Show word's syntax group with C_S_s
+		nmap <C-S-S> :call <SID>SynStack()<CR>
+		function! <SID>SynStack()
+			if !exists("*synstack")
+				return
+			endif
+			echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+		endfunc
+
+" Sessions and saving
+	" Save session
+		func! <SID>Savesession()
+			if v:this_session == ""
+				let cmd = "mksession! $XDG_DATA_HOME/vim/sessions/default.vim"
+			else
+				let cmd = "mksession! ".v:this_session
+			endif
+			echo cmd
+			exec cmd
+		endfunc
+		nmap <leader>sw <ESC>:call <SID>Savesession()<cr>:wa<cr>
+	" Save+Quit session
+		nmap <leader>sq <ESC>:call <SID>Savesession()<cr>:wqa<cr>
+	" Save session as
+		nmap <leader>sa :wa<cr>:mksession! $XDG_DATA_HOME/vim/sessions/
+	" Open session
+		nmap <leader>so :so $XDG_DATA_HOME/vim/sessions/
+	" Go to last position on file open
+		au BufReadPost *
+		\ if line("'\"") > 0 && line("'\"") <= line("$") |
+		\     exe "normal! g`\"" |
+		\ endif
+	" Use ,W to save the current file with sudo
+		nmap <leader>W :w !sudo tee %<cr><cr>
+	" Create directories if they don't exist
+		function s:MkNonExDir(file, buf)
+		if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+			let dir=fnamemodify(a:file, ':h')
+			if !isdirectory(dir)
+				call mkdir(dir, 'p')
+			endif
+		endif
+		endfunction
+		augroup BWCCreateDir
+			autocmd!
+			autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+		augroup END
+
+" Plugins
+	call plug#begin(expand('$XDG_DATA_HOME/vim/plug'))
+	Plug 'fs111/pydoc.vim'                      " Python documentation
+	Plug 'tpope/vim-fugitive'                   " Git integration
+	Plug 'vimoutliner/vimoutliner'              " Note Taking
+	Plug 'godlygeek/tabular'                    " Text alignment
+	Plug 'mbbill/undotree'                      " Revision History
+	Plug 'Shougo/vimproc.vim', {'do': 'make' }  " Async library
+	Plug 'Shougo/unite.vim'                     " Searching
+	Plug 'Shougo/neomru.vim'                    " MRU for Unite
+	Plug 'majutsushi/tagbar'                    " Tag outliner
+	Plug 'bling/vim-airline'                    " Sexy statusbar
+	Plug 'scrooloose/syntastic'                 " Linting
+	Plug 'tpope/vim-surround'                   " Change text surroundings
+	Plug 'tpope/vim-commentary'                 " Comment toggling
+	Plug 'tpope/vim-repeat'                     " Add .repeat to more actions
+	Plug 'mattn/emmet-vim'                      " Zencoding for HTML
+	Plug 'SirVer/ultisnips'                     " Snippet engine
+	Plug 'honza/vim-snippets'                   " Collection of snippets
+	Plug 'marijnh/tern_for_vim'                 " Javascript omnicompletion
+	Plug 'davidhalter/jedi-vim'                 " Python omnicompletion
+	Plug 'Shougo/neocomplete.vim'               " Improved completion UI
+	" Syntax and highlighting
+		Plug 'hail2u/vim-css3-syntax'
+		Plug 'ap/vim-css-color'
+		Plug 'csv.vim'
+		Plug 'othree/html5.vim'
+		Plug 'pangloss/vim-javascript'
+		Plug 'othree/javascript-libraries-syntax.vim'
+		Plug 'lepture/vim-jinja'
+		Plug 'elzr/vim-json'
+		Plug 'groenewege/vim-less'
+		Plug 'adimit/prolog.vim'
+		Plug 'StanAngeloff/php.vim'
+		Plug 'Rykka/riv.vim'
+		Plug 'wting/rust.vim'
+		Plug 'Yggdroot/indentLine'
+	call plug#end()
+
+" Plugin settings
+	" VimOutliner
+		let maplocalleader=",,"
+	" UndoTree
+		map <leader>u :UndotreeToggle<CR>
+		let g:undotree_SetFocusWhenToggle=1
+	" Unite.vim
+		call unite#filters#matcher_default#use(['matcher_fuzzy'])
+		let g:unite_source_history_yank_enable = 1
+		if executable('ag')
+			let g:unite_source_grep_command = 'ag'
+			let g:unite_source_grep_default_opts = '-i --vimgrep -p $XDG_CONFIG_HOME/ag/agignore'
+		endif
+		call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\.local/\|\.cache/')
+		nnoremap <leader>p :<C-u>Unite -no-split -auto-preview -start-insert file_rec/async<CR>
+		nnoremap <leader>y :<C-u>Unite -no-split history/yank<CR>
+		nnoremap <leader>b :<C-u>Unite -no-split buffer<CR>
+		nnoremap <leader>a :<C-u>Unite -start-insert grep:.<CR>
+	"Unite-mru
+		nnoremap <leader>f :<C-u>Unite -no-split -start-insert file_mru<CR>
+	" Tagbar
+		nnoremap <leader>t :TagbarToggle<CR>
+	" Airline
+		let g:airline_left_sep=''
+		let g:airline_left_alt_sep=''
+		let g:airline_right_sep=''
+		let g:airline_right_alt_sep=''
+	" Syntastic
+		let g:syntastic_auto_loc_list=2
+		let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+		let g:syntastic_check_on_wq = 0
+		let g:syntastic_aggregate_errors = 1
+		let g:syntastic_always_populate_loc_list = 1
+		nnoremap <F5> :SyntasticCheck<cr>
+	" Emmet
+		let g:user_emmet_leader_key = ','
+		let g:user_emmet_complete_tag = 1
+	" UltiSnips
+		let g:UltiSnipsExpandTrigger="<leader>z"
+		let g:UltiSnipsJumpForwardTrigger="<leader>z"
+		let g:UltiSnipsJumpBackwardTrigger="<leader>Z"
 	" Jedi.vim
 		let g:jedi#use_tabs_not_buffers = 0
 		let g:jedi#use_splits_not_buffers = "right"
@@ -172,173 +288,3 @@ scriptencoding utf-8
 		endif
 		let g:neocomplete#force_omni_input_patterns.python =
 			\ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-
-" Folding settings
-	set foldmethod=indent					" Enable Folding
-	set foldlevelstart=99					" Start at fold level 99
-	" Save fold settings
-		au BufWinLeave *.* mkview!
-		au BufWinEnter *.* silent loadview
-
-" Search settings
-	set ignorecase							" Ignores cases in searching
-	set smartcase							" Smart case matching
-	set hlsearch							" Highlight search results
-	set incsearch							" Search incrementally
-
-" General settings
-	set ffs=unix							" Unix as standard fileformat
-	set autoread							" Automatically detect outside changes
-	set history=1000						" Massive history
-	set complete=.,w,b,u,t,i,k				" Add dictionary to completion
-	set completeopt+=preview				" Set autocompletion options
-	set omnifunc=syntaxcomplete#Complete	" Enable Omnicompletion
-	set exrc								" Per-directory vimrcs
-	set secure								" Disable insecure local vimrc commands
-	set modeline							" Vim settings in files
-	set noswapfile							" Stop littering these things
-	set viminfo+=n$XDG_DATA_HOME/vim/history " Less things in home
-	set tabpagemax=100
-	set spelllang=en_au,de					" English-Aus, German for words
-	set clipboard=unnamed					" Use system clipboard by default
-	set undofile							" Enable persistent undo
-	set hidden								" Hide buffers instead of closing
-	set nrformats-=octal					" Don't inc/dec # with ^0 as octal
-	set sessionoptions-=options				" Don't store options in sessions
-
-" UI Settings
-	set showcmd								" Shows Current Command
-	set noshowmode							" Hide mode for messages to appear
-	set showfulltag							" Increase info for tag completion
-	set ruler								" Show position at bottom
-	set number								" I need line numbers
-	set lazyredraw							" Do not redraw whilst executing macros
-	set noerrorbells novisualbell			" Shut the warnings up
-	syntax on								" Enable syntax highlighting
-	set showmatch							" Highlight matching brackets
-	set mat=2								" Blink that highlight at 0.2s
-	set wildmenu							" Good menu tab completion
-	set wildmode=list:longest,full			" Set menu completion style
-	set wildignore=*.o,*~,~.pyc				" Ignore compiled files
-	au BufReadPost *						" Go to last position on file open
-	\ if line("'\"") > 0 && line("'\"") <= line("$") |
-	\       exe "normal! g`\"" |
-	\ endif
-	set laststatus=2						" Always show statusline
-	" file, helpfile, modified, readonly, split,  cursor location, V%
-	set statusline=%<%f\ %h%m%r%{SyntasticStatuslineFlag()}%=%-14.(%l,%c,%V%)\ %P
-	set t_Co=256							" 256 Colours in Terminal
-	colo darko								" Load my colourscheme
-
-" Overrides
-	au BufNewFile,BufRead *.html set filetype=htmldjango " Presume html.django
-	au BufNewFile,BufRead *.ctp set filetype=php " Add cake files
-	au BufNewFile,BufRead *.rs set filetype=rust " Rust, not hercules
-
-" Input/Hotkey settings
-	set mouse=a								" Enable Mouse
-	" Stop mousewheel and clicking from inserting letters
-	if has("mouse_sgr")
-		set ttymouse=sgr
-	else
-		set ttymouse=xterm2
-	end
-	set backspace=eol,start,indent			" Proper backspace behaviour
-	let g:clipbrdDefaultReg="+"				" Use Linux clipboard as def copy reg
-	" easy buffer navigation
-		map <leader>B :buffers<CR>:buffer<Space>
-	" Make shift-insert work as linux paste
-		map <S-Insert> <MiddleMouse>
-		map! <S-Insert> <MiddleMouse>
-	" Recall recent file list
-		map <leader>r :browse oldfiles<CR>
-	" SuperTab's a silly plugin
-		inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-		inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-	" Move lines around with C_↓ or C_↑
-		nmap <silent> <c-down> mz:m+<CR>`z
-		nmap <silent> <c-up> mz:m-2<CR>`z
-		vmap <silent> <c-down> :m'>+<CR>`<my`>mzgv`yo`z
-		vmap <silent> <c-up> :m'<-2<CR>`>my`<mzgv`yo`z
-	" Move splits around with C_h/j/k/l
-		map <c-l> <c-w>l
-		map <c-h> <c-w>h
-		map <c-k> <c-w>k
-		map <c-j> <c-w>j
-	" Map hard BOL to soft BOL
-		map 0 ^
-	" Better Y behaviour
-		map Y y$
-	" Open with file's directory filled in
-		map <leader>e :e <C-R>=expand('%:p:h') . '/'<CR>
-	" insert current file's directory in prompt
-		cabbr <expr> %% expand('%:p:h')
-	" Swap braces to/from being on their own line (c-like languages)
-		function! MoveBraces(brace)
-			let searchString = '\n\s*'.a:brace
-			if search(searchString)
-				exec '%s/'.searchString.'/'.a:brace.'/g'
-			else
-				if a:brace ==# "}"
-					exec 'g!/[^;]}\+;/s/}/\r}/g'
-				elseif a:brace ==# "{"
-					exec '%s/{$/\r{/g'
-				endif
-				normal gg=G
-			endif
-		endfunction
-		map <leader>{ :call MoveBraces("{")<CR>
-		map <leader>} :call MoveBraces("}")<CR>
-	" Clear search results
-		map Q :noh<cr>
-	" Centers Search results
-		nnoremap n nzz
-		nnoremap N Nzz
-		nnoremap * *zz
-		nnoremap # #zz
-		nnoremap g* g*zz
-		nnoremap g# g#zz
-	" Show word's syntax group with C_S_s
-		nmap <C-S-S> :call <SID>SynStack()<CR>
-		function! <SID>SynStack()
-			if !exists("*synstack")
-				return
-			endif
-			echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-		endfunc
-
-" Session Management
-	" Save
-		func! <SID>Savesession()
-			if v:this_session == ""
-				let cmd = "mksession! $XDG_DATA_HOME/vim/sessions/default.vim"
-			else
-				let cmd = "mksession! ".v:this_session
-			endif
-			echo cmd
-			exec cmd
-		endfunc
-		nmap <leader>sw <ESC>:call <SID>Savesession()<cr>:wa<cr>
-	" Save+Quit
-		nmap <leader>sq <ESC>:call <SID>Savesession()<cr>:wqa<cr>
-	" Save As
-		nmap <leader>sa :wa<cr>:mksession! $XDG_DATA_HOME/vim/sessions/
-	" Restore As (Open)
-		nmap <leader>so :so $XDG_DATA_HOME/vim/sessions/
-
-" Saving Improvements
-	" Use ,W to save the current file with sudo
-		nmap <leader>W :w !sudo tee %<cr><cr>
-	" Create directories if they don't exist
-		function s:MkNonExDir(file, buf)
-		if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
-			let dir=fnamemodify(a:file, ':h')
-			if !isdirectory(dir)
-				call mkdir(dir, 'p')
-			endif
-		endif
-		endfunction
-		augroup BWCCreateDir
-			autocmd!
-			autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
-		augroup END
