@@ -6,6 +6,9 @@
 	set omnifunc=jedi#completions
 	setlocal omnifunc=jedi#completions
 
+" Indent 1 sw after ( (default is 2)
+	let g:pyindent_open_paren = '&sw'
+
 if has('python3')
 py3 << EOF
 import os.path

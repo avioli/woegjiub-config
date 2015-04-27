@@ -20,6 +20,7 @@ alias ptree="tree -I __pycache__"
 alias scan="scanimage --format=tiff >"
 alias sqlite3="sqlite3 -column -header"
 alias v='vim'
+alias V='v $(fzf)'
 alias wq="workon" && complete -F _getvenvdirs wq
 
 # calculator
@@ -38,7 +39,7 @@ chp(){
 }
 
 # find then ag
-fag(){ find -iname "$1" -type f -exec ag "${@:2}" {} +; }
+fag(){ find -wholename "$1" -type f -exec ag "${@:2}" {} +; }
 
 # open with default file handler
 command_exists xdg-open && open(){ xdg-open "$1" "${@:2}" &>/dev/null & disown; }

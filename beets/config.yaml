@@ -10,10 +10,12 @@ plugins: [
     random,
 ]
 
-color: yes
+ui:
+    color: yes
+
 directory: ~/music
-list_format_item: $artist/$album/$track $title
-list_format_album: $albumartist/$album
+format_item: $artist/$album/$track $title
+format_album: $albumartist/$album
 original_date: yes
 per_disc_numbering: yes
 threaded: yes

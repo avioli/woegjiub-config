@@ -4,7 +4,7 @@ set gui=none
 set rtp=$XDG_CONFIG_HOME/vimperator
 set sb=false
 colo darkness
-ignorekeys add -except=d,s,S,b,:,g,t,T,o,O .*woegjiub.com.*
+ignorekeys add -except=:,b,d,f,F,g,o,O,s,S,t,T .*woegjiub.com.*
 
 map d :quit<CR>
 noremap a a -tags 

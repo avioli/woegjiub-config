@@ -24,8 +24,6 @@
 	set shiftround							" Indents rounded to shiftwidths
 	set copyindent							" Maintain current indent on next line
 	set preserveindent						" Try not to mess with indentation
-	set autoindent							" Enables autoindent
-	set smartindent							" Enables smartindent
 	set shiftwidth=4						" Indentation at 4 width
 	set tabstop=4							" Tabs at 4 width
 	set softtabstop=4						" Soft tabs at 4 width
@@ -43,11 +41,6 @@
 	" Save fold settings
 		au BufWinLeave *.* mkview!
 		au BufWinEnter *.* silent loadview
-
-" Filetype overrides
-	au BufNewFile,BufRead *.html set filetype=htmldjango " Presume html.django
-	au BufNewFile,BufRead *.ctp set filetype=php " Add cake files
-	au BufNewFile,BufRead *.rs set filetype=rust " Rust, not hercules
 
 " Completion/abbreviations
 	set complete=.,w,b,u,t,i,k				" Add dictionary to completion
@@ -211,7 +204,7 @@
 		Plug 'csv.vim'
 		Plug 'othree/html5.vim'
 		Plug 'pangloss/vim-javascript'
-		Plug 'othree/javascript-libraries-syntax.vim'
+		" Plug 'othree/javascript-libraries-syntax.vim'
 		Plug 'lepture/vim-jinja'
 		Plug 'elzr/vim-json'
 		Plug 'groenewege/vim-less'
@@ -219,8 +212,12 @@
 		Plug 'StanAngeloff/php.vim'
 		Plug 'Rykka/riv.vim'
 		Plug 'wting/rust.vim'
-		Plug 'Yggdroot/indentLine'
 	call plug#end()
+
+" Filetype overrides
+	au BufNewFile,BufRead *.html set filetype=htmldjango " Presume html.django
+	au BufNewFile,BufRead *.ctp set filetype=php " Add cake files
+	au BufNewFile,BufRead *.rs set filetype=rust " Rust, not hercules
 
 " Plugin settings
 	" VimOutliner
