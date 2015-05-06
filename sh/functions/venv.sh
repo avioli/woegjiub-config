@@ -11,25 +11,23 @@ function ++venv() {
 	cwd=$( cd "$( readlink -e "$( pwd )" )" && pwd )
 	ppath="${1:-"$cwd"}"
 	locations=( 'venv' '.hsenv_main' )
-
 	initial_filesystem="$( venv.get_filesystem "$ppath" )"
 
-	while ! [ -z "$ppath" ] ; do
-
+	while ! [[ -z "$ppath" ]] ; do
 		for location in "${locations[@]}" ; do
-			if [[ -d "$ppath"/$location ]] ; then
+			if [[ -d "$ppath/$location" ]] ; then
 				echo "Activating $ppath/$location"
-				source "$ppath"/$location/bin/activate
+				source "$ppath/$location/bin/activate"
 				return 0
 			fi
 		done
 
-		new_path=$( dirname "$ppath" )
-		if [ "$initial_filesystem" != "$( venv.get_filesystem "$new_path" )" ] ; then
+		new_path="$( dirname "$ppath" )"
+		if [[ "$initial_filesystem" != "$( venv.get_filesystem "$new_path" )" ]] ; then
 			echo  "Could not find venv to activate, crossed file system boundary at $ppath" >&2
 			return 2
 		fi
-		if [ "$ppath" == "/" ] && [ "$new_path" == "/" ] ; then
+		if [[ "$ppath" == "/" ]] && [[ "$new_path" == "/" ]] ; then
 			echo 'Could not find venv to activate' >&2
 			return 1
 		fi

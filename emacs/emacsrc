@@ -16,4 +16,5 @@
 ;(require-package 'evil)
 (evil-mode 1)
 (tool-bar-mode -1)
+(menu-bar-mode -1)
 (delete-directory "~/.emacs.d" 1)
