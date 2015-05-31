@@ -1,5 +1,5 @@
 function clean_home(){
-	rm -rf ~/.{adobe,dbus,gstreamer-0.10,macromedia,mozilla,pki,Trash}
+	rm -rf ~/.{adobe,dbus,gstreamer-0.10,macromedia,mozilla,nvimlog,pki,Trash}
 	if [[ $(uname) == "Darwin" ]]; then
 		for file in "desktop" "movies"; do
 			if [[ -d "$HOME/$file" ]]; then
