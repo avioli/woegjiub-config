@@ -1,4 +1,5 @@
 akonadi/
+aws/config
 autostart/
 bash/saliases*
 beets/library.db
