@@ -7,6 +7,7 @@
 
 # Environment-variable respecting programs
 	export ANDROID_SDK_HOME="$XDG_DATA_HOME/android"
+	export AWS_CONFIG_FILE="$XDG_CONFIG_HOME/aws/config"
 	export GEM_HOME="$HOME/.local/lib/gems"
 	export GEM_PATH="$HOME/.local/bin"
 	export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
