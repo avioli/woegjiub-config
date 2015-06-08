@@ -73,7 +73,7 @@ required-attributes=
 bad-functions=map,filter,apply,input,file
 
 # Good variable names which should always be accepted, separated by a comma
-good-names=db,ex,i,j,k,v,Run,_,pk
+good-names=db,ex,i,j,k,v,Run,_,pk,to,qs
 
 # Bad variable names which should always be refused, separated by a comma
 bad-names=foo,bar,baz,toto,tutu,tata
