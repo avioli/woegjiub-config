@@ -13,6 +13,7 @@
 	export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
 	export GIT_SSH_COMMAND="ssh -F $XDG_CONFIG_HOME/ssh/config "$@" 2>/dev/null"
 	export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
+	export GRADLE_USER_HOME="$XDG_CACHE_HOME/gradle"
 	# Note: gstreamer registry is usually per-arch.
 	# Any secondary architecture applications should have this exported to a
 	# different value before launch

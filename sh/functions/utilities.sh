@@ -1,5 +1,5 @@
 function clean_home(){
-	rm -rf ~/.{android,AndroidStudio1.2,adobe,dbus,emacs.d,gstreamer-0.10,macromedia,mozilla,nvimlog,pki,Trash}
+	rm -rf ~/.{android,AndroidStudio1.2,adobe,dbus,emacs.d,gstreamer-0.10,macromedia,mozilla,node-gyp,nvimlog,pki,subversion,Trash}
 	if [[ $(uname) == "Darwin" ]]; then
 		for file in "Desktop" "Downloads" "Movies"; do
 			if [[ -d "$HOME/$file" ]]; then

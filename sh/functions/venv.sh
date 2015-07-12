@@ -49,7 +49,7 @@ function --venv() {
 
 function mkvenv() {
 	version=3
-	[[ -z "$1" ]] && return 1
+	[[ -z "$1" ]] && echo "No project specified" && return 1
 	[[ -z "$2" ]] || version="$2"
 	name="$1"
 	ppath="$HOME/development/$name"
@@ -71,22 +71,23 @@ function mkvenv() {
 }
 
 function mkvenv2() {
-	[[ -z "$1" ]] && return 1
+	[[ -z "$1" ]] && echo "No project specified" && return 1
 	mkvenv "$1" 2
 }
 
 function rmvenv() {
-	[[ -z "$1" ]] && return 1
+	[[ -z "$1" ]] && echo "No project specified" && return 1
 	name="$1"
 	vdir="$XDG_DATA_HOME/projects/$name"
 	[[ -d "$vdir" ]] && rm -rf "$vdir"
 }
 
 function workon() {
-	[[ -z "$1" ]] && return 1
+	[[ -z "$1" ]] && echo "No project specified" && return 1
 	name="$1"
 	ppath="$HOME/development/$name"
 	vdir="$XDG_DATA_HOME/projects/$name"
+	[[ -d "$ppath" ]] || (echo "Invalid project: '$name'" && return 1)
 	[[ -d "$ppath" ]] && cd "$ppath"
 	[[ -d "./webapp" ]] && cd "./webapp"
 	[[ -d "./src" ]] && cd "./src"

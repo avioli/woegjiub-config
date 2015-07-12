@@ -5,3 +5,6 @@ UserKnownHostsFile ~/.local/share/ssh/known_hosts
 ControlMaster auto
 ControlPath ~/.local/share/ssh/master-%r@%h:%p
 ControlPersist yes
+
+Host *
+	SendEnv HOST LC_* LC_SSH_PPLIST ZDOTDIR EDITOR VISUAL
