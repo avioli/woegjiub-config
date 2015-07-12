@@ -58,3 +58,5 @@ vims(){ vim -S "$XDG_DATA_HOME/vim/sessions/${1-default.vim}"; }
 
 # find aliases
 alias dj-models="fag models.py '^\s*class .*\((?!.*Enum)(.*)\):.*$'"
+alias find_usages="find -iname '*.html' -printf '%f\n' | xargs -I{} sh -c 'echo \"file: {}\r\"; ag -i \"{}\"'"
+alias find_usage_counts="find -iname '*.html' -printf '%f\n' | xargs -I{} sh -c 'printf \"file: {}\noccurrences: \"; ag -oi \"{}\" --noheading | wc -l'"
