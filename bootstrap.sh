@@ -45,6 +45,9 @@ for file in "${files[@]}"; do
 	echo "touched $file"
 done
 
+# Keep submodules updated
+git submodule init && git submodule update
+
 # More specific bootstrapping
 chmod 700 $XDG_CONFIG_HOME/gnupg
 [[ ! -f "$XDG_CONFIG_HOME/ssh/config" ]] && cp "$XDG_CONFIG_HOME/ssh/config"{".example",} && echo "Copied default ssh.config"
