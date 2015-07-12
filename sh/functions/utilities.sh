@@ -1,7 +1,7 @@
 function clean_home(){
-	rm -rf ~/.{adobe,dbus,gstreamer-0.10,macromedia,mozilla,nvimlog,pki,Trash}
+	rm -rf ~/.{android,AndroidStudio1.2,adobe,dbus,emacs.d,gstreamer-0.10,macromedia,mozilla,nvimlog,pki,Trash}
 	if [[ $(uname) == "Darwin" ]]; then
-		for file in "desktop" "movies"; do
+		for file in "Desktop" "Downloads" "Movies"; do
 			if [[ -d "$HOME/$file" ]]; then
 				/bin/chmod -a "group:everyone deny delete" "$HOME/$file"
 				rm -rf "$HOME/$file"
