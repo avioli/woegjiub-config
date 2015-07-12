@@ -1,4 +1,5 @@
 alias cal="cal -3"
+alias d="dirs -v"
 alias dag="ag --ignore fixtures --ignore static --ignore migrations --ignore venv --ignore '*.json' 2>/dev/null"
 alias feh="feh -B black -e LiberationMono-Regular/24 -C /usr/share/fonts/TTF"
 alias fehs="feh -Z." # Initial is correct on all, but flicker on N/P
