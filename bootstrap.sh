@@ -46,7 +46,7 @@ for file in "${files[@]}"; do
 done
 
 # Keep submodules updated
-git submodule init && git submodule update
+git submodule update
 
 # More specific bootstrapping
 chmod 700 $XDG_CONFIG_HOME/gnupg

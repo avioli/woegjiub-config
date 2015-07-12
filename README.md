@@ -8,20 +8,20 @@ By editing /etc/profile (for bash) or /etc/zshenv (for zsh), a dotfile-free $HOM
 Installation:
 
 	1. Clone it
-	 	git clone http://github.com/woegjiub/.config
+		git clone http://github.com/woegjiub/.config && cd .config && git submodule init
 
 	2. Your device:
 			Bash: sudo echo '[[ ! -z "$PS1" ]] && [[ ! -z "$BASH_VERSION" ]] && . ~/.config/bash/bashrc' >> /etc/profile
 			Zsh: sudo echo 'export ZDOTDIR="$HOME/.config/zsh"' >> /etc/zshenv
 		Remote host:
-			Bash: `ln -s ~/.config/bash/bashrc ~/.bash_profile`
+			Bash: ln -s ~/.config/bash/bashrc ~/.bash_profile
 			Zsh: ensure "SendEnv ZDOTDIR" is in your ssh config
 
 	3. Configure your graphical terminal to always open login shells
 
 	4. Log out and back in again for the environment variables to take effect
 
-	5. `cd ~/.config && ./bootstrap.sh`
+	5. cd ~/.config && ./bootstrap.sh
 
 	6. Some of the addons will require other programs to be installed.
 		silver-searcher
