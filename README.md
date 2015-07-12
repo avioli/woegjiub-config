@@ -1,42 +1,31 @@
 .config
 ========
-These are my settings for various programs  
-Note that this respects XDG base directory layout  
-Currently, bash is the only program which does not comply, as it hooks in the other programs  
-By editing /etc/profile, a dotfile-free $HOME is achieved
+These are my settings for various programs
+Note that this respects XDG base directory layout
+Currently, bash/zsh are the only programs which do not comply, as they hook in the other programs
+By editing /etc/profile (for bash) or /etc/zshenv (for zsh), a dotfile-free $HOME is achieved
 
 Installation:
 
 	1. Clone it
-	 	git clone http://github.com/woegjiub/.config
+		git clone http://github.com/woegjiub/.config && cd .config && git submodule init
 
-	2. Create necessary directories if they don't exist
+	2. Your device:
+			Bash: sudo echo '[[ ! -z "$PS1" ]] && [[ ! -z "$BASH_VERSION" ]] && . ~/.config/bash/bashrc' >> /etc/profile
+			Zsh: sudo echo 'export ZDOTDIR="$HOME/.config/zsh"' >> /etc/zshenv
+		Remote host:
+			Bash: ln -s ~/.config/bash/bashrc ~/.bash_profile
+			Zsh: ensure "SendEnv ZDOTDIR" is in your ssh config
 
-	3a. If you have root, add to /etc/profile:
-		# Source global bash config
-		if test "$PS1" && test "$BASH" && test -r /etc/bash.bashrc; then
-			. ~/.config/bash/bashrc
-		fi
+	3. Configure your graphical terminal to always open login shells
 
-	3b. Otherwise, ln -s ~/.config/bash/bashrc ~/.bash_profile
+	4. Log out and back in again for the environment variables to take effect
 
-	4. Configure your graphical terminal to always open login shells
+	5. cd ~/.config && ./bootstrap.sh
 
-	5. .config/ssh/config needs creation; use .config/ssh/config.example as a basis
-
-	6. Log out and back in again for the environment variables to take effect
-
-	7. Clone Vundle
-		git clone http://github.com/gmarik/vundle $XDG_DATA_HOME/vim/bundle/vundle
-
-	8. All vim addons are pulled in through vundle. From vim, run
-		:BundleInstall
-
-	9. Some of the addons will require other programs to be installed.
-		ack-grep
-		exuberant-ctags
-		libclang
-		node (npm install -g uses $HOME/.local)
+	6. Some of the addons will require other programs to be installed.
+		silver-searcher
+		npm (npm install -g uses $HOME/.local)
 			js-beautify
 			jsctags
 			jshint
@@ -45,7 +34,3 @@ Installation:
 		pip (pip install --user uses $HOME/.local)
 			flake8
 			pylint
-	
-	10. Some vim addons require setup
-		YouCompleteMe: cd $XDG_DATA_HOME/vim/bundle/YouCompleteMe; ./install.sh
-		tern_for_vim: cd $XDG_DATA_HOME/vim/bundle/tern_for_vim; npm install

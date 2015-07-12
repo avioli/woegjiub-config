@@ -1,20 +1,33 @@
-(setq user-emacs-directory (file-truename (concat (getenv "XDG_CONFIG_HOME") "/emacs")))
+; Variables
+(defvar config_home (file-truename (concat (getenv "XDG_CONFIG_HOME") "/emacs")))
+(defvar data_home (file-truename (concat (getenv "XDG_DATA_HOME") "/emacs")))
+(defvar cache_home (file-truename (concat (getenv "XDG_CACHE_HOME") "/emacs")))
+(setq user-emacs-directory config_home)
+(setq auto-save-default nil)
+
+; Set up package management
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
 			 ("marmalade" . "http://marmalade-repo.org/packages/")
 			 ("melpa" . "http://melpa.milkbox.net/packages/")
-			 ("org" . "http://orgmode.org/elpa")))
+			 ("org" . "http://orgmode.org/elpa/")))
 (package-initialize)
-;(defun require-package (package)
-;  (setq-default highlight-tabs t)
-;  "Install given package."
-;  (unless (package-installed-p package)
-;    (unless (assoc package package-archive-contents)
-;      (package-refresh-contents))
-;    (package-install package)))
-;
-;(require-package 'evil)
+(defun require-package (package)
+  (setq-default highlight-tabs t)
+  "Install given package."
+  (unless (package-installed-p package)
+    (unless (assoc package package-archive-contents) (package-refresh-contents))
+    (package-install package)))
+
+; Desired packages
+(require-package 'evil)
+(require-package 'org-plus-contrib)
+(require-package 'powerline)
+
+; Modes
 (evil-mode 1)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
+
+; Remove this every time we start emacs
 (delete-directory "~/.emacs.d" 1)
