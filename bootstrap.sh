@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [[ -z "$XDG_CONFIG_HOME" ]]; then
-	echo "Please source bashrc first"
+	echo "Please source shrc first"
 	exit
 fi
 
@@ -47,19 +47,13 @@ done
 
 # More specific bootstrapping
 chmod 700 $XDG_CONFIG_HOME/gnupg
-[[ ! -f "$XDG_CONFIG_HOME/ssh/config" ]] && cp "$XDG_CONFIG_HOME/ssh/config.example" "$XDG_CONFIG_HOME/ssh/config"
-[[ -L "$XDG_LIB_HOME/gems/bin" ]] || ln -s "$XDG_BIN_HOME" "$XDG_LIB_HOME/gems/bin"
-
-# Git cloning and compilation of vim plugins only if they're not already present
-if [[ ! -d "$XDG_DATA_HOME/vim/bundle/vundle" ]]; then
-	git clone https://github.com/gmarik/vundle "$XDG_DATA_HOME/vim/bundle/vundle"
-	vim +PluginInstall +qall
-	if [[ -d "$XDG_DATA_HOME/vim/bundle/vimproc.vim" ]]; then
-		cd "$XDG_DATA_HOME/vim/bundle/vimproc.vim/"
-		make
-	fi
-	if [[ -d "$XDG_DATA_HOME/vim/bundle/YouCompleteMe" ]]; then
-		cd "$XDG_DATA_HOME/vim/bundle/YouCompleteMe"
-		./install.sh
+[[ ! -f "$XDG_CONFIG_HOME/ssh/config" ]] && cp "$XDG_CONFIG_HOME/ssh/config"{".example",} && echo "Copied default ssh.config"
+[[ ! -L "$XDG_LIB_HOME/gems/bin" ]] && ln -s "$XDG_BIN_HOME" "$XDG_LIB_HOME/gems/bin" && echo "Bootstrapped ruby gems"
+if [[ "$(uname)" == "Darwin" ]]; then
+	if ! [[ -f "$HOME/library/LaunchAgents/environment.plist" ]]; then
+		ln -s {"$XDG_CONFIG_HOME/osx","$HOME/library"}"/LaunchAgents/environment.plist" && echo "Added OS X Environment variables"
 	fi
 fi
+
+# Update vim
+vim +PlugUpdate
