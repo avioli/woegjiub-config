@@ -11,7 +11,8 @@ alias grep='grep -I --color=auto'
 alias htop="htop -u $USER"
 alias j='jobs -l'
 alias ls="ls -FA --color=always --group-directories-first"
-alias l="ls -lh --time-style=long-iso"
+alias L="ls -lh --time-style=long-iso"
+alias l="L -L"
 alias lsblkv="lsblk -o name,size,type,fstype,ro,mountpoint,label,uuid,partuuid"
 alias mutt="mutt -F $XDG_CONFIG_HOME/mutt/muttrc"
 alias mysql="mysql --sigint-ignore"

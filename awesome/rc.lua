@@ -173,7 +173,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Return", function ()
         awful.util.spawn(terminal) end),
     awful.key({ modkey,           }, "f", function ()
-        awful.util.spawn("firefox -profile " .. XDG_CONFIG_HOME .. "/firefox") end),
+        awful.util.spawn("firefox-developer -profile " .. XDG_CONFIG_HOME .. "/firefox") end),
     awful.key({                   }, "XF86AudioPlay", function()
         awful.util.spawn("mpc toggle") end),
     awful.key({                   }, "Pause", function()

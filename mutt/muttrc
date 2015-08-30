@@ -25,9 +25,7 @@ alternative_order text/plain text/html
 macro attach 'V' '<pipe-entry>cat >$XDG_CACHE_HOME/mutt/mail.html && $BROWSER $XDG_CACHE_HOME/mutt/mail.html 2>/dev/null && rm $XDG_CACHE_HOME/mutt/mail.html<enter>'
 
 # Passwords
-# source "$XDG_CONFIG_HOME/mutt/passwords"
 source "gpg2 -dq $XDG_CONFIG_HOME/mutt/passwords.gpg |"
 
 # Accounts
 source `FILE="$XDG_CONFIG_HOME/mutt/account-personal-primary";   if [ ! -s "$FILE" ]; then FILE=/dev/null; fi; echo "$FILE"`
-source `FILE="$XDG_CONFIG_HOME/mutt/account-personal-pseudonym"; if [ ! -s "$FILE" ]; then FILE=/dev/null; fi; echo "$FILE"`
