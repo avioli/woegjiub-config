@@ -116,119 +116,74 @@ end
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
-    awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
-    awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
-    awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
-    awful.key({ modkey,           }, "b",
-        function ()
-            mywibox[mouse.screen].visible = not mywibox[mouse.screen].visible
-        end),
-
-    awful.key({ modkey,           }, "j",
-        function ()
-            awful.client.focus.byidx( 1)
-            if client.focus then client.focus:raise() end
-        end),
-    awful.key({ modkey,           }, "Tab",
-        function ()
-            awful.client.focus.byidx( 1)
-            if client.focus then client.focus:raise() end
-        end),
-    awful.key({ modkey,           }, "k",
-        function ()
-            awful.client.focus.byidx(-1)
-            if client.focus then client.focus:raise() end
-        end),
-    awful.key({ modkey, "Shift"   }, "Tab",
-        function ()
-            awful.client.focus.byidx(-1)
-            if client.focus then client.focus:raise() end
-        end),
+    -- Desktop movement
+    awful.key({ modkey,           }, "Left",                  awful.tag.viewprev),
+    awful.key({ modkey,           }, "Right",                 awful.tag.viewnext),
+    awful.key({ modkey,           }, "Escape",                awful.tag.history.restore),
+    awful.key({ modkey,           }, "j",                     function () awful.client.focus.byidx( 1) if client.focus then client.focus:raise() end end),
+    awful.key({ modkey,           }, "Tab",                   function () awful.client.focus.byidx( 1) if client.focus then client.focus:raise() end end),
+    awful.key({ modkey,           }, "k",                     function () awful.client.focus.byidx(-1) if client.focus then client.focus:raise() end end),
+    awful.key({ modkey, "Shift"   }, "Tab",                   function () awful.client.focus.byidx(-1) if client.focus then client.focus:raise() end end),
 
     -- Layout manipulation
-    awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
-    awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
-    awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
-    awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
-    awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
+    awful.key({ modkey, "Shift"   }, "j",                     function () awful.client.swap.byidx(  1) end),
+    awful.key({ modkey, "Shift"   }, "k",                     function () awful.client.swap.byidx( -1) end),
+    awful.key({ modkey, "Control" }, "j",                     function () awful.screen.focus_relative( 1) end),
+    awful.key({ modkey, "Control" }, "k",                     function () awful.screen.focus_relative(-1) end),
+    awful.key({ modkey,           }, "l",                     function () awful.tag.incmwfact( 0.05) end),
+    awful.key({ modkey,           }, "h",                     function () awful.tag.incmwfact(-0.05) end),
+    awful.key({ modkey, "Shift"   }, "h",                     function () awful.tag.incnmaster( 1) end),
+    awful.key({ modkey, "Shift"   }, "l",                     function () awful.tag.incnmaster(-1) end),
+    awful.key({ modkey, "Control" }, "h",                     function () awful.tag.incncol( 1) end),
+    awful.key({ modkey, "Control" }, "l",                     function () awful.tag.incncol(-1) end),
+    awful.key({ modkey,           }, "+",                     function () awful.layout.inc(layouts,  1) end),
+    awful.key({ modkey, "Shift"   }, "space",                 function () awful.layout.inc(layouts, -1) end),
+    awful.key({ modkey,           }, "b",                     function () mywibox[mouse.screen].visible = not mywibox[mouse.screen].visible end),
+    awful.key({ modkey,           }, "u",                     awful.client.urgent.jumpto),
 
     -- Standard program
-    awful.key({ modkey, "Control" }, "r", awesome.restart),
-    awful.key({ modkey, "Shift"   }, "q", awesome.quit),
-    awful.key({ "Control", "Mod1" }, "Delete", function () awful.util.spawn( terminal .. " -e sudo poweroff") end),
-    awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
-    awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
-    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),
-    awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1)      end),
-    awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1)         end),
-    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1)         end),
-    awful.key({ modkey,           }, "+",     function () awful.layout.inc(layouts,  1) end),
-    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
-    awful.key({ modkey, "Control" }, "n", awful.client.restore),
+    awful.key({ modkey, "Control" }, "r",                     awesome.restart),
+    awful.key({ modkey, "Shift"   }, "q",                     awesome.quit),
+    awful.key({ modkey, "Control" }, "n",                     awful.client.restore),
+    awful.key({ modkey            }, "space",                 function () mypromptbox[mouse.screen]:run() end),
 
-    -- Prompt
-    awful.key({ modkey            }, "space",     function () mypromptbox[mouse.screen]:run() end),
+    -- System
+    awful.key({                   }, "XF86KbdBrightnessDown", function () awful.util.spawn("kbdlight down") end),
+    awful.key({                   }, "XF86KbdBrightnessUp",   function () awful.util.spawn("kbdlight up") end),
+    awful.key({                   }, "XF86PowerOff",          function () awful.util.spawn("xset dpms force off") end),
+    awful.key({ "Control", "Mod1" }, "Delete",                function () awful.util.spawn( terminal .. " -e sudo poweroff") end),
+
+    -- Media
+    awful.key({                   }, "XF86AudioPlay",         function () awful.util.spawn("mpc toggle") end),
+    awful.key({                   }, "Pause",                 function () awful.util.spawn("mpc toggle") end),
+    awful.key({ "Control",        }, "XF86AudioPlay",         function () awful.util.spawn('mpc-random') end),
+    awful.key({ "Control",        }, "Pause",                 function () awful.util.spawn('mpc-random') end),
+    awful.key({                   }, "XF86AudioRaiseVolume",  function () awful.util.spawn("amixer set Master 3%+", false) end),
+    awful.key({ modkey, "Control" }, "Up",                    function () awful.util.spawn("amixer set Master 3%+", false) end),
+    awful.key({                   }, "XF86AudioLowerVolume",  function () awful.util.spawn("amixer set Master 3%-", false) end),
+    awful.key({ modkey, "Control" }, "Down",                  function () awful.util.spawn("amixer set Master 3%-", false) end),
+    awful.key({                   }, "XF86AudioMute",         function () awful.util.spawn("amixer sset Master toggle", false) end),
 
     -- Launchers
-    awful.key({ modkey,           }, "Return", function ()
-        awful.util.spawn(terminal) end),
-    awful.key({ modkey,           }, "f", function ()
-        awful.util.spawn("firefox-developer -profile " .. XDG_CONFIG_HOME .. "/firefox") end),
-    awful.key({                   }, "XF86AudioPlay", function()
-        awful.util.spawn("mpc toggle") end),
-    awful.key({                   }, "Pause", function()
-        awful.util.spawn("mpc toggle") end),
-    awful.key({ modkey,           }, "XF86AudioPlay", function()
-        awful.util.spawn( terminal .. " -e ncmpcpp -c '" .. XDG_CONFIG_HOME .. "/ncmpcpp/config'") end),
-    awful.key({ modkey,           }, "Pause", function()
-        awful.util.spawn( terminal .. " -e ncmpcpp -c '" .. XDG_CONFIG_HOME .. "/ncmpcpp/config'") end),
-    awful.key({ "Control",        }, "XF86AudioPlay", function()
-        awful.util.spawn('mpc-random') end),
-    awful.key({ "Control",        }, "Pause", function()
-        awful.util.spawn('mpc-random') end),
-    awful.key({ }, "XF86AudioRaiseVolume", function ()
-       awful.util.spawn("amixer set Master 3%+", false) end),
-    awful.key({ }, "XF86AudioLowerVolume", function ()
-       awful.util.spawn("amixer set Master 3%-", false) end),
-    awful.key({ modkey, "Control" }, "Up", function ()
-       awful.util.spawn("amixer set Master 3%+", false) end),
-    awful.key({ modkey, "Control" }, "Down", function ()
-       awful.util.spawn("amixer set Master 3%-", false) end),
-    awful.key({ }, "XF86AudioMute", function ()
-       awful.util.spawn("amixer sset Master toggle", false) end),
-    awful.key({ modkey            }, "c", function()
-        awful.util.spawn( "localc" ) end),
-    awful.key({ modkey            }, "a", function()
-        awful.util.spawn( "anki -b " .. XDG_DATA_HOME .. "/anki" ) end),
-    awful.key({ modkey            }, "p", function()
-        awful.util.spawn( terminal .. " -e bpython" ) end),
-    awful.key({ modkey            }, "m", function()
-        awful.util.spawn( terminal .. " -e mutt -F " .. XDG_CONFIG_HOME .. "/mutt/muttrc" ) end),
-    awful.key({                   }, "XF86KbdBrightnessDown", function()
-        awful.util.spawn("kbdlight down") end),
-    awful.key({                   }, "XF86KbdBrightnessUp", function()
-        awful.util.spawn("kbdlight up") end),
-    awful.key({                   }, "XF86PowerOff", function()
-        awful.util.spawn("xset dpms force off") end)
+    awful.key({ modkey,           }, "Return",                function () awful.util.spawn(terminal) end),
+    awful.key({ modkey,           }, "f",                     function () awful.util.spawn("firefox-developer -profile " .. XDG_CONFIG_HOME .. "/firefox") end),
+    awful.key({ modkey            }, "c",                     function () awful.util.spawn("chromium -incognito" ) end),
+    awful.key({ modkey            }, "a",                     function () awful.util.spawn("anki -b " .. XDG_DATA_HOME .. "/anki" ) end),
+    awful.key({ modkey            }, "p",                     function () awful.util.spawn(terminal .. " -e ipython --profile=shell" ) end),
+    awful.key({ modkey            }, "m",                     function () awful.util.spawn(terminal .. " -e mutt -F " .. XDG_CONFIG_HOME .. "/mutt/muttrc" ) end),
+    awful.key({ modkey,           }, "XF86AudioPlay",         function () awful.util.spawn(terminal .. " -e ncmpcpp -c '" .. XDG_CONFIG_HOME .. "/ncmpcpp/config'") end),
+    awful.key({ modkey,           }, "Pause",                 function () awful.util.spawn(terminal .. " -e ncmpcpp -c '" .. XDG_CONFIG_HOME .. "/ncmpcpp/config'") end)
 )
 
 clientkeys = awful.util.table.join(
-    awful.key({ modkey,           }, "q",      function (c) c:kill()                         end),
-    awful.key({ "Mod1",           }, "F4",     function (c) c:kill()                         end),
-    awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
-    awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
-    awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
-    awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end),
-    awful.key({ modkey,           }, "n",
-        function (c)
-            -- The client currently has the input focus, so it cannot be
-            -- minimized, since minimized clients can't have the focus.
-            c.minimized = true
-        end),
-    awful.key({ modkey,           }, "Up",
-        function (c)
-            c.fullscreen = not c.fullscreen
-        end)
+    awful.key({ modkey,           }, "q",                     function (c) c:kill() end),
+    awful.key({ "Mod1",           }, "F4",                    function (c) c:kill() end),
+    awful.key({ modkey, "Control" }, "Return",                function (c) c:swap(awful.client.getmaster()) end),
+    awful.key({ modkey,           }, "t",                     function (c) c.ontop = not c.ontop end),
+    awful.key({ modkey,           }, "n",                     function (c) c.minimized = true end),  -- Minimised clients aren't focusable
+    awful.key({ modkey,           }, "Up",                    function (c) c.fullscreen = not c.fullscreen end),
+    awful.key({ modkey, "Control" }, "space",                 awful.client.floating.joggle),
+    awful.key({ modkey,           }, "o",                     awful.client.movetoscreen)
 )
 
 -- Bind all key numbers to tags.
@@ -269,7 +224,7 @@ for i = 1, 9 do
 end
 
 clientbuttons = awful.util.table.join(
-    awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
+    awful.button({        }, 1, function (c) client.focus = c; c:raise() end),
     awful.button({ modkey }, 1, awful.mouse.client.move),
     awful.button({ modkey }, 3, awful.mouse.client.resize))
 
@@ -285,17 +240,7 @@ awful.rules.rules = {
                      border_color = beautiful.border_normal,
                      focus = awful.client.focus.filter,
                      keys = clientkeys,
-                     -- fixed LibreOffice opening floated
-                     --maximised_vertical=false,
-                     --maximised_horizontal=false,
                      buttons = clientbuttons } },
-    -- Floating Desktop Calculator
-    { rule = { name = "bc$" },
-        properties = {  floating = true,
-                        width = 580,
-                        height = 320,
-                        x = 700,
-                        y = 350 } },
     -- Mplayer should never float
     { rule = { name = "mpv" },
         properties = { floating = false } },
