@@ -45,6 +45,7 @@ function --venv() {
 	elif command -V 'deactivate_hsenv' &>/dev/null ; then
 		deactivate_hsenv
 	fi
+	[[ -z "$VIRTUAL_ENV_NAME" ]] || unset VIRTUAL_ENV_NAME
 }
 
 function mkvenv() {
@@ -53,12 +54,13 @@ function mkvenv() {
 	[[ -z "$2" ]] || version="$2"
 	name="$1"
 	ppath="$HOME/development/$name"
-	vdir="$XDG_DATA_HOME/projects/$name"
+	vdir="$ppath/venv"
+	[[ -d "$ppath" ]] || mkdir "$ppath"
 	if ! [[ -d "$vdir" ]] ; then
 		[[ "$version" -eq 2 ]] && virtualenv2 "$vdir"
 		[[ "$version" -eq 3 ]] && pyvenv "$vdir"
+		echo "\n\nexport VIRTUAL_ENV_NAME=\"$name\"" >> "$vdir/bin/activate"
 	fi
-	[[ -d "$ppath" ]] || mkdir "$ppath"
 	if [[ -d "$ppath/webapp" ]]; then
 		base="$ppath/webapp"
 	else
@@ -75,31 +77,24 @@ function mkvenv2() {
 	mkvenv "$1" 2
 }
 
-function rmvenv() {
-	[[ -z "$1" ]] && echo "No project specified" && return 1
-	name="$1"
-	vdir="$XDG_DATA_HOME/projects/$name"
-	[[ -d "$vdir" ]] && rm -rf "$vdir"
-}
-
 function workon() {
 	[[ -z "$1" ]] && echo "No project specified" && return 1
 	name="$1"
 	ppath="$HOME/development/$name"
-	vdir="$XDG_DATA_HOME/projects/$name"
 	[[ -d "$ppath" ]] || (echo "Invalid project: '$name'" && return 1)
 	[[ -d "$ppath" ]] && cd "$ppath"
 	[[ -d "./webapp" ]] && cd "./webapp"
 	[[ -d "./src" ]] && cd "./src"
+	[[ -d "../venv" ]] && vdir="../venv"
 	[[ -d "$vdir" ]] && . "$vdir/bin/activate"
 	[[ -z "$TMUX" ]] || tmux rename-window "$name"
 }
 
 if [[ ! -z "$ZSH_VERSION" ]]; then
-	compdef '_files -W "$XDG_DATA_HOME/projects/"' workon
+	compdef '_files -W "$HOME/development/"' workon
 elif [[ ! -z "$BASH_VERSION" ]]; then
 	_getvenvdirs() {
-		local projects=("$XDG_DATA_HOME/projects/$2"*)
+		local projects=("$HOME/development/$2"*)
 		[[ -e "${projects[0]}" ]] && COMPREPLY=( "${projects[@]##*/}" )
 	}
 	complete -F _getvenvdirs workon
