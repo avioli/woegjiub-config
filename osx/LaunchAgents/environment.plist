@@ -14,6 +14,7 @@
             launchctl setenv XDG_DATA_HOME "$HOME/.local/share"
             launchctl setenv VIMPERATOR_INIT "source $HOME/.config/vimperator/vimperatorrc"
             launchctl setenv VIMPERATOR_RUNTIME "$HOME/.config/vimperator"
+            launchctl setenv ADB_VENDOR_KEYS "$HOME/.local/share/android/.android"
             launchctl setenv ANDROID_SDK_HOME "$HOME/.local/share/android"
             launchctl setenv GRADLE_USER_HOME "$HOME/.cache/gradle"
         </string>
