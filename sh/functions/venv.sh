@@ -67,8 +67,7 @@ function mkvenv() {
 		[[ -d "$ppath/src" ]] || mkdir -p "$ppath/src"
 		base="$ppath/src"
 	fi
-	[[ -e "$base/venvlib" ]] || ln -s "$vdir/lib/"*"/site-packages/" "$base/venvlib"
-	[[ -e "$base/venvsrc" ]] || ln -s "$vdir/src" "$base/venvsrc"
+	[[ -e "$vdir/packages" ]] || ln -s "$vdir/lib/"*"/site-packages/" "$vdir/packages"
 	workon "$name"
 }
 
