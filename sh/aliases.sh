@@ -22,7 +22,7 @@ alias piplistglobal="pip list | sort > l1 && pip list --user | sort > l2 && comm
 alias ptree="tree -I __pycache__"
 alias scan="scanimage --format=tiff >"
 alias sqlite3="sqlite3 -column -header"
-alias v='vim'
+alias v='nvim'
 alias V='v $(fzf)'
 alias wq="workon" && complete -F _getvenvdirs wq
 

@@ -52,14 +52,15 @@ git submodule update
 chmod 700 $XDG_CONFIG_HOME/gnupg
 [[ ! -f "$XDG_CONFIG_HOME/ssh/config" ]] && cp "$XDG_CONFIG_HOME/ssh/config"{".example",} && echo "Copied default ssh.config"
 [[ ! -L "$XDG_LIB_HOME/gems/bin" ]] && ln -s "$XDG_BIN_HOME" "$XDG_LIB_HOME/gems/bin" && echo "Bootstrapped ruby gems"
+[[ ! -L "$XDG_CONFIG_HOME/nvim" ]] && ln -s "$XDG_CONFIG_HOME/vim" "$XDG_CONFIG_HOME/nvim" && echo "Bootstrapped neovim"
 if [[ "$(uname)" == "Darwin" ]]; then
 	if ! [[ -f "$HOME/library/LaunchAgents/environment.plist" ]]; then
 		ln -s {"$XDG_CONFIG_HOME/osx","$HOME/library"}"/LaunchAgents/environment.plist" && echo "Added OS X Environment variables"
 	fi
 fi
 
-# Update vim
-vim +PlugUpdate
+# Update (neo)vim
+nvim +PlugUpdate
 
 for file in "$XDG_CONFIG_HOME/sh/utilities/"*.sh; do
 	[[ -e "$file" ]] || ln -s "$file" "$XDG_BIN_HOME"/$(basename "$f" .sh)

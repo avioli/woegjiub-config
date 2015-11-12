@@ -1,9 +1,11 @@
 " Force XDG basedir spec compliance
-	set rtp=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM,$VIMRUNTIME
-	set undodir=$XDG_DATA_HOME/vim/undo
-	set viewdir=$XDG_DATA_HOME/vim/view
-	set viminfo+=n$XDG_DATA_HOME/vim/hist
-	let g:netrw_home = expand('$XDG_DATA_HOME/vim/netrw')
+	if !has('nvim')
+		set rtp=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM,$VIMRUNTIME
+		set undodir=$XDG_DATA_HOME/vim/undo
+		set viewdir=$XDG_DATA_HOME/vim/view
+		set viminfo+=n$XDG_DATA_HOME/vim/hist
+		let g:netrw_home = expand('$XDG_DATA_HOME/vim/netrw')
+	end
 
 " General
 	set ffs=unix							" Unix as standard fileformat
@@ -85,10 +87,12 @@
 " Input
 	set mouse=a								" Enable Mouse
 	" Stop mousewheel and clicking from inserting letters
-	if has("mouse_sgr")
-		set ttymouse=sgr
-	else
-		set ttymouse=xterm2
+	if has('ttymouse')
+		if has("mouse_sgr")
+			set ttymouse=sgr
+		else
+			set ttymouse=xterm2
+		end
 	end
 	set backspace=eol,start,indent			" Proper backspace behaviour
 
@@ -136,6 +140,10 @@
 			endif
 			echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 		endfunc
+	" Neovim remaps
+	if has('nvim')
+		tnoremap <Esc> <C-\><C-n>
+	end
 
 " Sessions and saving
 	" Save session
@@ -197,7 +205,11 @@
 	Plug 'honza/vim-snippets'                   " Collection of snippets
 	Plug 'marijnh/tern_for_vim'                 " Javascript omnicompletion
 	Plug 'davidhalter/jedi-vim'                 " Python omnicompletion
-	Plug 'Shougo/neocomplete.vim'               " Improved completion UI
+	if has('nvim')
+		Plug 'Shougo/deoplete.nvim'               " Improved completion UI
+	else
+		Plug 'Shougo/neocomplete.vim'               " Improved completion UI
+	end
 	" Syntax and highlighting
 		Plug 'hail2u/vim-css3-syntax'
 		Plug 'ap/vim-css-color'
@@ -271,22 +283,28 @@
 		let g:jedi#popup_on_dot = 0
 		let g:jedi#popup_select_first = 0
 		let g:jedi#show_call_signatures = 2
-	" Neocomplete
-		let g:neocomplete#enable_cursor_hold_i = 1
-		let g:neocomplete#cursor_hold_i_time = 300
-		let g:neocomplete#enable_at_startup = 1
-		let g:neocomplete#enable_auto_close_preview = 0
-		let g:neocomplete#enable_camel_case = 1
-		let g:neocomplete#enable_smart_case = 1
-		let g:neocomplete#fallback_mappings = ["\<C-x>\<C-o>", "\<C-x>\<C-n>"]
-		if !exists('g:neocomplete#keyword_patterns')
-			let g:neocomplete#keyword_patterns = {}
-		endif
-		let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-		if !exists('g:neocomplete#force_omni_input_patterns')
-			let g:neocomplete#force_omni_input_patterns = {}
-		endif
-		let g:neocomplete#force_omni_input_patterns.python =
-			\ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+	if has('nvim')
+		let g:deoplete#enable_at_startup = 1
+		let g:deoplete#enable_camel_case = 1
+		let g:deoplete#enable_smart_case = 1
+	else
+		" Neocomplete
+			let g:neocomplete#enable_cursor_hold_i = 1
+			let g:neocomplete#cursor_hold_i_time = 300
+			let g:neocomplete#enable_at_startup = 1
+			let g:neocomplete#enable_auto_close_preview = 0
+			let g:neocomplete#enable_camel_case = 1
+			let g:neocomplete#enable_smart_case = 1
+			let g:neocomplete#fallback_mappings = ["\<C-x>\<C-o>", "\<C-x>\<C-n>"]
+			if !exists('g:neocomplete#keyword_patterns')
+				let g:neocomplete#keyword_patterns = {}
+			endif
+			let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+			if !exists('g:neocomplete#force_omni_input_patterns')
+				let g:neocomplete#force_omni_input_patterns = {}
+			endif
+			let g:neocomplete#force_omni_input_patterns.python =
+				\ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+	end
 	" Riv.vim
 		let g:riv_global_leader = "<C-,>"
