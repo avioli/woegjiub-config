@@ -24,6 +24,8 @@
 ~$*
 .sass-cache
 *.kra
+.idea
+*.iml
 
 # Logs and databases #
 ######################
@@ -55,9 +57,11 @@ node_modules/
 var/
 venv/
 venv*
+celerybeat-schedule
 
 # Intentionally ignored stuff (notes, etc.) #
 #############################################
 ignore*
 .editables
 .site-packages
+.-rplugin~
