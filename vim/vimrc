@@ -232,6 +232,7 @@
 	au BufNewFile,BufRead *.html set filetype=htmldjango " Presume html.django
 	au BufNewFile,BufRead *.ctp set filetype=php " Add cake files
 	au BufNewFile,BufRead *.rs set filetype=rust " Rust, not hercules
+	au BufNewFile,BufRead *.es6 set filetype=javascript
 
 " Plugin settings
 	" VimOutliner
