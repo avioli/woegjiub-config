@@ -60,3 +60,8 @@ fi
 
 # Update vim
 vim +PlugUpdate
+
+for file in "$XDG_CONFIG_HOME/sh/utilities/"*.sh; do
+	[[ -e "$file" ]] || ln -s "$file" "$XDG_BIN_HOME"/$(basename "$f" .sh)
+	echo "Added utility $file"
+done
