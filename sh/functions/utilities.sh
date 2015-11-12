@@ -1,12 +1,10 @@
 function clean_home(){
-	rm -rf ~/.{AndroidStudio1.2,adobe,dbus,emacs.d,gstreamer-0.10,macromedia,mozilla,node-gyp,nvimlog,pki,subversion,Trash}
+	rm -rf ~/.{AndroidStudio1.2,adobe,cordova,dbus,emacs.d,gstreamer-0.10,ionic,macromedia,mozilla,node-gyp,nvimlog,pki,subversion,Trash}
 	if [[ $(uname) == "Darwin" ]]; then
-		for file in "Desktop" "Downloads" "Movies"; do
-			if [[ -d "$HOME/$file" ]]; then
-				/bin/chmod -a "group:everyone deny delete" "$HOME/$file"
-				rm -rf "$HOME/$file"
-			fi
-		done
+		if [[ -d "$HOME/Desktop" ]]; then
+			/bin/chmod -a "group:everyone deny delete" "$HOME/Desktop"
+			rm -rf "$HOME/Desktop"
+		fi
 	fi
 }
 
