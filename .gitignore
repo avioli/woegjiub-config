@@ -6,6 +6,7 @@ bash/saliases*
 beets/library.db
 beets/state.pickle
 brightness
+browserify
 calibre/
 cantata/
 chromium/
@@ -41,6 +42,7 @@ MusicBrainz/
 mutt/account-*
 mutt/passwords*
 ncmpcpp/error.log
+nvim
 oxygen-gtk/
 pudb/saved-breakpoints-*
 pulse/
@@ -53,6 +55,7 @@ ranger/bookmarks
 ranger/history
 ranger/tagged
 rockbox.org/
+sh/saliases.sh
 smb/credentials
 sensitive/
 ssh/
