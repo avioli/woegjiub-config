@@ -41,6 +41,9 @@
     [ -d /usr/local/opt/coreutils ] &&
         export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}" &&
         export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+    [ -d "$HOME/library/Android/sdk" ] &&
+        export PATH="$HOME/library/Android/sdk/tools:${PATH}" &&
+        export PATH="$HOME/library/Android/sdk/platform-tools:${PATH}"
     export PATH="$HOME/.local/bin:${PATH}"
     export NODE_PATH="$HOME/.local/lib/node_modules"
 
