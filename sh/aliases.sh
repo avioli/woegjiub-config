@@ -9,6 +9,7 @@ alias fmusic="find -type f ! -iname '*.flac' -a ! -iname '*.mp3' -a ! -iname '*.
 alias ftypes="find . ! -path '*/.git/*' -type f -iname '*.*' | rev | cut -d . -f1 | rev | sort | uniq -ic | sort -rn"
 alias grep='grep -I --color=auto'
 alias htop="htop -u $USER"
+alias h="TERM=screen htop"
 alias j='jobs -l'
 alias ls="ls -FA --color=always --group-directories-first"
 alias L="ls -lh --time-style=long-iso"
