@@ -58,6 +58,7 @@
 	alias scp="scp -F $XDG_CONFIG_HOME/ssh/config"
 	alias ssh="ssh -F $XDG_CONFIG_HOME/ssh/config"
 	alias startx="startx $XDG_CONFIG_HOME/X11/xinitrc"
+	alias rsyncs="rsync -e \"ssh -F $XDG_CONFIG_HOME/ssh/config\""
 	alias rtorrent="rtorrent -n -o import=$XDG_CONFIG_HOME/rtorrent/conf"
 	alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
 
