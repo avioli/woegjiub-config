@@ -23,7 +23,7 @@ alias ptree="tree -I __pycache__"
 alias scan="scanimage --format=tiff >"
 alias sidf="df -HT -x tmpfs -x devtmpfs --total"
 alias sidu="du -s --si -x"
-alias sindcu="TERM=screeen ncdu --si -x"
+alias sincdu="TERM=screen ncdu --si -x"
 alias sqlite3="sqlite3 -column -header"
 alias v='nvim'
 alias V='v $(fzf)'
