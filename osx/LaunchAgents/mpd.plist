@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>KeepAlive</key>
+	<true/>
+	<key>Label</key>
+	<string>mpd</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/usr/local/bin/zsh</string>
+		<string>-c</string>
+		<string>/usr/local/bin/mpd --no-daemon $HOME/.config/mpd/osx.conf</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>StandardErrorPath</key>
+	<string>/tmp/homebrew.mxcl.mpd.err</string>
+	<key>StandardOutPath</key>
+	<string>/tmp/homebrew.mxcl.mpd.out</string>
+	<key>WorkingDirectory</key>
+	<string>/usr/local</string>
+</dict>
+</plist>
