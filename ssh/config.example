@@ -1,6 +1,4 @@
 IdentityFile ~/.local/share/ssh/id_rsa
-LocalCommand source ~/.config/bash/bashrc
-PermitLocalCommand yes
 UserKnownHostsFile ~/.local/share/ssh/known_hosts
 ControlMaster auto
 ControlPath ~/.local/share/ssh/master-%r@%h:%p
