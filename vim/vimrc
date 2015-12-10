@@ -21,6 +21,8 @@
 	set hidden								" Hide buffers instead of closing
 	set nrformats-=octal					" Don't inc/dec # with ^0 as octal
 	set sessionoptions-=options				" Don't store options in sessions
+	set viewoptions-=options				" Don't store options in views
+	set timeoutlen=300						" Don't wait as long for maps
 
 " Indentation
 	set shiftround							" Indents rounded to shiftwidths
@@ -40,9 +42,6 @@
 " Folding
 	set foldmethod=indent					" Enable Folding
 	set foldlevelstart=99					" Start at fold level 99
-	" Save fold settings
-		au BufWinLeave *.* mkview!
-		au BufWinEnter *.* silent loadview
 
 " Completion/abbreviations
 	set complete=.,w,b,u,t,i,k				" Add dictionary to completion
@@ -142,7 +141,7 @@
 		endfunc
 	" Neovim remaps
 	if has('nvim')
-		tnoremap <Esc> <C-\><C-n>
+		tnoremap <C-\><C-]> <C-\><C-n>
 	end
 
 " Sessions and saving
@@ -186,6 +185,7 @@
 
 " Plugins
 	call plug#begin(expand('$XDG_DATA_HOME/vim/plug'))
+	Plug 'restore_view.vim'                     " Save fold and cursor position
 	Plug 'fs111/pydoc.vim'                      " Python documentation
 	Plug 'tpope/vim-fugitive'                   " Git integration
 	Plug 'vimoutliner/vimoutliner'              " Note Taking
@@ -224,7 +224,7 @@
 		Plug 'groenewege/vim-less'
 		Plug 'adimit/prolog.vim'
 		Plug 'StanAngeloff/php.vim'
-		Plug 'Rykka/riv.vim'
+		Plug 'Rykka/riv.vim', { 'for': 'rst' }
 		Plug 'wting/rust.vim'
 	call plug#end()
 
@@ -232,7 +232,8 @@
 	au BufNewFile,BufRead *.html set filetype=htmldjango " Presume html.django
 	au BufNewFile,BufRead *.ctp set filetype=php " Add cake files
 	au BufNewFile,BufRead *.rs set filetype=rust " Rust, not hercules
-	au BufNewFile,BufRead *.es6 set filetype=javascript
+	au BufNewFile,BufRead *.es6 set filetype=javascript " Dat babel
+	au BufNewFile,BufRead *.md set filetype=markdown " Markdown, not Modula-2
 
 " Plugin settings
 	" VimOutliner
