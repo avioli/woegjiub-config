@@ -51,6 +51,7 @@ ehthumbs.db
 
 # Project-instance #
 ####################
+*.egg-info/
 local.py
 secrets.py
 node_modules/
@@ -65,3 +66,4 @@ ignore*
 .editables
 .site-packages
 .-rplugin~
+.ssh*
