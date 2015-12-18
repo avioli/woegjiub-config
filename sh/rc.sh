@@ -13,8 +13,13 @@
         export LC_COLLATE='C'         # Change sorting to list dotfiles first
         export LC_TIME='en_DK.UTF-8'  # ISO 8601 datetimes
     fi
-    export EDITOR='vim'           # Use vim for light edits
-    export VISUAL='vim'           # Use vim for heavy edits
+    if command -v nvim 2>&1 >/dev/null; then
+        export EDITOR='nvim'          # Use neovim for light edits
+        export VISUAL='nvim'          # Use neovim for heavy edits
+    else
+        export EDITOR='vim'           # Use vim for light edits
+        export VISUAL='vim'           # Use vim for heavy edits
+    fi
     export HISTCONTROL=ignoreboth # Ignore duplicate/blank lines in history
     export HISTSIZE=100000        # 100K command in history file
     SAVEHIST=100000               # 100K history in shell
