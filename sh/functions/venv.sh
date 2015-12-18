@@ -46,6 +46,7 @@ function --venv() {
 		deactivate_hsenv
 	fi
 	[[ -z "$VIRTUAL_ENV_NAME" ]] || unset VIRTUAL_ENV_NAME
+	reset_title
 }
 
 function mkvenv() {

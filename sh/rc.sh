@@ -65,5 +65,5 @@
     if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
         startx
     else
-        tmx default
+        reset_title && clear
     fi
