@@ -12,6 +12,7 @@ cantata/
 chromium/
 configstore/
 dconf/
+emacs/bookmarks
 emacs/elpa
 emacs/eshell
 emacs/image-dired
