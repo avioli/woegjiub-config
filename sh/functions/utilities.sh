@@ -35,10 +35,18 @@ function sizefromtype(){
 	find -iname "*.$@" -print0 | du --files0-from - -c -sh | tail -1 | sed 's/\([^ tab]\+\).*/\1 /'
 }
 
-function sss(){
-	[[ -z "$TMUX" ]] || tmux rename-window "$*"
+function set_title(){
+	[[ -z "$TMUX" ]] && echo -ne "\033]0;$*\007" || tmux rename-window "$*"
+}
+
+function reset_title(){
+	set_title "$HOST"
+}
+
+function s(){
+	set_title "$*"
 	ssh "$@"
-	exit
+	reset_title
 }
 
 if ! [[ -z "$ZSH_VERSION" ]]; then
@@ -61,3 +69,11 @@ elif ! [[ -z "$BASH_VERSION" ]]; then
 	complete -o default -F _pip_completion pip
 	complete -o default -F _pip_completion pip2
 fi
+
+function compdefas () {
+  local a
+  a="$1"
+  shift
+  compdef "$_comps[$a]" "${(@)*}=$a"
+}
+compdefas ssh s

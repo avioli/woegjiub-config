@@ -86,7 +86,7 @@ function workon() {
 	[[ -d "./src" ]] && cd "./src"
 	[[ -d "../venv" ]] && vdir="../venv"
 	[[ -d "$vdir" ]] && . "$vdir/bin/activate"
-	[[ -z "$TMUX" ]] || tmux rename-window "$name"
+	set_title "$name"
 }
 
 if [[ ! -z "$ZSH_VERSION" ]]; then
