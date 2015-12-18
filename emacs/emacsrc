@@ -2,8 +2,15 @@
 (defvar config_home (file-truename (concat (getenv "XDG_CONFIG_HOME") "/emacs")))
 (defvar data_home (file-truename (concat (getenv "XDG_DATA_HOME") "/emacs")))
 (defvar cache_home (file-truename (concat (getenv "XDG_CACHE_HOME") "/emacs")))
+
 (setq user-emacs-directory config_home)
+(setq make-backup-files nil)
 (setq auto-save-default nil)
+
+; PATHs
+(setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
+(setq exec-path (append exec-path '("/usr/local/bin")))
+(setq eshell-path-env (getenv "PATH"))
 
 ; Set up package management
 (require 'package)
