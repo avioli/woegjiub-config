@@ -38,8 +38,8 @@
 # Load Aliases and Functions
     [ -d $XDG_CONFIG_HOME/sh/functions/ ] &&
         for f in $XDG_CONFIG_HOME/sh/functions/*; do . $f; done
-    [ -f "$XDG_CONFIG_HOME"/sh/aliases.sh ] && .  $XDG_CONFIG_HOME/sh/aliases.sh
-    [ -f "$XDG_CONFIG_HOME"/sh/saliases.sh ] && .  $XDG_CONFIG_HOME/sh/saliases.sh
+    [ -f "$XDG_CONFIG_HOME"/sh/aliases.sh ] && . $XDG_CONFIG_HOME/sh/aliases.sh
+    [ -f "$XDG_CONFIG_HOME"/sh/saliases.sh ] && . $XDG_CONFIG_HOME/sh/saliases.sh
     clean_home
 
 # Append Additional Executables to $PATH
