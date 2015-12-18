@@ -40,6 +40,18 @@
 ; Remove this every time we start emacs
 (delete-directory "~/.emacs.d" 1)
 
+
+; Mappings
+(defun eshell-clear-buffer ()
+  "Clear terminal"
+  (interactive)
+  (let ((inhibit-read-only t))
+    (erase-buffer)
+    (eshell-send-input)))
+(add-hook 'eshell-mode-hook
+      '(lambda()
+          (local-set-key (kbd "C-l") 'eshell-clear-buffer)))
+
 (evil-define-key 'normal image-dired-thumbnail-mode-map
   (kbd "RET") 'image-dired-display-thumbnail-original-image
   (kbd "h") 'image-dired-backward-image
