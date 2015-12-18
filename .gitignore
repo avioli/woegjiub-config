@@ -13,7 +13,11 @@ chromium/
 configstore/
 dconf/
 emacs/elpa
+emacs/eshell
+emacs/image-dired
+emacs/tramp
 emacs/url
+emacsvar/
 email*
 enchant/
 Esperanto/
@@ -46,6 +50,7 @@ nvim
 oxygen-gtk/
 pudb/saved-breakpoints-*
 pulse/
+pip/pypirc
 qtcurve/
 QtProject.conf
 qupzilla/
