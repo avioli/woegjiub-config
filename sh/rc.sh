@@ -52,6 +52,10 @@
         eval $(gpg-agent --daemon --enable-ssh-support --write-env-file="$GNUPGHOME/gpg-agent-info" 2>/dev/null) &&
         export SSH_AUTH_SOCK
 
+# Export the docker settings if Darwin and has docker
+    [[ $(uname) == 'Darwin' ]] && command_exists docker &&
+        export DOCKER_HOST="tcp://docker.dev:4243"
+
 # Start X if we're at seat1 and it's not there, else open tmux
     if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
         startx

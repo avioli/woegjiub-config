@@ -1,0 +1,128 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby et sts sw=2 ts=2:
+
+Vagrant.configure(2) do |config|
+  config.vm.hostname = 'docker.dev'
+  config.vm.box = "bento/debian-8.2"
+  config.vm.box_check_update = false
+  config.vm.synced_folder "/", "/mnt/host"
+
+  # Prefer VMWare Fusion over virtualbox
+  config.vm.provider "vmware_fusion" do |provider|
+    provider.vmx['memsize'] = 8192
+    provider.vmx['numvcpus'] = 4
+  end
+  config.vm.provider "virtualbox"
+
+  config.vm.provision "shell", inline: <<-SHELL
+apt update
+apt upgrade -y
+apt install -y apt-transport-https
+apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+echo "deb https://apt.dockerproject.org/repo debian-jessie main" > /etc/apt/sources.list.d/docker.list
+apt update
+apt install -y avahi-daemon docker-engine
+
+mkdir -p /var/db/{postgres,mariadb}
+chown -R vagrant:vagrant /var/db
+
+tee /lib/systemd/system/docker.service <<-'EOF'
+[Unit]
+Description=Docker Application Container Engine
+Documentation=https://docs.docker.com
+After=network.target docker.socket
+Requires=docker.socket
+
+[Service]
+Type=notify
+ExecStart=/usr/bin/docker daemon -H tcp://0.0.0.0:4243
+MountFlags=slave
+LimitNOFILE=1048576
+LimitNPROC=1048576
+LimitCORE=infinity
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+tee /etc/systemd/system/postgres-docker.service <<-'EOF'
+[Unit]
+Description=Postgres container
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+Environment="DOCKER_HOST=localhost:4243"
+ExecStartPre=/usr/bin/docker pull postgres
+ExecStart=/usr/bin/docker run \
+    --rm \
+    -p 5432:5432 \
+    --name postgres \
+    -v /var/db/postgres:/var/lib/postgresql/data \
+    postgres
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+tee /etc/systemd/system/mariadb-docker.service <<-'EOF'
+[Unit]
+Description=MariaDB container
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+Environment="DOCKER_HOST=localhost:4243"
+ExecStartPre=/usr/bin/docker pull mariadb
+ExecStart=/usr/bin/docker run \
+    --rm \
+    -p 3306:3306 \
+    -v /var/db/mariadb:/var/lib/mysql \
+    --name mariadb \
+    -e MYSQL_ROOT_PASSWORD=pass \
+    mariadb
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+tee /etc/systemd/system/redis-docker.service <<-'EOF'
+[Unit]
+Description=Redis container
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+Environment="DOCKER_HOST=localhost:4243"
+ExecStartPre=/usr/bin/docker pull redis
+ExecStart=/usr/bin/docker run \
+    --rm \
+    -p 6379:6379 \
+    -v /var/db/redis:/data \
+    --name redis \
+    redis
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+echo 'export DOCKER_HOST="localhost:4243"' >> /home/vagrant/.bashrc
+
+systemctl daemon-reload
+systemctl restart docker
+
+systemctl enable postgres-docker
+systemctl enable mariadb-docker
+systemctl enable redis-docker
+
+systemctl start postgres-docker
+systemctl start mariadb-docker
+systemctl start redis-docker
+  SHELL
+end
