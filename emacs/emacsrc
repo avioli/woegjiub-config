@@ -30,6 +30,7 @@
 (require-package 'evil)
 (require-package 'org-plus-contrib)
 (require-package 'powerline)
+(require-package 'dired+)
 
 ; Modes
 (evil-mode 1)
@@ -38,3 +39,8 @@
 
 ; Remove this every time we start emacs
 (delete-directory "~/.emacs.d" 1)
+
+(evil-define-key 'normal image-dired-thumbnail-mode-map
+  (kbd "RET") 'image-dired-display-thumbnail-original-image
+  (kbd "h") 'image-dired-backward-image
+  (kbd "l") 'image-dired-forward-image)
