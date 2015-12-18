@@ -40,6 +40,9 @@
 ; Remove this every time we start emacs
 (delete-directory "~/.emacs.d" 1)
 
+; Remove the startup messages
+(setq inhibit-startup-message t)
+(setq initial-scratch-message nil)
 
 ; Mappings
 (defun eshell-clear-buffer ()
