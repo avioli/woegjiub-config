@@ -8,3 +8,6 @@ setopt histignoredups histignorespace incappendhistory sharehistory
 setopt extendedglob globdots nomatch
 # Reduce irritating feedback
 unsetopt beep notify
+# Editing
+autoload -z edit-command-line
+zle -N edit-command-line

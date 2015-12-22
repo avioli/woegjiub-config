@@ -4,6 +4,7 @@
     bindkey '^N' history-beginning-search-forward
     bindkey '^w' backward-kill-word
     bindkey '^r' history-incremental-search-backward
+    bindkey '\e' edit-command-line
     bindkey '\e[1~' beginning-of-line
     bindkey '\e[4~' end-of-line
     bindkey '\e[5~' beginning-of-history

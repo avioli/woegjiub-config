@@ -207,9 +207,10 @@
 	Plug 'marijnh/tern_for_vim'                 " Javascript omnicompletion
 	Plug 'davidhalter/jedi-vim'                 " Python omnicompletion
 	if has('nvim')
-		Plug 'Shougo/deoplete.nvim'               " Improved completion UI
+		Plug 'Shougo/deoplete.nvim'             " Improved completion UI
+		Plug 'brettanomyces/nvim-editcommand'   " Edit terminal in nvim
 	else
-		Plug 'Shougo/neocomplete.vim'               " Improved completion UI
+		Plug 'Shougo/neocomplete.vim'           " Improved completion UI
 	end
 	" Syntax and highlighting
 		Plug 'hail2u/vim-css3-syntax'
@@ -317,3 +318,8 @@
 	end
 	" Riv.vim
 		let g:riv_global_leader = "<C-,>"
+	" Nvim-editcommand
+	if has('nvim')
+		let g:editcommand_prompt = '+'
+		tmap <ESC> <Plug>EditCommand
+	end
