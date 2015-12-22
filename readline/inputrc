@@ -45,6 +45,7 @@ TAB: menu-complete
 "\e\e[D": backward-word
 "\e[1;5C": forward-word
 "\e[1;5D": backward-word
+"\e": edit-and-execute-command
 # for rxvt
 "\e[8~": end-of-line
 
