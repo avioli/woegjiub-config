@@ -8,6 +8,10 @@ function clean_home(){
 	fi
 }
 
+function clean_recursive(){
+	find -iname '.DS_Store' -delete
+}
+
 function command_exists(){
 	command -v "$1" 2>&1 >/dev/null ;
 }
