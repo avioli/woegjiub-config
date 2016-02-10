@@ -9,6 +9,8 @@
 	export ADB_VENDOR_KEYS="$XDG_DATA_HOME/android/.android"
 	export ANDROID_SDK_HOME="$XDG_DATA_HOME/android"
 	export AWS_CONFIG_FILE="$XDG_CONFIG_HOME/aws/config"
+	export COMPOSER_HOME="$XDG_DATA_HOME/composer"
+	export COMPOSER_CACHE_DIR="$XDG_CACHE_HOME/composer"
 	export GEM_HOME="$HOME/.local/lib/gems"
 	export GEM_PATH="$HOME/.local/bin"
 	export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
