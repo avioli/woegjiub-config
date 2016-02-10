@@ -5,8 +5,9 @@ alias feh="feh -B black -e LiberationMono-Regular/24 -C /usr/share/fonts/TTF"
 alias fehs="feh -Z." # Initial is correct on all, but flicker on N/P
 alias fehm="feh -g 2880x1800" # No flicker on N/P, still scales to screen
 alias feht="fehm -A \;\"image-metadata.sh edit-tags %f\" --info \"image-metadata.sh show %f\" "
-alias fmusic="find -type f ! -iname '*.flac' -a ! -iname '*.mp3' -a ! -iname '*.ogg'"
-alias ftypes="find . ! -path '*/.git/*' -type f -iname '*.*' | rev | cut -d . -f1 | rev | sort | uniq -ic | sort -rn"
+alias fmusic="find -L . -type f ! -iname '*.flac' -a ! -iname '*.mp3' -a ! -iname '*.ogg' -a ! -iname '*.jp*g' -a ! -iname '*.png' -a ! -iwholename '*.git/*'"
+alias fnflac="find -L . -type f ! -iname '*.flac' -a ! -iname '*.jp*g' -a ! -iname '*.png' -a ! -iwholename '*.git/*'"
+alias ftypes="find -L . ! -path '*/.git/*' -type f -iname '*.*' | rev | cut -d . -f1 | rev | sort | uniq -ic | sort -rn"
 alias grep='grep -I --color=auto'
 alias htop="htop -u $USER"
 alias h="TERM=screen htop"
