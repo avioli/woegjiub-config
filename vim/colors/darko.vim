@@ -120,3 +120,6 @@ if has('gui_running')
 	set guiheadroom=0
 	set go=ac
 endif
+
+" Limelight.vim
+let g:limelight_conceal_ctermfg = 240

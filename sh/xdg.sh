@@ -17,11 +17,6 @@
 	export GIT_SSH_COMMAND="ssh -F $XDG_CONFIG_HOME/ssh/config "$@" 2>/dev/null"
 	export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
 	export GRADLE_USER_HOME="$XDG_CACHE_HOME/gradle"
-	# Note: gstreamer registry is usually per-arch.
-	# Any secondary architecture applications should have this exported to a
-	# different value before launch
-	# Thankfully, this is only needed for gstreamer0.10; 1.0 has a sane default
-	export GST_REGISTRY="$XDG_CACHE_HOME/gstreamer/registry-$(uname -m).bin"
 	export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 	export HISTFILE="$XDG_DATA_HOME/bash/history"
 	export HOMERC="$XDG_CONFIG_HOME/htop/htoprc"
@@ -64,10 +59,3 @@
 	alias rsyncs="rsync -e \"ssh -F $XDG_CONFIG_HOME/ssh/config\""
 	alias rtorrent="rtorrent -n -o import=$XDG_CONFIG_HOME/rtorrent/conf"
 	alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
-
-# Disgusting hacks
-	function sl3(){
-		mv {$XDG_DATA_HOME/sqlite3/,~/.}sqlite_history
-		sqlite3 "$@"
-		mv {~/.,$XDG_DATA_HOME/sqlite3/}sqlite_history
-	}
