@@ -6,7 +6,6 @@ plugins: [
     fuzzy,
     info,
     inline,
-    lyrics,
     random,
 ]
 
@@ -44,6 +43,7 @@ replace:
 convert:
     dest: ~/converted
     embed: true
+    never_convert_lossy_files: true
     format: ogg
     threads: 8
     formats:
