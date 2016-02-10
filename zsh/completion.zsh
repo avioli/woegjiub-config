@@ -25,3 +25,5 @@ zstyle :compinstall filename "$XDG_CONFIG_HOME/zsh/.zshrc"
 autoload -Uz compinit bashcompinit promptinit
 compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
 bashcompinit
+
+complete -C aws_completer aws
