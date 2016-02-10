@@ -11,6 +11,7 @@ Vagrant.configure(2) do |config|
   config.vm.provider "vmware_fusion" do |provider|
     provider.vmx['memsize'] = 8192
     provider.vmx['numvcpus'] = 4
+    provider.gui = false
   end
   config.vm.provider "virtualbox"
 
