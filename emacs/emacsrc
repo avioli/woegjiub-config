@@ -30,7 +30,6 @@
 (require-package 'evil)
 (require-package 'org-plus-contrib)
 (require-package 'powerline)
-(require-package 'dired+)
 
 ; Modes
 (evil-mode 1)
