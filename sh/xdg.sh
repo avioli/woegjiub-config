@@ -20,6 +20,7 @@
 	export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 	export HISTFILE="$XDG_DATA_HOME/bash/history"
 	export HOMERC="$XDG_CONFIG_HOME/htop/htoprc"
+	export HTTPIE_CONFIG_DIR="$XDG_CONFIG_HOME/httpie/"
 	export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
 	export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
 	export KDEDIR="$XDG_CONFIG_HOME/kde"
