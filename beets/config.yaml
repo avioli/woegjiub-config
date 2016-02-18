@@ -62,6 +62,10 @@ convert:
             command: ffmpeg -i $source -c:a libvorbis -q:a 6 $dest
             extension: ogg
             max_bitrate: 240
+        aac:
+            command: ffmpeg -i $source -c:a libfdk_aac -b:a 192k -cutoff 20000 $dest
+            extension: m4a
+            max_bitrate: 192k
 
 fuzzy:
     threshold: 0.7
