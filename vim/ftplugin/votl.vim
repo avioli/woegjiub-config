@@ -1,2 +1,3 @@
-setlocal tw=100
-unmap <buffer> <C-K>
+setlocal textwidth=100
+setlocal tabstop=2
+setlocal shiftwidth=2

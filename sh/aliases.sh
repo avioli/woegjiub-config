@@ -1,3 +1,4 @@
+alias awe="aws --region=us-east-1" && command_exists aws_completer && complete -C aws_completer awe
 alias cal="cal -3"
 alias d="dirs -v"
 alias dag="ag --ignore fixtures --ignore static --ignore migrations --ignore venv --ignore '*.json' 2>/dev/null"
