@@ -8,7 +8,7 @@ Vagrant.configure(2) do |config|
   config.vm.synced_folder "/", "/mnt/host"
   config.vm.network "forwarded_port", guest: 4243, host: 4243, id: "docker"
 
-  # Prefer VMWare Fusion over virtualbox
+  # Prefer VMWare Fusion over virtualbox or set VAGRANT_DEFAULT_PROVIDER env to the desired one, or use --provider
   config.vm.provider "vmware_fusion" do |provider|
     provider.vmx['memsize'] = 8192
     provider.vmx['numvcpus'] = 4
