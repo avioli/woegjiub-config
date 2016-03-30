@@ -14,7 +14,15 @@ Vagrant.configure(2) do |config|
     provider.vmx['numvcpus'] = 4
     provider.gui = false
   end
-  config.vm.provider "virtualbox"
+
+  config.vm.provider "virtualbox" do |provider|
+    provider.memory = 8192
+    provider.cpus = 4
+    provider.name = "Docker Server"
+    provider.gui = false
+    provider.customize ["modifyvm", :id, "--natdnshostresolver1", "on"] # deal with an OSX DNS issue -- https://serverfault.com/questions/453185/vagrant-virtualbox-dns-10-0-2-3-not-working
+    provider.customize ["modifyvm", :id, "--vram", "10"] # take care of the mimimum required by vb
+  end
 
   config.vm.provision "shell", inline: <<-SHELL
 apt update
